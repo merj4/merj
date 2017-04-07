@@ -1,5 +1,5 @@
 {
-  "name": "beepboop",
+  "name": "merj",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -13,6 +13,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "webpack": "./node_modules/.bin/webpack -d --watch",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
