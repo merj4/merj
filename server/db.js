@@ -13,11 +13,17 @@ var Sequelize = require('sequelize')
 //     console.log('Unable to connect to the database', err);
 //   })
 //intialize sequelize with postgres remote url
-if (process.env.DATABASE_URL) {
-  var db = new Sequelize(process.env.DATABASE_URL, {dialect:'postgres', logging: false});
-} else {
-  var db = new Sequelize('merj', process.env.POSTGRES_USER, '', {dialect:'postgres', logging: false});
-}
+var sequelize = new Sequelize('postgres://teammerj:teammerjgirls@teammerj.ccfvuax37sga.us-west-2.rds.amazonaws.com:5432/merjDB');
+
+sequelize
+  .authenticate()
+  .then(function(err) {
+    console.log('Connection has been established successfully');
+  })
+  .catch(function (err) {
+    console.log('Unable to connect to the database', err);
+  })
+
 
 // create User table
 var User = db.define('User', {
@@ -88,3 +94,6 @@ module.exports = {
   EventParticipant: EventParticipant,
 };
 
+// var Event = db.define('Event', {
+
+// })
