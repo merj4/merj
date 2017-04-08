@@ -20,7 +20,7 @@ module.exports = function(app, express) {
   // //create user profile
   app.post('/api/user', userController.postUser);
   // //get all messages for chatroom
-  // app.get('/api/chat', chatController.getMessages);
+  app.get('/api/chat', chatController.getMessages);
   // //send a message
   app.post('/api/chat', chatController.postMessage);
 
