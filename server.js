@@ -5,6 +5,8 @@ var app = express()
 var db = require('./server/db')
 
 //PORT
+var db = require('./server/db')
+
 var port = process.env.PORT || 8080
 app.listen(port)
 console.log('listening to portato', port)
@@ -49,3 +51,4 @@ app.get('/api/user', function(req, res) {
 module.exports = {
   app: app
 }
+
