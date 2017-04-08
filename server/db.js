@@ -155,6 +155,7 @@ module.exports = {
   Message: Message,
   Chatroom: Chatroom,
   EventParticipant: EventParticipant,
+<<<<<<< 2f13757a4649ca61de837fb540befaa21ca6f63c
 };
 
 
@@ -166,3 +167,4 @@ module.exports = {
   Chatroom: Chatroom,
   EventParticipant: EventParticipant
 };
+
