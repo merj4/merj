@@ -73,7 +73,10 @@ User.sync()
 .then(() => User.hasMany(Event, {foreignkey: {name:'UserId'}}))
 .then(() => User.hasMany(Message, {foreignkey: {name:'UserId'}}))
 .then(() => Message.belongsTo(User, {foreignkey: {name:'UserId'}}))
+.then(() => Chatroom.hasMany(Message, {through: 'ChatroomMessage'}))
+.then(() => Message.belongsTo(Chatroom, {foreignkey: {name: 'ChatroomId'}}))
 .then(() => Event.sync())
+.then(() => Message.sync())
 
 
 //export table schemas for use in other files
