@@ -4,6 +4,8 @@
   "private": true,
   "dependencies": {
     "body-parser": "^1.17.1",
+    "pg": "^6.1.5",
+    "pg-hstore": "^2.3.2",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "sequelize": "^3.30.4"
