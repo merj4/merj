@@ -2,7 +2,11 @@ var express = require('express')
 var bodyParser = require('body-parser')
 var path = require('path')
 var app = express()
+<<<<<<< 2f13757a4649ca61de837fb540befaa21ca6f63c
 <<<<<<< 4236a1bbc4fa801ff018445b09fac4ba9b3c5140
+=======
+<<<<<<< 9fb36c029913474019c88ce274a2eb13c795d4ab
+>>>>>>> changes
 var db = require('./server/db')
 
 //PORT
@@ -20,7 +24,11 @@ console.log('listening to portato', port)
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(express.static(path.join(__dirname, '/public')))
+<<<<<<< 2f13757a4649ca61de837fb540befaa21ca6f63c
 <<<<<<< 4236a1bbc4fa801ff018445b09fac4ba9b3c5140
+=======
+<<<<<<< 9fb36c029913474019c88ce274a2eb13c795d4ab
+>>>>>>> changes
 require('./server/routes')(app, express)
 
 //For testing purposes only
