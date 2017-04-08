@@ -33,7 +33,7 @@ var Event = db.define('Event', {
   location: Sequelize.STRING,
   date: Sequelize.DATE,
   title: Sequelize.STRING,
-  time: Sequelize.TIME,
+  time: Sequelize.STRING,
   category: Sequelize.STRING,
   description: Sequelize.STRING,
   image: Sequelize.TEXT,
@@ -73,6 +73,7 @@ User.sync()
 .then(() => User.hasMany(Event, {foreignkey: {name:'UserId'}}))
 .then(() => User.hasMany(Message, {foreignkey: {name:'UserId'}}))
 .then(() => Message.belongsTo(User, {foreignkey: {name:'UserId'}}))
+.then(() => Event.sync())
 
 
 //export table schemas for use in other files

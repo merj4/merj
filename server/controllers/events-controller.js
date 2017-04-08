@@ -3,7 +3,7 @@ var db = require('../db.js');
 module.exports = {
 
   getAllEvents: function(req, res) {
-    db.User.findAll({})
+    db.Event.findAll({})
     .then(function(events) {
       events = events.map(function(event) {
         var eventData = event.dataValues;
@@ -78,7 +78,7 @@ module.exports = {
   // },
 
   getEvent: function(req, res) {
-     db.findOne({
+     db.Event.findOne({
       where: { id: Number(req.params.id) }
      }) 
     .then(function(event) {
@@ -114,11 +114,12 @@ module.exports = {
     db.Event.create(params)
     .then(function(data) {
       res.status(201)
-      .send('post request works!')
-      .catch(function(err) {
-        res.status(400).send(err)
-      })
+    .send('Post request successful')
+    })  
+    .catch(function(err) {
+      res.status(400).send(err)
     })
+    
   }
 
 }
