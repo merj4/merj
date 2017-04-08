@@ -1,4 +1,23 @@
+require('dotenv').config();
+
 var Sequelize = require('sequelize')
+
+
+var db = new Sequelize('postgres://teammerj:teammerjgirls@teammerj.ccfvuax37sga.us-west-2.rds.amazonaws.com:5432/merjDB');
+
+
+//will change to env variables, but may need to direct require('dotenv').config() to correct location of .env file? not sure
+//http://stackoverflow.com/questions/35356692/best-practice-when-using-an-api-key-in-node-js
+// var db = new Sequelize('postgres://' + process.env.USERNAME + ':' + process.env.PASSWORD + '@teammerj.ccfvuax37sga.us-west-2.rds.amazonaws.com:5432/merjDB');
+
+db
+  .authenticate()
+  .then(function(err) {
+    console.log('Connection has been established successfully');
+  })
+  .catch(function (err) {
+    console.log('Unable to connect to the database', err);
+  });
 
 
 // var db = new Sequelize('postgres://teammerj:teammerjgirls@teammerj.ccfvuax37sga.us-west-2.rds.amazonaws.com:5432/merjDB');
