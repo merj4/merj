@@ -84,3 +84,4 @@ module.exports = {
   Chatroom: Chatroom,
   EventParticipant: EventParticipant,
 };
+
