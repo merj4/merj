@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import Header from '../public/components/header';
+import Header from './components/header';
+import Search from './components/search';
+import Filter from './components/filter';
 // import App from './App';
 
 class App extends Component {
@@ -13,7 +15,10 @@ class App extends Component {
     return (
       <div>
         <Header />
+        <Search />
+        <Filter />
       </div>
+
     );
   }
 };

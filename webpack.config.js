@@ -10,7 +10,7 @@ var APP_DIR = path.resolve(__dirname, 'public')
 //config
 var config = {
   //where to start
-  entry: APP_DIR + '/app.jsx',
+  entry: APP_DIR + '/index.js',
   //where to place the buundle file
   output: {
     path: BUILD_DIR,
@@ -19,7 +19,7 @@ var config = {
   //what to use
   module: {
     loaders: [
-      { 
+      {
         test: /\.jsx?/,
         include:APP_DIR,
         loader: 'babel-loader'
