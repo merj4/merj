@@ -10,7 +10,7 @@ var APP_DIR = path.resolve(__dirname, 'public')
 //config
 var config = {
   //where to start
-  entry: APP_DIR + '/index.js',
+  entry: APP_DIR + '/app.jsx',
   //where to place the buundle file
   output: {
     path: BUILD_DIR,
