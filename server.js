@@ -14,7 +14,7 @@ console.log('listening to portato', port)
 //MIDDLEWARE
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
-app.use(express.static(path.join(__dirname, '/public')))
+app.use(express.static(path.join(__dirname, '/build')))
 
 require('./server/routes')(app, express)
 
