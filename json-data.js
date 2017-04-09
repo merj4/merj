@@ -1,4 +1,4 @@
-{
+var event = {
   "location":"Santa Barbara, CA",
   "date":"Aug. 10, 2017",
   "title":"Fun in the Sun",
@@ -6,4 +6,9 @@
   "category":"Outdoor",
   "description":"Come out to the beach and enjoy company, food and sand castles",
   "image":"http://www.unique-canvas.com/media/images/popup/meer-und-traumstraende-fotografie--fotomotiv-beach-party--816406.jpg"
+},
+//must stringify first
+var user = {
+  username: 'alfalfa',
+  email: 'email@email.com'
 }

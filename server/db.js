@@ -73,16 +73,19 @@ var EventParticipant = db.define('EventParticipant', {
 })
 
 //sync individual tables listed above and create join tables
-User.sync({force:true})
+User.sync({})
 .then(() => User.belongsToMany(Event, {through: EventParticipant}))
 .then(() => Event.belongsToMany(User, {through: EventParticipant }))
+
 .then(() => Event.hasMany(Message, {foreignkey: {name: 'EventId'}}))
 .then(() => Message.belongsTo(Event, {foreignkey: {name: 'EventId'}}))
+
 .then(() => User.hasMany(Message, {foreignkey: {name:'UserId'}}))
 .then(() => Message.belongsTo(User, {foreignkey: {name:'UserId'}}))
-.then(() => Message.sync({force:true}))
-.then(() => Event.sync({force:true}))
-.then(() => User.sync({force:true}))
+
+.then(() => Message.sync({}))
+.then(() => Event.sync({}))
+.then(() => User.sync({}))
 // .then(() => Message.belongsTo(Event, {through: EventMessage }))
 // .then(() => Event.belongsToMany(Message, {through: EventMessage }))
 
