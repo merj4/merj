@@ -3,7 +3,7 @@ import { shallow, mount, render } from 'enzyme';
 import { spy } from 'sinon';
 import { expect } from 'chai';
 // import { Link } from 'react-router-dom';
-import Header from '../src/components/Header';
+import Header from '../app/src/components/header';
 
 
 describe('<Header />', function() {
