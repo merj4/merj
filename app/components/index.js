@@ -1,9 +1,11 @@
+console.log('Hello')
+
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import Header from './components/header.js';
-import Search from './components/search';
-import Filter from './components/filter';
-import EventList from './components/eventList';
+import Header from './header.js';
+import Search from './search';
+import Filter from './filter';
+import EventList from './eventList';
 
 
 class App extends Component {
@@ -31,12 +33,10 @@ class App extends Component {
     })
   }
 
-
   render() {
     return (
       <div>
         <Header />
-        Hello World
         <Search />
         <Filter />
         <EventList events={this.state.events} />
@@ -45,4 +45,4 @@ class App extends Component {
   }
 };
 
-ReactDOM.render(<App />, document.getElementById('.app'));
+ReactDOM.render(<App />, document.querySelector('.container'));

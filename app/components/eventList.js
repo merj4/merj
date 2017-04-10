@@ -15,14 +15,14 @@ import EventItem from './eventItem';
   const EventList = (props) => {
     const event = props.events.map((event) => {
       return (
-        <EventsListItem
-          key={event} />
+        <EventItem
+          key={event.id} />
       );
     });
 
-
+console.log('EventList')
   return (
-      <ul>
+      <ul classname="col-md-12 list-group">
         {event}
       </ul>
     );
