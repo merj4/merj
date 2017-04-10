@@ -1,5 +1,5 @@
 import React from 'react';
-import EventItem from './components/eventItem';
+import EventItem from './eventItem';
 // every class must have a render function
   // it's recommended that you start with a functional based component and
   // only refactor to a class when you need some added functionality
@@ -16,13 +16,13 @@ import EventItem from './components/eventItem';
     const event = props.events.map((event) => {
       return (
         <EventsListItem
-          key={event.id} />
+          key={event} />
       );
     });
 
 
   return (
-      <ul className="col-md-12 list-group">
+      <ul>
         {event}
       </ul>
     );
