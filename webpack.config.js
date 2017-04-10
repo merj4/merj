@@ -1,31 +1,31 @@
-var webpack = require('webpack');
-var path = require('path');
 
-//build directory
-var BUILD_DIR = path.resolve(__dirname, 'public/dist');
-
-//app directory
-var APP_DIR = path.resolve(__dirname, 'public')
-
-//config
-var config = {
-  //where to start
-  entry: APP_DIR + '/index.js',
-  //where to place the buundle file
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+var HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
+  //config options
+  template: __dirname + '/app/index.html',
+  filename: 'index.html',
+  inject: 'body'
+})
+module.exports = {
+  entry: [
+    './app/index.js'
+  ],
   output: {
-    path: BUILD_DIR,
-    filename: 'bundle.js'
+    path: __dirname + '/app/dist',
+    filename: "index_bundle.js"
   },
-  //what to use
   module: {
     loaders: [
-      {
-        test: /\.jsx?/,
-        include:APP_DIR,
-        loader: 'babel-loader'
+      { 
+        test: /\.js$/, 
+        exclude: /node_modules/, 
+        loader: "babel-loader",
+        query: {
+          presets: ['es2015','react'] 
+        }
       }
     ]
-  }
-};
-
-module.exports = config;
+  },
+  //injects index.html into the dist folder with index_bundle.js
+  plugins: [HtmlWebpackPluginConfig]
+}

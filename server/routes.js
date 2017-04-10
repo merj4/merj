@@ -5,6 +5,8 @@ var chatController = require('./controllers/chat-controller.js');
 
 module.exports = function(app, express) {
   
+  //serve up most recent on home page
+  app.get('/', eventsController.getAllEvents);
   //get all events
   app.get('/api/events', eventsController.getAllEvents);
   //get the most recent events
