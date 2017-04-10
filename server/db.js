@@ -76,10 +76,13 @@ var EventParticipant = db.define('EventParticipant', {
 User.sync({})
 .then(() => User.belongsToMany(Event, {through: EventParticipant}))
 .then(() => Event.belongsToMany(User, {through: EventParticipant }))
+
 .then(() => Event.hasMany(Message, {foreignkey: {name: 'EventId'}}))
 .then(() => Message.belongsTo(Event, {foreignkey: {name: 'EventId'}}))
+
 .then(() => User.hasMany(Message, {foreignkey: {name:'UserId'}}))
 .then(() => Message.belongsTo(User, {foreignkey: {name:'UserId'}}))
+
 .then(() => Message.sync({}))
 .then(() => Event.sync({}))
 .then(() => User.sync({}))

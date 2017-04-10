@@ -12,7 +12,10 @@ module.exports = {
       messages = messages.map(function(message) {
         var messageData = message.dataValues;
         return {
-          message: messageData.message
+          message: messageData.message,
+          updatedAt: messageData.updatedAt,
+          EventId: messageData.EventId,
+          UserId: messageData.UserId
         }
       });
       res.status(200).json(messages);
