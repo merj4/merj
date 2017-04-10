@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import Header from './components/header';
 import Search from './components/search';
 import Filter from './components/filter';
-import EventList from './components/eventsList';
+import EventList from './components/eventList';
 
 
 class App extends Component {
@@ -15,7 +15,7 @@ class App extends Component {
       events: []
     };
 
-    this.getAllEvents();
+    this.componentDidMount = this.componentDidMount.bind(this)
 
   }
 
@@ -41,21 +41,16 @@ var dummyData = [
   }
 ]
 
-  componentWillMount() {
-    var that = this;
-    $.ajax({
-      url: '/api/events',
-      method: 'GET',
-      dataType: 'json',
-      success: (data) => {
-        console.log('Successfully retrieved from DB', data);
-        that.setState({
-          events: data
-        });
-      },
-      error: (err) => {
-        console.log('Error on DB retrieval: ', err);
-      }
+  componentDidMount() {
+    var myInit = {
+      method: "GET"
+    };
+
+    fetch("/api/events", myInit).then((response) => {
+      return response.json();
+    }).then((data) => {
+      this.state.events = data;
+      this.setState(this.state);
     })
   }
 
