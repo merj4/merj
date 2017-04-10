@@ -13,16 +13,17 @@ import EventItem from './components/eventItem';
   // Will have to be a class component to handle changing state
 
   const EventList = (props) => {
-    const eventItems = props.events.map((event) => {
+    const event = props.events.map((event) => {
       return (
         <EventsListItem
           key={event.id} />
       );
     });
 
-    return (
+
+  return (
       <ul className="col-md-12 list-group">
-        {eventItems}
+        {event}
       </ul>
     );
   };
