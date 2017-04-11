@@ -1,7 +1,24 @@
+
 .header {
   margin: auto;
   font-size: 50px;
 }
+.description-card {
+  background: #7CDBD5;
+}
+
+.container {
+ background-color: #02C8A7;
+ width: 100%;
+}
+
+.card-top {
+  background: #F9BE02;
+}
+
+/*.actions {
+  background: #F53240;
+}*/
 
 .main-header {
   position: absolute;

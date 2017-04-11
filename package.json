@@ -21,11 +21,15 @@
   },
   "homepage": "https://github.com/r0chellevee/merj#readme",
   "dependencies": {
+    "create-react-class": "^15.5.2",
     "jquery": "^3.2.1",
+    "material-ui": "^0.17.3",
     "morgan": "^1.8.1",
+    "prop-types": "^15.5.6",
     "react": "^15.5.3",
     "react-bootstrap": "^0.30.8",
-    "react-dom": "^15.5.3"
+    "react-dom": "^15.5.3",
+    "react-tap-event-plugin": "^2.0.1"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",

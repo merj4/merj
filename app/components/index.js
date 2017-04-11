@@ -3,9 +3,14 @@ import ReactDOM from 'react-dom';
 import Header from './header.js';
 import Search from './search';
 import Filter from './filter';
-import EventList from './eventList';
-import exampleEvents from '../../events.js'
+import {EventList} from './eventList';
+import {exampleEvents} from '../../events.js';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import injectTapEventPlugin from 'react-tap-event-plugin';
 
+
+
+injectTapEventPlugin();
 class App extends Component {
   constructor(props) {
     super(props);
@@ -14,7 +19,6 @@ class App extends Component {
     }
   }
   componentDidMount() {
-    console.log(exampleEvents)
     this.getEvents();
   }
 
@@ -27,14 +31,16 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <Header />
-        <Search />
-        <Filter />
-        <div className="col-md-12">
-          <EventList events={this.state.events} />
+      <MuiThemeProvider>
+        <div>
+          <Header />
+          <Search />
+          <Filter />
+          <div className="col-md-12">
+            <EventList events={this.state.events} />
+          </div>
         </div>
-      </div>
+      </MuiThemeProvider>
     );
   }
 };
