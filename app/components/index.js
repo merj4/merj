@@ -4,32 +4,26 @@ import Header from './header.js';
 import Search from './search';
 import Filter from './filter';
 import EventList from './eventList';
-
+import exampleEvents from '../../events.js'
 
 class App extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       events: []
     }
-
-    this.componentDidMount = this.componentDidMount.bind(this)
-
   }
-
   componentDidMount() {
-    var myInit = {
-      method: "GET"
-    };
-
-    fetch("/", myInit).then((response) => {
-      return response.json();
-    }).then((data) => {
-      this.state.events = data;
-      this.setState(this.state);
-    })
+    console.log(exampleEvents)
+    this.getEvents();
   }
+
+  getEvents() {
+    this.setState({
+      events: exampleEvents
+    }) 
+  }
+
 
   render() {
     return (
@@ -37,7 +31,9 @@ class App extends Component {
         <Header />
         <Search />
         <Filter />
-        <EventList events={this.state.events} />
+        <div className="col-md-12">
+          <EventList events={this.state.events} />
+        </div>
       </div>
     );
   }
