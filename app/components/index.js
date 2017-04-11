@@ -19,6 +19,7 @@ class App extends Component {
       events: []
     }
   }
+
   componentDidMount() {
     axios.get('/api/events')
     .then(res => {
@@ -26,7 +27,6 @@ class App extends Component {
       const events = res.data;
       this.setState({ events });
     });
-  }
 
   render() {
     return (
