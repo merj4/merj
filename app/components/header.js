@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from 'react-bootstrap';
+import { Button, Col } from 'react-bootstrap';
 
 // every class must have a render function
   // it's recommended that you start with a functional based component and
@@ -11,10 +11,10 @@ import { Button } from 'react-bootstrap';
 
 const Header = () => {
   return (
-    <div className="main-header">
-
-      <h1> MERJE </h1>
-      <Button>+</Button>
+    <div>
+      <Col xs={4} className=""></Col>
+      <Col xs={4} className=""><h1 className="text-center">BeepBoop</h1></Col>
+      <Col xs={4}><div className="text-right"><Button className="">+</Button></div></Col>
     </div>
 
   );
