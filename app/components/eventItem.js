@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-
+import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui';
+import FlatButton from 'material-ui/FlatButton';
 // every class must have a render function
   // it's recommended that you start with a functional based component and
   // only refactor to a class when you need some added functionality
@@ -20,14 +21,31 @@ class EventItem extends Component {
   }
 
   render() {
+    console.log(this)
     return (
-      <tr>
-        <td className="event-name">{this.props.event.title}</td>
-        <td>
+      <Card>
+        <CardHeader
+          title={this.props.event.title}
+          subtitle={this.props.event.location}
+          avatar="http://enadcity.org/enadcity/wp-content/uploads/2017/02/profile-pictures.png"
+        />
+         <CardMedia
+          overlay={<CardTitle title={this.props.event.location} 
+          subtitle={this.props.event.date} />}
+        >
           <img src={this.props.event.image} />
-        </td>
-       <td className="event-description">{this.props.event.description}</td>
-      </tr>
-    )
-  }
+          </CardMedia>
+         <CardTitle title={this.props.event.title} subtitle={this.props.event.category} />
+         <CardText>
+           {this.props.event.description}
+         </CardText>
+           <CardActions>
+             <FlatButton label="Would Love To Go!" />
+             <FlatButton label="I'm Gonna Pass for Now" />
+           </CardActions>
+         </Card>
+      );
+    }
 }
+
+export {EventItem};
