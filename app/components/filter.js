@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button, Col, Row } from 'react-bootstrap';
 
 // every class must have a render function
   // it's recommended that you start with a functional based component and
@@ -10,8 +11,15 @@ import React from 'react';
 
 const Filter = () => {
   return (
-    <div className="filter-bar">
-      Distance  Category  Size  Date  Now   Hot
+    <div>
+      <Row>
+        <Col xs={2} className="text-center">Distance</Col>
+        <Col xs={2} className="text-center">Category</Col>
+        <Col xs={2} className="text-center">Date</Col>
+        <Col xs={2} className="text-center">Now</Col>
+        <Col xs={2} className="text-center">Hot</Col>
+        <Col xs={2} className="text-center"><Button className="map-view">Map</Button></Col>
+      </Row>
     </div>
   );
 }
