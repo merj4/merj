@@ -1,13 +1,17 @@
 import React from 'react';
 import EventItem from './eventItem';
 
+var EventList = (props) => {
+  return (
+    <table>
+      <tbody>
+        {props.events.map((event) =>
+         <EventItem event={event} key={event.location}/>
+         )}
+      </tbody>
+    </table>
+  );
+}
 
-  const EventList = (props) => {
-    return (
-      <ul className="list-group">
 
-      </ul>
-    );
-  };
-
-  export default EventList;
+export default EventList;

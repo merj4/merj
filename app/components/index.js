@@ -14,8 +14,7 @@ class App extends Component {
     }
   }
 
-  componentWillMount() {
-    console.log(this)
+  componentDidMount() {
     this.getEvents();
   }
 
