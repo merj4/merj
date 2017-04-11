@@ -7,7 +7,7 @@
     "test": "test"
   },
   "scripts": {
-    "dev": "webpack -d --watch",
+    "start": "webpack-dev-server --hot",
     "build": "webpack -p"
   },
   "repository": {
@@ -22,6 +22,7 @@
   "homepage": "https://github.com/r0chellevee/merj#readme",
   "dependencies": {
     "jquery": "^3.2.1",
+    "morgan": "^1.8.1",
     "react": "^15.5.3",
     "react-dom": "^15.5.3"
   },
@@ -62,6 +63,7 @@
     "react-addons-test-utils": "^15.5.1",
     "sequelize": "^3.30.4",
     "sinon": "^2.1.0",
-    "webpack": "^2.3.3"
+    "webpack": "^2.3.3",
+    "webpack-dev-server": "^2.4.2"
   }
 }
