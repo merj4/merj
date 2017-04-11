@@ -13,15 +13,22 @@ class App extends Component {
       events: []
     }
   }
-  componentDidMount() {
-    console.log(exampleEvents)
+
+  componentWillMount() {
+    console.log(this)
     this.getEvents();
   }
 
   getEvents() {
-    this.setState({
+    console.log(this);
+
+    const newState = {
       events: exampleEvents
-    }) 
+    };
+
+    this.setState(newState);
+
+    console.log(this.state.events);
   }
 
 
