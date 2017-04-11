@@ -1,5 +1,6 @@
 import React from 'react';
-import EventItem from './eventItem';
+import {EventItem} from './eventItem';
+
 
 
 var EventList = (props) => {
@@ -15,4 +16,15 @@ var EventList = (props) => {
 }
 
 
-export default EventList;
+export {EventList};
+
+// return (
+//       <tr>
+//         <td className="event-name">{this.props.event.title}</td>
+//         <td>
+//           <img src={this.props.event.image} />
+//         </td>
+//        <td className="event-description">{this.props.event.description}</td>
+//       </tr>
+//     )
+//   }
