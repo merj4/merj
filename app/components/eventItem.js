@@ -33,17 +33,17 @@ class EventItem extends Component {
           overlay={<CardTitle title={this.props.event.location} 
           subtitle={this.props.event.date} />}
         >
-          <img src={this.props.event.image} />
-          </CardMedia>
-         <CardTitle className="description-card" title={this.props.event.title} subtitle={this.props.event.category} />
-         <CardText className="description-card">
-           {this.props.event.description}
-         </CardText>
-           <CardActions className="actions">
-             <FlatButton className="btn" label="Would Love To Go!" />
-             <FlatButton className="btn" label="I'm Gonna Pass for Now" />
-           </CardActions>
-         </Card>
+        <img src={this.props.event.image} />
+        </CardMedia>
+        <CardTitle className="description-card" title={this.props.event.title} subtitle={this.props.event.category} />
+        <CardText className="description-card">
+           { this.props.event.description }
+        </CardText>
+        <CardActions className="actions">
+           <FlatButton className="btn" label="Would Love To Go!" />
+           <FlatButton className="btn" label="I'm Gonna Pass for Now" />
+        </CardActions>
+      </Card>
       );
     }
 }
