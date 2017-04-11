@@ -26,6 +26,7 @@ class EventItem extends Component {
       <Card>
         <CardHeader
           className="description"
+
           title={this.props.event.title}
           subtitle={this.props.event.location}
           avatar="http://enadcity.org/enadcity/wp-content/uploads/2017/02/profile-pictures.png"
@@ -36,13 +37,14 @@ class EventItem extends Component {
         >
           <img src={this.props.event.image} />
           </CardMedia>
-         <CardTitle className="description-card" title={this.props.event.title} subtitle={this.props.event.category} />
-         <CardText className="description-card">
+         <CardTitle title={this.props.event.title} subtitle={this.props.event.category} />
+         <CardText>
            {this.props.event.description}
          </CardText>
-           <CardActions className="actions">
-             <FlatButton className="btn" label="Would Love To Go!" />
-             <FlatButton className="btn" label="I'm Gonna Pass for Now" />
+           <CardActions>
+             <FlatButton label="Would Love To Go!" />
+             <FlatButton label="I'm Gonna Pass for Now" />
+
            </CardActions>
          </Card>
       );
