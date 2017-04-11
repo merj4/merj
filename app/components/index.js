@@ -28,13 +28,6 @@ class App extends Component {
     });
   }
 
-  // getEvents() {
-  //   this.setState({
-  //     events: exampleEvents
-  //   }) 
-  // }
-
-
   render() {
     return (
       <MuiThemeProvider>
