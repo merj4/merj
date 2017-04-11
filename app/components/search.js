@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Button, Col, Row } from 'react-bootstrap';
 
 // every class must have a render function
   // it's recommended that you start with a functional based component and
@@ -7,7 +8,11 @@ import React, { Component } from 'react';
 const Search =() => {
     return (
       <div className="search-bar">
-        <input />
+        <Row>
+          <Col xs={12}>
+            <input className="centered" />
+          </Col>
+        </Row>
       </div>
     );
 }

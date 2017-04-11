@@ -1,4 +1,10 @@
 
+.centered {
+  margin: 0 auto;
+  float: none;
+}
+
+
 .description-card {
   background: #7CDBD5;
 }
