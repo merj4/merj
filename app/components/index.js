@@ -7,6 +7,7 @@ import {EventList} from './eventList';
 import {exampleEvents} from '../../events.js';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
+import axios from 'axios';
 
 
 
@@ -19,14 +20,19 @@ class App extends Component {
     }
   }
   componentDidMount() {
-    this.getEvents();
+    axios.get('/api/events')
+    .then(res => {
+      console.log(res)
+      const events = res.data;
+      this.setState({ events });
+    });
   }
 
-  getEvents() {
-    this.setState({
-      events: exampleEvents
-    }) 
-  }
+  // getEvents() {
+  //   this.setState({
+  //     events: exampleEvents
+  //   }) 
+  // }
 
 
   render() {
