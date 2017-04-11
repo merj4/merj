@@ -27,6 +27,7 @@ var exampleEvents = [{
   image:"http://media.new.mensxp.com/media/content/2015/May/wildestbeachpartydestinationsintheworldforsinglemen0_1431689937_980x457.jpg"
 },
 {
+
   location:"Santa Monica, CA",
   date:"Aug. 10, 2017",
   title:"Arcade Game Night",
@@ -51,7 +52,7 @@ var exampleEvents = [{
   time:"2:00 pm",
   category:"Outdoor",
   description: "Be free, be young, be Malibu.",
-  image: "http://www.unique-canvas.com/media/images/popup/meer-und-traumstraende-fotografie--fotomotiv-beach-party--816406.jpg"
+  image: "http://www.winterparty.com/sites/www.winterparty.com/files/styles/project_1126_470/public/BeachPartySlider1_0.jpg?itok=5eB_59TL"
 },
 {
   location:"San Luis Obispo, CA",
@@ -89,7 +90,7 @@ var exampleEvents = [{
   category:"Outdoor",
   description: "Be free, be young, be Malibu.",
   image: "https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2014/10/yosemite.jpg"
-},
-]
+}]
+
 
 export {exampleEvents};
