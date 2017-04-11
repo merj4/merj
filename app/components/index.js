@@ -23,7 +23,6 @@ class App extends Component {
   componentDidMount() {
     axios.get('/api/events')
     .then(res => {
-      console.log(res)
       const events = res.data;
       this.setState({ events });
     });
