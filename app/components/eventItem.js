@@ -21,10 +21,12 @@ class EventItem extends Component {
   }
 
   render() {
-    console.log(this)
+    console.log(Card)
     return (
       <Card>
         <CardHeader
+          className="description"
+
           title={this.props.event.title}
           subtitle={this.props.event.location}
           avatar="http://enadcity.org/enadcity/wp-content/uploads/2017/02/profile-pictures.png"
@@ -42,6 +44,7 @@ class EventItem extends Component {
            <CardActions>
              <FlatButton label="Would Love To Go!" />
              <FlatButton label="I'm Gonna Pass for Now" />
+
            </CardActions>
          </Card>
       );

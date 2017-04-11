@@ -4,10 +4,13 @@ import Header from './header.js';
 import Search from './search';
 import Filter from './filter';
 import {EventList} from './eventList';
-import {exampleEvents} from '../../events.js'
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import {exampleEvents} from '../../events.js';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import injectTapEventPlugin from 'react-tap-event-plugin';
 
 
+
+injectTapEventPlugin();
 class App extends Component {
   constructor(props) {
     super(props);

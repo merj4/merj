@@ -7,6 +7,15 @@ var exampleEvents = [{
   description:"Come out to the beach and enjoy company, food and sand castles",
   image:"http://www.unique-canvas.com/media/images/popup/meer-und-traumstraende-fotografie--fotomotiv-beach-party--816406.jpg"
 },
+{
+  location:"Lake Tahoe, CA",
+  date:"Aug. 10, 2017",
+  title:"A Sunday Hike",
+  time:"2:00 pm",
+  category:"Outdoor",
+  description:"Come out to the beach and enjoy company, food and sand castles",
+  image:"https://s-media-cache-ak0.pinimg.com/originals/62/f0/48/62f04865010d469b7f44dac815d916df.jpg"
+}, 
 
 {
   location:"Berkeley, CA",
@@ -16,6 +25,16 @@ var exampleEvents = [{
   category:"Outdoor",
   description:"Get rekt. Hype. Bonfire. Beach. Drinks. Food.",
   image:"http://media.new.mensxp.com/media/content/2015/May/wildestbeachpartydestinationsintheworldforsinglemen0_1431689937_980x457.jpg"
+},
+{
+
+  location:"Santa Monica, CA",
+  date:"Aug. 10, 2017",
+  title:"Arcade Game Night",
+  time:"8:00 pm",
+  category:"Outdoor",
+  description:"Release your inner child and let loose on your favorite arcade games!",
+  image:"http://i.huffpost.com/gen/1556614/images/o-SANTA-MONICA-facebook.jpg"
 },
 {
   location:"San Francisco, CA",
@@ -43,6 +62,35 @@ var exampleEvents = [{
   category:"Outdoor",
   description:"Come out to the beach and enjoy company, food and sand castles",
   image:"http://www.loadednightclub.co.uk/wp-content/uploads/sites/2/2015/05/4dadc304234cad1821315e885c04c01d.jpg"
+},
+
+{
+  location:"Oakland, CA",
+  date:"Aug. 10, 2017",
+  title:"Oakland First Fridays",
+  time:"2:00 pm",
+  category:"Outdoor",
+  description:"Get rekt. Hype. Bonfire. Beach. Drinks. Food.",
+  image:"https://bryanallo.files.wordpress.com/2013/04/9q1a6291_blog.jpg"
+},
+{
+  location:"San Diego, CA",
+  date:"Aug. 10, 2017",
+  title:"Spend the day drinking a mai tai",
+  time:"2:00 pm",
+  category:"Outdoor",
+  description: "Come out and play this Friday night. Meet new friends!",
+  image: "https://s-media-cache-ak0.pinimg.com/originals/55/25/fe/5525fed7f7af445653e3973b24be7559.jpg"
+},
+{
+  location:"Yosemite, CA",
+  date:"Aug. 10, 2017",
+  title:"Bouldering and Hot Springs",
+  time:"2:00 pm",
+  category:"Outdoor",
+  description: "Be free, be young, be Malibu.",
+  image: "https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2014/10/yosemite.jpg"
 }]
+
 
 export {exampleEvents};
