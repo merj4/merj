@@ -11,7 +11,7 @@ import React from 'react';
 const Header = () => {
   return (
     <div className="main-header">
-      MERJ
+      <h1> MERJE </h1>
       <button className="create-event">+</button>
     </div>
   );
