@@ -1,3 +1,10 @@
+
+.centered {
+  margin: 0 auto;
+  float: none;
+}
+
+
 .description-card {
   background: #7CDBD5;
 }
@@ -14,6 +21,11 @@
 /*.actions {
   background: #F53240;
 }*/
+
+.header {
+  margin: auto;
+  font-size: 50px;
+}
 
 .main-header {
   position: absolute;

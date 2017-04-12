@@ -1,42 +1,46 @@
-import React, {Component} from 'react';
-import {exampleEvents} from '../../events.js';
-import {EventItem} from './eventItem';
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+import Header from './header.js';
+import Search from './search';
+import Filter from './filter';
+import MapView from './mapView'
+import ListOrMap from './ListOrMap'
 import {EventList} from './eventList';
-import MapView from './mapView';
-import { Button } from 'react-bootstrap';
+import {exampleEvents} from '../../events.js';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+import axios from 'axios';
 
-class ListOrMap extends Component {
+
+injectTapEventPlugin();
+class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isMap : false,
+      events: []
     }
-    this.listmapHandler = this.listmapHandler.bind(this);
   }
 
-  listmapHandler() {
-    this.setState({ isMap: !this.state.isMap }, function (){
-      console.log(this.state.isMap);
+  componentDidMount() {
+    axios.get('/api/events')
+    .then(res => {
+      const events = res.data;
+      this.setState({ events });
     });
   }
 
   render() {
-    const isMap = this.state.isMap;
-    let content = null;
-    if (isMap) {
-      content = <MapView />
-    } else {
-      content = <EventList events={this.props.events} />
-    }
     return (
-      <div>
-        <Button onClick={this.listmapHandler}>
-          {this.state.isMap ? 'List' : 'Map'}
-        </Button>
-        { content }
-      </div>          
-    )
+      <MuiThemeProvider>
+        <div>
+          <Header />
+          <Search />
+          <Filter />
+          <ListOrMap events={this.state.events} />
+        </div>
+      </MuiThemeProvider>
+    );
   }
 };
 
-export default ListOrMap;
+ReactDOM.render(<App />, document.querySelector('.container'));
