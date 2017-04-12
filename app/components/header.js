@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import { Button, Modal, Navbar, Nav, Form, FormGroup, ControlLabel, FormControl, HelpBlock, Col } from 'react-bootstrap';
+import $ from 'jquery';
 
 // every class must have a render function
   // it's recommended that you start with a functional based component and
@@ -23,8 +24,42 @@ function FieldGroup({ id, label, help }) {
 class Header extends Component {
   constructor(props) {
     super(props);
-    this.state = { show: false };
+  
+    this.state = {
+      show: false,
+      eventName: '',
+      location: '',
+      date: '',
+      time: '',
+      host: '',
+      description: '',
+      eventUrl: '',
+      category: ''
+    }   
+
+    this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleEvent = this.handleEvent.bind(this);
+
   }
+
+  handleInputChange(event) {
+    const target = event.target;
+    const [name] = target.name;
+    const locVal = $('#form').val();
+    
+    console.log(locVal)
+    
+    this.setState({
+      [name]: locVal,
+
+    });
+  }
+
+  handleEvent() {
+    this.setState({ 
+      show: true
+    }) 
+  } 
 
   render() {
     let close = () => this.setState({ show: false});
@@ -35,71 +70,91 @@ class Header extends Component {
         </Navbar.Brand>
         <Nav pullRight>
           <Button onClick={() => this.setState({ show: true})}>+</Button>
-          <Modal
+          <Modal  
             show={this.state.show}
             onHide={close}
             container={this}
             aria-labelledby="contained-modal-title"
           >
-          <Modal.Header closeButton></Modal.Header>
-          <Modal.Body>
-            <form>
-              <FieldGroup
-                id="eventname"
-                type="text"
-                label="Event name"
-                placeholder="Event Name"
-              />
-              <FieldGroup
-                id="location"
-                type="text"
-                label="Location"
-                placeholder="Place/Address"
-              />
+            <Modal.Header closeButton></Modal.Header>
+            <Modal.Body>
+              <form>
+                <FieldGroup
+                  name="eventName"
+                  id="form"
+                  type="text"
+                  label="Event name"
+                  placeholder="Event Name"
+                  value={this.state.eventName}
+                  onChange={this.handleInputChange}
+                />
+                <FieldGroup
+                  name="location"
+                  id="form"
+                  type="text"
+                  label="Location"
+                  placeholder="Place/Address"
+                />
 
-                <FormGroup controlId="date">
+                <FormGroup controlId="date" >
                   <ControlLabel>Date</ControlLabel>
                   {' '}
-                  <FormControl type="text" placeholder="Date" />
+                  <FormControl 
+                  id="date"
+                  name="date" 
+                  type="text" 
+                  placeholder="Date" />
                 </FormGroup>
-                {' '}
+                  {' '}
                 <FormGroup controlId="time">
                   <ControlLabel>Time</ControlLabel>
                   {' '}
-                  <FormControl type="time" placeholder="time" />
+                  <FormControl
+                  id="time" 
+                  name="time" 
+                  type="time" 
+                  placeholder="time" />
                 </FormGroup>
 
 
-              <FieldGroup
-                id="host"
-                label="host"
-                type="text"
-              />
+                <FieldGroup
+                  name="host"
+                  id="host"
+                  label="host"
+                  type="text"
+                />
 
-              <FormGroup controlId="description">
-                <ControlLabel>Description</ControlLabel>
-                <FormControl componentClass="textarea" placeholder="Description" />
-              </FormGroup>
+                <FormGroup controlId="description">
+                  <ControlLabel>Description</ControlLabel>
+                  <FormControl 
+                  id="description"
+                  name="description"
+                  componentClass="textarea" 
+                  placeholder="Description" />
+                </FormGroup>
 
-              <FieldGroup
-                id="eventpicture"
-                type="file"
-                label="Event picture"
-                help="Upload event picture here"
-              />
+                <FieldGroup
+                  name="event-url"
+                  id="eventpicture"
+                  type="file"
+                  label="Event picture"
+                  help="Upload event picture here"
+                />
 
-              <FieldGroup
-                id="category"
-                type="text"
-                label="Category"
-              />
+                <FieldGroup
+                  name="category"
+                  id="category"
+                  type="text"
+                  label="Category"
+                />
 
-            </form>
-          </Modal.Body>
-          <Modal.Footer>
-            <Button type="submit" text-align="center">Create Event</Button>
-          </Modal.Footer>
+              </form>
+            </Modal.Body>
+            <Modal.Footer>
+              <Button type="submit" text-align="center" onClick={this.handleInputChange}>Create Event</Button>
+            </Modal.Footer>
           </Modal>
+
         </Nav>
       </Nav>
     );
