@@ -24,8 +24,7 @@ function FieldGroup({ id, label, help }) {
 class Header extends Component {
   constructor(props) {
     super(props);
-    this.state = { show: false };
-  }
+  
     this.state = {
       show: false,
       eventName: '',
