@@ -30,7 +30,6 @@ class Header extends Component {
       location: '',
       date: '',
       time: '',
-      host: '',
       description: '',
       eventUrl: '',
       category: ''
@@ -57,7 +56,6 @@ class Header extends Component {
       location: d.location,
       date: d.date,
       time: d.time,
-      host: d.host,
       description: d.description,
       image: d.eventUrl,
       category: d.category
@@ -154,7 +152,7 @@ class Header extends Component {
                   <FormControl 
                   name="eventUrl"
                   id="event-url"
-                  type="url"
+                  type="text"
                   label="Event picture"
                   placeholder="Upload event picture here"
                   value={this.state.eventUrl}

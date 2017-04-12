@@ -8,6 +8,7 @@ module.exports = {
       events = events.map(function(event) {
         var eventData = event.dataValues;
         return {
+          id: eventData.id,
           location: eventData.location,
           date: eventData.date,
           title: eventData.title,
