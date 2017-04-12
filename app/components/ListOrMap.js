@@ -30,12 +30,12 @@ class ListOrMap extends Component {
     }
     return (
       <div>
-        <Button onClick={this.listmapHandler}>
+        <Button onClick={this.listmapHandler} >
           {this.state.isMap ? 'List' : 'Map'}
         </Button>
         { content }
       </div>          
-    )
+    );
   }
 };
 

@@ -36,7 +36,7 @@ class App extends Component {
           <Header />
           <Search />
           <Filter />
-          <ListOrMap events={this.state.events} />
+          <ListOrMap events={this.state.events}  />
         </div>
       </MuiThemeProvider>
     );
