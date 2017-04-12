@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/r0chellevee/merj#readme",
   "dependencies": {
+    "axios": "^0.16.1",
     "create-react-class": "^15.5.2",
     "jquery": "^3.2.1",
     "material-ui": "^0.17.3",
