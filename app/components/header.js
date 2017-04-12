@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { Button, Modal, Navbar, Nav, Form, FormGroup, ControlLabel, FormControl, HelpBlock, Col } from 'react-bootstrap';
 import $ from 'jquery';
 import axios from 'axios';
+
 // every class must have a render function
   // it's recommended that you start with a functional based component and
   // only refactor to a class when you need some added functionality
@@ -37,7 +38,6 @@ class Header extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
   }
-  
 
   handleInputChange(e) {
     const target = e.target;
@@ -64,7 +64,7 @@ class Header extends Component {
     }).catch(err => {
       console.log("Could not save to db", err)
     }) 
-  }
+  } 
 
   render() {
     let close = () => this.setState({ show: false});
@@ -84,7 +84,7 @@ class Header extends Component {
             <Modal.Header closeButton></Modal.Header>
             <Modal.Body>
               <form>
-                
+              
                 <FormGroup>
                   <ControlLabel>Event Name</ControlLabel>
                   <FormControl
