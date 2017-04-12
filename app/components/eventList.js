@@ -6,7 +6,7 @@ var EventList = (props) => {
     <div>
       <div>
         {props.events.map((event) =>
-         <EventItem event={event} key={event.location}/>
+         <EventItem event={event} key={event.id}/>
          )}
       </div>
     </div>
