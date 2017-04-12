@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import { Button, Modal, Navbar, Nav, Form, FormGroup, ControlLabel, FormControl, HelpBlock, Col } from 'react-bootstrap';
 import axios from 'axios';
+
 // every class must have a render function
   // it's recommended that you start with a functional based component and
   // only refactor to a class when you need some added functionality
@@ -80,7 +81,7 @@ class Header extends Component {
             <Modal.Header closeButton></Modal.Header>
             <Modal.Body>
               <form>
-              
+
                 <FormGroup>
                   <ControlLabel>Event Name</ControlLabel>
                   <FormControl
@@ -117,6 +118,7 @@ class Header extends Component {
                   placeholder="Date" 
                   onChange={this.handleInputChange}
                   />
+
                 </FormGroup>
                   {' '}
                 <FormGroup controlId="time">
@@ -173,7 +175,6 @@ class Header extends Component {
             </Modal.Body>
             <Modal.Footer>
               <Button type="submit" text-align="center" onClick={this.handleSubmit}>Create Event</Button>
-
             </Modal.Footer>
           </Modal>
 
