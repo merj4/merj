@@ -18,13 +18,8 @@
   background: #F9BE02;
 }
 
-/*.actions {
-  background: #F53240;
-}*/
-
 .header {
   margin: auto;
-  font-size: 50px;
 }
 
 .main-header {
@@ -36,7 +31,6 @@
   width: 100px;
   height: 100px;
   font-family: 'Spirax', cursive;
-  font-size: 36px;
   color: blue;
 }
 
