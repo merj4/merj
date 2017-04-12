@@ -1,27 +1,37 @@
 import React from 'react';
-import { Button, Col, Row } from 'react-bootstrap';
+import {Tabs, Tab} from 'material-ui/Tabs';
+import Slider from 'material-ui/Slider';
 
-// every class must have a render function
-  // it's recommended that you start with a functional based component and
-  // only refactor to a class when you need some added functionality
+const styles = {
+    headline: {
+    fontSize: 24,
+    paddingTop: 16,
+    marginBottom: 12,
+    fontWeight: 400,
+  },
+};
 
-// this header will contain our app name in the center, which will also be a clickable link to go to the homepage/eventsList
+const TabsExampleSimple = () => (
+  <Tabs>
+    <Tab label="Distance"  >
+      <div style={styles.headline}></div>
+    </Tab>
+    <Tab label="Category" >
+      <div style={styles.headline}></div>
+    </Tab>
+    <Tab label="Size" >
+      <div style={styles.headline}></div>
+    </Tab>
+    <Tab label="Date" >
+      <div style={styles.headline}></div>
+    </Tab>
+    <Tab label="Now" >
+      <div style={styles.headline}></div>
+    </Tab>
+    <Tab label="Hot" >
+      <div style={styles.headline}></div>
+    </Tab>
+  </Tabs>
+);
 
-// on the right side of the header, we need a + button to add an event
-
-const Filter = () => {
-  return (
-    <div>
-      <Row>
-        <Col xs={2} className="text-center">Distance</Col>
-        <Col xs={2} className="text-center">Category</Col>
-        <Col xs={2} className="text-center">Date</Col>
-        <Col xs={2} className="text-center">Now</Col>
-        <Col xs={2} className="text-center">Hot</Col>
-        <Col xs={2} className="text-center"><Button className="map-view">Map</Button></Col>
-      </Row>
-    </div>
-  );
-}
-
-export default Filter;
+export default TabsExampleSimple;
