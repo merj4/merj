@@ -21,11 +21,11 @@ function FieldGroup({ id, label, help }) {
   );
 }
 
-const Header = React.createClass({
+class Header extends Component {
 
   getInitialState() {
     return { show: false };
-  },
+  }
 
   render() {
     let close = () => this.setState({ show: false});
@@ -105,6 +105,6 @@ const Header = React.createClass({
       </Nav>
     );
   }
-});
+};
 
 export default Header;
