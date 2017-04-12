@@ -3,7 +3,7 @@ import {Tabs, Tab} from 'material-ui/Tabs';
 import Slider from 'material-ui/Slider';
 
 const styles = {
-  headline: {
+    headline: {
     fontSize: 24,
     paddingTop: 16,
     marginBottom: 12,
@@ -11,41 +11,43 @@ const styles = {
   },
 };
 
-function handleActive(tab) {
-  alert(`A tab with this route property ${tab.props['data-route']} was activated.`);
-}
-
 const TabsExampleSimple = () => (
   <Tabs>
-    <Tab label="Item One" >
-      <div>
-        <h2 style={styles.headline}>Tab One</h2>
-        <p>
-          This is an example tab.
-        </p>
-        <p>
-          You can put any sort of HTML or react component in here. It even keeps the component state!
-        </p>
-        <Slider name="slider0" defaultValue={0.5} />
-      </div>
+    <Tab label="Distance"  >
+      <div style={styles.headline}></div>
     </Tab>
-    <Tab label="Item Two" >
+    <Tab label="Category" >
+      <div style={styles.headline}></div>
+    </Tab>
+    <Tab label="Size" >
       <div>
-        <h2 style={styles.headline}>Tab Two</h2>
+        <h2 style={styles.headline}>Size</h2>
         <p>
           This is another example tab.
         </p>
       </div>
     </Tab>
-    <Tab
-      label="onActive"
-      data-route="/home"
-      onActive={handleActive}
-    >
+    <Tab label="Date" >
       <div>
-        <h2 style={styles.headline}>Tab Three</h2>
+        <h2 style={styles.headline}>Date</h2>
         <p>
-          This is a third example tab.
+          This is another example tab.
+        </p>
+      </div>
+    </Tab>
+    <Tab label="Now" >
+      <div>
+        <h2 style={styles.headline}>Now</h2>
+        <p>
+          This is another example tab.
+        </p>
+      </div>
+    </Tab>
+    <Tab label="Hot" >
+      <div>
+        <h2 style={styles.headline}>Hot</h2>
+        <p>
+          This is another example tab.
         </p>
       </div>
     </Tab>
