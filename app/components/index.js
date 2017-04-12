@@ -7,6 +7,7 @@ import MapView from './mapView'
 import ListOrMap from './ListOrMap'
 import {EventList} from './eventList';
 import {exampleEvents} from '../../events.js';
+ntList } from './eventList';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import axios from 'axios';
