@@ -13,7 +13,4 @@ var EventList = (props) => {
   );
 }
 
-
 export {EventList};
-
-

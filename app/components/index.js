@@ -3,13 +3,13 @@ import ReactDOM from 'react-dom';
 import Header from './header.js';
 import Search from './search';
 import Filter from './filter';
+import MapView from './mapView'
+import ListOrMap from './ListOrMap'
 import {EventList} from './eventList';
 import {exampleEvents} from '../../events.js';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import axios from 'axios';
-
-
 
 injectTapEventPlugin();
 class App extends Component {
@@ -27,6 +27,7 @@ class App extends Component {
       const events = res.data;
       this.setState({ events });
     });
+  }
 
   render() {
     return (
@@ -35,9 +36,7 @@ class App extends Component {
           <Header />
           <Search />
           <Filter />
-          <div className="col-md-12">
-            <EventList events={this.state.events} />
-          </div>
+          <ListOrMap events={this.state.events} />
         </div>
       </MuiThemeProvider>
     );
