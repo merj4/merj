@@ -1,5 +1,6 @@
 import React from 'react';
 import {Tabs, Tab} from 'material-ui/Tabs';
+import ListOrMap from './ListOrMap';
 
 const styles = {
     headline: {
@@ -12,24 +13,24 @@ const styles = {
 
 export default class Filter extends React.Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      value: 'a',
-    };
-  }
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     value: 'a',
+  //   };
+  // }
 
-  handleChange = (value) => {
-    this.setState({
-      value: value,
-    });
-  };
+  // handleChange = (value) => {
+  //   this.setState({
+  //     value: value,
+  //   });
+  // };
 
   render() {
     return (
       <Tabs
-        value={this.state.value}
-        onChange={this.handleChange}
+        // value={this.state.value}
+        // onChange={this.handleChange}
       >
         <Tab label="Distance"  >
           <div style={styles.headline}></div>
@@ -50,7 +51,8 @@ export default class Filter extends React.Component {
           <div style={styles.headline}></div>
         </Tab>
         <Tab label="Map" >
-          <div style={styles.headline}></div>
+          <div style={styles.headline}>
+          </div>
         </Tab>
       </Tabs>
     );
