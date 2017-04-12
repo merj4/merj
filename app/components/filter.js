@@ -12,7 +12,6 @@ const Filter = () => {
   return (
     <div className="filter-bar">
       Distance  Category  Size  Date  Now   Hot
-      <button className="map-view">Map</button>
     </div>
   );
 }

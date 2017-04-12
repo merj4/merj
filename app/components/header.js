@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Button, Modal, Navbar, Nav, Form, FormGroup, ControlLabel, FormControl, HelpBlock } from 'react-bootstrap';
 
@@ -22,9 +22,9 @@ function FieldGroup({ id, label, help }) {
 }
 
 class Header extends Component {
-
-  getInitialState() {
-    return { show: false };
+  constructor(props) {
+    super(props);
+    this.state = { show: false };
   }
 
   render() {
