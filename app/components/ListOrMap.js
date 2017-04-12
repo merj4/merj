@@ -21,20 +21,20 @@ class ListOrMap extends Component {
   }
 
   render() {
+    const isMap = this.state.isMap;
+    let content = null;
+    if (isMap) {
+      content = <MapView />
+    } else {
+      content = <EventList events={this.props.events} />
+    }
     return (
       <div>
         <Button onClick={this.listmapHandler}>
           {this.state.isMap ? 'List' : 'Map'}
         </Button>
-
-        
-        <MapView />
-        
-        <div className="col-md-12">
-          <EventList events={this.props.events} />
-        </div>
-
-      </div>
+        { content }
+      </div>          
     )
   }
 };
