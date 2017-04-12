@@ -1,7 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+<<<<<<< HEAD
 import { Button, Modal, Navbar, Nav, Form, FormGroup, ControlLabel, FormControl, HelpBlock } from 'react-bootstrap';
 import Modal from './eventCreationModal'
+=======
+import { Modal } from './eventFormModal'
+>>>>>>> created a handleSubmit function for modal
 
 // every class must have a render function
   // it's recommended that you start with a functional based component and
@@ -44,6 +48,7 @@ const Header = React.createClass({
 });
 
 export default Header;
+<<<<<<< HEAD
 // <Nav pullRight>
         //   <Button onClick={() => this.setState({ show: true})}>+</Button>
         //   <Modal
@@ -112,3 +117,5 @@ export default Header;
         //   </Modal.Footer>
         //   </Modal>
         // </Nav>
+=======
+>>>>>>> created a handleSubmit function for modal
