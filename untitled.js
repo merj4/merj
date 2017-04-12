@@ -1,11 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { Button, Modal, Navbar, Nav, Form, FormGroup, ControlLabel, FormControl, HelpBlock } from 'react-bootstrap';
 import Modal from './eventCreationModal'
 =======
 import { Modal } from './eventFormModal'
 >>>>>>> created a handleSubmit function for modal
+=======
+import { Button, Modal, Navbar, Nav, Form, FormGroup, ControlLabel, FormControl, HelpBlock } from 'react-bootstrap';
+import Modal from './eventCreationModal'
+>>>>>>> adding jquery to pull data from form
 
 // every class must have a render function
   // it's recommended that you start with a functional based component and
@@ -49,6 +54,9 @@ const Header = React.createClass({
 
 export default Header;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> adding jquery to pull data from form
 // <Nav pullRight>
         //   <Button onClick={() => this.setState({ show: true})}>+</Button>
         //   <Modal
@@ -116,6 +124,10 @@ export default Header;
         //     <Button type="submit" text-align="center">Create Event</Button>
         //   </Modal.Footer>
         //   </Modal>
+<<<<<<< HEAD
         // </Nav>
 =======
 >>>>>>> created a handleSubmit function for modal
+=======
+        // </Nav>
+>>>>>>> adding jquery to pull data from form
