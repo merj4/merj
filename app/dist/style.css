@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 .centered {
   margin: 0 auto;
@@ -5,6 +6,8 @@
 }
 
 
+=======
+>>>>>>> Added loaders, reconfigured webpack.config, set up frontend database retrieval
 .description-card {
   background: #7CDBD5;
 }
@@ -12,6 +15,7 @@
 .container {
  background-color: #02C8A7;
  width: 100%;
+<<<<<<< HEAD
  text-align: center;
 }
 
@@ -25,12 +29,21 @@
   font-size: 3rem;
   font-weight: bold;
   padding-top: 15px;
+=======
+>>>>>>> Added loaders, reconfigured webpack.config, set up frontend database retrieval
 }
 
 .card-top {
   background: #F9BE02;
 }
 
+<<<<<<< HEAD
+=======
+/*.actions {
+  background: #F53240;
+}*/
+
+>>>>>>> Added loaders, reconfigured webpack.config, set up frontend database retrieval
 .main-header {
   position: absolute;
   margin: auto;
@@ -40,6 +53,10 @@
   width: 100px;
   height: 100px;
   font-family: 'Spirax', cursive;
+<<<<<<< HEAD
+=======
+  font-size: 36px;
+>>>>>>> Added loaders, reconfigured webpack.config, set up frontend database retrieval
   color: blue;
 }
 
@@ -49,6 +66,7 @@
   top: 20px;
 }
 
+<<<<<<< HEAD
 #search {
   height: 100px;
 /*  padding: 10px;
@@ -60,6 +78,14 @@ input#searhbar {
   text-align: center;
   background-color: #02C8A7;
   border-color: yellow;
+=======
+.search-bar {
+  position: absolute;
+  margin: auto;
+  text-align: center;
+  width: 200px;
+  top: 40px;
+>>>>>>> Added loaders, reconfigured webpack.config, set up frontend database retrieval
 }
 
 .search-bar input {
