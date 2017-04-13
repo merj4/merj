@@ -11,14 +11,14 @@ const Search = (props) => {
 
 
   return (
-    <div>
+    <div className="search">
       <AutoComplete
         floatingLabelText="Search by category, activity, location, date and time"
         filter={AutoComplete.fuzzyFilter}
         dataSource={store}
         maxSearchResults={5}
         fullWidth={true}
-      
+
         style={{
           color: 'white',
           padding: '20px',
