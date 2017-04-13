@@ -4,13 +4,12 @@ import {EventItem} from './eventItem';
 import {EventList} from './eventList';
 import MapView from './mapView';
 import { Button } from 'react-bootstrap';
-import TabsExampleSimple from './filter';
 
 class ListOrMap extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isMap : false,
+      isMap : false
     }
     this.listmapHandler = this.listmapHandler.bind(this);
   }
@@ -22,7 +21,6 @@ class ListOrMap extends Component {
   }
 
   render() {
-    console.log(this)
     const isMap = this.state.isMap;
     let content = null;
     if (isMap) {
@@ -32,12 +30,11 @@ class ListOrMap extends Component {
     }
     return (
       <div>
-    
         <Button onClick={this.listmapHandler}>
           {this.state.isMap ? 'List' : 'Map'}
         </Button>
         { content }
-      </div>          
+      </div>
     )
   }
 };
