@@ -31,6 +31,9 @@ const TabsExampleSimple = () => (
     <Tab label="Hot" >
       <div style={styles.headline}></div>
     </Tab>
+    <Tab label="Map" >
+      <div style={styles.headline}></div>
+    </Tab>
   </Tabs>
 );
 

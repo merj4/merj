@@ -63,7 +63,7 @@ class Header extends Component {
       console.log("Post request successful!")
     }).catch(err => {
       console.log("Could not save to db", err)
-    }) 
+    })
   } 
 
   render() {
