@@ -1,23 +1,32 @@
-import React, { Component } from 'react';
-import { Button, Col, Row } from 'react-bootstrap';
-
-// every class must have a render function
-  // it's recommended that you start with a functional based component and
-  // only refactor to a class when you need some added functionality
+import React from 'react';
+import AutoComplete from 'material-ui/AutoComplete';
+import _ from 'underscore';
 
 
-
-const Search = React.createClass({
-
-  render() {
-    return (
-      <div>
-        <input />
-      </div>
-    )
-  }
-
-});
+const Search = (props) => {
+  let data = props.data;
+  let store = [];
+  let keys = _.each(data, (obj) => 
+    _.each(obj, (key) => store.push(key)))
 
 
-export default Search;
+  return (
+    <div>
+      <AutoComplete
+        floatingLabelText="Search by category, activity, location, date and time"
+        filter={AutoComplete.fuzzyFilter}
+        dataSource={store}
+        maxSearchResults={5}
+        fullWidth={true}
+      
+        style={{
+          color: 'white',
+          padding: '20px',
+          targetOrigin: 'top'
+        }}
+      />
+    </div>
+  )
+}
+
+export {Search};
