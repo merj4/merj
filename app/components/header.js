@@ -51,19 +51,25 @@ class Header extends Component {
 
   handleSubmit(e) {
     const d = this.state;
-    axios.post('/api/event', {
-      title: d.eventName,
-      location: d.location,
-      date: d.date,
-      time: d.time,
-      description: d.description,
-      image: d.eventUrl,
-      category: d.category
-    }).then(res => {
-      console.log("Post request successful!")
-    }).catch(err => {
-      console.log("Could not save to db", err)
-    }) 
+    if (this.state.category !== '') {
+      axios.post('/api/event', {
+        title: d.eventName,
+        location: d.location,
+        date: d.date,
+        time: d.time,
+        description: d.description,
+        image: d.eventUrl,
+        category: d.category
+      }).then(res => {
+        console.log("Post request successful!")
+      }).catch(err => {
+        console.log("Could not save to db", err)
+      }) 
+    }
+
+    window.setTimeout(() => {
+      location.reload()
+    }, 1000)
   } 
 
   render() {
