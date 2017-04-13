@@ -62,4 +62,6 @@ input#searhbar {
   border-color: yellow;
 }
 
-
+.search-bar input {
+  width: 75%;
+}
