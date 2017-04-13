@@ -1,9 +1,7 @@
-
 .centered {
   margin: 0 auto;
   float: none;
 }
-
 
 .description-card {
   background: #7CDBD5;
@@ -31,6 +29,9 @@
   background: #F9BE02;
 }
 
+.header {
+  margin: auto;
+}
 .main-header {
   position: absolute;
   margin: auto;
