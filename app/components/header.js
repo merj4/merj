@@ -58,6 +58,7 @@ class Header extends Component {
       console.log("Could not save to db", err)
     })
   }
+
   render() {
     let close = () => this.setState({ show: false});
     return (
