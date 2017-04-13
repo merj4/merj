@@ -40,14 +40,16 @@
   top: 20px;
 }
 
-.search-bar {
+/*.search-bar {
   position: absolute;
   margin: auto;
   text-align: center;
   width: 200px;
   top: 40px;
-}
+}*/
 
 .search-bar input {
   width: 75%;
 }
+
+

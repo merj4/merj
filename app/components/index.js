@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Header from './header.js';
-import Search from './search';
+import {Search} from './search';
 import Filter from './filter';
 import MapView from './mapView'
 import ListOrMap from './ListOrMap'
@@ -34,7 +34,7 @@ class App extends Component {
       <MuiThemeProvider>
         <div>
           <Header />
-          <Search />
+          <Search data={this.state.events}/>
           <Filter />
           <EventList events={this.state.events} />
         </div>

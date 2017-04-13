@@ -1,7 +1,5 @@
 import React from 'react';
 import {Tabs, Tab} from 'material-ui/Tabs';
-import Slider from 'material-ui/Slider';
-
 
 const styles = {
     headline: {
@@ -12,33 +10,30 @@ const styles = {
   },
 };
 
-const TabsExampleSimple = ({ buttonValue, mapChange }) => {
-  return (
-      <Tabs>
-        <Tab label="Distance"  >
-          <div style={styles.headline}></div>
-        </Tab>
-        <Tab label="Category" >
-          <div style={styles.headline}></div>
-        </Tab>
-        <Tab label="Size" >
-          <div style={styles.headline}></div>
-        </Tab>
-        <Tab label="Date" >
-          <div style={styles.headline}></div>
-        </Tab>
-        <Tab label="Now" >
-          <div style={styles.headline}></div>
-        </Tab>
-        <Tab label="Hot" >
-          <div style={styles.headline}> </div>
-        </Tab>
-        <Tab label="Map" value={buttonValue} onChange={() => mapView()}>
-          <div style={styles.headline}> </div>
-        </Tab>
-      </Tabs>
-    );
-    
-  }
+const TabsExampleSimple = () => (
+  <Tabs>
+    <Tab label="Distance"  >
+      <div style={styles.headline}></div>
+    </Tab>
+    <Tab label="Category" >
+      <div style={styles.headline}></div>
+    </Tab>
+    <Tab label="Size" >
+      <div style={styles.headline}></div>
+    </Tab>
+    <Tab label="Date" >
+      <div style={styles.headline}></div>
+    </Tab>
+    <Tab label="Now" >
+      <div style={styles.headline}></div>
+    </Tab>
+    <Tab label="Hot" >
+      <div style={styles.headline}> </div>
+    </Tab>
+    <Tab label="Map" >
+      <div style={styles.headline}> </div>
+    </Tab>
+  </Tabs>
+);
 
 export default TabsExampleSimple;
