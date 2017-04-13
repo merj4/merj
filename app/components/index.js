@@ -11,9 +11,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import axios from 'axios';
 
-
 injectTapEventPlugin();
-
 class App extends Component {
   constructor(props) {
     super(props);
@@ -25,6 +23,7 @@ class App extends Component {
   componentDidMount() {
     axios.get('/api/events')
     .then(res => {
+      console.log(res)
       const events = res.data;
       this.setState({ events });
     });

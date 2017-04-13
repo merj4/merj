@@ -34,7 +34,7 @@ class ListOrMap extends Component {
           {this.state.isMap ? 'List' : 'Map'}
         </Button>
         { content }
-      </div>          
+      </div>
     )
   }
 };

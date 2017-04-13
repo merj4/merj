@@ -1,6 +1,6 @@
 import React from 'react';
 import {Tabs, Tab} from 'material-ui/Tabs';
-import Slider from 'material-ui/Slider';
+import ListOrMap from './ListOrMap';
 
 const styles = {
     headline: {
@@ -36,5 +36,3 @@ const TabsExampleSimple = () => (
     </Tab>
   </Tabs>
 );
-
-export default TabsExampleSimple;
