@@ -12,7 +12,9 @@ const Search = React.createClass({
   render() {
     return (
       <div>
-        <input />
+        <div id="search">
+          <input id="searchbar"/>
+        </div>
       </div>
     )
   }

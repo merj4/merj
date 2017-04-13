@@ -12,14 +12,23 @@
 .container {
  background-color: #02C8A7;
  width: 100%;
+ text-align: center;
+}
+
+.Container.header.nav {
+  padding: 2rem;
+  height: 3rem;
+}
+
+#beepboop {
+  color:white;
+  font-size: 3rem;
+  font-weight: bold;
+  padding-top: 15px;
 }
 
 .card-top {
   background: #F9BE02;
-}
-
-.header {
-  margin: auto;
 }
 
 .main-header {
@@ -40,12 +49,17 @@
   top: 20px;
 }
 
-.search-bar {
-  position: absolute;
-  margin: auto;
+#search {
+  height: 100px;
+/*  padding: 10px;
+*/  padding-top: 3rem;
+
+}
+
+input#searhbar {
   text-align: center;
-  width: 200px;
-  top: 40px;
+  background-color: #02C8A7;
+  border-color: yellow;
 }
 
 .search-bar input {
