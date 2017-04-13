@@ -29,10 +29,8 @@ class ListOrMap extends Component {
       content = <EventList events={this.props.events} />
     }
     return (
-      <div>
-        <Button onClick={this.listmapHandler}>
-          {this.state.isMap ? 'List' : 'Map'}
-        </Button>
+      <div onClick={this.listmapHandler}>
+        {this.state.isMap ? 'List' : 'Map'}
         { content }
       </div>
     )
