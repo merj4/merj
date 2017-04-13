@@ -1,7 +1,7 @@
 import React from 'react';
 import {EventItem} from './eventItem';
 
-var EventList = (props) => {
+const EventList = (props) => {
   return (
     <div>
       <div>
