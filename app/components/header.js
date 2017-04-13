@@ -70,9 +70,7 @@ class Header extends Component {
     let close = () => this.setState({ show: false});
     return (
       <Nav inverse className="Container header">
-        <Navbar.Brand text-align="center">
-          <a href="#" text-align="center">Beep Boop!</a>
-        </Navbar.Brand>
+        <a href="#" id="beepboop">Beep Boop</a>
         <Nav pullRight>
           <Button onClick={() => this.setState({ show: true})}>+</Button>
           <Modal  
