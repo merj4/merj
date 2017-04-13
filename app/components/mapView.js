@@ -1,24 +1,25 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 
-// every class must have a render function
-  // it's recommended that you start with a functional based component and
-  // only refactor to a class when you need some added functionality
-
-  // Implement AFTER MVP - don't even think about it!
 class MapView extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-    };
+  componentDidMount() {
+    new google.maps.Map(this.refs.map, {
+      center:{
+        lat: -34.397, 
+        lng: 150.644
+      },
+      zoom: 12
+    });
   }
-
   render() {
+  const mapStyle = {
+      width: 1140,
+      height: 770,
+    };
+    
     return (
-      <div>
-        hello world!
-      </div>
-    )
+      <div ref="map" style={mapStyle}></div>
+    );
   }
 };
 

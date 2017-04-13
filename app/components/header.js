@@ -43,7 +43,7 @@ class Header extends Component {
     const target = e.target;
     const value = target.value;
     const name = target.name;
-    
+    console.log(name, value)
     this.setState({
       [name]: value
     });
@@ -63,26 +63,24 @@ class Header extends Component {
       }).then(res => {
         console.log("Post request successful!")
       }).catch(err => {
-        console.log("Could not save to db", err)
+        alert("You didn't finish the form! Please return and submit upon completion", err)
       }) 
+      window.setTimeout(() => {
+        location.reload()
+      }, 50)
     }
     this.setState({
       show: false
     })
-    window.setTimeout(() => {
-      location.reload()
-    }, 50)
   } 
 
   render() {
     let close = () => this.setState({ show: false});
     return (
       <Nav inverse className="Container header">
-        <Navbar.Brand text-align="center">
-          <a href="#" text-align="center">Beep Boop!</a>
-        </Navbar.Brand>
+        <a id="beepboop"> Beep Boop </a>
         <Nav pullRight>
-          <Button onClick={() => this.setState({ show: true})}>+</Button>
+          <Button id="formbutton" onClick={() => this.setState({ show: true})}>+</Button>
           <Modal  
             show={this.state.show}
             onHide={close}

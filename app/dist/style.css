@@ -6,21 +6,31 @@
 
 
 .description-card {
-  background: #7CDBD5;
 }
 
-.container {
- background-color: #02C8A7;
+
+.container, element.style {
  width: 100%;
- border-radius: 25px;
 }
 
-.card-top {
-  background: #F9BE02;
+.Container.header.nav {
+  height: 2.5rem;
+  text-align: center;
+  background-color: #00bcd4;
+  padding-top: 1rem;
+  padding-right: 3rem;
+  padding-left: 4rem;
 }
 
-.header {
-  margin: auto;
+#beepboop {
+  color:white;
+  font-size: 3rem;
+  font-family: 'Raleway', sans-serif;
+}
+
+#card {
+  border: 0.1rem solid #979797;
+  padding-bottom: 1rem;
 }
 
 .main-header {
@@ -41,16 +51,50 @@
   top: 20px;
 }
 
-/*.search-bar {
-  position: absolute;
-  margin: auto;
-  text-align: center;
-  width: 200px;
-  top: 40px;
-}*/
+#search {
+  padding-left: 4rem;
+  background-color: #00bcd4;
+  height: 13rem;
 
-.search-bar input {
-  width: 75%;
+
 }
+
+#searchbar {
+  border: none;
+  background: transparent;
+  background-image: url('images/search.png');
+  background-repeat: no-repeat;
+  height: 100%;
+
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+  color: transparent;
+}
+
+#searchbar:focus {
+  width: 45%;
+  border: none;
+  border-bottom: 3px solid white;
+  text-align: center;
+}
+
+#formbutton {
+  background-color: transparent;
+  border-color: transparent;
+  background-image: url('images/plus.png');
+  background-repeat: no-repeat;
+  color: transparent;
+}
+
+#tabs {
+  font-family: 'Raleway', sans-serif;
+
+
+}
+
+div, span {
+  font-family: 'Roboto', sans-serif;
+}
+
 
 

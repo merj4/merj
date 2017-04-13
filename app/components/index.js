@@ -29,6 +29,8 @@ class App extends Component {
     });
   }
 
+  
+
   render() {
     return (
       <MuiThemeProvider>
@@ -36,7 +38,7 @@ class App extends Component {
           <Header />
           <Search data={this.state.events}/>
           <Filter />
-          <EventList events={this.state.events} />
+          <ListOrMap events={this.state.events} />
         </div>
       </MuiThemeProvider>
     );
