@@ -2,14 +2,7 @@ import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import { Button, Modal, Navbar, Nav, Form, FormGroup, ControlLabel, FormControl, HelpBlock, Col } from 'react-bootstrap';
 import axios from 'axios';
-import axios from 'axios';
-// every class must have a render function
-  // it's recommended that you start with a functional based component and
-  // only refactor to a class when you need some added functionality
 
-// this header will contain our app name in the center, which will also be a clickable link to go to the homepage/eventsList
-
-// on the right side of the header, we need a + button to add an event
 
 function FieldGroup({ id, label, help }) {
   return (
@@ -64,7 +57,7 @@ class Header extends Component {
     }).catch(err => {
       console.log("Could not save to db", err)
     })
-
+  }
   render() {
     let close = () => this.setState({ show: false});
     return (
