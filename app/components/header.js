@@ -66,10 +66,12 @@ class Header extends Component {
         console.log("Could not save to db", err)
       }) 
     }
-
+    this.setState({
+      show: false
+    })
     window.setTimeout(() => {
       location.reload()
-    }, 1000)
+    }, 50)
   } 
 
   render() {

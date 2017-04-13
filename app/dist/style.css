@@ -12,6 +12,7 @@
 .container {
  background-color: #02C8A7;
  width: 100%;
+ border-radius: 25px;
 }
 
 .card-top {
