@@ -11,6 +11,7 @@ class EventItem extends Component {
   }
 
   render() {
+    // console.log('Event Item:', this.props);
     return (
       <Card>
         <CardHeader
@@ -20,7 +21,7 @@ class EventItem extends Component {
           avatar="http://enadcity.org/enadcity/wp-content/uploads/2017/02/profile-pictures.png"
         />
          <CardMedia
-          overlay={<CardTitle title={this.props.event.location} 
+          overlay={<CardTitle title={this.props.event.location}
           subtitle={this.props.event.date} />}
         >
         <img src={this.props.event.image} />
