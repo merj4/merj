@@ -9,7 +9,7 @@ class ListOrMap extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isMap : false,
+      isMap : false
     }
     this.listmapHandler = this.listmapHandler.bind(this);
   }

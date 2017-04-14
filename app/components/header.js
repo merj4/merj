@@ -1,8 +1,16 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import { Button, Modal, Navbar, Nav, Form, FormGroup, ControlLabel, FormControl, HelpBlock, Col } from 'react-bootstrap';
+import $ from 'jquery';
 import axios from 'axios';
 
+// every class must have a render function
+  // it's recommended that you start with a functional based component and
+  // only refactor to a class when you need some added functionality
+
+// this header will contain our app name in the center, which will also be a clickable link to go to the homepage/eventsList
+
+// on the right side of the header, we need a + button to add an event
 
 function FieldGroup({ id, label, help }) {
   return (
@@ -30,13 +38,12 @@ class Header extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
   }
-  
 
   handleInputChange(e) {
     const target = e.target;
     const value = target.value;
     const name = target.name;
-    
+    console.log(name, value)
     this.setState({
       [name]: value
     });
@@ -44,28 +51,36 @@ class Header extends Component {
 
   handleSubmit(e) {
     const d = this.state;
-    axios.post('/api/event', {
-      title: d.eventName,
-      location: d.location,
-      date: d.date,
-      time: d.time,
-      description: d.description,
-      image: d.eventUrl,
-      category: d.category
-    }).then(res => {
-      console.log("Post request successful!")
-    }).catch(err => {
-      console.log("Could not save to db", err)
+    if (this.state.category !== '') {
+      axios.post('/api/event', {
+        title: d.eventName,
+        location: d.location,
+        date: d.date,
+        time: d.time,
+        description: d.description,
+        image: d.eventUrl,
+        category: d.category
+      }).then(res => {
+        console.log("Post request successful!")
+      }).catch(err => {
+        alert("You didn't finish the form! Please return and submit upon completion", err)
+      }) 
+      window.setTimeout(() => {
+        location.reload()
+      }, 50)
+    }
+    this.setState({
+      show: false
     })
-  }
+  } 
 
   render() {
     let close = () => this.setState({ show: false});
     return (
       <Nav inverse className="Container header">
-        <a href="#" id="beepboop">Beep Boop</a>
+        <a id="beepboop"> Beep Boop </a>
         <Nav pullRight>
-          <Button onClick={() => this.setState({ show: true})}>+</Button>
+          <Button id="formbutton" onClick={() => this.setState({ show: true})}>+</Button>
           <Modal  
             show={this.state.show}
             onHide={close}
@@ -75,7 +90,7 @@ class Header extends Component {
             <Modal.Header closeButton></Modal.Header>
             <Modal.Body>
               <form>
-
+              
                 <FormGroup>
                   <ControlLabel>Event Name</ControlLabel>
                   <FormControl
@@ -112,7 +127,6 @@ class Header extends Component {
                   placeholder="Date" 
                   onChange={this.handleInputChange}
                   />
-
                 </FormGroup>
                   {' '}
                 <FormGroup controlId="time">
