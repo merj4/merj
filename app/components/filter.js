@@ -1,6 +1,5 @@
 import React from 'react';
 import {Tabs, Tab} from 'material-ui/Tabs';
-import ListOrMap from './ListOrMap';
 
 const styles = {
     headline: {
@@ -29,10 +28,12 @@ const TabsExampleSimple = () => (
       <div style={styles.headline}></div>
     </Tab>
     <Tab label="Hot" >
-      <div style={styles.headline}></div>
+      <div style={styles.headline}> </div>
     </Tab>
     <Tab label="Map" >
-      <div style={styles.headline}></div>
+      <div style={styles.headline}> </div>
     </Tab>
   </Tabs>
 );
+
+export default TabsExampleSimple;
