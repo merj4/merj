@@ -22,22 +22,23 @@ class App extends Component {
   }
 
   componentDidMount() {
-    axios.get('/api/events')
+    axios.get('/api/events/recent')
     .then(res => {
       const events = res.data;
       this.setState({ events });
     });
   }
 
-  
+
 
   render() {
     return (
       <MuiThemeProvider>
         <div>
           <Header />
-          <Search data={this.state.events}/>
+          <Search data={this.state.events} />
           <Filter />
+          <EventList events={this.state.events} />
           <ListOrMap events={this.state.events} />
         </div>
       </MuiThemeProvider>

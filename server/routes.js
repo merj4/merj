@@ -10,7 +10,7 @@ module.exports = function(app, express) {
   //get all events
   app.get('/api/events', eventsController.getAllEvents);
   //get the most recent events
-  app.get('/api/events', eventsController.getMostRecent);
+  app.get('/api/events/recent', eventsController.getMostRecent);
   //get events by location 
   // app.get('/api/events', eventsController.getByLocation);
   //get single event page 

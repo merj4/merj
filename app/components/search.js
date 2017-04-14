@@ -22,31 +22,10 @@ const Search = (props) => {
   })
 
 
-//   return (
-//     <div id="search">
-//       <AutoComplete
-//         floatingLabelText="Search by category, activity, location, date and time"
-//         filter={AutoComplete.fuzzyFilter}
-//         dataSource={store}
-//         maxSearchResults={5}
-//         fullWidth={true}
-//         id="searchbar"
-
-//         style={{
-//           color: 'white',
-//           padding: '20px',
-//           targetOrigin: 'top'
-//         }}
-//       />
-//     </div>
-//   )
-// }
-  // render() {
     return (
         <div id="search">
           <div >
             <AutoComplete
-          // floatingLabelText="Search"
           filter={AutoComplete.fuzzyFilter}
           dataSource={store}
           maxSearchResults={5}
@@ -55,7 +34,6 @@ const Search = (props) => {
         </div>
       </div>
     )
-  // }
 
 }
 
