@@ -5,7 +5,7 @@ class MapView extends Component {
   componentDidMount() {
     new google.maps.Map(this.refs.map, {
       center:{
-        lat: -34.397, 
+        lat: -34.397,
         lng: 150.644
       },
       zoom: 12
@@ -16,7 +16,7 @@ class MapView extends Component {
       width: 1140,
       height: 770,
     };
-    
+
     return (
       <div ref="map" style={mapStyle}></div>
     );
