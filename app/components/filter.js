@@ -1,9 +1,9 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {Tabs, Tab} from 'material-ui/Tabs';
 import {EventItem} from './eventItem';
 import {EventList} from './eventList';
 import MapView from './mapView';
-import ListOrMap from './ListOrMap';
+import ListOrMapButton from './ListOrMapButton';
 
 const styles = {
     headline: {
@@ -14,16 +14,31 @@ const styles = {
   },
 };
 
-export default class Filter extends React.Component {
+class Filter extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      // isMap : false,
+      filteredEvents: this.props.events,
+      isMap: false
     }
+    // will need to also bind all the other methods to 'this'
+    this.listMapHandler = this.listMapHandler.bind(this);
+  }
+
+  // distanceFilter method
+  // calendarFilter method
+  // hotFilter method
+  // ListOrMapHandler method
+  listMapHandler() {
+    console.log('listMapHandler was called!');
+    this.setState({ isMap: !this.state.isMap }, function () {
+
+    });
   }
 
   render() {
+    console.log('Filter props:', this);
     return (
       <Tabs
         // value={this.state.value}
@@ -32,27 +47,23 @@ export default class Filter extends React.Component {
         <Tab label="Distance"  >
           <div style={styles.headline}></div>
         </Tab>
-        <Tab label="Category" >
-          <div style={styles.headline}></div>
-        </Tab>
-        <Tab label="Size" >
-          <div style={styles.headline}></div>
-        </Tab>
-        <Tab label="Date" >
-          <div style={styles.headline}></div>
-        </Tab>
-        <Tab label="Now" >
+        <Tab label="Calendar" >
           <div style={styles.headline}></div>
         </Tab>
         <Tab label="Hot" >
           <div style={styles.headline}></div>
         </Tab>
-        <Tab label="Map">
+        <Tab label="Map" onActive={this.listMapHandler}>
           <div style={styles.headline}>
-            <ListOrMap events={this.props.events} />
+            <ListOrMapButton
+              events={this.state.filteredEvents}
+              viewState={this.state.isMap}
+            />
           </div>
         </Tab>
       </Tabs>
     );
   }
-}
+};
+
+export default Filter;
