@@ -28,6 +28,11 @@ class App extends Component {
     });
   }
 
+  // build a helper method that will allow us to setState of events to the results of a search
+
+  updateEventList(array) {
+    this.setState({ events: array });
+  }
 
 
   render() {
@@ -35,7 +40,10 @@ class App extends Component {
       <MuiThemeProvider>
         <div >
           <Header />
-          <Search data={this.state.events} />
+          <Search
+            data={this.state.events}
+            updateEventList={this.updateEventList}
+          />
           <Filter events={this.state.events} />
           <EventList events={this.state.events} />
         </div>

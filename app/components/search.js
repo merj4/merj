@@ -18,17 +18,24 @@ class Search extends Component {
 
   // we are also going to need a method to handle onSubmit
 
-  // storeValues contains database keywords that populates the autocomplete dropdown
+  // if object has a keyword, only include that object in the array and replace the events state in app to be that filtered array
+
+  // if any object doesn't contain a value that matches our keywords, splice it out
+    // what remains will only be the objects that contain values that matches our keywords
+
+  // invoke the helper method from our App class to update the state
+
+
   autoCompleteStorage() {
     let data = props.data;
-    let storeValues = [];
+    let databaseKeywords = []; // contains keywords captured from the search bar
     let keys = _.each(data, function(obj) {
        _.each(obj, function(value, key) {
         if (key !== "image") {
           if (key === "time") {
           transform(obj[key])
           }
-          storeValues.push(value);
+          databaseKeywords.push(value);
         }
       })
     })
@@ -41,14 +48,22 @@ class Search extends Component {
     console.log(searchText)
   };
 
+  handleNewRequest() {
+    this.setState({
+      searchText: '',
+    });
+    this.updateEventList(filteredEvents)
+  };
+
   render() {
-    console.log('State: ', this.state.store)
+    console.log('Search props: ', this.props.updateEventList)
     return (
       <div id="search">
         <div >
           <AutoComplete
             searchText={this.state.searchText}
             onUpdateInput={this.handleUpdateInput}
+            onNewRequest={this.handleNewRequest}
             dataSource={this.state.store}
             filter={AutoComplete.fuzzyFilter}
             maxSearchResults={5}
