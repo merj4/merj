@@ -14,6 +14,8 @@ class Search extends Component {
       searchText: '',
       store: []
     }
+    this.handleUpdateInput = this.handleUpdateInput.bind(this);
+    this.handleNewRequest = this.handleNewRequest.bind(this);
   }
 
   // we are also going to need a method to handle onSubmit
@@ -22,12 +24,56 @@ class Search extends Component {
 
   // if any object doesn't contain a value that matches our keywords, splice it out
     // what remains will only be the objects that contain values that matches our keywords
+  handleNewRequest() {
+    let data = this.props.data.slice();
+    let searchResults = [];
+    let remainingResults = [];
+    //Helper function for search
+    //then pass in filteredEvents as newArray in updateEvents function
+    data.forEach((event) => {
+      for(let key in event) {
+       if(event[key].toString().toLowerCase().includes(this.state.searchText)) {
+        searchResults.push(event);
+       } else {
+        remainingResults.push(event);
+       }
+      }
+    })
+    this.props.updateEventList(searchResults);
+    this.setState({
+      searchText: '',
+    });
 
-  // invoke the helper method from our App class to update the state
 
 
+
+
+
+
+
+
+
+
+
+
+      // _.each(data, (obj, i) => {
+      //   for (var key in obj) {
+      //     console.log(obj[key].toString().toLowerCase().includes(this.state.searchText));
+      //     if (!obj[key].toString().toLowerCase().includes(this.state.searchText)) {
+      //       data.splice(i, 1);
+      //     }
+      //   }
+      // })
+
+  };
+
+
+
+
+  // this provides the autocomplete strings the appear when a user begins typing
   autoCompleteStorage() {
-    let data = props.data;
+    console.log(this.props);
+    let data = this.props.data;
     let databaseKeywords = []; // contains keywords captured from the search bar
     let keys = _.each(data, function(obj) {
        _.each(obj, function(value, key) {
@@ -39,24 +85,25 @@ class Search extends Component {
         }
       })
     })
+    this.setState({ store: databaseKeywords })
   }
 
+  // this keeps track of what the user types into the search, also part of Material-UI
   handleUpdateInput(searchText) {
+    // console.log(this);
+    this.autoCompleteStorage();
     this.setState({
-      searchText: searchText,
+      searchText: searchText.toLowerCase(),
     });
-    console.log(searchText)
+    console.log(searchText);
   };
 
-  handleNewRequest() {
-    this.setState({
-      searchText: '',
-    });
-    this.updateEventList(filteredEvents)
-  };
+
+
 
   render() {
-    console.log('Search props: ', this.props.updateEventList)
+    // invoke the helper method from our App class to update the state
+    // console.log('Search props: ', this.props.updateEventList)
     return (
       <div id="search">
         <div >
