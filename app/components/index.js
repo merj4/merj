@@ -16,8 +16,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      events: [], // master list of events
-      displayedEvents: [] // what is rendered in the view
+      events: [],
+      displayedEvents: []
     }
     this.updateEventList = this.updateEventList.bind(this);
   }
@@ -51,7 +51,7 @@ class App extends Component {
             updateEventList={this.updateEventList}
           />
           <Filter events={this.state.events} />
-          <EventList events={this.state.events} />
+          <EventList events={this.state.displayedEvents} />
         </div>
       </MuiThemeProvider>
     );
