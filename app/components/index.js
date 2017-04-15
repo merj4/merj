@@ -16,22 +16,28 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      events: []
+      events: [], // master list of events
+      displayedEvents: [] // what is rendered in the view
     }
+    this.updateEventList = this.updateEventList.bind(this);
   }
 
   componentDidMount() {
     axios.get('/api/events/recent')
     .then(res => {
       const events = res.data;
-      this.setState({ events });
+      this.setState({
+        events: events,
+        displayedEvents: events
+      });
     });
   }
 
   // build a helper method that will allow us to setState of events to the results of a search
 
   updateEventList(array) {
-    this.setState({ events: array });
+    this.setState({ displayedEvents: array });
+    console.log('Events have been updated!')
   }
 
 
