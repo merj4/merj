@@ -85,8 +85,7 @@ class Header extends Component {
             show={this.state.show}
             onHide={close}
             container={this}
-            aria-labelledby="contained-modal-title"
-          >
+            aria-labelledby="contained-modal-title" >
             <Modal.Header closeButton></Modal.Header>
             <Modal.Body>
               <form>

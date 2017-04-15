@@ -44,7 +44,7 @@ class App extends Component {
   render() {
     return (
       <MuiThemeProvider>
-        <div >
+        <div>
           <Header />
           <Search
             data={this.state.events}
