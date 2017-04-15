@@ -10,7 +10,7 @@ const ListOrMapButton = (props) => {
 
   let content = null;
 
-  if (props.isMap) {
+  if (props.viewState) {
     content = <MapView />
   } else {
       content = <EventList events={props.events} />
