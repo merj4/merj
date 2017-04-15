@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import Header from './header.js';
 import {Search} from './search';
 import Filter from './filter';
+import MapView from './mapView'
+import ListOrMapButton from './ListOrMapButton'
 import { EventList } from './eventList';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
