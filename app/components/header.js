@@ -67,7 +67,7 @@ class Header extends Component {
       }) 
       window.setTimeout(() => {
         location.reload()
-      }, 50)
+      }, 1000)
     }
     this.setState({
       show: false
@@ -110,7 +110,7 @@ class Header extends Component {
                   id="location"
                   type="text"
                   label="Location"
-                  placeholder="Place/Address"
+                  placeholder="100 Dalmatian St, Neverland, OR"
                   value={this.state.location}
                   onChange={this.handleInputChange}
                   />
