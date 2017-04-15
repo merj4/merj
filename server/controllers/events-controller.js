@@ -29,8 +29,7 @@ module.exports = {
 
   getMostRecent: function(req, res) {
     db.Event.findAll({
-      limit: 10,
-      order: '"createdAt" DESC'
+      order: '"id" DESC'
     })
     .then(function(events) {
        events.map((event) => {
