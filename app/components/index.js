@@ -6,9 +6,6 @@ import Filter from './filter';
 import MapView from './mapView'
 import ListOrMap from './ListOrMap'
 import { EventList } from './eventList';
-import MapView from './mapView';
-import {EventList} from './eventList';
-import {exampleEvents} from '../../events.js'; 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import axios from 'axios';
@@ -40,8 +37,8 @@ class App extends Component {
         <div >
           <Header />
           <Search data={this.state.events} />
-          <EventList events={this.state.events} />
           <Filter events={this.state.events} />
+          <EventList events={this.state.events} />
         </div>
       </MuiThemeProvider>
     );
