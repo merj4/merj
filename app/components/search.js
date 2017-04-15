@@ -3,7 +3,7 @@ import AutoComplete from 'material-ui/AutoComplete';
 import _ from 'underscore';
 
 let transform = (date) => {
-  let readDate = new Date(date + 'UTC');
+  let readDate = new Date(date);
   return readDate.toString().slice(0, -24)
 }
 
