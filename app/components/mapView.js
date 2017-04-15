@@ -1,26 +1,27 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
+import { GoogleMapLoader, GoogleMap, Marker} from 'react-google-maps';
 
-class MapView extends Component {
-  componentDidMount() {
-    new google.maps.Map(this.refs.map, {
-      center:{
-        lat: -34.397,
-        lng: 150.644
-      },
-      zoom: 12
-    });
-  }
+
+export class MapView extends Component {
   render() {
-  const mapStyle = {
-      width: 1140,
-      height: 770,
-    };
-
+    const mapContainer = <div style= {{height: '100%', width:'100%'}}></div>
+    const center = {
+      lat: 40.7575285,
+      lng: -73.9884469
+    }
     return (
-      <div ref="map" style={mapStyle}></div>
-    );
+      <GoogleMapLoader
+        containerElement = { mapContainer }
+        googleMapElement = {
+          <GoogleMap 
+            defaultZoom = {15}
+            defaultCenter = {center}
+            options = {{streetViewControl: false, mapTypeControl: false }}>
+          </GoogleMap>
+        } />  
+    )
   }
-};
+}
 
 export default MapView;
