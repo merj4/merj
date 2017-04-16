@@ -36,6 +36,15 @@ class Search extends Component {
         searchResults.push(event);
        } else {
           remainingResults.push(event);
+        }
+      }
+    })
+    this.props.updateEventList(searchResults);
+    this.setState({
+      searchText: '',
+    });
+  };
+
 
 
   // this provides the autocomplete strings the appear when a user begins typing
