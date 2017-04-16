@@ -3,8 +3,6 @@ import ReactDOM from 'react-dom';
 import Header from './header.js';
 import {Search} from './search';
 import Filter from './filter';
-import MapView from './mapView'
-import ListOrMap from './ListOrMap'
 import { EventList } from './eventList';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
@@ -47,7 +45,9 @@ class App extends Component {
       <MuiThemeProvider>
         <div >
           <Header />
-          <Search data={this.state.events} />
+          <Search
+            data={this.state.events}
+            updateEventList={this.updateEventList} />
           <Filter events={this.state.events} />
           <EventList events={this.state.displayedEvents} />
         </div>
