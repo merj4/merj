@@ -17,18 +17,29 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      events: []
+      events: [],
+      displayedEvents: []
     }
+    this.updateEventList = this.updateEventList.bind(this);
   }
 
   componentDidMount() {
     axios.get('/api/events/recent')
     .then(res => {
       const events = res.data;
-      this.setState({ events });
+      this.setState({
+        events: events,
+        displayedEvents: events
+      });
     });
   }
 
+  // build a helper method that will allow us to setState of events to the results of a search
+
+  updateEventList(array) {
+    this.setState({ displayedEvents: array });
+    console.log('Events have been updated!')
+  }
 
 
   render() {
@@ -38,7 +49,7 @@ class App extends Component {
           <Header />
           <Search data={this.state.events} />
           <Filter events={this.state.events} />
-          <EventList events={this.state.events} />
+          <EventList events={this.state.displayedEvents} />
         </div>
       </MuiThemeProvider>
     );
