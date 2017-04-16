@@ -39,8 +39,6 @@ class Filter extends Component {
 
   render() {
     let labelForMap = this.state.isMap ? "Map" : "List"
-    console.log('Filter props:', this);
-
     return (
       <Tabs
         // value={this.state.value}
