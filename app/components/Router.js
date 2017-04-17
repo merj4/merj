@@ -4,8 +4,10 @@ import {
   Route, 
   Link
 } from 'react-router-dom';
+import { Header } from './header'
+import { EventView } from './eventView'
 
-const Router = () => (
+const Routes = () => (
   <Router>
     <div>
       <ul>
@@ -15,10 +17,10 @@ const Router = () => (
 
       <hr />
 
-      <Route exact path="/" component={App} />
-      <Route path="/event" component={Event} />
+      <Route exact path="/" component={Header} />
+      <Route exact path="/event" component={EventView} />
     </div>
   </Router>
-
-
 )
+
+export  {Routes} 

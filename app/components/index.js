@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import { Routes } from './Router'
 import Header from './header.js';
 import {Search} from './search';
 import Filter from './filter';
@@ -49,6 +50,7 @@ class App extends Component {
             data={this.state.events}
             updateEventList={this.updateEventList} />
           <Filter events={this.state.events} />
+          <Routes />
           <EventList events={this.state.displayedEvents} />
         </div>
       </MuiThemeProvider>
@@ -56,4 +58,6 @@ class App extends Component {
   }
 };
 
+
 ReactDOM.render(<App />, document.querySelector('.container'));
+
