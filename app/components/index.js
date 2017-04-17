@@ -4,8 +4,6 @@ import { Routes } from './Router'
 import Header from './header.js';
 import {Search} from './search';
 import Filter from './filter';
-import MapView from './mapView'
-import ListOrMapButton from './ListOrMapButton'
 import { EventList } from './eventList';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
@@ -46,7 +44,7 @@ class App extends Component {
   render() {
     return (
       <MuiThemeProvider>
-        <div>
+        <div >
           <Header />
           <Search
             data={this.state.events}
@@ -62,4 +60,3 @@ class App extends Component {
 
 
 ReactDOM.render(<App />, document.querySelector('.container'));
-
