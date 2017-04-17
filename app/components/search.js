@@ -35,15 +35,14 @@ class Search extends Component {
        if(event[key].toString().toLowerCase().includes(this.state.searchText)) {
         searchResults.push(event);
        } else {
-        remainingResults.push(event);
-       }
+          remainingResults.push(event);
+        }
       }
     })
     this.props.updateEventList(searchResults);
     this.setState({
       searchText: '',
     });
-
   };
 
 
@@ -69,12 +68,10 @@ class Search extends Component {
 
   // this keeps track of what the user types into the search, also part of Material-UI
   handleUpdateInput(searchText) {
-    // console.log(this);
     this.autoCompleteStorage();
     this.setState({
       searchText: searchText.toLowerCase(),
     });
-    console.log(searchText);
   };
 
 
