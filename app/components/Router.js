@@ -7,8 +7,7 @@ import {
 import { Header } from './header'
 import { EventView } from './eventView'
 
-
-const Router = () => (
+const Routes = () => (
   <Router>
     <div>
       <ul>
