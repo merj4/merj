@@ -67,7 +67,7 @@ class Header extends Component {
       }) 
       window.setTimeout(() => {
         location.reload()
-      }, 1000)
+      }, 50)
     }
     this.setState({
       show: false
@@ -85,7 +85,8 @@ class Header extends Component {
             show={this.state.show}
             onHide={close}
             container={this}
-            aria-labelledby="contained-modal-title" >
+            aria-labelledby="contained-modal-title"
+          >
             <Modal.Header closeButton></Modal.Header>
             <Modal.Body>
               <form>
@@ -110,7 +111,7 @@ class Header extends Component {
                   id="location"
                   type="text"
                   label="Location"
-                  placeholder="100 Dalmatian St, Neverland, OR"
+                  placeholder="Place/Address"
                   value={this.state.location}
                   onChange={this.handleInputChange}
                   />
