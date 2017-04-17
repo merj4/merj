@@ -31,7 +31,8 @@ var User = db.define('User', {
 
 // create Event table
 var Event = db.define('Event', {
-  location: Sequelize.STRING,
+  log: Sequelize.STRING,
+  lat: Sequelize.STRING,
   date: Sequelize.DATE,
   title: Sequelize.STRING,
   time: Sequelize.STRING,
