@@ -2,7 +2,7 @@ import React from 'react';
 import {EventItem} from './eventItem';
 
 const EventList = (props) => {
-  // console.log('EVENT LIST', props);
+  console.log('EVENT LIST', props);
   return (
     <div>
       <div>

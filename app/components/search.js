@@ -35,36 +35,14 @@ class Search extends Component {
        if(event[key].toString().toLowerCase().includes(this.state.searchText)) {
         searchResults.push(event);
        } else {
-        remainingResults.push(event);
-       }
+          remainingResults.push(event);
+        }
       }
     })
     this.props.updateEventList(searchResults);
     this.setState({
       searchText: '',
     });
-
-
-
-
-
-
-
-
-
-
-
-
-
-      // _.each(data, (obj, i) => {
-      //   for (var key in obj) {
-      //     console.log(obj[key].toString().toLowerCase().includes(this.state.searchText));
-      //     if (!obj[key].toString().toLowerCase().includes(this.state.searchText)) {
-      //       data.splice(i, 1);
-      //     }
-      //   }
-      // })
-
   };
 
 
@@ -90,12 +68,10 @@ class Search extends Component {
 
   // this keeps track of what the user types into the search, also part of Material-UI
   handleUpdateInput(searchText) {
-    // console.log(this);
     this.autoCompleteStorage();
     this.setState({
       searchText: searchText.toLowerCase(),
     });
-    console.log(searchText);
   };
 
 

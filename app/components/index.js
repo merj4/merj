@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import { Routes } from './Router'
 import Header from './header.js';
 import {Search} from './search';
 import Filter from './filter';
-import {EventList} from './eventList';
-import {exampleEvents} from '../../events.js';
+import { EventList } from './eventList';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import axios from 'axios';
@@ -48,9 +48,9 @@ class App extends Component {
           <Header />
           <Search
             data={this.state.events}
-            updateEventList={this.updateEventList}
-          />
+            updateEventList={this.updateEventList} />
           <Filter events={this.state.events} />
+          <Routes />
           <EventList events={this.state.displayedEvents} />
         </div>
       </MuiThemeProvider>
@@ -58,4 +58,6 @@ class App extends Component {
   }
 };
 
+
 ReactDOM.render(<App />, document.querySelector('.container'));
+

@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {Tabs, Tab} from 'material-ui/Tabs';
 import {EventItem} from './eventItem';
-import {EventList} from './eventList';
 import MapView from './mapView';
 import ListOrMapButton from './ListOrMapButton';
 
@@ -32,15 +31,13 @@ class Filter extends Component {
   // ListOrMapHandler method
   listMapHandler() {
     console.log('listMapHandler was called!');
-    this.setState({ isMap: !this.state.isMap }, function () {
-
+    this.setState({ 
+      isMap: !this.state.isMap 
     });
   }
 
   render() {
-    let labelForMap = this.state.isMap ? "Map" : "List";
-    console.log('Filter props:', this);
-
+    let labelForMap = this.state.isMap ? "Map" : "List"
     return (
       <Tabs
         // value={this.state.value}
