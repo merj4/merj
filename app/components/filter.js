@@ -31,7 +31,7 @@ class Filter extends Component {
   // hotFilter method
   // ListOrMapHandler method
   listMapHandler() {
-    console.log('listMapHandler was called!');
+    console.log('listMapHandler was called!', this.props.events);
     this.setState({ 
       isMap: !this.state.isMap 
     });
