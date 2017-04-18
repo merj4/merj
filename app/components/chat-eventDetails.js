@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { ChatMessage } from './chat-message';
 
-const ChatContainer = () => (
+const EventDetails = () => {
+  
+}
 
-)
-
-export { ChatContainer }
+export { EventDetails }

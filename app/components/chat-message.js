@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
-const ChatMessage = () => (
-
-)
+const ChatMessage = () => {
+}
 
 export { ChatMessage }

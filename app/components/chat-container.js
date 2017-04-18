@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { ChatMessage } from './chat-message';
 
-const ChatContainer = () => (
-
-)
+const ChatContainer = () => {}
 
 export { ChatContainer }
