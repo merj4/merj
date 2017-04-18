@@ -13,7 +13,7 @@ class EventItem extends Component {
   render() {
     // console.log('Event Item:', this.props);
     return (
-      <Card>
+      <Card >
         <CardHeader
           className="card-top"
           title={this.props.event.title}
@@ -31,7 +31,7 @@ class EventItem extends Component {
            { this.props.event.description }
         </CardText>
         <CardActions className="actions">
-           <FlatButton className="btn" label="Would Love To Go!" />
+           <FlatButton className="btn" label="Would Love To Go!" onClick={() => this.props.handleEventClick(this.props.event)}/>
            <FlatButton className="btn" label="I'm Gonna Pass for Now" />
         </CardActions>
       </Card>

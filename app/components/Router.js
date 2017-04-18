@@ -4,24 +4,18 @@ import {
   Route, 
   Link
 } from 'react-router-dom';
-import { Header } from './header'
+import App from './index'
 import { EventView } from './eventView'
+
 
 const Routes = () => (
   <Router>
     <div>
-      <ul>
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/event">Event</Link></li>
-      </ul>
-
-      <hr />
-
-      <Route exact path="/" component={Header} />
+      <Route exact path="/" component={App} />
       <Route exact path="/event" component={EventView} />
     </div>
   </Router>
 )
 
-export  {Routes} 
+export {Routes} 
 
