@@ -11,7 +11,7 @@ const ListOrMapButton = (props) => {
   let content = null;
 
   if (props.viewState) {
-    content = <MapView />
+    content = <MapView events={props.events} />
   } else {
       content = <EventList events={props.events} />
     }
