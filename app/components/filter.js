@@ -4,6 +4,7 @@ import {Tabs, Tab} from 'material-ui/Tabs';
 import {EventItem} from './eventItem';
 import MapView from './mapView';
 import ListOrMapButton from './ListOrMapButton';
+import Belle from 'belle';
 
 const styles = {
     headline: {
@@ -32,8 +33,8 @@ class Filter extends Component {
   // ListOrMapHandler method
   listMapHandler() {
     console.log('listMapHandler was called!', this.props.events);
-    this.setState({ 
-      isMap: !this.state.isMap 
+    this.setState({
+      isMap: !this.state.isMap
     });
   }
 
