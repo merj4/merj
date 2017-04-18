@@ -31,7 +31,7 @@ class Filter extends Component {
   // hotFilter method
   // ListOrMapHandler method
   listMapHandler() {
-    console.log('listMapHandler was called!');
+    console.log('listMapHandler was called!', this.props.events);
     this.setState({ 
       isMap: !this.state.isMap 
     });
@@ -56,7 +56,7 @@ class Filter extends Component {
         <Tab label={labelForMap} onActive={this.listMapHandler}>
           <div style={styles.headline}>
             <ListOrMapButton
-              events={this.state.filteredEvents}
+              events={this.props.events}
               viewState={this.state.isMap}
             />
           </div>
