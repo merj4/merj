@@ -27,12 +27,14 @@ class Filter extends Component {
       filteredEvents: this.props.events,
       isMap: false,
       startDate: moment(),
-      isOpen: false
+      isOpen: false,
+      date: null
     }
     // will need to also bind all the other methods to 'this'
     this.listMapHandler = this.listMapHandler.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.toggleCalendar = this.toggleCalendar.bind(this);
+    // this.handleSelect = this.handleSelect.bind(this);
   }
 
   // distanceFilter method
@@ -47,12 +49,19 @@ class Filter extends Component {
   }
 
   handleChange(date) {
-    console.log('Trying to render calendar again!')
+    console.log('Selected date: ', date);
     this.setState({
       startDate: date
     })
     this.toggleCalendar()
   }
+
+  // handleSelect(date) {
+  //   this.setState({
+  //     date: date
+  //   })
+  //   console.log(this.state.date)
+  // }
 
   toggleCalendar(e) {
     e && e.preventDefault()
@@ -76,8 +85,10 @@ class Filter extends Component {
           <div style={styles.headline}>
             {
               this.state.isOpen && (
-                <DatePicker onClickOutside={this.toggleCalendar}
+                <DatePicker
+                  onClickOutside={this.toggleCalendar}
                   selected={this.state.startDate}
+                  onSelect={this.handleSelect}
                   onChange={this.handleChange}
                   withPortal
                   inline />
