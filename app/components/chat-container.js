@@ -43,7 +43,6 @@ let MobileTearSheet = React.createClass({
 });
 
 
-
 const ChatContainer = (props) => {
   return (
   <div>
