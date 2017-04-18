@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { Routes } from './Router'
-import Header from './header.js';
+import Header from './header';
 import {Search} from './search';
 import Filter from './filter';
 import { EventList } from './eventList';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import axios from 'axios';
+import {Router, browserHistory } from 'react-router';
+import makeMainRoutes from './routes';
 
 
 injectTapEventPlugin();
@@ -50,7 +51,6 @@ class App extends Component {
             data={this.state.events}
             updateEventList={this.updateEventList} />
           <Filter events={this.state.events} />
-          <Routes />
           <EventList events={this.state.displayedEvents} />
         </div>
       </MuiThemeProvider>
