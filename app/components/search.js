@@ -47,7 +47,6 @@ class Search extends Component {
 
 
 
-
   // this provides the autocomplete strings the appear when a user begins typing
   autoCompleteStorage() {
     console.log("search:", this.props.data);
