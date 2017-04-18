@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { Component } from 'react';
 import { ChatUsers } from './chat-users'
 import { ChatInput } from './chat-input'
@@ -47,7 +48,5 @@ class EventView extends Component {
     );
   }
 }
-  
-
 
 export { EventView }
