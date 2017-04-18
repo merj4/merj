@@ -76,7 +76,7 @@ class Filter extends Component {
           <div style={styles.headline}>
             {
               this.state.isOpen && (
-                <DatePicker
+                <DatePicker onClickOutside={this.toggleCalendar}
                   selected={this.state.startDate}
                   onChange={this.handleChange}
                   withPortal
