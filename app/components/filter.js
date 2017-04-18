@@ -27,8 +27,7 @@ class Filter extends Component {
       filteredEvents: this.props.events,
       isMap: false,
       startDate: moment(),
-      isOpen: false,
-      date: null
+      isOpen: false
     }
     // will need to also bind all the other methods to 'this'
     this.listMapHandler = this.listMapHandler.bind(this);
@@ -42,7 +41,7 @@ class Filter extends Component {
   // hotFilter method
   // ListOrMapHandler method
   listMapHandler() {
-    console.log('listMapHandler was called!', this.props.events);
+    // console.log('listMapHandler was called!', this.props.events);
     this.setState({
       isMap: !this.state.isMap
     });
@@ -51,7 +50,8 @@ class Filter extends Component {
   handleChange(date) {
     console.log('Selected date: ', date);
     this.setState({
-      startDate: date
+      startDate: date,
+      date: date
     })
     this.toggleCalendar()
   }
