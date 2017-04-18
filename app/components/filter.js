@@ -4,8 +4,6 @@ import {Tabs, Tab} from 'material-ui/Tabs';
 import {EventItem} from './eventItem';
 import MapView from './mapView';
 import ListOrMapButton from './ListOrMapButton';
-import Belle from 'belle';
-const DatePicker = Belle.DatePicker;
 
 const styles = {
     headline: {

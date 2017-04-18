@@ -9,6 +9,10 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import axios from 'axios';
 import {EventView} from './eventView'
+import DatePicker from 'react-datepicker';
+import moment from 'moment';
+
+import 'react-datepicker/dist/react-datepicker.css';
 
 
 injectTapEventPlugin();
@@ -19,9 +23,11 @@ class App extends Component {
     this.state = {
       events: [],
       displayedEvents: [],
-      activeEvent: null
+      activeEvent: null,
+      startDate: moment()
     }
     this.updateEventList = this.updateEventList.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidMount() {
@@ -48,11 +54,21 @@ class App extends Component {
     console.log('Events have been updated!')
   }
 
+  handleChange(date) {
+    this.setState({
+      startDate: date
+    });
+  }
+
   render() {
     if (this.state.activeEvent === null) {
         return (
         <MuiThemeProvider>
           <div >
+            <DatePicker
+              selected={this.state.startDate}
+              onChange={this.handleChange}
+            />
             <Header />
             <Search
               data={this.state.events}
