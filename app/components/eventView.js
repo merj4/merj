@@ -9,8 +9,8 @@ import {Popover} from 'react-bootstrap'
 
 
 const EventView = () => (
-  <div>
-    <List>
+  <Row>
+    <List Col xs={6}>
       <Subheader>Recent chats</Subheader>
       <ListItem
         primaryText="JSON.stringify(kim)"
@@ -38,27 +38,7 @@ const EventView = () => (
         rightIcon={<CommunicationChatBubble />}
       />
     </List>
-
-    <Popover
-      id="popover-basic"
-      placement="right"
-      positionLeft={200}
-      positionTop={750}
-      title="Popover right"
-    >
-      And here's some <strong>amazing</strong> content. It's very engaging. right?
-    </Popover>
-
-    <Popover
-      id="popover-basic"
-      placement="left"
-      positionLeft={600}
-      positionTop={900}
-      title="Popover left"
-    >
-      And here's some <strong>amazing</strong> content. It's very engaging. right?
-    </Popover>
-  </div>
+  </Row>
 );
 
 
