@@ -8,6 +8,7 @@ import { EventList } from './eventList';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import axios from 'axios';
+import {EventView} from './eventView'
 
 
 injectTapEventPlugin();
@@ -17,7 +18,8 @@ class App extends Component {
     super(props);
     this.state = {
       events: [],
-      displayedEvents: []
+      displayedEvents: [],
+      activeEvent: null
     }
     this.updateEventList = this.updateEventList.bind(this);
   }
@@ -33,6 +35,12 @@ class App extends Component {
     });
   }
 
+  handleEventClick(event) {
+    this.setState({
+      activeEvent: event
+    })
+  }
+
   // build a helper method that will allow us to setState of events to the results of a search
 
   updateEventList(array) {
@@ -42,19 +50,33 @@ class App extends Component {
 
 
   render() {
-    return (
-      <MuiThemeProvider>
-        <div >
-          <Header />
-          <Search
-            data={this.state.events}
-            updateEventList={this.updateEventList} />
-          <Filter events={this.state.events} />
-          <Routes />
-          <EventList events={this.state.displayedEvents} />
-        </div>
-      </MuiThemeProvider>
-    );
+    if (this.state.activeEvent === null) {
+        return (
+        <MuiThemeProvider>
+          <div >
+            <Header />
+            <Search
+              data={this.state.events}
+              updateEventList={this.updateEventList} />
+            <Filter events={this.state.events} />
+            <EventList events={this.state.displayedEvents} handleEventClick={this.handleEventClick.bind(this)}/>
+          </div>
+        </MuiThemeProvider>
+      );
+    } else {
+        return (
+        <MuiThemeProvider>
+          <div >
+            <Header />
+            <Search
+              data={this.state.events}
+              updateEventList={this.updateEventList} />
+            <Filter events={this.state.events} />
+            <EventView event={this.state.activeEvent} />
+          </div>
+        </MuiThemeProvider>
+      );
+    }
   }
 };
 
