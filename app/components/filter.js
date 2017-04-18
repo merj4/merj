@@ -4,6 +4,10 @@ import {Tabs, Tab} from 'material-ui/Tabs';
 import {EventItem} from './eventItem';
 import MapView from './mapView';
 import ListOrMapButton from './ListOrMapButton';
+import DatePicker from 'react-datepicker';
+import moment from 'moment';
+
+import 'react-datepicker/dist/react-datepicker.css';
 
 const styles = {
     headline: {
@@ -11,7 +15,8 @@ const styles = {
     paddingTop: 16,
     marginBottom: 12,
     fontWeight: 400,
-  },
+
+  }
 };
 
 class Filter extends Component {
@@ -20,10 +25,12 @@ class Filter extends Component {
     super(props);
     this.state = {
       filteredEvents: this.props.events,
-      isMap: false
+      isMap: false,
+      startDate: moment()
     }
     // will need to also bind all the other methods to 'this'
     this.listMapHandler = this.listMapHandler.bind(this);
+    this.renderCalendar = this.renderCalendar.bind(this);
   }
 
   // distanceFilter method
@@ -34,6 +41,13 @@ class Filter extends Component {
     console.log('listMapHandler was called!', this.props.events);
     this.setState({
       isMap: !this.state.isMap
+    });
+  }
+
+  renderCalendar(date) {
+    console.log('Trying to render calendar', this.state.startDate)
+    this.setState({
+      startDate: date
     });
   }
 
@@ -48,8 +62,14 @@ class Filter extends Component {
         <Tab label="Distance"  >
           <div style={styles.headline}></div>
         </Tab>
-        <Tab label="Calendar" >
-          <div style={styles.headline}></div>
+        <Tab label="Calendar" onActive={this.renderCalendar}>
+          <div style={styles.headline}>
+            <DatePicker
+              inline
+              selected={this.state.startDate}
+              onChange={this.renderCalendar}
+            />
+          </div>
         </Tab>
         <Tab label="Hot" >
           <div style={styles.headline}></div>
