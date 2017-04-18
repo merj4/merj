@@ -26,11 +26,13 @@ class Filter extends Component {
     this.state = {
       filteredEvents: this.props.events,
       isMap: false,
-      startDate: moment()
+      startDate: moment(),
+      isOpen: false
     }
     // will need to also bind all the other methods to 'this'
     this.listMapHandler = this.listMapHandler.bind(this);
-    this.renderCalendar = this.renderCalendar.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.toggleCalendar = this.toggleCalendar.bind(this);
   }
 
   // distanceFilter method
@@ -44,16 +46,24 @@ class Filter extends Component {
     });
   }
 
-  renderCalendar(date) {
-    console.log('Trying to render calendar', this.state.startDate)
+  handleChange(date) {
+    console.log('Trying to render calendar again!')
     this.setState({
       startDate: date
-    });
+    })
+    this.toggleCalendar()
+  }
+
+  toggleCalendar(e) {
+    e && e.preventDefault()
+    this.setState({
+      isOpen: !this.state.isOpen
+    })
   }
 
   render() {
     let labelForMap = this.state.isMap ? "Map" : "List"
-    console.log("props!!hey!!!", this.props)
+    // console.log("props!!hey!!!", this.props)
     return (
       <Tabs
         // value={this.state.value}
@@ -62,13 +72,17 @@ class Filter extends Component {
         <Tab label="Distance"  >
           <div style={styles.headline}></div>
         </Tab>
-        <Tab label="Calendar" onActive={this.renderCalendar}>
+        <Tab label="Calendar" onClick={this.toggleCalendar}>
           <div style={styles.headline}>
-            <DatePicker
-              inline
-              selected={this.state.startDate}
-              onChange={this.renderCalendar}
-            />
+            {
+              this.state.isOpen && (
+                <DatePicker
+                  selected={this.state.startDate}
+                  onChange={this.handleChange}
+                  withPortal
+                  inline />
+              )
+            }
           </div>
         </Tab>
         <Tab label="Hot" >
