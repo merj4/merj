@@ -5,13 +5,13 @@ import Subheader from 'material-ui/Subheader';
 import Divider from 'material-ui/Divider';
 import CommunicationChatBubble from 'material-ui/svg-icons/communication/chat-bubble';
 import {Popover} from 'react-bootstrap'
-
+import MobileTearSheet from './chat-users-container'
 
 
 const EventView = () => (
-  <Row>
-    <List Col xs={6}>
-      <Subheader>Recent chats</Subheader>
+  <MobileTearSheet >
+    <List >
+      <Subheader>Attendees</Subheader>
       <ListItem
         primaryText="JSON.stringify(kim)"
         leftAvatar={<Avatar src="images/jason.jpg" />}
@@ -38,7 +38,7 @@ const EventView = () => (
         rightIcon={<CommunicationChatBubble />}
       />
     </List>
-  </Row>
+  </MobileTearSheet>
 );
 
 
