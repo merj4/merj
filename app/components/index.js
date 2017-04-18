@@ -48,7 +48,6 @@ class App extends Component {
     console.log('Events have been updated!')
   }
 
-
   render() {
     if (this.state.activeEvent === null) {
         return (
