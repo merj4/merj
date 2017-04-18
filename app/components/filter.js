@@ -39,6 +39,7 @@ class Filter extends Component {
 
   render() {
     let labelForMap = this.state.isMap ? "Map" : "List"
+    console.log("props!!hey!!!", this.props)
     return (
       <Tabs
         // value={this.state.value}
@@ -56,7 +57,7 @@ class Filter extends Component {
         <Tab label={labelForMap} onActive={this.listMapHandler}>
           <div style={styles.headline}>
             <ListOrMapButton
-              events={this.state.filteredEvents}
+              events={this.props.events}
               viewState={this.state.isMap}
             />
           </div>
