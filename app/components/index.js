@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { Routes } from './Router'
 import Header from './header.js';
 import {Search} from './search';
 import Filter from './filter';

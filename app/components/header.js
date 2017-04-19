@@ -85,7 +85,7 @@ class Header extends Component {
         <a id="beepboop"> Beep Boop </a>
         <Nav pullRight>
           <div>{this.props.profile.name}</div>
-          <img src= {this.props.profile.picture} id="userpic"></img>
+          {/* <img src= {this.props.profile.picture} id="userpic"></img>*/}
           <Button id="formbutton" onClick={() => this.setState({ show: true})}>+</Button>
           <DropdownButton>
             <MenuItem><i className="fa fa-user fa-fw"></i>Profile</MenuItem>
