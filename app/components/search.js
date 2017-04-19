@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import AutoComplete from 'material-ui/AutoComplete';
 import _ from 'underscore';
 import { Button, Col, Row } from 'react-bootstrap';
+import moment from 'moment';
+import Filter from './filter';
 
 let transform = (date) => {
   let readDate = new Date(date);
@@ -56,10 +58,14 @@ class Search extends Component {
     let keys = _.each(data, function(obj) {
        _.each(obj, function(value, key) {
         if (key !== "image") {
-          if (key === "time") {
-          transform(obj[key])
+          if (key === "date") { // was time previously
+            value = moment(obj[key]).format('MMMM DD, YYYY')
           }
           databaseKeywords.push(value);
+        } else if (key !== "image") { // this may not be right
+          if (key === "time") {
+            databaseKeywords.push(transform(value));
+          }
         }
       })
     })
@@ -89,6 +95,10 @@ class Search extends Component {
             filter={AutoComplete.fuzzyFilter}
             maxSearchResults={5}
             id="searchbar"
+          />
+          <Filter
+            receiveDate={this.handleUpdateInput}
+            searchForDate={this.handleNewRequest}
           />
         </div>
       </div>

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Button, Col, Row } from 'react-bootstrap';
-import React, {Component} from 'react';
 import {Tabs, Tab} from 'material-ui/Tabs';
 import {EventItem} from './eventItem';
 import MapView from './mapView';
@@ -48,10 +47,9 @@ class Filter extends Component {
   }
 
   handleChange(date) {
-    console.log('Selected date: ', date);
+    console.log(moment(date).format('MMMM DD, YYYY'))
     this.setState({
-      startDate: date,
-      date: date
+      startDate: moment(date).format('MMMM DD, YYYY')
     })
     this.toggleCalendar()
   }
@@ -71,7 +69,7 @@ class Filter extends Component {
   }
 
   render() {
-    let labelForMap = this.state.isMap ? "Map" : "List"
+    let labelForMap = this.state.isMap ? "List": "Map"
     // console.log("props!!hey!!!", this.props)
     return (
       <Tabs
