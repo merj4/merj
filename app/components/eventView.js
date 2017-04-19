@@ -3,17 +3,8 @@ import { ChatUsers } from './chat-users'
 import { ChatInput } from './chat-input'
 import { ChatContainer } from './chat-container'
 
-const EventView = (props) => (
-  <div>
-    <ChatUsers />
-    <EventDetails events={props.events}/>
-    <ChatContainer />
-    <ChatInput />
-  </div>
-);
-
-const server = location.origin;
-const socket = io(server);
+// const server = location.origin;
+// const socket = io(server);
 
 class EventView extends Component {
   constructor(props) {
