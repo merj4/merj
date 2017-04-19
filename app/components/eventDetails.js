@@ -1,7 +1,6 @@
-let React = require('react');
+import React from 'react'
 
-
-let MobileTearSheet = React.createClass({
+let EventDetails = React.createClass({
 
   propTypes: {
     height: React.PropTypes.number
@@ -9,7 +8,7 @@ let MobileTearSheet = React.createClass({
 
   getDefaultProps() {
     return {
-      height: 350
+      height: 400
     };
   },
 
@@ -42,4 +41,4 @@ let MobileTearSheet = React.createClass({
 
 });
 
-module.exports = MobileTearSheet;
+export { EventDetails }
