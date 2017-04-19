@@ -1,10 +1,44 @@
-// every class must have a render function
-  // it's recommended that you start with a functional based component and
-  // only refactor to a class when you need some added functionality
+import React from 'react'
 
-  // This component strictly handles getting info from the database and rendering it
-  // This gets passed into eventView (along with chat) to create the complete eventView
+let EventDetails = React.createClass({
 
-  // The DB info that will get rendered here is the event name, place and host name
+  propTypes: {
+    height: React.PropTypes.number
+  },
 
-  // This probably doesn't need to handle any changing state and could just be a regular component
+  getDefaultProps() {
+    return {
+      height: 400
+    };
+  },
+
+  render() {
+
+    let styles = {
+      root: {
+        float: 'left',
+        marginBottom: 24,
+        marginRight: 24,
+        width: 360
+
+      },
+
+      container: {
+        border: 'solid 1px #d9d9d9',
+        height: this.props.height,
+        overflow: 'hidden'
+      }
+    };
+
+    return (
+      <div style={styles.root}>
+        <div style={styles.container}>
+          {this.props.children}
+        </div>
+      </div>
+    );
+  }
+
+});
+
+export { EventDetails }

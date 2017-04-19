@@ -1,5 +1,5 @@
-let React = require('react');
-
+import React from 'react';
+import { ChatMessage } from './chat-message'
 
 let MobileTearSheet = React.createClass({
 
@@ -9,7 +9,7 @@ let MobileTearSheet = React.createClass({
 
   getDefaultProps() {
     return {
-      height: 350
+      height: 775
     };
   },
 
@@ -17,10 +17,10 @@ let MobileTearSheet = React.createClass({
 
     let styles = {
       root: {
-        float: 'left',
+        float: 'right',
         marginBottom: 24,
         marginRight: 24,
-        width: 360
+        width: 700
 
       },
 
@@ -42,4 +42,13 @@ let MobileTearSheet = React.createClass({
 
 });
 
-module.exports = MobileTearSheet;
+
+const ChatContainer = () => (
+  <div>
+    <MobileTearSheet>
+      <ChatMessage />
+    </MobileTearSheet>
+  </div>
+);
+
+export { ChatContainer }
