@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { Routes } from './Router'
-import Header from './header.js';
+import Header from './header';
 import {Search} from './search';
 import Filter from './filter';
 import { EventList } from './eventList';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import axios from 'axios';
-import {EventView} from './eventView'
+import {Router, browserHistory } from 'react-router';
+import makeMainRoutes from './routes';
+
 
 injectTapEventPlugin();
 
@@ -17,8 +18,7 @@ class App extends Component {
     super(props);
     this.state = {
       events: [],
-      displayedEvents: [],
-      activeEvent: null
+      displayedEvents: []
     }
     this.updateEventList = this.updateEventList.bind(this);
   }
@@ -34,12 +34,6 @@ class App extends Component {
     });
   }
 
-  handleEventClick(event) {
-    this.setState({
-      activeEvent: event
-    })
-  }
-
   // build a helper method that will allow us to setState of events to the results of a search
 
   updateEventList(array) {
@@ -47,37 +41,22 @@ class App extends Component {
     console.log('Events have been updated!')
   }
 
+
   render() {
-    if (this.state.activeEvent === null) {
-        return (
-        <MuiThemeProvider>
-          <div >
-            <Header />
-            <Search
-              data={this.state.events}
-              updateEventList={this.updateEventList} />
-            <Filter events={this.state.events} />
-            <EventList events={this.state.displayedEvents} handleEventClick={this.handleEventClick.bind(this)}/>
-          </div>
-        </MuiThemeProvider>
-      );
-    } else {
-        return (
-        <MuiThemeProvider>
-          <div >
-            <Header />
-            <Search
-              data={this.state.events}
-              updateEventList={this.updateEventList} />
-            <Filter events={this.state.events} />
-            <EventView event={this.state.activeEvent} />
-          </div>
-        </MuiThemeProvider>
-      );
-    }
+    return (
+      <MuiThemeProvider>
+        <div >
+          <Header />
+          <Search
+            data={this.state.events}
+            updateEventList={this.updateEventList} />
+          <Filter events={this.state.events} />
+          <EventList events={this.state.displayedEvents} />
+        </div>
+      </MuiThemeProvider>
+    );
   }
 };
 
 
 ReactDOM.render(<App />, document.querySelector('.container'));
-

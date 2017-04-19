@@ -111,7 +111,7 @@ class Header extends Component {
                   id="location"
                   type="text"
                   label="Location"
-                  placeholder="Place/Address"
+                  placeholder="222 Rainbow St, San Jose CA"
                   value={this.state.location}
                   onChange={this.handleInputChange}
                   />
