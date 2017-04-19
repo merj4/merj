@@ -100,4 +100,6 @@ div, span {
   font-family: 'Roboto', sans-serif;
 }
 
-
+#userpic {
+  border-radius: 50%
+}

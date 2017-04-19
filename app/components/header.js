@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
-import { Button, Modal, Navbar, Nav, Form, FormGroup, ControlLabel, FormControl, HelpBlock, Col } from 'react-bootstrap';
+import { Button, Modal, Navbar, Nav, Form, FormGroup, ControlLabel, FormControl, HelpBlock, Col, DropdownButton, MenuItem } from 'react-bootstrap';
 import $ from 'jquery';
 import axios from 'axios';
 
@@ -76,17 +76,27 @@ class Header extends Component {
 
   render() {
     let close = () => this.setState({ show: false});
+    const { auth } = this.props
+    console.log ('profile from header', this.props.name)
+    console.log('picture:', this.props.profile.picture)
+
     return (
       <Nav inverse className="Container header">
         <a id="beepboop"> Beep Boop </a>
         <Nav pullRight>
+          <div>{this.props.profile.name}</div>
+          <img src= {this.props.profile.picture} id="userpic"></img>
           <Button id="formbutton" onClick={() => this.setState({ show: true})}>+</Button>
+          <DropdownButton>
+            <MenuItem><i className="fa fa-user fa-fw"></i>Profile</MenuItem>
+            <MenuItem id="logout" onClick={auth.logout.bind(this)}><i className="fa fa-sign-out fa-fw"></i>Logout</MenuItem>
+          </DropdownButton>
+
           <Modal  
             show={this.state.show}
             onHide={close}
             container={this}
-            aria-labelledby="contained-modal-title"
-          >
+            aria-labelledby="contained-modal-title">
             <Modal.Header closeButton></Modal.Header>
             <Modal.Body>
               <form>
@@ -111,7 +121,7 @@ class Header extends Component {
                   id="location"
                   type="text"
                   label="Location"
-                  placeholder="Place/Address"
+                  placeholder="222 Rainbow St, San Jose CA"
                   value={this.state.location}
                   onChange={this.handleInputChange}
                   />
@@ -185,7 +195,6 @@ class Header extends Component {
               <Button type="submit" text-align="center" onClick={this.handleSubmit}>Create Event</Button>
             </Modal.Footer>
           </Modal>
-
         </Nav>
       </Nav>
     );
