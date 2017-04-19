@@ -27,12 +27,6 @@ class ChatInput extends Component {
       sent: null
     }
     this.handleSubmit = this.handleSubmit.bind(this)
-    // this.handleInputChange = this.handleInputChange.bind(this)
-  } 
-  
-  // handleInputChange(e) {
-  //   this.props.receiveMessage(e.target.value)
-  // }
    
   handleSubmit(e) {
     const body = e.target.value;
