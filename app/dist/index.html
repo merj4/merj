@@ -3,18 +3,47 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
-     <script
-    src="https://code.jquery.com/jquery-3.2.1.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Spirax" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?keys=AIzaSyDeXgm-zpzbq4Z4Cre6yWn9cufdXk30yxs"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAI-komiUdyJ-FtR_qYUyl0OPhfxF08GI0"></script>
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <script
+    src="https://code.jquery.com/jquery-3.2.1.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Spirax" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="style.css">
     <title>MERJ</title>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body { font: 13px Helvetica, Arial; }
+      form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
+      form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
+      form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
+      #messages { list-style-type: none; margin: 0; padding: 0; }
+      #messages li { padding: 5px 10px; }
+      #messages li:nth-child(odd) { background: #eee; }
+    </style>
   </head>
   <body>
-    <div class="container"></div>
-  <script type="text/javascript" src="index_bundle.js"></script></body>
+  <div class="container"></div>
+    <ul id="messages"></ul>
+    <form action="">
+      <input id="m" autocomplete="off" /><button>Send</button>
+    </form>
+    
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      $(function () {
+        var socket = io();
+        $('form').submit(function(){
+          socket.emit('chat message', $('#m').val());
+          $('#m').val('');
+          return false;
+        });
+        socket.on('chat message', function(msg){
+          $('#messages').append($('<li>').text(msg));
+        });
+      });
+    </script>
+  <script type="text/javascript" src="index_bundle.js"></script>
+  </body>
 </html>
