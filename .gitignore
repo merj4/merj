@@ -1,6 +1,9 @@
 .DS_Store
+
 merjDeployKeyPair.pem
 
 node_modules
 
 .env
+
+index_bundle.js
