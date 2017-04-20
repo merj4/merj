@@ -66,7 +66,7 @@ class Filter extends Component {
         <Tab label="Distance"  >
           <div style={styles.headline}></div>
         </Tab>
-        <Tab label="Calendar" onClick={this.toggleCalendar}>
+        <Tab label="Calendar" onClick={this.toggleCalendar} handleEventClick={this.props.handleEventClick}>
           <div style={styles.headline}>
             {
               this.state.isOpen && (
@@ -89,6 +89,7 @@ class Filter extends Component {
             <ListOrMapButton
               events={this.props.events}
               viewState={this.state.isMap}
+              handleEventClick={this.props.handleEventClick}
             />
           </div>
         </Tab>
