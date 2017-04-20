@@ -26,7 +26,22 @@ const rightIconMenu = (
   </IconMenu>
 );
 
-const ChatMessage = (props) => {
+class ChatMessage extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      count: this.props.len
+    }
+  }
+
+  // onMessage() {
+  //   this.setState({
+  //     count: this.state.count++
+  //   })
+  // }
+
+  render() {
+
     return (
       <List>
         <Subheader>Today</Subheader>
@@ -36,13 +51,15 @@ const ChatMessage = (props) => {
           primaryText="JSON.stringify(kim)"
           secondaryText={
             <p>
-              {props.message}
+              {this.props.message}
             </p>
           }
           secondaryTextLines={2}
         />
       </List>
-  )
+    )
+  }
+  
 
 }
 
