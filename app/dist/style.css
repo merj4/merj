@@ -2,7 +2,6 @@ html, body{
   height: 100%;
   width: 100%;
   text-align: center;
-
 }
 
 .container  {
@@ -202,7 +201,7 @@ div, span {
 
 
 #explain {
-  font-size: 3rem;
+  font-size: 2rem;
   color: white;
   font-family: 'Raleway', sans-serif;
   padding: 3rem;
@@ -214,7 +213,7 @@ div, span {
   background-color: #ff6699;
   color: white;
   border: 1.0rem solid #ff6699;
-  font-size: 3rem;
+  font-size: 2rem;
   font-family: 'Raleway', sans-serif;
 }
 
@@ -226,7 +225,7 @@ div, span {
   border-color: transparent;
   border-bottom-color: #00bcd4;
   background-color: transparent;
-  font-size: 2rem;
+  font-size: 1.2rem;
   font-family: 'Raleway', sans-serif;
   color: white;
 }
@@ -247,4 +246,10 @@ div, span {
   font-family: 'Raleway', sans-serif;
   color: #00bcd4;
   padding: 3rem;
+}
+
+/*map*/
+#mapcontainer {
+  text-align: center;
+  margin: auto;
 }
