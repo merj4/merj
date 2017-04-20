@@ -3,10 +3,10 @@ import { ChatUsers } from './chat-users'
 import { ChatInput } from './chat-input'
 import { ChatContainer } from './chat-container'
 import { EventDetails } from './eventDetails'
-import io from 'socket.io-client'
+// import io from 'socket.io-client'
 
-const server = location.origin;
-const socket = io(server);
+// const server = location.origin;
+// const socket = io(server);
 
 class EventView extends Component {
   constructor(props) {
@@ -19,7 +19,6 @@ class EventView extends Component {
   
   receiveMessage(msg) {
     this.state.messages.push(msg)
-    console.log('This is line 21', this.state.messages)
   }
 
   render() {
@@ -27,11 +26,12 @@ class EventView extends Component {
       <div>
         <ChatUsers />
         <ChatContainer 
-        messages={this.state.messages} 
-        socket={socket}/>
+        messages={this.state.messages} />
+      {  // socket={socket}
+    }
         <EventDetails />
         <ChatInput 
-        socket={socket}
+        // socket={socket}
         receiveMessage={this.receiveMessage.bind(this)}
         />
       </div>
