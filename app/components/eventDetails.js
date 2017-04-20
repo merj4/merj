@@ -1,19 +1,11 @@
-import React from 'react'
+import React, { Component } from 'react';
 
-let EventDetails = React.createClass({
-
-  propTypes: {
-    height: React.PropTypes.number
-  },
-
-  getDefaultProps() {
-    return {
-      height: 400
-    };
-  },
+class EventDetails extends Component {
+  constructor(props) {
+    super(props);
+  }
 
   render() {
-
     let styles = {
       root: {
         float: 'left',
@@ -29,16 +21,21 @@ let EventDetails = React.createClass({
         overflow: 'hidden'
       }
     };
-
     return (
+      <div className= "eventDetails">
       <div style={styles.root}>
         <div style={styles.container}>
-          {this.props.children}
+          <h3>{this.props.activeEvent.title}</h3>
+          <div>{this.props.activeEvent.date}</div>
+          <div>{this.props.activeEvent.time}</div>
+          <div>{this.props.activeEvent.location}</div>
+          <div id="descriptioninchat">{this.props.activeEvent.description}</div>
         </div>
       </div>
+    </div>
     );
   }
 
-});
+};
 
 export { EventDetails }

@@ -16,6 +16,7 @@ class EventView extends Component {
     this.receiveMessage = this.receiveMessage.bind(this);
   }
   
+
   receiveMessage(message) {
     this.setState({
       message: message
@@ -23,15 +24,18 @@ class EventView extends Component {
   }
 
   render() {
+    console.log('this.props.activeEvent:', this.props.activeEvent )
     return (
       <div>
-        <ChatUsers />
-        <ChatContainer message={this.state.message}/>
-        <EventDetails />
-        <ChatInput 
-        // socket={socket}
-        receiveMessage={this.receiveMessage.bind(this)}
-        />
+        <div id='chatsidebar'>
+          <div><EventDetails activeEvent={this.props.activeEvent}/></div>
+          <div><ChatUsers /></div>
+        </div>
+        <div id='chatroom'>
+          <ChatContainer message={this.state.message}/>
+        </div>
+        <ChatInput socket={socket}
+          receiveMessage={this.receiveMessage.bind(this)} />
       </div>
     );
   }
