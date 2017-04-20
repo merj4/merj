@@ -51,7 +51,7 @@ class Search extends Component {
   };
 
   performSearch(date) {
-    console.log('Got a new search request!')
+    console.log('Got a new search request: ', date.slice(0, 9))
     let data = this.props.data.slice();
     let searchResults = [];
     let remainingResults = [];
@@ -59,7 +59,7 @@ class Search extends Component {
     //then pass in filteredEvents as newArray in updateEvents function
     data.forEach((event) => {
       for(let key in event) {
-       if(event[key].toString().toLowerCase().includes(date)) {
+       if(event[key].toString().toLowerCase().includes(date.slice(0, 9))) {
         searchResults.push(event);
        } else {
           remainingResults.push(event);
