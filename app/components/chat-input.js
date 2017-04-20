@@ -25,17 +25,19 @@ class ChatInput extends Component {
   onSubmit(e) {
     e.preventDefault();
     this.props.receiveMessage(this.state.currentMsg)
+
   }
 
 
   render() {
     return (
     <form id="form" onSubmit={this.onSubmit}>
-      <FormGroup >
-        <InputGroup >
+      <FormGroup onSubmit={this.onSubmit}>
+        <InputGroup onSubmit={this.onSubmit}>
           <FormControl 
           type="text" 
           onChange={this.handleInputChange}
+          onSubmit={this.onSubmit}
           />
           <DropdownButton
             componentClass={InputGroup.Button}
