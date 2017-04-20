@@ -110,7 +110,6 @@ class Search extends Component {
     // console.log('Search props: ', this.props.updateEventList)
     return (
       <div id="search">
-        <div >
           <AutoComplete
             searchText={this.state.searchText}
             onUpdateInput={this.handleUpdateInput}
@@ -119,8 +118,8 @@ class Search extends Component {
             filter={AutoComplete.fuzzyFilter}
             maxSearchResults={5}
             id="searchbar"
+            handleEventClick={this.props.handleEventClick}
           />
-        </div>
       </div>
     )
   }
