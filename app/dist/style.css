@@ -1,12 +1,15 @@
 html, body{
   height: 100%;
   width: 100%;
+  text-align: center;
+
 }
 
 .container  {
   height: 100%;
-  margin-right: auto;
-  margin-left: auto;
+  width: 65%;
+  margin: 10 auto;
+  text-align: left;
 }
 
 .centered {
@@ -33,13 +36,13 @@ html, body{
 /*header*/
 
 #topsocial {
-  font-size: 3rem;
+  font-size: 2.2rem;
   font-family: 'Raleway', sans-serif;
   color: #ff6699;
 }
 
 #toply {
-  font-size: 3rem;
+  font-size: 2.2rem;
   font-family: 'Raleway', sans-serif;
   color: #00bcd4;
 }
@@ -47,6 +50,11 @@ html, body{
 .header {
   margin: auto;
   font-size: 50px;
+}
+
+.pull-right {
+  float: right!important;
+  padding-top: 1rem;
 }
 
 .main-header {
@@ -66,6 +74,7 @@ html, body{
   right: -300px;
   top: 20px;
 }
+
 
 #search {
   height: 6rem;
@@ -89,14 +98,13 @@ html, body{
 #formbutton {
   background-color: transparent;
   border-color: transparent;
-  background-image: url('images/plus.png');
   background-repeat: no-repeat;
+  background-image: url('images/plus.png');
   color: transparent;
-  padding-left: 2rem;
+  padding-left: 1rem;
 }
 /*profile/logout button*/
 #profilelogout {
-  border: 0.1rem solid #;
   background-color: transparent;
   border-color: transparent;
   background-image: url('images/person.png');
