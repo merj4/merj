@@ -11,18 +11,20 @@ class EventDetails extends Component {
         float: 'left',
         marginBottom: 24,
         marginRight: 24,
-        width: 360
+        width: 360,
 
       },
 
       container: {
         border: 'solid 1px #d9d9d9',
         height: this.props.height,
-        overflow: 'hidden'
+        overflow: 'hidden',
       }
     };
+          console.log('eventDetails', this.props.activeEvent)
+
     return (
-      <div className= "eventDetails">
+      <div id="eventDetails">
       <div style={styles.root}>
         <div style={styles.container}>
           <h3>{this.props.activeEvent.title}</h3>

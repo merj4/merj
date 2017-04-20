@@ -16,8 +16,14 @@ class Profile extends Component {
   }
 
   render() {
+    console.log(this.props.profile)
+
     return (
-    <div>hi</div>
+    <div id='profile'>
+    <img id="profilepic" src={this.props.profile.picture}></img>
+    <div id="profilename">{this.props.profile.name}</div>
+    </div>
+
     )
   }
 }

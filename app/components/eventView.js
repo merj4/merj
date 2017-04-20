@@ -24,10 +24,9 @@ class EventView extends Component {
   }
 
   render() {
-    console.log('this.props.activeEvent:', this.props.activeEvent )
     return (
-      <div>
-        <div id='chatsidebar'>
+      <div id="chat">
+       <div id='chatsidebar'>
           <div><EventDetails activeEvent={this.props.activeEvent}/></div>
           <div><ChatUsers /></div>
         </div>

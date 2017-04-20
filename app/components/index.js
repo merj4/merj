@@ -19,6 +19,7 @@ injectTapEventPlugin();
 const auth = new AuthService('pzuivu1BmVpSBZN3oOAxF3MSGIywGW94', 'merjgirls.auth0.com');
 console.log("auth: " + auth);
 
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -70,9 +71,14 @@ class App extends Component {
   }
 
   handleEventClick(event) {
-    this.setState({
-      activeEvent: event
-    })
+    if (event !== null) {
+      this.state.activeEvent = event;
+      this.forceUpdate();
+    } else {
+      this.setState({
+        activeEvent: event
+      })
+    }
   }
 
   // build a helper method that will allow us to setState of events to the results of a search
@@ -108,7 +114,7 @@ class App extends Component {
       if (!auth.loggedIn()) {
        //replace({ pathname: '/login' })
        return (
-        <div>
+        <div id='logincontainer'>
           <Login auth={auth}/>
         </div>
         )
@@ -116,51 +122,55 @@ class App extends Component {
         if (this.state.activeEvent === null && this.state.showProfile === false) {
             return (
             <MuiThemeProvider>
-              <div >
+              <div>
                 <Header auth={auth} profile={profile} showProfile={this.showProfile}/>
                 <Search
                   data={this.state.events}
                   updateEventList={this.updateEventList}
                   dateSearch={this.state.date}
                   ref='child'
+                  handleEventClick={this.handleEventClick.bind(this)}
                 />
                 <Filter
                   events={this.state.events}
                   updateDate={this.updateDateState}
+                  handleEventClick={this.handleEventClick.bind(this)}
                 />
                 <EventList events={this.state.displayedEvents} handleEventClick={this.handleEventClick.bind(this)}/>
               </div>
             </MuiThemeProvider>
           );
         } else if (this.state.activeEvent !== null && this.state.showProfile === false) {
+          console.log('activeEvent in index.js', this.state.activeEvent)
             return (
             <MuiThemeProvider>
-              <div >
+              <div>
                 <Header auth={auth} profile={profile} showProfile={this.showProfile}/>
                 <Search
                   data={this.state.events}
                   updateEventList={this.updateEventList}
                   dateSearch={this.state.date}
                   ref='child'
+                  handleEventClick={this.handleEventClick.bind(this)}
                 />
                 <Filter
                   events={this.state.events}
                   date={this.updateDateState}
                 />
-                <EventView event={this.state.activeEvent} />
+                <EventView activeEvent={this.state.activeEvent} />
               </div>
             </MuiThemeProvider>
           );
         } else if (this.state.activeEvent === null && this.state.showProfile === true) {
           return (
           <MuiThemeProvider>
-              <div >
+              <div>
                 <Header auth={auth} profile={profile} showProfile={this.showProfile}/>
                 <Search
                   data={this.state.events}
-                  updateEventList={this.updateEventList} />
-                <Filter events={this.state.events} />
-                <Profile auth={auth} profile={profile} />
+                  updateEventList={this.updateEventList} handleEventClick={this.handleEventClick.bind(this)}/>
+                <Filter events={this.state.events} handleEventClick={this.handleEventClick.bind(this)}/>
+                <Profile auth={auth} profile={profile} handleEventClick={this.handleEventClick.bind(this)}/>
               </div>
             </MuiThemeProvider>
           )
