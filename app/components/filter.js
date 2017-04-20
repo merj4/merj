@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import { Button, Col, Row } from 'react-bootstrap';
 import {Tabs, Tab} from 'material-ui/Tabs';
 import {EventItem} from './eventItem';
