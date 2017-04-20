@@ -47,11 +47,11 @@ class Filter extends Component {
   }
 
   handleChange(date) {
-    console.log(moment(date).format('MMMM DD, YYYY'))
+    console.log(moment(date).format())
     this.setState({
-      startDate: moment(date).format('MMMM DD, YYYY')
+      startDate: moment(date).format()
     })
-    this.props.updateDate(moment(date).format('MMMM DD, YYYY'))
+    this.props.updateDate(moment(date).format())
     this.toggleCalendar()
     // this.props.receiveDate(this.state.startDate)
     // this.props.searchForDate()

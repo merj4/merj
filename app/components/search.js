@@ -50,11 +50,31 @@ class Search extends Component {
     });
   };
 
-
+  performSearch(date) {
+    console.log('Got a new search request!')
+    let data = this.props.data.slice();
+    let searchResults = [];
+    let remainingResults = [];
+    //Helper function for search
+    //then pass in filteredEvents as newArray in updateEvents function
+    data.forEach((event) => {
+      for(let key in event) {
+       if(event[key].toString().toLowerCase().includes(date)) {
+        searchResults.push(event);
+       } else {
+          remainingResults.push(event);
+        }
+      }
+    })
+    this.props.updateEventList(searchResults);
+    this.setState({
+      searchText: '',
+    });
+  };
 
   // this provides the autocomplete strings the appear when a user begins typing
   autoCompleteStorage() {
-    console.log("search:", this.props.data);
+    // console.log("search:", this.props.data);
     let data = this.props.data;
     let databaseKeywords = []; // contains keywords captured from the search bar
     let keys = _.each(data, function(obj) {
@@ -86,7 +106,7 @@ class Search extends Component {
   render() {
     // invoke the helper method from our App class to update the state
     // console.log('Search props: ', this.props.updateEventList)
-    {this.checkDateState()}
+    // {this.checkDateState()}
     return (
       <div id="search">
         <div >

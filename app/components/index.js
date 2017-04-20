@@ -97,6 +97,7 @@ class App extends Component {
     this.setState({
       date: newDate
     })
+    this.refs.child.performSearch(newDate);
   }
 
   render() {
@@ -119,6 +120,7 @@ class App extends Component {
                   data={this.state.events}
                   updateEventList={this.updateEventList}
                   dateSearch={this.state.date}
+                  ref='child'
                 />
                 <Filter
                   events={this.state.events}
@@ -137,6 +139,7 @@ class App extends Component {
                   data={this.state.events}
                   updateEventList={this.updateEventList}
                   dateSearch={this.state.date}
+                  ref='child'
                 />
                 <Filter
                   events={this.state.events}
