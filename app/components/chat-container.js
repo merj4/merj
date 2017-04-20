@@ -48,7 +48,9 @@ const ChatContainer = (props) => (
 
   <div>
     <MobileTearSheet>
-      <ChatMessage message={props.message}/>
+    {props.messages.map((message) => 
+      <ChatMessage message={message}/>
+    )}
     </MobileTearSheet>
   </div>
 );

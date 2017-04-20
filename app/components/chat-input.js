@@ -2,62 +2,52 @@ import React, { Component } from 'react';
 import TextField from 'material-ui/TextField';
 import io from 'socket.io-client';
 import {orange500, blue500} from 'material-ui/styles/colors';
-
-const styles = {
-  errorStyle: {
-    color: orange500,
-  },
-  underlineStyle: {
-    fontWeight: "bold",
-  },
-  floatingLabelStyle: {
-    color: orange500,
-  },
-  floatingLabelFocusStyle: {
-    color: blue500,
-  },
-
-};
+import {FormGroup, InputGroup, DropdownButton, FormControl, MenuItem} from 'react-bootstrap'
 
 
 class ChatInput extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      sent: null
+      msgArr: []
     }
-    this.handleSubmit = this.handleSubmit.bind(this)
+    this.onSubmit = this.onSubmit.bind(this)
     this.handleInputChange = this.handleInputChange.bind(this)
   } 
   
   handleInputChange(e) {
-    this.props.receiveMessage(e.target.value)
   }
 
-  handleSubmit() {
-    console.log('line 37 in chat-input')
-    this.setState({
-      sent: ''
-    })
+  onSubmit(e) {
+    e.preventDefault();
+    let msgObj = {}
+    msgObj.message = e.target.value;
+    this.state.msgArr.push(msgObj)
+    this.props.receiveMessage(this.state.msgArr)
   }
 
 
   render() {
     return (
-    <div>
+    <form id="form" onSubmit={this.onSubmit}>
+      <FormGroup >
+        <InputGroup >
+          <FormControl 
+          type="text" 
+          onChange={this.handleInputChange}
+          />
+          <DropdownButton
+            componentClass={InputGroup.Button}
+            id="input-dropdown-addon"
+            title="Action"
+            
+          >
+            <MenuItem key="1">Item</MenuItem>
+          </DropdownButton>
+        </InputGroup>
+      </FormGroup>
 
-      <TextField
-      className="input-chat"
-      floatingLabelText="Start Chatting Here"
-      floatingLabelStyle={styles.floatingLabelStyle}
-      floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
-      fullWidth={true}
-      onChange={this.handleInputChange}
-      underlineStyle={styles.underlineStyle}
-      onClick={this.handleSubmit}
-      />
-
-    </div>
+    </form>
     )
   }
 }

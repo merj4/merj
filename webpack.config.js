@@ -35,6 +35,7 @@ module.exports = {
     new webpack.NoEmitOnErrorsPlugin()
   ],
   devServer: {
+    contentBase: "/app/public",
     hot:true,
     port: 8081,
     proxy: {
