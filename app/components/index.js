@@ -97,7 +97,8 @@ class App extends Component {
     this.setState({
       date: newDate
     })
-    this.refs.child.performSearch(newDate);
+    this.refs.child.performSearch(newDate); // apparently you can use the methods of child compoents inside of parent components
+    // you must add ref='child' to the child component you want to borrow the method from
   }
 
   render() {
