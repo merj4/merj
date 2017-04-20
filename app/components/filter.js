@@ -25,7 +25,7 @@ class Filter extends Component {
     this.state = {
       filteredEvents: this.props.events,
       isMap: false,
-      startDate: moment(),
+      startDate: moment(), // this property highlights today's date on the calendar
       isOpen: false
     }
     // will need to also bind all the other methods to 'this'
@@ -35,10 +35,6 @@ class Filter extends Component {
     // this.handleSelect = this.handleSelect.bind(this);
   }
 
-  // distanceFilter method
-  // calendarFilter method
-  // hotFilter method
-  // ListOrMapHandler method
   listMapHandler() {
     // console.log('listMapHandler was called!', this.props.events);
     this.setState({
@@ -48,21 +44,9 @@ class Filter extends Component {
 
   handleChange(date) {
     console.log(moment(date).format())
-    this.setState({
-      startDate: moment(date).format()
-    })
     this.props.updateDate(moment(date).format())
     this.toggleCalendar()
-    // this.props.receiveDate(this.state.startDate)
-    // this.props.searchForDate()
   }
-
-  // handleSelect(date) {
-  //   this.setState({
-  //     date: date
-  //   })
-  //   console.log(this.state.date)
-  // }
 
   toggleCalendar(e) {
     e && e.preventDefault()

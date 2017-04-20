@@ -50,6 +50,8 @@ class Search extends Component {
     });
   };
 
+  // this method is specific to the calendar filter method
+    // is invoked from the App parent component
   performSearch(date) {
     console.log('Got a new search request: ', date.slice(0, 9))
     let data = this.props.data.slice();
@@ -106,7 +108,6 @@ class Search extends Component {
   render() {
     // invoke the helper method from our App class to update the state
     // console.log('Search props: ', this.props.updateEventList)
-    // {this.checkDateState()}
     return (
       <div id="search">
         <div >
