@@ -17,9 +17,9 @@ module.exports = {
   },
   module: {
     loaders: [
-      { 
-        test: /\.js$/, 
-        exclude: /node_modules/, 
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
         loader: ["react-hot-loader", "babel-loader"],
       },
       {
@@ -35,7 +35,8 @@ module.exports = {
     new webpack.NoEmitOnErrorsPlugin()
   ],
   devServer: {
-    hot:true,
+    contentBase: __dirname + '/app/dist',
+    hot: true,
     port: 8081,
     proxy: {
       '/chat/*': 'http://127.0.0.1:' + (process.env.PORT || 8080)
