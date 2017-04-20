@@ -82,6 +82,7 @@ class App extends Component {
     console.log('Events have been updated!')
   }
 
+
   showProfile() {
     // console.log("showProfile Ran")
     this.setState({
