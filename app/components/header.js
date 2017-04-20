@@ -34,7 +34,7 @@ class Header extends Component {
       description: '',
       eventUrl: '',
       category: ''
-    }   
+    }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
   }
@@ -64,7 +64,7 @@ class Header extends Component {
         console.log("Post request successful!")
       }).catch(err => {
         alert("You didn't finish the form! Please return and submit upon completion", err)
-      }) 
+      })
       window.setTimeout(() => {
         location.reload()
       }, 50)
@@ -72,7 +72,7 @@ class Header extends Component {
     this.setState({
       show: false
     })
-  } 
+  }
 
   render() {
     let close = () => this.setState({ show: false});
@@ -88,11 +88,11 @@ class Header extends Component {
           {/* <img src= {this.props.profile.picture} id="userpic"></img>*/}
           <Button id="formbutton" onClick={() => this.setState({ show: true})}>+</Button>
           <DropdownButton>
-            <MenuItem><i className="fa fa-user fa-fw"></i>Profile</MenuItem>
+            <MenuItem id="showProfile" onClick={ this.props.showProfile }><i className="fa fa-user fa-fw"></i>Profile</MenuItem>
             <MenuItem id="logout" onClick={auth.logout.bind(this)}><i className="fa fa-sign-out fa-fw"></i>Logout</MenuItem>
           </DropdownButton>
 
-          <Modal  
+          <Modal
             show={this.state.show}
             onHide={close}
             container={this}
@@ -100,7 +100,7 @@ class Header extends Component {
             <Modal.Header closeButton></Modal.Header>
             <Modal.Body>
               <form>
-              
+
                 <FormGroup>
                   <ControlLabel>Event Name</ControlLabel>
                   <FormControl
@@ -130,11 +130,11 @@ class Header extends Component {
                 <FormGroup controlId="date" >
                   <ControlLabel>Date</ControlLabel>
                   {' '}
-                  <FormControl 
+                  <FormControl
                   id="date"
-                  name="date" 
-                  type="text" 
-                  placeholder="Date" 
+                  name="date"
+                  type="text"
+                  placeholder="Date"
                   onChange={this.handleInputChange}
                   />
                 </FormGroup>
@@ -143,21 +143,21 @@ class Header extends Component {
                   <ControlLabel>Time</ControlLabel>
                   {' '}
                   <FormControl
-                  id="time" 
-                  name="time" 
-                  type="time" 
-                  placeholder="time" 
+                  id="time"
+                  name="time"
+                  type="time"
+                  placeholder="time"
                   onChange={this.handleInputChange}
                   />
                 </FormGroup>
 
                 <FormGroup controlId="description">
                   <ControlLabel>Description</ControlLabel>
-                  <FormControl 
+                  <FormControl
                   id="description"
                   name="description"
-                  componentClass="textarea" 
-                  placeholder="Description" 
+                  componentClass="textarea"
+                  placeholder="Description"
                   value={this.state.description}
                   onChange={this.handleInputChange}
                   />
@@ -165,7 +165,7 @@ class Header extends Component {
 
                 <FormGroup>
                   <ControlLabel>Image Url</ControlLabel>
-                  <FormControl 
+                  <FormControl
                   name="eventUrl"
                   id="event-url"
                   type="text"
@@ -175,10 +175,10 @@ class Header extends Component {
                   onChange={this.handleInputChange}
                   />
                 </FormGroup>
-                
+
                 <FormGroup>
                   <ControlLabel>Category</ControlLabel>
-                  <FormControl 
+                  <FormControl
                   name="category"
                   id="category"
                   type="text"
