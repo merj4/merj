@@ -19,6 +19,7 @@ class Search extends Component {
     }
     this.handleUpdateInput = this.handleUpdateInput.bind(this);
     this.handleNewRequest = this.handleNewRequest.bind(this);
+    this.autoCompleteStorage = this.autoCompleteStorage.bind(this);
   }
 
   // we are also going to need a method to handle onSubmit
@@ -28,6 +29,7 @@ class Search extends Component {
   // if any object doesn't contain a value that matches our keywords, splice it out
     // what remains will only be the objects that contain values that matches our keywords
   handleNewRequest() {
+    console.log('Got a new search request!')
     let data = this.props.data.slice();
     let searchResults = [];
     let remainingResults = [];
@@ -74,16 +76,17 @@ class Search extends Component {
 
   // this keeps track of what the user types into the search, also part of Material-UI
   handleUpdateInput(searchText) {
+    // console.log('Updating input...')
     this.autoCompleteStorage();
     this.setState({
       searchText: searchText.toLowerCase(),
     });
   };
 
-
   render() {
     // invoke the helper method from our App class to update the state
     // console.log('Search props: ', this.props.updateEventList)
+    {this.checkDateState()}
     return (
       <div id="search">
         <div >
@@ -95,10 +98,6 @@ class Search extends Component {
             filter={AutoComplete.fuzzyFilter}
             maxSearchResults={5}
             id="searchbar"
-          />
-          <Filter
-            receiveDate={this.handleUpdateInput}
-            searchForDate={this.handleNewRequest}
           />
         </div>
       </div>

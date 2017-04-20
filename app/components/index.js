@@ -11,6 +11,7 @@ import {EventView} from './eventView'
 import AuthService from '../../config/AuthService.js'
 import Login from './login.js'
 import Profile from './profile.js'
+import moment from 'moment';
 
 injectTapEventPlugin();
 
@@ -27,6 +28,7 @@ class App extends Component {
       activeEvent: null,
       profile: auth.getProfile(),
       showProfile: false,
+      date: moment()
     }
 
     auth.on('profile_updated', (newProfile) => {
@@ -37,7 +39,7 @@ class App extends Component {
       this.setState({profile: auth.getProfile()})
       //this.render();
     })
-
+    this.updateDateState = this.updateDateState.bind(this);
     this.updateEventList = this.updateEventList.bind(this);
     this.showProfile = this.showProfile.bind(this);
   }
@@ -90,6 +92,13 @@ class App extends Component {
     console.log("activeEvent: " + this.state.activeEvent)
   }
 
+  updateDateState(newDate) {
+    console.log('Updating the date in index: ', this.state.date, 'Arg:', newDate)
+    this.setState({
+      date: newDate
+    })
+  }
+
   render() {
     const { profile } = this.state;
     //const requireAuth = (nextState, replace) => {
@@ -108,8 +117,13 @@ class App extends Component {
                 <Header auth={auth} profile={profile} showProfile={this.showProfile}/>
                 <Search
                   data={this.state.events}
-                  updateEventList={this.updateEventList} />
-                <Filter events={this.state.events} />
+                  updateEventList={this.updateEventList}
+                  dateSearch={this.state.date}
+                />
+                <Filter
+                  events={this.state.events}
+                  updateDate={this.updateDateState}
+                />
                 <EventList events={this.state.displayedEvents} handleEventClick={this.handleEventClick.bind(this)}/>
               </div>
             </MuiThemeProvider>
@@ -121,8 +135,13 @@ class App extends Component {
                 <Header auth={auth} profile={profile} showProfile={this.showProfile}/>
                 <Search
                   data={this.state.events}
-                  updateEventList={this.updateEventList} />
-                <Filter events={this.state.events} />
+                  updateEventList={this.updateEventList}
+                  dateSearch={this.state.date}
+                />
+                <Filter
+                  events={this.state.events}
+                  date={this.updateDateState}
+                />
                 <EventView event={this.state.activeEvent} />
               </div>
             </MuiThemeProvider>

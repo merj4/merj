@@ -51,7 +51,10 @@ class Filter extends Component {
     this.setState({
       startDate: moment(date).format('MMMM DD, YYYY')
     })
+    this.props.updateDate(moment(date).format('MMMM DD, YYYY'))
     this.toggleCalendar()
+    // this.props.receiveDate(this.state.startDate)
+    // this.props.searchForDate()
   }
 
   // handleSelect(date) {
