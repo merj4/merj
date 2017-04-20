@@ -23,12 +23,11 @@ class ChatInput extends Component {
 
   onSubmit(e) {
     e.preventDefault();
-    this.props.receiveMessage(this.state.currentMsg)
-    this.props.socket.emit('chat message')
-    this.props.socket.on('chat message', function(msg){
-      console.log('chat input')
-      // $('#messages').append($('<li>').text(msg));
-    });
+    // this.props.socket.emit('chat message')
+    // this.props.socket.on('chat message', function(msg){
+    //   console.log(msg)
+    // });
+    this.props.receiveMessage(msg)
 
   }
 
