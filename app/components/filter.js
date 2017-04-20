@@ -1,4 +1,5 @@
-
+import React from 'react';
+import { Button, Col, Row } from 'react-bootstrap';
 import React, {Component} from 'react';
 import {Tabs, Tab} from 'material-ui/Tabs';
 import {EventItem} from './eventItem';
@@ -15,7 +16,6 @@ const styles = {
     paddingTop: 16,
     marginBottom: 12,
     fontWeight: 400,
-
   }
 };
 

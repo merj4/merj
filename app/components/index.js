@@ -10,6 +10,7 @@ import axios from 'axios';
 import {EventView} from './eventView'
 import AuthService from '../../config/AuthService.js'
 import Login from './login.js'
+import Profile from './profile.js'
 
 injectTapEventPlugin();
 
@@ -24,7 +25,8 @@ class App extends Component {
       events: [],
       displayedEvents: [],
       activeEvent: null,
-      profile: auth.getProfile()
+      profile: auth.getProfile(),
+      showProfile: false,
     }
 
     auth.on('profile_updated', (newProfile) => {
@@ -37,6 +39,7 @@ class App extends Component {
     })
 
     this.updateEventList = this.updateEventList.bind(this);
+    this.showProfile = this.showProfile.bind(this);
   }
 
   logout(){
@@ -77,8 +80,18 @@ class App extends Component {
     console.log('Events have been updated!')
   }
 
+  showProfile() {
+    // console.log("showProfile Ran")
+    this.setState({
+      showProfile: true,
+      activeEvent: null
+    })
+    console.log("showProfile: " + this.state.showProfile)
+    console.log("activeEvent: " + this.state.activeEvent)
+  }
+
   render() {
-    const { profile } = this.state
+    const { profile } = this.state;
     //const requireAuth = (nextState, replace) => {
       if (!auth.loggedIn()) {
        //replace({ pathname: '/login' })
@@ -88,11 +101,11 @@ class App extends Component {
         </div>
         )
       } else {
-        if (this.state.activeEvent === null) {
+        if (this.state.activeEvent === null && this.state.showProfile === false) {
             return (
             <MuiThemeProvider>
               <div >
-                <Header auth={auth} profile={profile}/>
+                <Header auth={auth} profile={profile} showProfile={this.showProfile}/>
                 <Search
                   data={this.state.events}
                   updateEventList={this.updateEventList} />
@@ -101,11 +114,11 @@ class App extends Component {
               </div>
             </MuiThemeProvider>
           );
-        } else {
+        } else if (this.state.activeEvent !== null && this.state.showProfile === false) {
             return (
             <MuiThemeProvider>
               <div >
-                <Header auth={auth} profile={profile}/>
+                <Header auth={auth} profile={profile} showProfile={this.showProfile}/>
                 <Search
                   data={this.state.events}
                   updateEventList={this.updateEventList} />
@@ -114,6 +127,19 @@ class App extends Component {
               </div>
             </MuiThemeProvider>
           );
+        } else if (this.state.activeEvent === null && this.state.showProfile === true) {
+          return (
+          <MuiThemeProvider>
+              <div >
+                <Header auth={auth} profile={profile} showProfile={this.showProfile}/>
+                <Search
+                  data={this.state.events}
+                  updateEventList={this.updateEventList} />
+                <Filter events={this.state.events} />
+                <Profile auth={auth} profile={profile} />
+              </div>
+            </MuiThemeProvider>
+          )
         }
       }
   }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import AutoComplete from 'material-ui/AutoComplete';
 import _ from 'underscore';
+import { Button, Col, Row } from 'react-bootstrap';
 
 let transform = (date) => {
   let readDate = new Date(date);
@@ -72,8 +73,6 @@ class Search extends Component {
       searchText: searchText.toLowerCase(),
     });
   };
-
-
 
 
   render() {
