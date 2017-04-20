@@ -11,22 +11,21 @@ class EventView extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      messages: [];
+      messages: []
     }
     this.receiveMessage = this.receiveMessage.bind(this);
   }
   
-  receiveMessage(msgArr) {
-    this.setState({
-      messages: msgArr
-    })
+  receiveMessage(msg) {
+    this.state.messages.push(msg)
   }
 
   render() {
+    console.log(this.state.messages)
     return (
       <div>
         <ChatUsers />
-        <ChatContainer message={this.state.messages}/>
+        <ChatContainer messages={this.state.messages}/>
         <EventDetails />
         <ChatInput 
         // socket={socket}

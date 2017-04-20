@@ -9,21 +9,22 @@ class ChatInput extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      msgArr: []
+      currentMsg: null
     }
     this.onSubmit = this.onSubmit.bind(this)
     this.handleInputChange = this.handleInputChange.bind(this)
   } 
   
   handleInputChange(e) {
+    console.log('Line 19')
+    this.setState({
+    currentMsg: e.target.value
+    })
   }
 
   onSubmit(e) {
     e.preventDefault();
-    let msgObj = {}
-    msgObj.message = e.target.value;
-    this.state.msgArr.push(msgObj)
-    this.props.receiveMessage(this.state.msgArr)
+    this.props.receiveMessage(this.state.currentMsg)
   }
 
 
