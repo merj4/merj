@@ -7,9 +7,7 @@ import io from 'socket.io-client'
 
 const server = location.origin;
 const socket = io(server);
-socket.on('message', function() {
-  console.log('You\'ve received a message!')
-})
+
 class EventView extends Component {
   constructor(props) {
     super(props)
@@ -28,10 +26,12 @@ class EventView extends Component {
     return (
       <div>
         <ChatUsers />
-        <ChatContainer messages={this.state.messages}/>
+        <ChatContainer 
+        messages={this.state.messages} 
+        socket={socket}/>
         <EventDetails />
         <ChatInput 
-        // socket={socket}
+        socket={socket}
         receiveMessage={this.receiveMessage.bind(this)}
         />
       </div>
