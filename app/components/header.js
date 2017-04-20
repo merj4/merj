@@ -43,7 +43,6 @@ class Header extends Component {
     const target = e.target;
     const value = target.value;
     const name = target.name;
-    console.log(name, value)
     this.setState({
       [name]: value
     });
@@ -77,8 +76,6 @@ class Header extends Component {
   render() {
     let close = () => this.setState({ show: false});
     const { auth } = this.props
-    console.log ('profile from header', this.props.name)
-    console.log('picture:', this.props.profile.picture)
 
     return (
       <Nav inverse className="Container header">
