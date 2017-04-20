@@ -37,6 +37,11 @@ html, body {
   padding-bottom: 1rem;
 }
 
+.header {
+  margin: auto;
+  font-size: 50px;
+}
+
 .main-header {
   position: absolute;
   margin: auto;
