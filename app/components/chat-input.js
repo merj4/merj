@@ -16,7 +16,6 @@ class ChatInput extends Component {
   } 
   
   handleInputChange(e) {
-    console.log('Line 19')
     this.setState({
     currentMsg: e.target.value
     })
@@ -25,6 +24,11 @@ class ChatInput extends Component {
   onSubmit(e) {
     e.preventDefault();
     this.props.receiveMessage(this.state.currentMsg)
+    this.props.socket.emit('chat message')
+    this.props.socket.on('chat message', function(msg){
+      console.log('chat input')
+      // $('#messages').append($('<li>').text(msg));
+    });
 
   }
 

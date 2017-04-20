@@ -41,7 +41,7 @@ class ChatMessage extends Component {
   // }
 
   render() {
-
+    console.log('This is line 44', this.props)
     return (
       <List>
         <Subheader>Today</Subheader>
