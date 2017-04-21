@@ -40,6 +40,9 @@ class Filter extends Component {
     this.setState({
       isMap: !this.state.isMap
     });
+
+    this.props.showMap();
+
   }
 
   handleChange(date) {
@@ -86,11 +89,6 @@ class Filter extends Component {
         </Tab>
         <Tab label={labelForMap} onActive={this.listMapHandler}>
           <div style={styles.headline}>
-            <ListOrMapButton
-              events={this.props.events}
-              viewState={this.state.isMap}
-              handleEventClick={this.props.handleEventClick}
-            />
           </div>
         </Tab>
       </Tabs>
