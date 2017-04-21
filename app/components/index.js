@@ -61,22 +61,12 @@ class App extends Component {
     this.showProfile = this.showProfile.bind(this);
   }
 
-  // checkUser() {
-  //   axios.get('/api/user/:id')
-  //     .then(res => {
-  //       console.log('Profile get request: ', res);
-  //   });
-  // }
 
   logout(){
     auth.logout()//add props.auth.on('logged-out') event which should be triggered in authservice.js which refreshes page. and same for logged in or authenticated events rather than the use of routes in authservice and here.
     //this.context.router.push('/login');//
   }
 
-
-//TODO: add logout bu
-  // logout(){
-  //   this.props.auth.logout()
 
     //add props.auth.on('logged-out') event which should be triggered in authservice.js which refreshes page. and same for logged in or authenticated events rather than the use of routes in authservice and here.
     //this.context.router.push('/login');//
@@ -92,15 +82,6 @@ class App extends Component {
         displayedEvents: events
       });
     })
-
-    // axios.get('/api/user/:' + )
-    //   .then(res => {
-    //     console.log('Profile get request: ', res);
-    // })
-    // .catch(err => {
-    //   console.log(err);
-
-    // })
   }
 
   handleEventClick(event) {
@@ -190,7 +171,8 @@ class App extends Component {
                   events={this.state.events}
                   date={this.updateDateState}
                 />
-                <EventView activeEvent={this.state.activeEvent} />
+                <EventView activeEvent={this.state.activeEvent}
+                profile={this.state.profile} />
               </div>
             </MuiThemeProvider>
           );

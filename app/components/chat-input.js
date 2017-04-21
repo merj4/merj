@@ -27,20 +27,24 @@ class ChatInput extends Component {
       sent: null
     }
     this.handleSubmit = this.handleSubmit.bind(this)
-    this.handleInputChange = this.handleInputChange.bind(this)
+    // this.handleInputChange = this.handleInputChange.bind(this)
   } 
   
-  handleInputChange(e) {
-    this.props.receiveMessage(e.target.value)
+  // handleInputChange(e) {
+  //   this.props.receiveMessage(e.target.value)
+  // }
+   
+  handleSubmit(e) {
+    const body = e.target.value;
+    if (e.keyCode === 13 && body){
+      const message = {
+        body,
+        from: 'Me'
+      }
+      this.props.receiveMessage(message);
+      e.target.value = ''      
+    }
   }
-
-  handleSubmit() {
-    console.log('line 37 in chat-input')
-    this.setState({
-      sent: ''
-    })
-  }
-
 
   render() {
     return (
@@ -54,7 +58,7 @@ class ChatInput extends Component {
       fullWidth={true}
       onChange={this.handleInputChange}
       underlineStyle={styles.underlineStyle}
-      onClick={this.handleSubmit}
+      onKeyUp={this.handleSubmit}
       />
 
     </div>

@@ -27,24 +27,23 @@ const rightIconMenu = (
 );
 
 const ChatMessage = (props) => {
-    return (
-      <List>
-        <Subheader>Today</Subheader>
-        <ListItem
-          leftAvatar={<Avatar src="images/jason.jpg" />}
-          rightIconButton={rightIconMenu}
-          primaryText="JSON.stringify(kim)"
-          secondaryText={
-            <p>
-              <span style={{color: darkBlack}}>Brunch this weekend?</span><br />
-              I&apos;ll be in your neighborhood doing errands this weekend. Do you want to grab brunch?
-            </p>
-          }
-          secondaryTextLines={2}
-        />
-      </List>
+  console.log('This is line 44', props)
+  return (
+    <List>
+      <Subheader>Today</Subheader>
+      <ListItem
+        leftAvatar={<Avatar src={props.image} />}
+        rightIconButton={rightIconMenu}
+        primaryText={props.user}
+        secondaryText={
+          <p>
+         {props.message}
+          </p>
+        }
+        secondaryTextLines={2}
+      />
+    </List>
   )
-
 }
 
 export { ChatMessage }
