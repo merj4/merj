@@ -34,7 +34,7 @@ const ChatMessage = (props) => {
         <ListItem
           leftAvatar={<Avatar src="images/jason.jpg" />}
           rightIconButton={rightIconMenu}
-          primaryText="JSON.stringify(kim)"
+          primaryText={props.user}
           secondaryText={
             <p>
            {props.message}
