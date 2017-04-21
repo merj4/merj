@@ -4,6 +4,7 @@ var db = require('../db.js');
 module.exports = {
 
   getUser: function(req, res) {
+    console.log('GET USER REQ: ', req);
     db.User.findOne({
       where: { email: String(req.params.email) }
     })
