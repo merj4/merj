@@ -4,6 +4,24 @@ html, body{
   text-align: center;
 }
 
+/*removes all styling from a button so can start from scratch when styling a button!*/
+button {
+  margin      : 0;
+  padding     : 0;
+  border      : 0;
+  background  : transparent;
+  font-family : inherit;
+  font-size   : 1em;
+  cursor      : pointer;
+}
+
+/*removes all styling from a button so can start from scratch when styling a button!*/
+button::-moz-focus-inner{
+  padding : 0;
+  border  : 0;
+}
+
+
 .container  {
   height: 100%;
   width: 65%;
@@ -78,7 +96,7 @@ html, body{
 #search {
   height: 6rem;
   text-align: left;
-  margin-left: 18rem; 
+  margin-left: 18rem;
   margin-top: 0.6rem;
   border-color: transparent;
 }
@@ -116,6 +134,8 @@ html, body{
   font-size: 1.2rem;
   text-align: left;
 }
+
+
 
 
 #tabs {
@@ -164,7 +184,7 @@ div, span {
 #logincontainer {
  height: 100%;
  width: 100%;
-} 
+}
 
 .login {
   height: 100%;
