@@ -66,12 +66,12 @@ class MapView extends Component {
 
   render() {
     var style = {
-      width: "1000px",
-      height: "800px",
+      width: "770px",
+      height: "770px",
     };
 
     return (
-      <div className="container" style={style}>
+      <div id="mapcontainer" style={style}>
         <div ref="map" style={style} ></div>
       </div>
       );

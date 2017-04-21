@@ -1,5 +1,5 @@
-
 import React, {Component} from 'react';
+import { Button, Col, Row } from 'react-bootstrap';
 import {Tabs, Tab} from 'material-ui/Tabs';
 import {EventItem} from './eventItem';
 import MapView from './mapView';
@@ -15,7 +15,6 @@ const styles = {
     paddingTop: 16,
     marginBottom: 12,
     fontWeight: 400,
-
   }
 };
 
@@ -26,7 +25,7 @@ class Filter extends Component {
     this.state = {
       filteredEvents: this.props.events,
       isMap: false,
-      startDate: moment(),
+      startDate: moment(), // this property highlights today's date on the calendar
       isOpen: false
     }
     // will need to also bind all the other methods to 'this'
@@ -36,10 +35,6 @@ class Filter extends Component {
     // this.handleSelect = this.handleSelect.bind(this);
   }
 
-  // distanceFilter method
-  // calendarFilter method
-  // hotFilter method
-  // ListOrMapHandler method
   listMapHandler() {
     // console.log('listMapHandler was called!', this.props.events);
     this.setState({
@@ -48,20 +43,10 @@ class Filter extends Component {
   }
 
   handleChange(date) {
-    console.log('Selected date: ', date);
-    this.setState({
-      startDate: date,
-      date: date
-    })
+    console.log(moment(date).format())
+    this.props.updateDate(moment(date).format())
     this.toggleCalendar()
   }
-
-  // handleSelect(date) {
-  //   this.setState({
-  //     date: date
-  //   })
-  //   console.log(this.state.date)
-  // }
 
   toggleCalendar(e) {
     e && e.preventDefault()
@@ -71,7 +56,7 @@ class Filter extends Component {
   }
 
   render() {
-    let labelForMap = this.state.isMap ? "Map" : "List"
+    let labelForMap = this.state.isMap ? "List": "Map"
     // console.log("props!!hey!!!", this.props)
     return (
       <Tabs
@@ -81,7 +66,7 @@ class Filter extends Component {
         <Tab label="Distance"  >
           <div style={styles.headline}></div>
         </Tab>
-        <Tab label="Calendar" onClick={this.toggleCalendar}>
+        <Tab label="Calendar" onClick={this.toggleCalendar} handleEventClick={this.props.handleEventClick}>
           <div style={styles.headline}>
             {
               this.state.isOpen && (
@@ -104,6 +89,7 @@ class Filter extends Component {
             <ListOrMapButton
               events={this.props.events}
               viewState={this.state.isMap}
+              handleEventClick={this.props.handleEventClick}
             />
           </div>
         </Tab>

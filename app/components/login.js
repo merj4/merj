@@ -15,20 +15,18 @@ export class Login extends React.Component {
     const { auth } = this.props
 
     return (
-      <div className="container login">
-        <div className="jumbotron">
-          <div className="row align-items-center justify-contents-center">
-            <div className="col">
-              <h1>MERJ</h1>
-            </div>
-            <div className="w-100"></div>
-            <div className="w-100"></div>
-            <div className="col">
-              <button className="btn btn-primary" onClick={auth.login.bind(this)}>Login</button>
-            </div>
+      <div className="login">
+        <div id="logo"></div>
+        <div id="loginContainer">
+          <span id='social'>Social.<span id='ly'>ly</span></span>
+          <h2 id="explain">Chat before, during, and after events</h2>
+          <button id="loginbutton" onClick={auth.login.bind(this)}>Join</button>
+          <div id="aboutuscontainer">
+          <button id="aboutus">About us</button>
           </div>
         </div>
       </div>
+
     )
   }
 }
