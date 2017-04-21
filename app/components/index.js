@@ -75,6 +75,13 @@ class App extends Component {
     this.setUserEvents = this.setUserEvents.bind(this);
   }
 
+  // checkUser() {
+  //   axios.get('/api/user/:id')
+  //     .then(res => {
+  //       console.log('Profile get request: ', res);
+  //   });
+  // }
+
   logout(){
     auth.logout()//add props.auth.on('logged-out') event which should be triggered in authservice.js which refreshes page. and same for logged in or authenticated events rather than the use of routes in authservice and here.
     //this.context.router.push('/login');//
