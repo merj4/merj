@@ -31,7 +31,7 @@ class EventView extends Component {
   }
 
   render() {
-    console.log(this.state.messages)
+    console.log(this.props.profile)
     return (
       <div id="chat">
        <div id='chatsidebar'>
@@ -39,7 +39,8 @@ class EventView extends Component {
           <div><ChatUsers /></div>
         </div>
         <div id='chatroom'>
-          <ChatContainer messages={this.state.messages}/>
+          <ChatContainer messages={this.state.messages}
+          profile={this.props.profile}/>
         </div>
         <ChatInput socket={socket}
           receiveMessage={this.receiveMessage.bind(this)} />

@@ -32,7 +32,7 @@ const ChatMessage = (props) => {
       <List>
         <Subheader>Today</Subheader>
         <ListItem
-          leftAvatar={<Avatar src="images/jason.jpg" />}
+          leftAvatar={<Avatar src={props.image} />}
           rightIconButton={rightIconMenu}
           primaryText={props.user}
           secondaryText={
