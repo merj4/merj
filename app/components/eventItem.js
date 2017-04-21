@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui';
 import FlatButton from 'material-ui/FlatButton';
+import moment from 'moment';
+
 
 class EventItem extends Component {
   constructor(props) {
@@ -21,7 +23,8 @@ class EventItem extends Component {
         />
          <CardMedia
           overlay={<CardTitle title={this.props.event.location}
-          subtitle={this.props.event.date} />}
+          subtitle={moment(this.props.event.date)
+           .format('MMMM DD, YYYY')} />}
         >
         <img src={this.props.event.image} />
         </CardMedia>
