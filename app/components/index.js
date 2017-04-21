@@ -34,8 +34,24 @@ class App extends Component {
 
     auth.on('profile_updated', (newProfile) => {
       this.setState({profile: newProfile})
+      console.log("Profile: ", this.state.profile);
+      // when a user has logged in use axios to make server request
+        // does this user exist? Yes? Send back an 'ok'
+          // No? Add them to the database and send back an 'ok'
       //this.repod = new repoService();
+      // checkUser();
+      const p = this.state.profile;
+      axios.post('/api/user', {
+        username: p.given_name,
+        email: p.email,
+        image: p.picture
+      }).then(res => {
+        console.log('User added to the database')
+      }).catch(err => {
+        console.log(err);
+      })
     })
+
     auth.on('logged_out', (bye) => {
       this.setState({profile: auth.getProfile()})
       //this.render();
@@ -44,6 +60,13 @@ class App extends Component {
     this.updateEventList = this.updateEventList.bind(this);
     this.showProfile = this.showProfile.bind(this);
   }
+
+  // checkUser() {
+  //   axios.get('/api/user/:id')
+  //     .then(res => {
+  //       console.log('Profile get request: ', res);
+  //   });
+  // }
 
   logout(){
     auth.logout()//add props.auth.on('logged-out') event which should be triggered in authservice.js which refreshes page. and same for logged in or authenticated events rather than the use of routes in authservice and here.
@@ -60,6 +83,7 @@ class App extends Component {
   // }
 
   componentDidMount() {
+    console.log('Component mounted!!!')
     axios.get('/api/events/recent')
     .then(res => {
       const events = res.data;
@@ -67,7 +91,16 @@ class App extends Component {
         events: events,
         displayedEvents: events
       });
-    });
+    })
+
+    // axios.get('/api/user/:' + )
+    //   .then(res => {
+    //     console.log('Profile get request: ', res);
+    // })
+    // .catch(err => {
+    //   console.log(err);
+
+    // })
   }
 
   handleEventClick(event) {

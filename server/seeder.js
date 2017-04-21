@@ -22,7 +22,7 @@ var seedData = function() {
   .then(() => Event.create({
     location: "Santa Barbara, CA",
     date: "Aug. 10, 2017",
-    title: "Fun in the Sun",
+    title: "Sandy Barbie",
     time: "2:00 pm",
     category: "Outdoor",
     description: "Come out to the beach and enjoy company, food and sand castles",
@@ -40,7 +40,7 @@ var seedData = function() {
   .then(() => Event.create({
     location: "Berkeley, CA",
     date: "Aug. 10, 2017",
-    title: "Fun in the Sun",
+    title: "Berkeley Babes",
     time: "2:00 pm",
     category: "Outdoor",
     description: "Get rekt. Hype. Bonfire. Beach. Drinks. Food.",
@@ -58,7 +58,7 @@ var seedData = function() {
   .then(() => Event.create({
     location: "San Francisco, CA",
     date: "Aug. 10, 2017",
-    title: "Fun in the Sun",
+    title: "San Fun-cisco Happy Time",
     time: "2:00 pm",
     category: "Outdoor",
     description: "Come out to the beach and enjoy company, food and sand castles",
@@ -67,7 +67,7 @@ var seedData = function() {
   .then(() => Event.create({
     location: "Malibu, CA",
     date: "Aug. 10, 2017",
-    title: "Fun in the Sun",
+    title: "Be free, be young, be Malibu",
     time: "2:00 pm",
     category: "Outdoor",
     description: "Be free, be young, be Malibu.",
@@ -76,7 +76,7 @@ var seedData = function() {
   .then(() => Event.create({
     location: "San Luis Obispo, CA",
     date: "Aug. 10, 2017",
-    title: "Fun in the Sun",
+    title: "Sandy in the S.L.O. Cali",
     time: "2:00 pm",
     category: "Outdoor",
     description: "Come out to the beach and enjoy company, food and sand castles",
