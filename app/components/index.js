@@ -12,6 +12,7 @@ import AuthService from '../../config/AuthService.js'
 import Login from './login.js'
 import Profile from './profile.js'
 import moment from 'moment';
+import MapView from './mapView';
 
 injectTapEventPlugin();
 
@@ -29,7 +30,8 @@ class App extends Component {
       activeEvent: null,
       profile: auth.getProfile(),
       showProfile: false,
-      date: moment()
+      date: moment(),
+      showMap: false
     }
 
     auth.on('profile_updated', (newProfile) => {
@@ -60,6 +62,7 @@ class App extends Component {
     this.updateEventList = this.updateEventList.bind(this);
     this.showProfile = this.showProfile.bind(this);
     this.showProfileSetToFalse = this.showProfileSetToFalse.bind(this);
+    this.showMap = this.showMap.bind(this);
   }
 
 
@@ -115,14 +118,22 @@ class App extends Component {
     // console.log("activeEvent: " + this.state.activeEvent)
   }
 
+//render eventList (bad naming sorry, ignore the naming of this method)
   showProfileSetToFalse() {
     this.setState({
       showProfile: false,
-      activeEvent: null
+      activeEvent: null,
+      showMap: false
     })
     this.forceUpdate();
     console.log("showProfile: " + this.state.showProfile)
     console.log("activeEvent: " + this.state.activeEvent)
+  }
+
+  showMap() {
+    this.setState({
+      showMap: !this.state.showMap
+    })
   }
 
   updateDateState(newDate) {
@@ -145,11 +156,17 @@ class App extends Component {
         </div>
         )
       } else {
-        if (this.state.activeEvent === null && this.state.showProfile === false) {
+        //showEventList (home page)
+        if (this.state.activeEvent === null && this.state.showProfile === false && this.state.showMap === false) {
             return (
             <MuiThemeProvider>
               <div>
-                <Header auth={auth} profile={profile} showProfile={this.showProfile} showProfileSetToFalse={this.showProfileSetToFalse}/>
+                <Header
+                  auth={auth}
+                  profile={profile}
+                  showProfile={this.showProfile}
+                  showProfileSetToFalse={this.showProfileSetToFalse}
+                />
                 <Search
                   data={this.state.events}
                   updateEventList={this.updateEventList}
@@ -161,17 +178,27 @@ class App extends Component {
                   events={this.state.events}
                   updateDate={this.updateDateState}
                   handleEventClick={this.handleEventClick.bind(this)}
+                  showMap={this.showMap}
                 />
-                <EventList events={this.state.displayedEvents} handleEventClick={this.handleEventClick.bind(this)}/>
+                <EventList
+                  events={this.state.displayedEvents}
+                  handleEventClick={this.handleEventClick.bind(this)}
+                />
               </div>
             </MuiThemeProvider>
           );
-        } else if (this.state.activeEvent !== null && this.state.showProfile === false) {
+        //shows an individual event after clicking "would like to go"
+        } else if (this.state.activeEvent !== null && this.state.showProfile === false && this.state.showMap === false) {
           console.log('activeEvent in index.js', this.state.activeEvent)
             return (
             <MuiThemeProvider>
               <div>
-                <Header auth={auth} profile={profile} showProfile={this.showProfile} showProfileSetToFalse={this.showProfileSetToFalse} />
+                <Header
+                  auth={auth}
+                  profile={profile}
+                  showProfile={this.showProfile}
+                  showProfileSetToFalse={this.showProfileSetToFalse}
+                />
                 <Search
                   data={this.state.events}
                   updateEventList={this.updateEventList}
@@ -181,26 +208,79 @@ class App extends Component {
                 />
                 <Filter
                   events={this.state.events}
-                  date={this.updateDateState}
+                  updatedate={this.updateDateState}
+                  handleEventClick={this.handleEventClick.bind(this)}
+                  showMap={this.showMap}
                 />
-                <EventView activeEvent={this.state.activeEvent}
-                profile={this.state.profile} />
+                <EventView
+                  activeEvent={this.state.activeEvent}
+                  profile={this.state.profile}
+                />
               </div>
             </MuiThemeProvider>
           );
-        } else if (this.state.activeEvent === null && this.state.showProfile === true) {
+        //shows the user's profile
+        } else if (this.state.activeEvent === null && this.state.showProfile === true && this.state.showMap === false) {
           return (
           <MuiThemeProvider>
               <div>
-                <Header auth={auth} profile={profile} showProfile={this.showProfile} showProfileSetToFalse={this.showProfileSetToFalse} />
+                <Header
+                  auth={auth}
+                  profile={profile}
+                  showProfile={this.showProfile}
+                  showProfileSetToFalse={this.showProfileSetToFalse}
+                />
                 <Search
                   data={this.state.events}
-                  updateEventList={this.updateEventList} handleEventClick={this.handleEventClick.bind(this)}/>
-                <Filter events={this.state.events} handleEventClick={this.handleEventClick.bind(this)}/>
-                <Profile auth={auth} profile={profile} handleEventClick={this.handleEventClick.bind(this)}/>
+                  updateEventList={this.updateEventList}
+                  dateSearch={this.state.date}
+                  ref='child'
+                  handleEventClick={this.handleEventClick.bind(this)}
+                />
+                <Filter
+                  events={this.state.events}
+                  updatedate={this.updateDateState}
+                  handleEventClick={this.handleEventClick.bind(this)}
+                  showMap={this.showMap}
+                />
+                <Profile
+                  auth={auth}
+                  profile={profile}
+                  handleEventClick={this.handleEventClick.bind(this)}
+                />
               </div>
           </MuiThemeProvider>
           )
+        //shows the map view
+        } else if (this.state.activeEvent === null && this.state.showProfile === false && this.state.showMap === true) {
+          return (
+            <MuiThemeProvider>
+              <div>
+                <Header
+                  auth={auth}
+                  profile={profile}
+                  showProfile={this.showProfile}
+                  showProfileSetToFalse={this.showProfileSetToFalse}
+                />
+                <Search
+                  data={this.state.events}
+                  updateEventList={this.updateEventList}
+                  dateSearch={this.state.date}
+                  ref='child'
+                  handleEventClick={this.handleEventClick.bind(this)}
+                />
+                <Filter
+                  events={this.state.events}
+                  updateDate={this.updateDateState}
+                  handleEventClick={this.handleEventClick.bind(this)}
+                  showMap={this.showMap}
+                />
+                <MapView
+                  events={this.state.events}
+                />
+              </div>
+            </MuiThemeProvider>
+          );
         }
       }
   }

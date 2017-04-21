@@ -8,11 +8,12 @@ import { Button } from 'react-bootstrap';
 const ListOrMapButton = (props) => {
 
   let content = null;
-
+  //isMap: true
   if (props.viewState) {
     content = <MapView events={props.events} />
+  //isMap: false
   } else {
-      content = <EventList events={props.events} />
+    content = <EventList events={props.events} />
   }
   // console.log('This is content:', content);
     return (
