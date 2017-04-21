@@ -72,7 +72,7 @@ class Header extends Component {
 
     return (
       <Nav inverse className="Container header">
-        <span id="topsocial">Social.<span id="toply">ly</span></span>
+        <button onClick={this.props.showProfileSetToFalse}><span id="topsocial">Social.<span id="toply">ly</span></span></button>
         <Nav pullRight>
           <div>{this.props.profile.name}</div>
           {/* <img src= {this.props.profile.picture} id="userpic"></img>*/}
