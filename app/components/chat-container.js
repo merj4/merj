@@ -45,13 +45,13 @@ let MobileTearSheet = React.createClass({
 
 
 const ChatContainer = (props) => {
-  console.log('chat conatiner: ', props)
   return (
-
   <div>
     <MobileTearSheet> 
     {props.messages.map((message, i) => 
-      <ChatMessage message={props.message.message} key={i}/>
+      <ChatMessage message={message.body} key={i} 
+      user={message.from}
+      image={message.image}/>
     )}
     </MobileTearSheet>
   </div>

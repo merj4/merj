@@ -41,7 +41,7 @@ class ChatInput extends Component {
         body,
         from: 'Me'
       }
-      this.props.receiveMessage(body);
+      this.props.receiveMessage(message);
       e.target.value = ''      
     }
   }

@@ -5,8 +5,8 @@ const EventList = (props) => {
   return (
     <div>
       <div>
-        {props.events.map((event) =>
-         <EventItem event={event} key={event.title} handleEventClick={props.handleEventClick}/>
+        {props.events.map((event, i) =>
+         <EventItem event={event} key={i} handleEventClick={props.handleEventClick}/>
          )}
 
       </div>
