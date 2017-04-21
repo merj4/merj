@@ -1,4 +1,6 @@
 import React from 'react'
+import moment from 'moment';
+
 
 let EventDetails = React.createClass({
 
@@ -35,7 +37,8 @@ let EventDetails = React.createClass({
       <div style={styles.root}>
         <div style={styles.container}>
           <h3>{this.props.activeEvent.title}</h3>
-          <div>{this.props.activeEvent.date}</div>
+          <div>{moment(this.props.activeEvent.date)
+            .format('MMMM DD, YYYY')}</div>
           <div>{this.props.activeEvent.time}</div>
           <div>{this.props.activeEvent.location}</div>
           <div id="descriptioninchat">{this.props.activeEvent.description}</div>
