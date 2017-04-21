@@ -50,8 +50,8 @@ const ChatContainer = (props) => {
     <MobileTearSheet> 
     {props.messages.map((message, i) => 
       <ChatMessage message={message.body} key={i} 
-      user={message.from}
-      image={message.image}/>
+      user={props.profile.given_name}
+      image={props.profile.picture}/>
     )}
     </MobileTearSheet>
   </div>
