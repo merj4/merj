@@ -27,6 +27,7 @@ class ChatInput extends Component {
       sent: null
     }
     this.handleSubmit = this.handleSubmit.bind(this)
+  }
    
   handleSubmit(e) {
     const body = e.target.value;
