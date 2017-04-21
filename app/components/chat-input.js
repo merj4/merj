@@ -27,16 +27,23 @@ class ChatInput extends Component {
       sent: null
     }
     this.handleSubmit = this.handleSubmit.bind(this)
-    this.handleInputChange = this.handleInputChange.bind(this)
+    // this.handleInputChange = this.handleInputChange.bind(this)
   } 
   
-  handleInputChange(e) {
-    this.props.receiveMessage(e.target.value)
-  }
-
+  // handleInputChange(e) {
+  //   this.props.receiveMessage(e.target.value)
+  // }
+   
   handleSubmit(e) {
-    console.log(e.target.value)
-
+    const body = e.target.value;
+    if (e.keyCode === 13 && body){
+      const message = {
+        body,
+        from: 'Me'
+      }
+      this.props.receiveMessage(body);
+      e.target.value = ''      
+    }
   }
 
   render() {

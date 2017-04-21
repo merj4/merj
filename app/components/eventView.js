@@ -4,26 +4,34 @@ import { ChatInput } from './chat-input'
 import { ChatContainer } from './chat-container'
 import { EventDetails } from './eventDetails'
 
-// const server = location.origin;
-// const socket = io(server);
+
+const server = location.origin
+const socket = io(server)
 
 class EventView extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      message: null
+      messages: []
     }
     this.receiveMessage = this.receiveMessage.bind(this);
   }
   
 
-  receiveMessage(message) {
-    this.setState({
-      message: message
+  componentDidMount() { 
+    socket.on('message', message => {
+    this.setState
+      ({messages: [message, ...this.state.messages]})
     })
   }
 
+  receiveMessage(message) {
+    this.setState({messages: [message, ...this.state.messages]})
+    socket.emit('message', message)
+  }
+
   render() {
+    console.log(this.state.messages)
     return (
       <div id="chat">
        <div id='chatsidebar'>
@@ -31,7 +39,7 @@ class EventView extends Component {
           <div><ChatUsers /></div>
         </div>
         <div id='chatroom'>
-          <ChatContainer message={this.state.message}/>
+          <ChatContainer message={this.state.messages}/>
         </div>
         <ChatInput socket={socket}
           receiveMessage={this.receiveMessage.bind(this)} />
