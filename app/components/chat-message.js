@@ -26,40 +26,24 @@ const rightIconMenu = (
   </IconMenu>
 );
 
-class ChatMessage extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      count: this.props.len
-    }
-  }
-
-  // onMessage() {
-  //   this.setState({
-  //     count: this.state.count++
-  //   })
-  // }
-
-  render() {
-    console.log('This is line 44', this.props)
-    return (
-      <List>
-        <Subheader>Today</Subheader>
-        <ListItem
-          leftAvatar={<Avatar src={props.image} />}
-          rightIconButton={rightIconMenu}
-          primaryText={props.user}
-          secondaryText={
-            <p>
-           {props.message}
-            </p>
-          }
-          secondaryTextLines={2}
-        />
-      </List>
-    )
-  }
-
+const ChatMessage = (props) => {
+  console.log('This is line 44', props)
+  return (
+    <List>
+      <Subheader>Today</Subheader>
+      <ListItem
+        leftAvatar={<Avatar src={props.image} />}
+        rightIconButton={rightIconMenu}
+        primaryText={props.user}
+        secondaryText={
+          <p>
+         {props.message}
+          </p>
+        }
+        secondaryTextLines={2}
+      />
+    </List>
+  )
 }
 
 export { ChatMessage }

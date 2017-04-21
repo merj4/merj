@@ -45,6 +45,6 @@ let EventDetails = React.createClass({
     );
   }
 
-};
+})
 
 export { EventDetails }

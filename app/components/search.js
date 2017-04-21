@@ -22,12 +22,6 @@ class Search extends Component {
     this.autoCompleteStorage = this.autoCompleteStorage.bind(this);
   }
 
-  // we are also going to need a method to handle onSubmit
-
-  // if object has a keyword, only include that object in the array and replace the events state in app to be that filtered array
-
-  // if any object doesn't contain a value that matches our keywords, splice it out
-    // what remains will only be the objects that contain values that matches our keywords
   handleNewRequest() {
     console.log('Got a new search request!')
     let data = this.props.data.slice();
