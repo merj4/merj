@@ -39,7 +39,7 @@ class EventView extends Component {
           <div><ChatUsers /></div>
         </div>
         <div id='chatroom'>
-          <ChatContainer message={this.state.messages}/>
+          <ChatContainer messages={this.state.messages}/>
         </div>
         <ChatInput socket={socket}
           receiveMessage={this.receiveMessage.bind(this)} />

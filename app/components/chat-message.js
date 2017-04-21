@@ -27,6 +27,7 @@ const rightIconMenu = (
 );
 
 const ChatMessage = (props) => {
+  console.log('chat-message', props)
     return (
       <List>
         <Subheader>Today</Subheader>
@@ -36,8 +37,7 @@ const ChatMessage = (props) => {
           primaryText="JSON.stringify(kim)"
           secondaryText={
             <p>
-              <span style={{color: darkBlack}}>Brunch this weekend?</span><br />
-              I&apos;ll be in your neighborhood doing errands this weekend. Do you want to grab brunch?
+           {props.message}
             </p>
           }
           secondaryTextLines={2}
