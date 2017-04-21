@@ -24,6 +24,7 @@ class EventView extends Component {
     })
   }
 
+
   receiveMessage(message) {
     this.setState({messages: [message, ...this.state.messages]})
     socket.emit('message', message)
