@@ -59,6 +59,7 @@ class App extends Component {
     this.updateDateState = this.updateDateState.bind(this);
     this.updateEventList = this.updateEventList.bind(this);
     this.showProfile = this.showProfile.bind(this);
+    this.showProfileSetToFalse = this.showProfileSetToFalse.bind(this);
   }
 
 
@@ -109,6 +110,17 @@ class App extends Component {
       showProfile: true,
       activeEvent: null
     })
+
+    // console.log("showProfile: " + this.state.showProfile)
+    // console.log("activeEvent: " + this.state.activeEvent)
+  }
+
+  showProfileSetToFalse() {
+    this.setState({
+      showProfile: false,
+      activeEvent: null
+    })
+    this.forceUpdate();
     console.log("showProfile: " + this.state.showProfile)
     console.log("activeEvent: " + this.state.activeEvent)
   }
@@ -137,7 +149,7 @@ class App extends Component {
             return (
             <MuiThemeProvider>
               <div>
-                <Header auth={auth} profile={profile} showProfile={this.showProfile}/>
+                <Header auth={auth} profile={profile} showProfile={this.showProfile} showProfileSetToFalse={this.showProfileSetToFalse}/>
                 <Search
                   data={this.state.events}
                   updateEventList={this.updateEventList}
@@ -159,7 +171,7 @@ class App extends Component {
             return (
             <MuiThemeProvider>
               <div>
-                <Header auth={auth} profile={profile} showProfile={this.showProfile}/>
+                <Header auth={auth} profile={profile} showProfile={this.showProfile} showProfileSetToFalse={this.showProfileSetToFalse} />
                 <Search
                   data={this.state.events}
                   updateEventList={this.updateEventList}
@@ -180,14 +192,14 @@ class App extends Component {
           return (
           <MuiThemeProvider>
               <div>
-                <Header auth={auth} profile={profile} showProfile={this.showProfile}/>
+                <Header auth={auth} profile={profile} showProfile={this.showProfile} showProfileSetToFalse={this.showProfileSetToFalse} />
                 <Search
                   data={this.state.events}
                   updateEventList={this.updateEventList} handleEventClick={this.handleEventClick.bind(this)}/>
                 <Filter events={this.state.events} handleEventClick={this.handleEventClick.bind(this)}/>
                 <Profile auth={auth} profile={profile} handleEventClick={this.handleEventClick.bind(this)}/>
               </div>
-            </MuiThemeProvider>
+          </MuiThemeProvider>
           )
         }
       }
