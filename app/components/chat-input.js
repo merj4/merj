@@ -28,7 +28,7 @@ class ChatInput extends Component {
     }
     this.handleSubmit = this.handleSubmit.bind(this)
   }
-   
+  
   handleSubmit(e) {
     const body = e.target.value;
     if (e.keyCode === 13 && body){
