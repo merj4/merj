@@ -26,24 +26,39 @@ const rightIconMenu = (
   </IconMenu>
 );
 
-const ChatMessage = (props) => {
+class ChatMessage extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      count: this.props.len
+    }
+  }
+
+  // onMessage() {
+  //   this.setState({
+  //     count: this.state.count++
+  //   })
+  // }
+
+  render() {
+    console.log('This is line 44', this.props)
     return (
       <List>
         <Subheader>Today</Subheader>
         <ListItem
-          leftAvatar={<Avatar src="images/jason.jpg" />}
+          leftAvatar={<Avatar src={props.image} />}
           rightIconButton={rightIconMenu}
-          primaryText="JSON.stringify(kim)"
+          primaryText={props.user}
           secondaryText={
             <p>
-              <span style={{color: darkBlack}}>Brunch this weekend?</span><br />
-              I&apos;ll be in your neighborhood doing errands this weekend. Do you want to grab brunch?
+           {props.message}
             </p>
           }
           secondaryTextLines={2}
         />
       </List>
-  )
+    )
+  }
 
 }
 

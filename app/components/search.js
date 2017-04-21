@@ -76,7 +76,6 @@ class Search extends Component {
 
   // this provides the autocomplete strings the appear when a user begins typing
   autoCompleteStorage() {
-    // console.log("search:", this.props.data);
     let data = this.props.data;
     let databaseKeywords = []; // contains keywords captured from the search bar
     let keys = _.each(data, function(obj) {

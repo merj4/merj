@@ -43,7 +43,6 @@ class Header extends Component {
     const target = e.target;
     const value = target.value;
     const name = target.name;
-    console.log(name, value)
     this.setState({
       [name]: value
     });
@@ -77,13 +76,13 @@ class Header extends Component {
   render() {
     let close = () => this.setState({ show: false});
     const { auth } = this.props
-    console.log ('profile from header', this.props.name)
-    console.log('picture:', this.props.profile.picture)
 
     return (
       <Nav inverse className="Container header">
         <span id="topsocial">Social.<span id="toply">ly</span></span>
         <Nav pullRight>
+          <div>{this.props.profile.name}</div>
+          {/* <img src= {this.props.profile.picture} id="userpic"></img>*/}
           <Button id="formbutton" onClick={() => this.setState({ show: true})}>+</Button>
           <DropdownButton id='profilelogout'>
             <MenuItem id="showProfile" onClick={ this.props.showProfile }><i className="fa fa-user fa-fw"></i>Profile</MenuItem>

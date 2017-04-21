@@ -1,18 +1,25 @@
-import React, { Component } from 'react';
+import React from 'react'
 
-class EventDetails extends Component {
-  constructor(props) {
-    super(props);
-  }
+let EventDetails = React.createClass({
+
+  propTypes: {
+    height: React.PropTypes.number
+  },
+
+  getDefaultProps() {
+    return {
+      height: 400
+    };
+  },
 
   render() {
+
     let styles = {
       root: {
         float: 'left',
         marginBottom: 24,
         marginRight: 24,
-        width: 360,
-
+        width: 360
       },
 
       container: {
@@ -21,7 +28,7 @@ class EventDetails extends Component {
         overflow: 'hidden',
       }
     };
-          console.log('eventDetails', this.props.activeEvent)
+     
 
     return (
       <div id="eventDetails">
