@@ -7,7 +7,7 @@ import io from 'socket.io-client'
 
 const server = location.origin
 const socket = io(server)
-
+console.log('This is a socket =>', socket)
 class EventView extends Component {
   constructor(props) {
     super(props)

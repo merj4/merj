@@ -27,7 +27,6 @@ const rightIconMenu = (
 );
 
 const ChatMessage = (props) => {
-  console.log('This is line 44', props)
   return (
     <List>
       <Subheader>Today</Subheader>
