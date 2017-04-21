@@ -1,18 +1,27 @@
-import React, { Component } from 'react';
+import React from 'react'
+import moment from 'moment';
 
-class EventDetails extends Component {
-  constructor(props) {
-    super(props);
-  }
+
+let EventDetails = React.createClass({
+
+  propTypes: {
+    height: React.PropTypes.number
+  },
+
+  getDefaultProps() {
+    return {
+      height: 400
+    };
+  },
 
   render() {
+
     let styles = {
       root: {
         float: 'left',
         marginBottom: 24,
         marginRight: 24,
-        width: 360,
-
+        width: 360
       },
 
       container: {
@@ -21,14 +30,15 @@ class EventDetails extends Component {
         overflow: 'hidden',
       }
     };
-          console.log('eventDetails', this.props.activeEvent)
+     
 
     return (
       <div id="eventDetails">
       <div style={styles.root}>
         <div style={styles.container}>
           <h3>{this.props.activeEvent.title}</h3>
-          <div>{this.props.activeEvent.date}</div>
+          <div>{moment(this.props.activeEvent.date)
+            .format('MMMM DD, YYYY')}</div>
           <div>{this.props.activeEvent.time}</div>
           <div>{this.props.activeEvent.location}</div>
           <div id="descriptioninchat">{this.props.activeEvent.description}</div>
@@ -38,6 +48,6 @@ class EventDetails extends Component {
     );
   }
 
-};
+})
 
 export { EventDetails }

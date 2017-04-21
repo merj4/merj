@@ -35,11 +35,11 @@ module.exports = {
     new webpack.NoEmitOnErrorsPlugin()
   ],
   devServer: {
-    contentBase: __dirname + '/app/dist',
-    hot: true,
+    contentBase: "/app/public",
+    hot:true,
     port: 8081,
     proxy: {
-      '/chat/*': 'http://127.0.0.1:' + (process.env.PORT || 8080)
+      '*': 'http://127.0.0.1:' + (process.env.PORT || 8080)
     },
     host: '127.0.0.1'
   }
