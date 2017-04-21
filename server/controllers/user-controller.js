@@ -15,7 +15,8 @@ module.exports = {
   postUser: function(req, res) {
     var params = {
       username: req.body.username,
-      email: req.body.email
+      email: req.body.email,
+      image: req.body.image
     }
 
     db.User.create(params)
