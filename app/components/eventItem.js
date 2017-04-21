@@ -11,7 +11,6 @@ class EventItem extends Component {
   }
 
   render() {
-    // console.log('Event Item:', this.props);
     return (
       <Card >
         <CardHeader

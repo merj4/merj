@@ -46,12 +46,12 @@ class ChatMessage extends Component {
       <List>
         <Subheader>Today</Subheader>
         <ListItem
-          leftAvatar={<Avatar src="images/jason.jpg" />}
+          leftAvatar={<Avatar src={props.image} />}
           rightIconButton={rightIconMenu}
-          primaryText="JSON.stringify(kim)"
+          primaryText={props.user}
           secondaryText={
             <p>
-              {this.props.message}
+           {props.message}
             </p>
           }
           secondaryTextLines={2}
@@ -59,7 +59,6 @@ class ChatMessage extends Component {
       </List>
     )
   }
-  
 
 }
 

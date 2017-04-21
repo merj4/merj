@@ -1,6 +1,14 @@
-html, body {
+html, body{
   height: 100%;
   width: 100%;
+  text-align: center;
+}
+
+.container  {
+  height: 100%;
+  width: 65%;
+  margin: 10 auto;
+  text-align: left;
 }
 
 .centered {
@@ -8,33 +16,44 @@ html, body {
   float: none;
 }
 
+#card {
+  border: 0.1rem solid #979797;
+  padding-bottom: 1rem;
+}
 
 .description-card {
 }
 
-
-.container, element.style {
- width: 100%;
-}
-
 .Container.header.nav {
   height: 2.5rem;
-  text-align: center;
-  background-color: #00bcd4;
-  padding-top: 1rem;
+/*  background-color: #00bcd4;
+*/padding-top: 1rem;
   padding-right: 3rem;
   padding-left: 4rem;
 }
 
-#beepboop {
-  color:white;
-  font-size: 3rem;
+/*header*/
+
+#topsocial {
+  font-size: 2.2rem;
   font-family: 'Raleway', sans-serif;
+  color: #ff6699;
 }
 
-#card {
-  border: 0.1rem solid #979797;
-  padding-bottom: 1rem;
+#toply {
+  font-size: 2.2rem;
+  font-family: 'Raleway', sans-serif;
+  color: #00bcd4;
+}
+
+.header {
+  margin: auto;
+  font-size: 50px;
+}
+
+.pull-right {
+  float: right!important;
+  padding-top: 1rem;
 }
 
 .main-header {
@@ -55,45 +74,52 @@ html, body {
   top: 20px;
 }
 
+
 #search {
-  padding-left: 4rem;
-  background-color: #00bcd4;
-  height: 13rem;
-
-
+  height: 6rem;
+  text-align: left;
+  margin-left: 18rem; 
+  margin-top: 0.6rem;
+  border-color: transparent;
 }
 
 #searchbar {
-  border: none;
   background: transparent;
   background-image: url('images/search.png');
   background-repeat: no-repeat;
-  height: 100%;
-
-  -webkit-transition: width 0.4s ease-in-out;
-  transition: width 0.4s ease-in-out;
   color: transparent;
+  border-color: transparent;
+  padding-top: 0.5rem;
 }
 
-#searchbar:focus {
-  width: 45%;
-  border: none;
-  border-bottom: 3px solid white;
-  text-align: center;
-}
 
+/*modal form*/
 #formbutton {
   background-color: transparent;
   border-color: transparent;
+  background-repeat: no-repeat;
   background-image: url('images/plus.png');
+  color: transparent;
+  padding-left: 1rem;
+}
+/*profile/logout button*/
+#profilelogout {
+  background-color: transparent;
+  border-color: transparent;
+  background-image: url('images/person.png');
   background-repeat: no-repeat;
   color: transparent;
+  padding-left: 1rem;
 }
+
+.control-label {
+  font-size: 1.2rem;
+  text-align: left;
+}
+
 
 #tabs {
   font-family: 'Raleway', sans-serif;
-
-
 }
 
 div, span {
@@ -102,4 +128,128 @@ div, span {
 
 #userpic {
   border-radius: 50%
+}
+
+/*Eventview*/
+#chat {
+  margin-bottom: 5rem;
+}
+
+
+#chatroom {
+  height: 100%;
+  float: left;
+  width: 60%;
+}
+
+#chatsidebar {
+  width: 40%;
+  height: 100%;
+  float: left;
+}
+
+#eventDetails {
+  height: 360;
+  width: 360;
+  text-align: center;
+  font-size: 16px;
+}
+
+#descriptioninchat {
+  color: #A9A9A9;
+}
+
+/*login*/
+
+#logincontainer {
+ height: 100%;
+ width: 100%;
+} 
+
+.login {
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  background-image: url("./images/background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#loginContainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#logo {
+  font-size: 15rem;
+  text-align: center;
+}
+
+#social {
+  color: #ff6699;
+  font-size: 10rem;
+  font-family: 'Raleway', sans-serif;
+}
+
+#ly {
+  color: #00bcd4;
+  font-size: 10rem;
+  font-family: 'Raleway', sans-serif;
+}
+
+
+#explain {
+  font-size: 2rem;
+  color: white;
+  font-family: 'Raleway', sans-serif;
+  padding: 3rem;
+
+}
+
+#loginbutton {
+  border-radius: 0.8rem;
+  background-color: #ff6699;
+  color: white;
+  border: 1.0rem solid #ff6699;
+  font-size: 2rem;
+  font-family: 'Raleway', sans-serif;
+}
+
+#aboutuscontainer {
+  padding-top: 4rem;
+}
+
+#aboutus {
+  border-color: transparent;
+  border-bottom-color: #00bcd4;
+  background-color: transparent;
+  font-size: 1.2rem;
+  font-family: 'Raleway', sans-serif;
+  color: white;
+}
+
+/*profile*/
+#profile {
+  text-align: center;
+}
+
+#profilepic {
+  border-radius: 50%;
+  width: 200px;
+  height: auto;
+}
+
+#profilename {
+  font-size: 3rem;
+  font-family: 'Raleway', sans-serif;
+  color: #00bcd4;
+  padding: 3rem;
+}
+
+/*map*/
+#mapcontainer {
+  text-align: center;
+  margin: auto;
 }
