@@ -3,6 +3,7 @@ import { ChatUsers } from './chat-users'
 import { ChatInput } from './chat-input'
 import { ChatContainer } from './chat-container'
 import { EventDetails } from './eventDetails'
+import io from 'socket.io-client'
 
 const server = location.origin
 const socket = io(server)
