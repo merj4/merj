@@ -43,14 +43,15 @@ class App extends Component {
       //this.repod = new repoService();
       // checkUser();
       const p = this.state.profile;
+
       axios.post('/api/user', {
         username: p.given_name,
         email: p.email,
         image: p.picture
       }).then(res => {
-        console.log('User added to the database')
+        console.log('User added to the database!')
       }).catch(err => {
-        console.log(err);
+        console.log('There was an error:' err);
       })
     })
 
