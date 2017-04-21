@@ -10,20 +10,29 @@ module.exports = {
     })
     .then(function(user) {
       res.status(200).json(user);
-    })
+    });
   },
 
   postUser: function(req, res) {
-    var params = {
-      username: req.body.username,
-      email: req.body.email,
-      image: req.body.image
-    }
-
-    db.User.create(params)
-    .then(function(user) {
+    db.User.findOrCreate({where: {email: req.body.email},
+      defaults: {username: req.body.username, image: req.body.image}
+    }).spread(function(user, created) {
+      console.log(user.get({
+        plain: true
+      }));
+      console.log(created);
+    }).then(function(user) {
       res.status(201).json(user);
-    })
-  }
+    });
+    // var params = {
+    //   username: req.body.username,
+    //   email: req.body.email,
+    //   image: req.body.image
+    // }
 
-}
+    // db.User.create(params)
+    // .then(function(user) {
+    //   res.status(201).json(user);
+    // })
+  }
+};
