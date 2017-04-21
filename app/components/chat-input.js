@@ -34,13 +34,10 @@ class ChatInput extends Component {
     this.props.receiveMessage(e.target.value)
   }
 
-  handleSubmit() {
-    console.log('line 37 in chat-input')
-    this.setState({
-      sent: ''
-    })
-  }
+  handleSubmit(e) {
+    console.log(e.target.value)
 
+  }
 
   render() {
     return (
@@ -54,7 +51,7 @@ class ChatInput extends Component {
       fullWidth={true}
       onChange={this.handleInputChange}
       underlineStyle={styles.underlineStyle}
-      onClick={this.handleSubmit}
+      onKeyUp={this.handleSubmit}
       />
 
     </div>
