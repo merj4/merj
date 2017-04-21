@@ -5,7 +5,7 @@ module.exports = {
 
   getUser: function(req, res) {
     db.User.findOne({
-      where: { id: Number(req.params.id) }
+      where: { email: String(req.params.email) }
     })
     .then(function(user) {
       res.status(200).json(user);
