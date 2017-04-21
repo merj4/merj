@@ -17,7 +17,6 @@ class EventView extends Component {
     this.receiveMessage = this.receiveMessage.bind(this);
   }
   
-
   componentDidMount() { 
     socket.on('message', message => {
     this.setState
