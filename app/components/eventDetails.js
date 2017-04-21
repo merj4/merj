@@ -21,7 +21,7 @@ class EventDetails extends Component {
         overflow: 'hidden',
       }
     };
-          console.log('eventDetails', this.props.activeEvent)
+     
 
     return (
       <div id="eventDetails">
