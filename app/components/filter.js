@@ -26,7 +26,7 @@ class Filter extends Component {
       filteredEvents: this.props.events,
       isMap: false,
       startDate: moment(), // this property highlights today's date on the calendar
-      isOpen: false
+      isOpen: false,
       show: false;
     }
     // will need to also bind all the other methods to 'this'
