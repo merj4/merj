@@ -148,7 +148,7 @@ class App extends Component {
     // you must add ref='child' to the child component you want to borrow the method from
   }
 
-  
+
 
   render() {
     const { profile } = this.state;
@@ -285,7 +285,8 @@ class App extends Component {
                   updateEventList={this.updateEventList}
                 />
                 <MapView
-                  events={this.state.events}
+                  events={this.state.displayedEvents}
+                  updateEventList={this.updateEventList}
                 />
               </div>
             </MuiThemeProvider>
