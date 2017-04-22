@@ -29,7 +29,7 @@ io.on('connection', function(socket){
 
   socket.on('typing', () => {
     socket.emit('typing', {
-      message: socket.user + " is typing..."
+      message: socket.username.user + " is typing..."
     })
   })
 });

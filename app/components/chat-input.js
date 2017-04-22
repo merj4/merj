@@ -40,6 +40,7 @@ class ChatInput extends Component {
       }
       this.props.receiveMessage(message);
       e.target.value = ''      
+      this.props.socket.emit('stop typing')
     }
   }
 
