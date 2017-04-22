@@ -29,7 +29,7 @@ let EventDetails = React.createClass({
         height: this.props.height,
         overflow: 'hidden',
         background: '#f2f2f2',
-        padding: 15 10 10 10
+        padding: 15
       }
     };
      
