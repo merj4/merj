@@ -28,6 +28,8 @@ class EventView extends Component {
     })
     const user = this.props.profile.given_name
     socket.emit('login', {user})
+
+    
   }
 
 
