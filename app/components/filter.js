@@ -66,7 +66,7 @@ class Filter extends Component {
 
   //get user's current location and measuring radius
   async distanceHandler(option) {
-    const data = this.props.events.slice();
+    const data = this.props.events;
     const geocoder = new google.maps.Geocoder();
 
     const userPosition = await new Promise(resolve =>
@@ -105,6 +105,7 @@ class Filter extends Component {
       ),
       Promise.resolve(),
     )
+
     this.props.updateEventList(distanceResults);
     if (distanceResults.length === 0) {
       alert("no events found :( ");
