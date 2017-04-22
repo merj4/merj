@@ -178,6 +178,10 @@ div, span {
 #descriptioninchat {
   color: #A9A9A9;
 }
+.messages {
+  overflow-y: scroll;
+  max-height: 400;
+}
 
 /*login*/
 

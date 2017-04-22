@@ -16,6 +16,7 @@ class EventView extends Component {
       isTyping: ''
     }
     this.receiveMessage = this.receiveMessage.bind(this);
+    this.handleTyping = this.handleTyping.bind(this)
   }
   
   componentDidMount() { 
@@ -34,9 +35,9 @@ class EventView extends Component {
   }
 
   handleTyping() {
-   socket.on('typing', (data) => {
+   socket.on('typing', data => {
       this.setState({isTyping: data.message})
-    }
+    })
     const lastTyped = (new Date()).getTime()
 
     setInterval(() => {
