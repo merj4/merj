@@ -114,11 +114,8 @@ class Filter extends Component {
     let labelForMap = this.state.isMap ? "List": "Map"
     // console.log("props!!hey!!!", this.props)
     return (
-      <Tabs
-        // value={this.state.value}
-        // onChange={this.handleChange}
-      >
-        <Tab label="Distance"  >
+      <Tabs>
+        <Tab label="Distance"  onClick= {()=>this.distanceHandler(1)}>
           <div style={styles.headline}></div>
         </Tab>
         <Tab label="Calendar" onClick={this.toggleCalendar} handleEventClick={this.props.handleEventClick}>
