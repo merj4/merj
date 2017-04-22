@@ -27,6 +27,7 @@ class EventView extends Component {
     console.log('Username: ', user)
   }
 
+
   receiveMessage(message) {
     this.setState({messages: [message, ...this.state.messages]})
     socket.emit('message', message)
@@ -50,5 +51,6 @@ class EventView extends Component {
     );
   }
 }
+
 
 export { EventView }
