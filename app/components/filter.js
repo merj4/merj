@@ -58,6 +58,58 @@ class Filter extends Component {
     })
   }
 
+  //from here, distance search
+  distanceHandleChange (event, index, value) {
+    this.setState({value});
+  }
+
+  //get user's current location and measuring radius
+  async distanceHandler(value) {
+    if (value === 1 ) {
+      console.log('value', value)
+      const data = this.props.events.slice();
+      const geocoder = new google.maps.Geocoder();
+
+      const userPosition = await new Promise(resolve =>
+        $.getJSON("http://freegeoip.net/json/", function(data) {
+          resolve({
+            lat: data.latitude,
+            lng: data.longitude
+          })
+        })
+      )
+
+      const userPositionOnGoogleMap = new google.maps.LatLng(parseFloat(userPosition.lat), parseFloat(userPosition.lng));
+      const distanceResults = [];
+      const distanceRemainingResults = [];
+  
+      await Promise.all(
+        data.map(datum =>
+          new Promise(resolve =>
+            geocoder.geocode({'address' : datum['location'] }, function (results, status) {
+              if (status === 'OK') {
+                const preEventPosition = JSON.stringify(results[0].geometry.location)
+                const eventPosition = JSON.parse(preEventPosition)
+                const eventPositionOnGoogleMap = new google.maps.LatLng(parseFloat(eventPosition.lat), parseFloat(eventPosition.lng));
+                const path = google.maps.geometry.spherical.computeDistanceBetween(userPositionOnGoogleMap, eventPositionOnGoogleMap);
+                if (path <= 50000) {
+                  distanceResults.push(datum);
+                } else {
+                  distanceRemainingResults.push(datum);
+                }
+              } else {
+                console.log('err', status)
+              }
+              resolve()
+            })
+          )
+        )
+      )
+      this.props.updateEventList(distanceResults);
+      console.log('distanceResults', distanceResults)
+    }
+  }
+
   render() {
     let labelForMap = this.state.isMap ? "List": "Map"
     // console.log("props!!hey!!!", this.props)
