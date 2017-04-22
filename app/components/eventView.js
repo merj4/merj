@@ -4,6 +4,7 @@ import { ChatInput } from './chat-input'
 import { ChatContainer } from './chat-container'
 import { EventDetails } from './eventDetails'
 import io from 'socket.io-client'
+import axios from 'axios'
 
 
 const server = location.origin
@@ -25,20 +26,28 @@ class EventView extends Component {
     socket.on('message', message => {
     this.setState
       ({messages: [message, ...this.state.messages]})
-    })
+
     const user = this.props.profile.given_name
     socket.emit('login', {user})
 
-    
+    })
   }
 
 
   receiveMessage(message) {
-    console.log('message contents =>', message)
     this.setState({
       messages: [message, ...this.state.messages],
     })
     socket.emit('message', message)
+    
+    axios.post('/api/chat', {
+        message: JSON.stringify(message)
+      }).then(res => {
+        console.log("Message posted successfully")
+      }).catch(err => {
+        console.log("Message failed to post")
+      })
+    
   }
 
   handleTyping() {
