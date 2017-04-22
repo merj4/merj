@@ -45,16 +45,16 @@ let MobileTearSheet = React.createClass({
 
 const ChatContainer = (props) => {
   return (
-    <div>
-      <MobileTearSheet> 
+    <MobileTearSheet> 
+      <div className="messages">
       {props.messages.map((message, i) => 
         <ChatMessage message={message.body} key={i} 
         user={props.profile.given_name}
         image={props.profile.picture}/>
       )}
         {props.typing}
-      </MobileTearSheet>
-    </div>
+      </div>
+    </MobileTearSheet>
   )
 }
 
