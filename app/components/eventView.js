@@ -22,6 +22,9 @@ class EventView extends Component {
     this.setState
       ({messages: [message, ...this.state.messages]})
     })
+    const user = this.props.profile.given_name
+    socket.emit('login', {user})
+    console.log('Username: ', user)
   }
 
   receiveMessage(message) {

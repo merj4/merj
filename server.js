@@ -21,6 +21,11 @@ io.on('connection', function(socket){
   socket.on('chat message', function(msg){
     io.broadcast.emit('chat message', msg);
   });
+
+  socket.on('login', (username) => {
+    socket.username = username;
+    console.log(socket.username)
+  })
 });
 
 
