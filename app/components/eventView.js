@@ -15,7 +15,6 @@ class EventView extends Component {
     super(props)
     this.state = {
       messages: [],
-      isTyping: '',
       messageTime: null
     }
     this.receiveMessage = this.receiveMessage.bind(this);
@@ -50,26 +49,6 @@ class EventView extends Component {
     
   }
 
-  handleTyping() {
-   socket.on('typing', data => {
-      this.setState({isTyping: data.message})
-    })
-
-    const lastTyped = (new Date()).getTime()
-
-    setTimeout(() => {
-      const typingTimer = (new Date()).getTime()
-      const timeDiff = typingTimer - lastTyped
-      if (timeDiff >= 100000 && this.state.isTyping) {
-        socket.emit('stop typing')
-        this.setState({isTyping: ''})
-      }
-    }, 100000)
-
-    socket.on('stop typing', () => {
-       this.setState({isTyping: ''})
-    })
-  }
 
   render() {
     return (
@@ -81,8 +60,7 @@ class EventView extends Component {
         <div id='chatroom'>
           <ChatContainer 
           messages={this.state.messages}
-          socket={socket}
-          typing={this.state.isTyping}/>
+          socket={socket}/>
         </div>
         <ChatInput socket={socket}
           receiveMessage={this.receiveMessage.bind(this)}
