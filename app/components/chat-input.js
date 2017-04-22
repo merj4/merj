@@ -27,6 +27,7 @@ class ChatInput extends Component {
       sent: null
     }
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleTyping = this.handleTyping.bind(this)
   }
   
 
@@ -42,6 +43,9 @@ class ChatInput extends Component {
     }
   }
 
+  handleTyping() {
+    this.props.socket.emit('typing')
+  }
 
   render() {
     return (
@@ -53,9 +57,9 @@ class ChatInput extends Component {
       floatingLabelStyle={styles.floatingLabelStyle}
       floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
       fullWidth={true}
-      onChange={this.handleInputChange}
       underlineStyle={styles.underlineStyle}
       onKeyUp={this.handleSubmit}
+      onKeyPress={this.handleTyping}
       />
 
     </div>
