@@ -38,6 +38,7 @@ class EventView extends Component {
    socket.on('typing', data => {
       this.setState({isTyping: data.message})
     })
+
     const lastTyped = (new Date()).getTime()
 
     setInterval(() => {
