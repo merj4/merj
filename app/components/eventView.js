@@ -5,6 +5,7 @@ import { ChatContainer } from './chat-container'
 import { EventDetails } from './eventDetails'
 import io from 'socket.io-client'
 
+
 const server = location.origin
 const socket = io(server)
 
@@ -13,7 +14,8 @@ class EventView extends Component {
     super(props)
     this.state = {
       messages: [],
-      isTyping: ''
+      isTyping: '',
+      messageTime: null
     }
     this.receiveMessage = this.receiveMessage.bind(this);
     this.handleTyping = this.handleTyping.bind(this)
@@ -30,7 +32,10 @@ class EventView extends Component {
 
 
   receiveMessage(message) {
-    this.setState({messages: [message, ...this.state.messages]})
+    console.log('message contents =>', message)
+    this.setState({
+      messages: [message, ...this.state.messages],
+    })
     socket.emit('message', message)
   }
 
@@ -41,7 +46,7 @@ class EventView extends Component {
 
     const lastTyped = (new Date()).getTime()
 
-    setInterval(() => {
+    setTimeout(() => {
       const typingTimer = (new Date()).getTime()
       const timeDiff = typingTimer - lastTyped
       if (timeDiff >= 100000 && this.state.isTyping) {
@@ -66,11 +71,11 @@ class EventView extends Component {
           <ChatContainer 
           messages={this.state.messages}
           socket={socket}
-          profile={this.props.profile}
           typing={this.state.isTyping}/>
         </div>
         <ChatInput socket={socket}
-          receiveMessage={this.receiveMessage.bind(this)} />
+          receiveMessage={this.receiveMessage.bind(this)}
+          profile={this.props.profile} />
       </div>
     );
   }

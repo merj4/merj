@@ -27,9 +27,10 @@ const rightIconMenu = (
 );
 
 const ChatMessage = (props) => {
+
   return (
     <List>
-      <Subheader>{(new Date).getTime()}</Subheader>
+      <Subheader>{props.time}</Subheader>
       <ListItem
         leftAvatar={<Avatar src={props.image} />}
         rightIconButton={rightIconMenu}
