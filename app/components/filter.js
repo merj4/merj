@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { Button, Col, Row } from 'react-bootstrap';
-import {Tabs, Tab, DropdownButton, MenuItem} from 'material-ui/Tabs';
+import {Tabs, Tab } from 'material-ui/Tabs';
 import {EventItem} from './eventItem';
 import MapView from './mapView';
 import ListOrMapButton from './ListOrMapButton';
@@ -66,8 +66,6 @@ class Filter extends Component {
 
   //get user's current location and measuring radius
   async distanceHandler(option) {
-    if (value === 1 ) {
-      console.log('value', value)
       const data = this.props.events.slice();
       const geocoder = new google.maps.Geocoder();
 
@@ -107,8 +105,10 @@ class Filter extends Component {
         )
       )
       this.props.updateEventList(distanceResults);
+      if (distanceResults.length === 0) {
+        alert("no events found :( ");
+      }
       console.log('distanceResults', distanceResults)
-    }
   }
 
   render() {
@@ -117,14 +117,16 @@ class Filter extends Component {
     return (
       <Tabs>
         <Tab label="Distance" onClick={() => this.setState({ show: true})}>
-          <div style={styles.headline}></div>
-          <DropdownButton>
-            <MenuItem id="2miles" onClick={ this.distanceHandler(3218.69) }>2 miles</MenuItem>
-            <MenuItem id="5miles" onClick={this.distanceHandler(8046.72)}>5 miles</MenuItem>
-            <MenuItem id="20miles" onClick={this.distanceHandler(32186.9)}>20 miles</MenuItem>
-          </DropdownButton>
-
+          <div style={styles.headline}>
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Menu 1<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><button onClick={() => this.distanceHandler(8046.72)}>2 miles</button></li>
+              <li><button>5 miles</button></li>
+              <li><button>20 miles</button></li> 
+            </ul>
+          </div>
         </Tab>
+
         <Tab label="Calendar" onClick={this.toggleCalendar} handleEventClick={this.props.handleEventClick}>
           <div style={styles.headline}>
             {
