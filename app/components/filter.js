@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { Button, Col, Row } from 'react-bootstrap';
-import {Tabs, Tab} from 'material-ui/Tabs';
+import {Tabs, Tab, DropdownButton, MenuItem} from 'material-ui/Tabs';
 import {EventItem} from './eventItem';
 import MapView from './mapView';
 import ListOrMapButton from './ListOrMapButton';
@@ -27,7 +27,7 @@ class Filter extends Component {
       isMap: false,
       startDate: moment(), // this property highlights today's date on the calendar
       isOpen: false,
-      show: false;
+      show: false
     }
     // will need to also bind all the other methods to 'this'
     this.listMapHandler = this.listMapHandler.bind(this);
