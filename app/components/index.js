@@ -51,7 +51,7 @@ class App extends Component {
       }).then(res => {
         console.log('User added to the database!')
       }).catch(err => {
-        console.log('There was an error:' err);
+        console.log('There was an error:', err);
       })
     })
 
