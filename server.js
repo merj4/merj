@@ -34,7 +34,6 @@ io.on('connection', function(socket){
   })
 });
 
-
 //MIDDLEWARE
 app.use(morgan('dev'));
 app.use(bodyParser.json())

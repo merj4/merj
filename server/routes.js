@@ -25,6 +25,4 @@ module.exports = function(app, express) {
   // app.get('/api/chat', chatController.getMessages);
   // //send a message
   app.post('/api/chat', chatController.postMessage);
-
-
 }
