@@ -17,21 +17,24 @@ class EventView extends Component {
     this.receiveMessage = this.receiveMessage.bind(this);
   }
   
-
   componentDidMount() { 
     socket.on('message', message => {
     this.setState
       ({messages: [message, ...this.state.messages]})
     })
+    const user = this.props.profile.given_name
+    socket.emit('login', {user})
   }
+
 
   receiveMessage(message) {
     this.setState({messages: [message, ...this.state.messages]})
     socket.emit('message', message)
   }
 
+
+
   render() {
-    console.log(this.props.profile)
     return (
       <div id="chat">
        <div id='chatsidebar'>
@@ -39,7 +42,9 @@ class EventView extends Component {
           <div><ChatUsers /></div>
         </div>
         <div id='chatroom'>
-          <ChatContainer messages={this.state.messages}
+          <ChatContainer 
+          messages={this.state.messages}
+          socket={socket}
           profile={this.props.profile}/>
         </div>
         <ChatInput socket={socket}
@@ -48,7 +53,6 @@ class EventView extends Component {
     );
   }
 }
-  
 
 
 export { EventView }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { ChatMessage } from './chat-message'
 
 let MobileTearSheet = React.createClass({
@@ -43,19 +43,32 @@ let MobileTearSheet = React.createClass({
 });
 
 
-
-const ChatContainer = (props) => {
-  return (
-  <div>
-    <MobileTearSheet> 
-    {props.messages.map((message, i) => 
-      <ChatMessage message={message.body} key={i} 
-      user={props.profile.given_name}
-      image={props.profile.picture}/>
-    )}
-    </MobileTearSheet>
-  </div>
-)};
-
+class ChatContainer extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      isTyping: ''
+    }
+  }
+  
+  handleTyping() {
+    this.props.socket.on('typing', (data) => {
+      console.log(data.message)
+    })
+  }
+  render() {
+    return (
+    <div>
+      <MobileTearSheet> 
+      {this.props.messages.map((message, i) => 
+        <ChatMessage message={message.body} key={i} 
+        user={this.props.profile.given_name}
+        image={this.props.profile.picture}/>
+      )}
+        {this.state.isTyping}
+      </MobileTearSheet>
+    </div>
+  )};
+}
 
 export { ChatContainer }
