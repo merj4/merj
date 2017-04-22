@@ -27,13 +27,10 @@ class ChatInput extends Component {
       sent: null
     }
     this.handleSubmit = this.handleSubmit.bind(this)
-    // this.handleInputChange = this.handleInputChange.bind(this)
-  } 
+    this.handleTyping = this.handleTyping.bind(this)
+  }
   
-  // handleInputChange(e) {
-  //   this.props.receiveMessage(e.target.value)
-  // }
-   
+
   handleSubmit(e) {
     const body = e.target.value;
     if (e.keyCode === 13 && body){
@@ -46,6 +43,10 @@ class ChatInput extends Component {
     }
   }
 
+  handleTyping() {
+    this.props.socket.emit('typing')
+  }
+
   render() {
     return (
     <div>
@@ -56,9 +57,9 @@ class ChatInput extends Component {
       floatingLabelStyle={styles.floatingLabelStyle}
       floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
       fullWidth={true}
-      onChange={this.handleInputChange}
       underlineStyle={styles.underlineStyle}
       onKeyUp={this.handleSubmit}
+      onKeyPress={this.handleTyping}
       />
 
     </div>

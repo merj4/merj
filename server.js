@@ -7,7 +7,7 @@ var app = require('express')();
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
 
-
+//chatroom
 server.listen(8080, function() {
   console.log('listening on portato 8080')
 });
@@ -17,11 +17,23 @@ app.get('/', function (req, res) {
 });
 
 io.on('connection', function(socket){
-  console.log('WEBSOCKET IS CONNECTED')
-  socket.on('chat message', function(msg){
-    io.emit('chat message', msg);
+  console.log('User', socket.id, 'just connected')
+  
+  socket.on('message', function(msg){
+    socket.broadcast.emit('message', msg);
   });
+
+  socket.on('login', (username) => {
+    socket.username = username;
+  })
+
+  socket.on('typing', () => {
+    socket.emit('typing', {
+      message: socket.user + " is typing..."
+    })
+  })
 });
+
 
 //MIDDLEWARE
 app.use(morgan('dev'));
