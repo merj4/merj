@@ -1,10 +1,10 @@
 var db = require('./db.js');
 //run this file node seeder.js to populate the database
 //create variables for each table
-// var User = db.User;
+var User = db.User;
 var Event = db.Event;
 // var Message = db.Message;
-// var EventParticipant = db.EventParticipant;
+var EventParticipant = db.EventParticipant;
 // Hit me with them ghetto delays to let the tables procreate - Jason Kim
 //wait 2000ms for the tables above to be created
 setTimeout(function() {
@@ -15,9 +15,9 @@ var seedData = function() {
   // Drop it like it's hot
   console.log('Dropping and re-creating tables');
   Event.sync({force: true})
-  // .then(() => User.sync({force: true}))
+  .then(() => User.sync({force: true}))
   // .then(() => Message.sync({force: true}))
-  // .then(() => EventParticipant.sync({force: true}))
+  .then(() => EventParticipant.sync({force: true}))
   // Insert default events
   .then(() => Event.create({
     location: "Santa Barbara, CA",
@@ -108,10 +108,11 @@ var seedData = function() {
     category: "Outdoor",
     description: "Be free, be young, be Malibu.",
     image: "https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2014/10/yosemite.jpg"
-  }));
-  // Insert default languages shown in dropdown
-  // .then(() => Language.create({ name: 'css', displayname: 'CSS' }))  //1
-  // .then(() => Language.create({ name: 'ejs', displayname: 'EJS' }))
+  }))
+  // Insert some users
+  .then(() => User.create({ username: 'Test User', email: 'test@socially.com', image: 'http://www.cutestpaw.com/wp-content/uploads/2013/12/Most-Famous-Felines-001.jpg'}))
+  // Create joins
+  .then(() => EventParticipant.create({ UserId: 1, EventId: 1 }));
   // .then(() => Language.create({ name: 'html', displayname: 'HTML' }))
   // .then(() => Language.create({ name: 'javascript', displayname: 'Javascript' }))
   // .then(() => Language.create({ name: 'json', displayname: 'JSON' })) //5
