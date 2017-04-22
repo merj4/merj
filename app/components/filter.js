@@ -85,7 +85,7 @@ class Filter extends Component {
     await Promise.all(
       data.map(datum =>
         new Promise(resolve =>
-          geocoder.geocode({'address' : datum['location'] }, function (results, status) {
+            geocoder.geocode({'address' : datum['location'] }, function (results, status) {
             if (status === 'OK') {
               const preEventPosition = JSON.stringify(results[0].geometry.location)
               const eventPosition = JSON.parse(preEventPosition)
@@ -96,11 +96,18 @@ class Filter extends Component {
               } else {
                 distanceRemainingResults.push(datum);
               }
+            } else if (status == google.maps.GeocoderStatus.OVER_QUERY_LIMIT) {
+              setTimeout(function() {
+                console.log('waiting...');
+                data.push(detum);
+                console.log('data', data);
+              }, 200);
             } else {
+              console.log('err event', datum)
               console.log('err', status)
             }
             resolve()
-          })
+          })         
         )
       )
     )
@@ -123,6 +130,7 @@ class Filter extends Component {
               <li><button onClick={() => this.distanceHandler(3218.69)}>2 miles</button></li>
               <li><button onClick={() => this.distanceHandler(8046.72)}>5 miles</button></li>
               <li><button onClick={() => this.distanceHandler(32186.9)}>20 miles</button></li>
+              <li><button onClick={() => this.props.updateEventList(this.props.events)}>20 miles</button></li>
             </ul>
           </div>
         </Tab>
