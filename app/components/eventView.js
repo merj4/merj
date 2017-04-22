@@ -4,6 +4,7 @@ import { ChatInput } from './chat-input'
 import { ChatContainer } from './chat-container'
 import { EventDetails } from './eventDetails'
 import io from 'socket.io-client'
+import axios from 'axios'
 
 
 const server = location.origin
@@ -14,51 +15,39 @@ class EventView extends Component {
     super(props)
     this.state = {
       messages: [],
-      isTyping: '',
       messageTime: null
     }
     this.receiveMessage = this.receiveMessage.bind(this);
-    this.handleTyping = this.handleTyping.bind(this)
   }
   
   componentDidMount() { 
     socket.on('message', message => {
     this.setState
       ({messages: [message, ...this.state.messages]})
-    })
+
     const user = this.props.profile.given_name
     socket.emit('login', {user})
+
+    })
   }
 
 
   receiveMessage(message) {
-    console.log('message contents =>', message)
     this.setState({
       messages: [message, ...this.state.messages],
     })
     socket.emit('message', message)
+    
+    axios.post('/api/chat', {
+        message: JSON.stringify(message)
+      }).then(res => {
+        console.log("Message posted successfully")
+      }).catch(err => {
+        console.log("Message failed to post")
+      })
+    
   }
 
-  handleTyping() {
-   socket.on('typing', data => {
-      this.setState({isTyping: data.message})
-    })
-
-    const lastTyped = (new Date()).getTime()
-
-    setTimeout(() => {
-      const typingTimer = (new Date()).getTime()
-      const timeDiff = typingTimer - lastTyped
-      if (timeDiff >= 100000 && this.state.isTyping) {
-        socket.emit('stop typing')
-        this.setState({isTyping: ''})
-      }
-    }, 100000)
-
-    socket.on('stop typing', () => {
-       this.setState({isTyping: ''})
-    })
-  }
 
   render() {
     return (
@@ -70,8 +59,7 @@ class EventView extends Component {
         <div id='chatroom'>
           <ChatContainer 
           messages={this.state.messages}
-          socket={socket}
-          typing={this.state.isTyping}/>
+          socket={socket}/>
         </div>
         <ChatInput socket={socket}
           receiveMessage={this.receiveMessage.bind(this)}

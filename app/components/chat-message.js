@@ -34,10 +34,10 @@ const ChatMessage = (props) => {
       <ListItem
         leftAvatar={<Avatar src={props.image} />}
         rightIconButton={rightIconMenu}
-        primaryText={props.user}
+        primaryText={<span style={{fontSize: 18 + 'px'}}>{props.user}</span>}
         secondaryText={
           <p>
-         {props.message}
+         <span style={{color: 'black', fontSize: 22 + 'px'}}>{props.message}</span>
           </p>
         }
         secondaryTextLines={2}

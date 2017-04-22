@@ -49,11 +49,10 @@ const ChatContainer = (props) => {
       <div className="messages">
       {props.messages.map((message, i) => 
         <ChatMessage message={message.body} key={i} 
-        user={message.time}
+        user={message.from}
         image={message.image}
         time={message.time}/>
       )}
-        {props.typing}
       </div>
     </MobileTearSheet>
   )
