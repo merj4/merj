@@ -9,7 +9,7 @@ class MapView extends Component {
     }
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     let map = new google.maps.Map(this.refs.map, {
       zoom: 12,
       mapTypeId: 'roadmap',
