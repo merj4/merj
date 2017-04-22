@@ -66,49 +66,49 @@ class Filter extends Component {
 
   //get user's current location and measuring radius
   async distanceHandler(option) {
-      const data = this.props.events.slice();
-      const geocoder = new google.maps.Geocoder();
+    const data = this.props.events.slice();
+    const geocoder = new google.maps.Geocoder();
 
-      const userPosition = await new Promise(resolve =>
-        $.getJSON("http://freegeoip.net/json/", function(data) {
-          resolve({
-            lat: data.latitude,
-            lng: data.longitude
-          })
+    const userPosition = await new Promise(resolve =>
+      $.getJSON("http://freegeoip.net/json/", function(data) {
+        resolve({
+          lat: data.latitude,
+          lng: data.longitude
         })
-      )
+      })
+    )
 
-      const userPositionOnGoogleMap = new google.maps.LatLng(parseFloat(userPosition.lat), parseFloat(userPosition.lng));
-      const distanceResults = [];
-      const distanceRemainingResults = [];
-  
-      await Promise.all(
-        data.map(datum =>
-          new Promise(resolve =>
-            geocoder.geocode({'address' : datum['location'] }, function (results, status) {
-              if (status === 'OK') {
-                const preEventPosition = JSON.stringify(results[0].geometry.location)
-                const eventPosition = JSON.parse(preEventPosition)
-                const eventPositionOnGoogleMap = new google.maps.LatLng(parseFloat(eventPosition.lat), parseFloat(eventPosition.lng));
-                const path = google.maps.geometry.spherical.computeDistanceBetween(userPositionOnGoogleMap, eventPositionOnGoogleMap);
-                if (path <= option) {
-                  distanceResults.push(datum);
-                } else {
-                  distanceRemainingResults.push(datum);
-                }
+    const userPositionOnGoogleMap = new google.maps.LatLng(parseFloat(userPosition.lat), parseFloat(userPosition.lng));
+    const distanceResults = [];
+    const distanceRemainingResults = [];
+
+    await Promise.all(
+      data.map(datum =>
+        new Promise(resolve =>
+          geocoder.geocode({'address' : datum['location'] }, function (results, status) {
+            if (status === 'OK') {
+              const preEventPosition = JSON.stringify(results[0].geometry.location)
+              const eventPosition = JSON.parse(preEventPosition)
+              const eventPositionOnGoogleMap = new google.maps.LatLng(parseFloat(eventPosition.lat), parseFloat(eventPosition.lng));
+              const path = google.maps.geometry.spherical.computeDistanceBetween(userPositionOnGoogleMap, eventPositionOnGoogleMap);
+              if (path <= option) {
+                distanceResults.push(datum);
               } else {
-                console.log('err', status)
+                distanceRemainingResults.push(datum);
               }
-              resolve()
-            })
-          )
+            } else {
+              console.log('err', status)
+            }
+            resolve()
+          })
         )
       )
-      this.props.updateEventList(distanceResults);
-      if (distanceResults.length === 0) {
-        alert("no events found :( ");
-      }
-      console.log('distanceResults', distanceResults)
+    )
+    this.props.updateEventList(distanceResults);
+    if (distanceResults.length === 0) {
+      alert("no events found :( ");
+    }
+    console.log('distanceResults', distanceResults)
   }
 
   render() {
