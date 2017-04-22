@@ -7,7 +7,7 @@ import io from 'socket.io-client'
 
 const server = location.origin
 const socket = io(server)
-console.log('This is a socket =>', socket)
+
 class EventView extends Component {
   constructor(props) {
     super(props)
@@ -24,7 +24,6 @@ class EventView extends Component {
     })
     const user = this.props.profile.given_name
     socket.emit('login', {user})
-    console.log('Username: ', user)
   }
 
 
@@ -33,8 +32,9 @@ class EventView extends Component {
     socket.emit('message', message)
   }
 
+
+
   render() {
-    console.log(this.props.profile)
     return (
       <div id="chat">
        <div id='chatsidebar'>
@@ -42,7 +42,9 @@ class EventView extends Component {
           <div><ChatUsers /></div>
         </div>
         <div id='chatroom'>
-          <ChatContainer messages={this.state.messages}
+          <ChatContainer 
+          messages={this.state.messages}
+          socket={socket}
           profile={this.props.profile}/>
         </div>
         <ChatInput socket={socket}

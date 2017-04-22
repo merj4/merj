@@ -18,13 +18,19 @@ app.get('/', function (req, res) {
 
 io.on('connection', function(socket){
   console.log('User', socket.id, 'just connected')
-  socket.on('chat message', function(msg){
-    io.broadcast.emit('chat message', msg);
+  
+  socket.on('message', function(msg){
+    socket.broadcast.emit('message', msg);
   });
 
   socket.on('login', (username) => {
     socket.username = username;
-    console.log(socket.username)
+  })
+
+  socket.on('typing', () => {
+    socket.emit('typing', {
+      message: socket.user + " is typing..."
+    })
   })
 });
 
