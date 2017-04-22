@@ -27,6 +27,7 @@ class Filter extends Component {
       isMap: false,
       startDate: moment(), // this property highlights today's date on the calendar
       isOpen: false
+      show: false;
     }
     // will need to also bind all the other methods to 'this'
     this.listMapHandler = this.listMapHandler.bind(this);
@@ -64,7 +65,7 @@ class Filter extends Component {
   }
 
   //get user's current location and measuring radius
-  async distanceHandler(value) {
+  async distanceHandler(option) {
     if (value === 1 ) {
       console.log('value', value)
       const data = this.props.events.slice();
@@ -92,7 +93,7 @@ class Filter extends Component {
                 const eventPosition = JSON.parse(preEventPosition)
                 const eventPositionOnGoogleMap = new google.maps.LatLng(parseFloat(eventPosition.lat), parseFloat(eventPosition.lng));
                 const path = google.maps.geometry.spherical.computeDistanceBetween(userPositionOnGoogleMap, eventPositionOnGoogleMap);
-                if (path <= 50000) {
+                if (path <= option) {
                   distanceResults.push(datum);
                 } else {
                   distanceRemainingResults.push(datum);
@@ -115,8 +116,14 @@ class Filter extends Component {
     // console.log("props!!hey!!!", this.props)
     return (
       <Tabs>
-        <Tab label="Distance"  onClick= {()=>this.distanceHandler(1)}>
+        <Tab label="Distance" onClick={() => this.setState({ show: true})}>
           <div style={styles.headline}></div>
+          <DropdownButton>
+            <MenuItem id="2miles" onClick={ this.distanceHandler(3218.69) }>2 miles</MenuItem>
+            <MenuItem id="5miles" onClick={this.distanceHandler(8046.72)}>5 miles</MenuItem>
+            <MenuItem id="20miles" onClick={this.distanceHandler(32186.9)}>20 miles</MenuItem>
+          </DropdownButton>
+
         </Tab>
         <Tab label="Calendar" onClick={this.toggleCalendar} handleEventClick={this.props.handleEventClick}>
           <div style={styles.headline}>
