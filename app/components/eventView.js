@@ -18,7 +18,6 @@ class EventView extends Component {
       messageTime: null
     }
     this.receiveMessage = this.receiveMessage.bind(this);
-    this.handleTyping = this.handleTyping.bind(this)
   }
   
   componentDidMount() { 
