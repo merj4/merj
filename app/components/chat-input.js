@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import TextField from 'material-ui/TextField';
 import io from 'socket.io-client';
 import {orange500, blue500} from 'material-ui/styles/colors';
+import moment from 'moment';
 
 const styles = {
   errorStyle: {
@@ -36,7 +37,9 @@ class ChatInput extends Component {
     if (e.keyCode === 13 && body){
       const message = {
         body,
-        from: 'Me'
+        from: this.props.profile.given_name,
+        time: moment((new Date).getTime()).format("MMMM Do YYYY, h:mm:ss a"),
+        image: this.props.profile.picture
       }
       this.props.receiveMessage(message);
       e.target.value = ''      
