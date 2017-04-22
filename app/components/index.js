@@ -55,6 +55,8 @@ class App extends Component {
       })
     })
 
+
+
     auth.on('logged_out', (bye) => {
       this.setState({profile: auth.getProfile()})
       //this.render();
@@ -145,6 +147,8 @@ class App extends Component {
     this.refs.child.performSearch(newDate); // apparently you can use the methods of child compoents inside of parent components
     // you must add ref='child' to the child component you want to borrow the method from
   }
+
+
 
   render() {
     const { profile } = this.state;
@@ -281,7 +285,8 @@ class App extends Component {
                   updateEventList={this.updateEventList}
                 />
                 <MapView
-                  events={this.state.events}
+                  events={this.state.displayedEvents}
+                  updateEventList={this.updateEventList}
                 />
               </div>
             </MuiThemeProvider>

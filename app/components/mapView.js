@@ -9,23 +9,32 @@ class MapView extends Component {
     }
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     let map = new google.maps.Map(this.refs.map, {
       zoom: 12,
       mapTypeId: 'roadmap',
     });
 
     //get user's current location and added icon (purple dot)
-    navigator.geolocation.getCurrentPosition(function (position) {
-      var userPosition = new google.maps.LatLng(position.coords.latitude, position.coords.longitude)
-      var markUser = new google.maps.Marker({
-          position: userPosition,
-          map: map,
-          icon: 'http://www.robotwoods.com/dev/misc/bluecircle.png'
-      });
-      map.setCenter(markUser.position);
-    })
+    const userPosition = await new Promise(resolve =>
+      $.getJSON("http://freegeoip.net/json/", function(data) {
+        resolve({
+          lat: data.latitude,
+          lng: data.longitude
+        })
+      })
+    )
+    const userPositionOnGoogleMap = new google.maps.LatLng(parseFloat(userPosition.lat), parseFloat(userPosition.lng));
 
+    
+    var markUser = new google.maps.Marker({
+        position: userPositionOnGoogleMap,
+        map: map,
+        icon: 'http://www.robotwoods.com/dev/misc/bluecircle.png'
+    });
+    
+    map.setCenter(markUser.position);
+  
 
     // Trying to get event location and put them in locations array
     let data = this.props.events.slice();

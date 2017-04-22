@@ -39,6 +39,9 @@ class Search extends Component {
       }
     })
     this.props.updateEventList(searchResults);
+    if (searchResults.length === 0) {
+      alert("no events found :( ");
+    }
     this.setState({
       searchText: '',
     });
@@ -63,6 +66,9 @@ class Search extends Component {
       }
     })
     this.props.updateEventList(searchResults);
+    if (searchResults.length === 0) {
+      alert("no events found :( ");
+    }
     this.setState({
       searchText: '',
     });
