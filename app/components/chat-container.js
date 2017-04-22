@@ -54,7 +54,6 @@ const ChatContainer = (props) => {
         time={message.time}/>
       )}
       </div>
-        {props.typing}
     </MobileTearSheet>
   )
 }
