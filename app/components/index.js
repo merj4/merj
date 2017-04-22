@@ -132,7 +132,8 @@ class App extends Component {
 
   showMap() {
     this.setState({
-      showMap: !this.state.showMap
+      showMap: !this.state.showMap,
+      showProfile: false
     })
   }
 
