@@ -180,6 +180,7 @@ class App extends Component {
                   updateDate={this.updateDateState}
                   handleEventClick={this.handleEventClick.bind(this)}
                   showMap={this.showMap}
+                  updateEventList={this.updateEventList}
                 />
                 <EventList
                   events={this.state.displayedEvents}
@@ -210,6 +211,7 @@ class App extends Component {
                 <Filter
                   events={this.state.events}
                   updatedate={this.updateDateState}
+                  updateEventList={this.updateEventList}
                   handleEventClick={this.handleEventClick.bind(this)}
                   showMap={this.showMap}
                 />
@@ -241,6 +243,7 @@ class App extends Component {
                 <Filter
                   events={this.state.events}
                   updatedate={this.updateDateState}
+                  updateEventList={this.updateEventList}
                   handleEventClick={this.handleEventClick.bind(this)}
                   showMap={this.showMap}
                 />
@@ -275,6 +278,7 @@ class App extends Component {
                   updateDate={this.updateDateState}
                   handleEventClick={this.handleEventClick.bind(this)}
                   showMap={this.showMap}
+                  updateEventList={this.updateEventList}
                 />
                 <MapView
                   events={this.state.events}
