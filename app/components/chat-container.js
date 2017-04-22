@@ -43,32 +43,19 @@ let MobileTearSheet = React.createClass({
 });
 
 
-class ChatContainer extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      isTyping: ''
-    }
-  }
-  
-  handleTyping() {
-    this.props.socket.on('typing', (data) => {
-      console.log(data.message)
-    })
-  }
-  render() {
-    return (
+const ChatContainer = (props) => {
+  return (
     <div>
       <MobileTearSheet> 
-      {this.props.messages.map((message, i) => 
+      {props.messages.map((message, i) => 
         <ChatMessage message={message.body} key={i} 
-        user={this.props.profile.given_name}
-        image={this.props.profile.picture}/>
+        user={props.profile.given_name}
+        image={props.profile.picture}/>
       )}
-        {this.state.isTyping}
+        {props.typing}
       </MobileTearSheet>
     </div>
-  )};
+  )
 }
 
 export { ChatContainer }
