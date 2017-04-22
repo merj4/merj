@@ -43,7 +43,6 @@ class ChatInput extends Component {
       }
       this.props.receiveMessage(message);
       e.target.value = ''      
-      this.props.socket.emit('stop typing')
     }
   }
 
@@ -63,7 +62,6 @@ class ChatInput extends Component {
       fullWidth={true}
       underlineStyle={styles.underlineStyle}
       onKeyUp={this.handleSubmit}
-      onKeyPress={this.handleTyping}
       />
 
     </div>

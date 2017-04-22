@@ -28,6 +28,8 @@ let EventDetails = React.createClass({
         border: 'solid 1px #d9d9d9',
         height: this.props.height,
         overflow: 'hidden',
+        background: '#f2f2f2',
+        padding: 15
       }
     };
      
@@ -39,8 +41,11 @@ let EventDetails = React.createClass({
           <h3>{this.props.activeEvent.title}</h3>
           <div>{moment(this.props.activeEvent.date)
             .format('MMMM DD, YYYY')}</div>
-          <div>{this.props.activeEvent.time}</div>
+          <div>{moment(this.props.activeEvent.time)
+            .format("h:mm a")}</div>
+          <br />
           <div>{this.props.activeEvent.location}</div>
+          <br />
           <div id="descriptioninchat">{this.props.activeEvent.description}</div>
         </div>
       </div>
