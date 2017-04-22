@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { Button, Col, Row } from 'react-bootstrap';
-import {Tabs, Tab} from 'material-ui/Tabs';
+import {Tabs, Tab } from 'material-ui/Tabs';
 import {EventItem} from './eventItem';
 import MapView from './mapView';
 import ListOrMapButton from './ListOrMapButton';
@@ -26,7 +26,8 @@ class Filter extends Component {
       filteredEvents: this.props.events,
       isMap: false,
       startDate: moment(), // this property highlights today's date on the calendar
-      isOpen: false
+      isOpen: false,
+      show: false
     }
     // will need to also bind all the other methods to 'this'
     this.listMapHandler = this.listMapHandler.bind(this);
@@ -64,50 +65,51 @@ class Filter extends Component {
   }
 
   //get user's current location and measuring radius
-  async distanceHandler(value) {
-    if (value === 1 ) {
-      console.log('value', value)
-      const data = this.props.events.slice();
-      const geocoder = new google.maps.Geocoder();
+  async distanceHandler(option) {
+    const data = this.props.events.slice();
+    const geocoder = new google.maps.Geocoder();
 
-      const userPosition = await new Promise(resolve =>
-        $.getJSON("http://freegeoip.net/json/", function(data) {
-          resolve({
-            lat: data.latitude,
-            lng: data.longitude
-          })
+    const userPosition = await new Promise(resolve =>
+      $.getJSON("http://freegeoip.net/json/", function(data) {
+        resolve({
+          lat: data.latitude,
+          lng: data.longitude
         })
-      )
+      })
+    )
 
-      const userPositionOnGoogleMap = new google.maps.LatLng(parseFloat(userPosition.lat), parseFloat(userPosition.lng));
-      const distanceResults = [];
-      const distanceRemainingResults = [];
-  
-      await Promise.all(
-        data.map(datum =>
-          new Promise(resolve =>
-            geocoder.geocode({'address' : datum['location'] }, function (results, status) {
-              if (status === 'OK') {
-                const preEventPosition = JSON.stringify(results[0].geometry.location)
-                const eventPosition = JSON.parse(preEventPosition)
-                const eventPositionOnGoogleMap = new google.maps.LatLng(parseFloat(eventPosition.lat), parseFloat(eventPosition.lng));
-                const path = google.maps.geometry.spherical.computeDistanceBetween(userPositionOnGoogleMap, eventPositionOnGoogleMap);
-                if (path <= 50000) {
-                  distanceResults.push(datum);
-                } else {
-                  distanceRemainingResults.push(datum);
-                }
+    const userPositionOnGoogleMap = new google.maps.LatLng(parseFloat(userPosition.lat), parseFloat(userPosition.lng));
+    const distanceResults = [];
+    const distanceRemainingResults = [];
+
+    await data.reduce((promise, datum) =>
+      promise.then(() =>
+        new Promise(resolve =>
+          geocoder.geocode({'address' : datum['location'] }, function (results, status) {
+            if (status === 'OK') {
+              const preEventPosition = JSON.stringify(results[0].geometry.location)
+              const eventPosition = JSON.parse(preEventPosition)
+              const eventPositionOnGoogleMap = new google.maps.LatLng(parseFloat(eventPosition.lat), parseFloat(eventPosition.lng));
+              const path = google.maps.geometry.spherical.computeDistanceBetween(userPositionOnGoogleMap, eventPositionOnGoogleMap);
+              if (path <= option) {
+                distanceResults.push(datum);
               } else {
-                console.log('err', status)
+                distanceRemainingResults.push(datum);
               }
-              resolve()
-            })
-          )
+            } else {
+              console.log('err event', datum, status)
+            }
+            setTimeout(resolve, 200);
+          })
         )
-      )
-      this.props.updateEventList(distanceResults);
-      console.log('distanceResults', distanceResults)
+      ),
+      Promise.resolve(),
+    )
+    this.props.updateEventList(distanceResults);
+    if (distanceResults.length === 0) {
+      alert("no events found :( ");
     }
+    console.log('distanceResults', distanceResults)
   }
 
   render() {
@@ -115,9 +117,18 @@ class Filter extends Component {
     // console.log("props!!hey!!!", this.props)
     return (
       <Tabs>
-        <Tab label="Distance"  onClick= {()=>this.distanceHandler(1)}>
-          <div style={styles.headline}></div>
+        <Tab label="Distance" onClick={() => this.setState({ show: true})}>
+          <div style={styles.headline}>
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Menu 1<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><button onClick={() => this.distanceHandler(3218.69)}>2 miles</button></li>
+              <li><button onClick={() => this.distanceHandler(8046.72)}>5 miles</button></li>
+              <li><button onClick={() => this.distanceHandler(32186.9)}>20 miles</button></li>
+              <li><button onClick={() => this.props.updateEventList(this.props.events)}>20 miles</button></li>
+            </ul>
+          </div>
         </Tab>
+
         <Tab label="Calendar" onClick={this.toggleCalendar} handleEventClick={this.props.handleEventClick}>
           <div style={styles.headline}>
             {
