@@ -82,10 +82,10 @@ class Filter extends Component {
     const distanceResults = [];
     const distanceRemainingResults = [];
 
-    await Promise.all(
-      data.map(datum =>
+    await data.reduce((promise, datum) =>
+      promise.then(() =>
         new Promise(resolve =>
-            geocoder.geocode({'address' : datum['location'] }, function (results, status) {
+          geocoder.geocode({'address' : datum['location'] }, function (results, status) {
             if (status === 'OK') {
               const preEventPosition = JSON.stringify(results[0].geometry.location)
               const eventPosition = JSON.parse(preEventPosition)
@@ -96,20 +96,14 @@ class Filter extends Component {
               } else {
                 distanceRemainingResults.push(datum);
               }
-            } else if (status == google.maps.GeocoderStatus.OVER_QUERY_LIMIT) {
-              setTimeout(function() {
-                console.log('waiting...');
-                data.push(detum);
-                console.log('data', data);
-              }, 200);
             } else {
-              console.log('err event', datum)
-              console.log('err', status)
+              console.log('err event', datum, status)
             }
-            resolve()
-          })         
+            setTimeout(resolve, 200);
+          })
         )
-      )
+      ),
+      Promise.resolve(),
     )
     this.props.updateEventList(distanceResults);
     if (distanceResults.length === 0) {
