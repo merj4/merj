@@ -18,11 +18,13 @@ module.exports = function(app, express) {
   //create event
   app.post('/api/event', eventsController.postEvent);
   //get user's public profile
-  app.get('/api/user/:id', userController.getUser);
+  app.get('/api/user', userController.getUser);
   // //create user profile
   app.post('/api/user', userController.postUser);
   // //get all messages for chatroom
   // app.get('/api/chat', chatController.getMessages);
   // //send a message
   app.post('/api/chat', chatController.postMessage);
+  //post to EventParticipant when user joins event
+  app.post('/api/joinevent', userController.postJoinEvent);
 }
