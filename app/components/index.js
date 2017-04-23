@@ -18,7 +18,6 @@ injectTapEventPlugin();
 
 
 const auth = new AuthService('pzuivu1BmVpSBZN3oOAxF3MSGIywGW94', 'merjgirls.auth0.com');
-console.log("auth: " + auth);
 
 
 class App extends Component {
