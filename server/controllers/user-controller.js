@@ -45,5 +45,5 @@ module.exports = {
     }).then(function(user) {
       res.status(201).json(user);
     });
-  },
+  }
 };
