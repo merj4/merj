@@ -16,22 +16,21 @@ app.get('/', function (req, res) {
   res.sendFile(__dirname + '/app/dist');
 });
 
-io.on('connection', function(socket){
+io.on('connection', socket => {
   console.log('User', socket.id, 'just connected')
   
-  socket.on('message', function(msg){
-    socket.broadcast.emit('message', msg);
-  });
-
-  socket.on('login', (username) => {
-    socket.username = username;
+  socket.on('room enter', room => {
+    console.log('Client just connected to room ' + room)
+    socket.join(room)
+ 
+    socket.on('message', msg => {
+      socket.in(room).broadcast.emit('message', msg);
+    })
   })
 
-  // socket.on('typing', () => {
-  //   socket.emit('typing', {
-  //     message: socket.username.user + " is typing..."
-  //   })
-  // })
+  socket.on('login', username => {
+    socket.username = username;
+  })
 });
 
 //MIDDLEWARE
