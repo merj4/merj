@@ -110,7 +110,7 @@ var seedData = function() {
     image: "https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2014/10/yosemite.jpg"
   }))
   // Insert some users
-  .then(() => User.create({ username: 'Test User', email: 'test@socially.com', image: 'http://www.cutestpaw.com/wp-content/uploads/2013/12/Most-Famous-Felines-001.jpg'}))
+  .then(() => User.create({ username: "Test User", email: "test@socially.com:", image: "http://www.cutestpaw.com/wp-content/uploads/2013/12/Most-Famous-Felines-001.jpg"}))
   // Create joins
   .then(() => EventParticipant.create({ UserId: 1, EventId: 1 }));
   // .then(() => Language.create({ name: 'html', displayname: 'HTML' }))
