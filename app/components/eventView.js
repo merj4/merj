@@ -15,12 +15,16 @@ class EventView extends Component {
     super(props)
     this.state = {
       messages: [],
-      messageTime: null
+      messageTime: null,
+      room: this.props.activeEvent.title
     }
     this.receiveMessage = this.receiveMessage.bind(this);
   }
   
   componentDidMount() { 
+    const room = this.state.room;
+    socket.emit('room enter', room);
+
     socket.on('message', message => {
     this.setState
       ({messages: [message, ...this.state.messages]})
@@ -39,17 +43,17 @@ class EventView extends Component {
     socket.emit('message', message)
     
     axios.post('/api/chat', {
-        message: JSON.stringify(message)
-      }).then(res => {
-        console.log("Message posted successfully")
-      }).catch(err => {
-        console.log("Message failed to post")
-      })
-    
+      message: JSON.stringify(message)
+    }).then(res => {
+      console.log("Message posted successfully")
+    }).catch(err => {
+      console.log("Message failed to post")
+    })
   }
 
 
   render() {
+    console.log('This is the roomname => ', this.state.room)
     return (
       <div id="chat">
        <div id='chatsidebar'>
