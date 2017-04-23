@@ -81,9 +81,9 @@ User.sync()
 .then(() => Message.belongsTo(Event, {foreignkey: {name: 'EventId'}}))
 .then(() => User.hasMany(Message, {foreignkey: {name:'UserId'}}))
 .then(() => Message.belongsTo(User, {foreignkey: {name:'UserId'}}))
-.then(() => Message.sync())
+.then(() => User.sync())
 .then(() => Event.sync())
-.then(() => User.sync());
+.then(() => Message.sync())
 // .then(() => Message.belongsTo(Event, {through: EventMessage }))
 // .then(() => Event.belongsToMany(Message, {through: EventMessage }))
 
