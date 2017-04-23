@@ -30,8 +30,8 @@ class EventView extends Component {
       ({messages: [message, ...this.state.messages]})
 
     const user = this.props.profile.given_name
-    socket.emit('login', {user})
-
+    socket[socially.user] = user
+    socket.emit('whoami', user)
     })
   }
 
@@ -53,7 +53,7 @@ class EventView extends Component {
 
 
   render() {
-    console.log('This is the roomname => ', this.state.room)
+    console.log('This is a socket => ', socket)
     return (
       <div id="chat">
        <div id='chatsidebar'>

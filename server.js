@@ -19,17 +19,18 @@ app.get('/', function (req, res) {
 io.on('connection', socket => {
   console.log('User', socket.id, 'just connected')
   
-  socket.on('room enter', room => {
-    console.log('Client just connected to room ' + room)
-    socket.join(room)
- 
+    socket.on('room enter', room => {
+      console.log('Client just connected to room ' + room)
+      socket.join(room)
+   
     socket.on('message', msg => {
       socket.in(room).broadcast.emit('message', msg);
     })
-  })
-
-  socket.on('login', username => {
-    socket.username = username;
+    
+    socket.on('whoami', username => {
+      socket.username = username;
+      console.log(socket.username + 'just entered the room')
+    })
   })
 });
 
