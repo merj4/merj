@@ -80,7 +80,6 @@ class App extends Component {
   // }
 
   componentDidMount() {
-    console.log('Component mounted!!!')
     axios.get('/api/events/recent')
     .then(res => {
       const events = res.data;
@@ -106,7 +105,6 @@ class App extends Component {
 
   updateEventList(array) {
     this.setState({ displayedEvents: array });
-    console.log('Events have been updated!')
   }
 
 
@@ -129,8 +127,6 @@ class App extends Component {
       showMap: false
     })
     this.forceUpdate();
-    console.log("showProfile: " + this.state.showProfile)
-    console.log("activeEvent: " + this.state.activeEvent)
   }
 
   showMap() {
