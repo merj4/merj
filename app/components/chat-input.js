@@ -37,8 +37,8 @@ class ChatInput extends Component {
     if (e.keyCode === 13 && body){
       const message = {
         body,
-        from: this.props.profile.given_name,
-        time: moment((new Date).getTime()).format("MMMM Do YYYY, h:mm:ss a"),
+        username: this.props.profile.given_name,
+        timestamp: moment((new Date).getTime()).format("MMMM Do YYYY, h:mm:ss a"),
         image: this.props.profile.picture
       }
       this.props.receiveMessage(message);

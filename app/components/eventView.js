@@ -5,7 +5,7 @@ import { ChatContainer } from './chat-container'
 import { EventDetails } from './eventDetails'
 import io from 'socket.io-client'
 import axios from 'axios'
-
+import _ from 'underscore'
 
 const server = location.origin
 const socket = io(server)
@@ -15,33 +15,44 @@ class EventView extends Component {
     super(props)
     this.state = {
       messages: [],
-      messageTime: null,
-      room: this.props.activeEvent.title
+      room: this.props.activeEvent.title,
+      users: null
     }
     this.receiveMessage = this.receiveMessage.bind(this);
   }
   
   componentDidMount() { 
     const room = this.state.room;
-    socket.emit('room enter', room);
+    const user = this.props.profile.given_name
+    socket.emit('room enter', {
+      roomname: room,
+      username: user
+    });
 
     socket.on('message', message => {
     this.setState
       ({messages: [message, ...this.state.messages]})
-
-    const user = this.props.profile.given_name
-    socket[socially.user] = user
-    socket.emit('whoami', user)
     })
   }
 
 
   receiveMessage(message) {
+    // const chatUsers = this.state.users || [];
+    // _.each(chatUsers, (user, i) => {
+    //   if (chatUsers[i] !== message.username) {
+    //     chatUsers.push(message.username) 
+    //   }
+    // })
+
     this.setState({
       messages: [message, ...this.state.messages],
+      // users: chatUsers
     })
+    
     socket.emit('message', message)
     
+
+    //save each message to database
     axios.post('/api/chat', {
       message: JSON.stringify(message)
     }).then(res => {
@@ -49,11 +60,17 @@ class EventView extends Component {
     }).catch(err => {
       console.log("Message failed to post")
     })
+
+    console.log(
+  'These are your chat users: ', this.state.users,
+  'This is your user: ', message.username
+
+  )
   }
 
 
   render() {
-    console.log('This is a socket => ', socket)
+
     return (
       <div id="chat">
        <div id='chatsidebar'>

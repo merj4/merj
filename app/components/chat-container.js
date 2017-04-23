@@ -49,7 +49,7 @@ const ChatContainer = (props) => {
       <div className="messages">
       {props.messages.map((message, i) => 
         <ChatMessage message={message.body} key={i} 
-        user={message.from}
+        user={message.username}
         image={message.image}
         time={message.time}/>
       )}
