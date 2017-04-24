@@ -66,6 +66,7 @@ class App extends Component {
     this.showProfile = this.showProfile.bind(this);
     this.showProfileSetToFalse = this.showProfileSetToFalse.bind(this);
     this.showMap = this.showMap.bind(this);
+    this.joinEvent = this.joinEvent.bind(this);
   }
 
 
@@ -102,11 +103,34 @@ class App extends Component {
     if (event !== null) {
       this.state.activeEvent = event;
       this.forceUpdate();
+      this.joinEvent();
     } else {
       this.setState({
         activeEvent: event
       })
     }
+  }
+
+  joinEvent() {
+    let users = this.state.users;
+    let p = this.state.profile;
+    let u = null;
+
+    users.forEach(function(user) {
+      if (user.email === p.email) {
+        u = user.id;
+      }
+    })
+    console.log('Joining event...', users, p, u)
+
+    axios.post('/api/user', {
+      EventId: this.state.activeEvent,
+      UserId: u
+    }).then(res => {
+      console.log('User has joined the event!')
+    }).catch(err => {
+      console.log('There was an error:', err);
+    })
   }
 
   // build a helper method that will allow us to setState of events to the results of a search
@@ -158,7 +182,7 @@ class App extends Component {
 
   render() {
     console.log('Events: ', this.state.events)
-    console.log('Users', this.state.users)
+    console.log('Users id: ', this.state.users)
     const { profile } = this.state;
     //const requireAuth = (nextState, replace) => {
       if (!auth.loggedIn()) {
