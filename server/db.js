@@ -1,7 +1,7 @@
 
 require('dotenv').config();
 
-var Sequelize = require('sequelize')
+var Sequelize = require('sequelize');
 
 
 var db = new Sequelize('postgres://teammerj:teammerjgirls@teammerj.ccfvuax37sga.us-west-2.rds.amazonaws.com:5432/merjDB');
@@ -69,8 +69,8 @@ var Message = db.define('Message', {
 var EventParticipant = db.define('EventParticipant', {
   // host: Sequelize.BOOLEAN,
   //id (auto-generated)
-  UserId: Sequelize.INTEGER,
-  EventId: Sequelize.INTEGER
+  EventId: Sequelize.INTEGER,
+  UserId: Sequelize.INTEGER
 });
 
 //sync individual tables listed above and create join tables

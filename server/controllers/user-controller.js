@@ -7,12 +7,12 @@ module.exports = {
     db.User.findAll({})
     .then(function(users) {
       users.map((user) => {
-      var userData = user.dataValues;
+        var userData = user.dataValues;
         return {
           id: userData.id,
-          message:userData.message
-        }
-      })
+          message: userData.message
+        };
+      });
       res.status(200).json(users);
     });
   },
@@ -51,16 +51,16 @@ module.exports = {
   },
 
   postJoinEvent: function(req, res) {
-    db.EventParticipant.findOrCreate({where:
-      {EventId: req.body.EventId},
-      include: [{UserId: req.body.UserId}]
+    console.log('Post Join**: ', req.body);
+    db.EventParticipant.findOrCreate({where: {UserId: req.body.UserId, EventId: req.body.EventId}
     })
     .spread(function(user, created) {
       console.log(user.get({
         plain: true
       }));
       console.log(created);
-    }).then(function(user) {
+    })
+    .then(function(user) {
       res.status(201).json(user);
     });
   }
