@@ -3,19 +3,37 @@ var db = require('../db.js');
 
 module.exports = {
 
-  getUser: function(req, res) {
-    console.log('GET USER REQ**: ', req.body);
-    db.User.findAll({
-      where: { email: req.body.email }
-    })
-    .then(function(user) {
-      console.log('User Get req:', user);
-      // return {
-      //   id: user
-      // };
-      res.status(200).json(user);
+  getAllUsers: function(req, res) {
+    db.User.findAll({})
+    .then(function(users) {
+      users.map((user) => {
+      var userData = user.dataValues;
+        return {
+          id: userData.id,
+          message:userData.message
+        }
+      })
+      res.status(200).json(users);
     });
   },
+
+  // getUser: function(req, res) {
+  //   db.User.findOne({
+  //     include: [
+  //       {model: db.User},
+  //       {model: db.Events},
+  //     ],
+  //     where: { id: Number(req.params.id) }
+  //   })
+  //   .then(function(user) {
+  //     var userData = user.dataValues;
+  //     return {
+  //       id: userData.id,
+  //       message:userData.message
+  //     }
+  //     res.status(200).json(user);
+  //   });
+  // },
 
   postUser: function(req, res) {
     db.User.findOrCreate({where: {email: req.body.email},

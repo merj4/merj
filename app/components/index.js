@@ -18,7 +18,6 @@ injectTapEventPlugin();
 
 
 const auth = new AuthService('pzuivu1BmVpSBZN3oOAxF3MSGIywGW94', 'merjgirls.auth0.com');
-console.log("auth: " + auth);
 
 
 class App extends Component {
@@ -31,7 +30,8 @@ class App extends Component {
       profile: auth.getProfile(),
       showProfile: false,
       date: moment(),
-      showMap: false
+      showMap: false,
+      users: []
     }
 
     auth.on('profile_updated', (newProfile) => {
@@ -80,13 +80,20 @@ class App extends Component {
   // }
 
   componentDidMount() {
-    console.log('Component mounted!!!')
     axios.get('/api/events/recent')
     .then(res => {
       const events = res.data;
       this.setState({
         events: events,
         displayedEvents: events
+      });
+    })
+
+    axios.get('/api/users')
+    .then(res => {
+      const users = res.data;
+      this.setState({
+        users: users
       });
     })
   }
@@ -106,7 +113,6 @@ class App extends Component {
 
   updateEventList(array) {
     this.setState({ displayedEvents: array });
-    console.log('Events have been updated!')
   }
 
 
@@ -129,8 +135,6 @@ class App extends Component {
       showMap: false
     })
     this.forceUpdate();
-    console.log("showProfile: " + this.state.showProfile)
-    console.log("activeEvent: " + this.state.activeEvent)
   }
 
   showMap() {
@@ -151,6 +155,8 @@ class App extends Component {
 
 
   render() {
+    console.log('Events: ', this.state.events)
+    console.log('Users', this.state.users)
     const { profile } = this.state;
     //const requireAuth = (nextState, replace) => {
       if (!auth.loggedIn()) {
@@ -222,6 +228,7 @@ class App extends Component {
                 <EventView
                   activeEvent={this.state.activeEvent}
                   profile={this.state.profile}
+                  users={this.state.users}
                 />
               </div>
             </MuiThemeProvider>
