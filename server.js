@@ -26,7 +26,7 @@ io.on('connection', socket => {
     socket.username = data.username
     
     socket.on('message', msg => {
-      socket.in(data.room).broadcast.emit('message', msg);
+      socket.in(data.roomname).broadcast.emit('message', msg);
     })
     
   })
