@@ -52,27 +52,32 @@ class EventView extends Component {
     })
     
     socket.emit('message', message)
-    
-
+  
     //save each message to database
     axios.post('/api/chat', {
-      message: JSON.stringify(message)
+      message: JSON.stringify(message),
+      // EventId: JSON.stringify(this.props.activeEvent.id),
+      // user: JSON.stringify(this.filterUsers(message.username))
     }).then(res => {
       console.log("Message posted successfully")
     }).catch(err => {
       console.log("Message failed to post")
     })
-
-    console.log(
-  'These are your chat users: ', this.state.users,
-  'This is your user: ', message.username
-
-    )
   }
+
+  // filterUsers(username) {
+  //  this.props.users.forEach((user) => {
+  //     const user = Object.values(user).filter((value) => 
+  //       value === username
+  //   })
+  //       console.log('************', user)
+
+  // }
 
 
   render() {
-
+ // const userID = this.filterUsers('Rochelle')
+ // console.log('*****Line 79:',)
     return (
       <div id="chat">
        <div id='chatsidebar'>

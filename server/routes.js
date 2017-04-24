@@ -17,10 +17,10 @@ module.exports = function(app, express) {
   app.get('/api/event/:id', eventsController.getEvent);
   //create event
   app.post('/api/event', eventsController.postEvent);
-  //get user's public profile
-  app.get('/api/user', userController.getUser);
+  //get all users' public profile
+  app.get('/api/users', userController.getAllUsers);
   // //create user profile
-  app.post('/api/user', userController.postUser);
+  app.post('/api/user/', userController.postUser);
   // //get all messages for chatroom
   // app.get('/api/chat', chatController.getMessages);
   // //send a message

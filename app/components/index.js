@@ -30,7 +30,8 @@ class App extends Component {
       profile: auth.getProfile(),
       showProfile: false,
       date: moment(),
-      showMap: false
+      showMap: false,
+      users: []
     }
 
     auth.on('profile_updated', (newProfile) => {
@@ -85,6 +86,14 @@ class App extends Component {
       this.setState({
         events: events,
         displayedEvents: events
+      });
+    })
+
+    axios.get('/api/users')
+    .then(res => {
+      const users = res.data;
+      this.setState({
+        users: users
       });
     })
   }
@@ -146,6 +155,8 @@ class App extends Component {
 
 
   render() {
+    console.log('Events: ', this.state.events)
+    console.log('Users', this.state.users)
     const { profile } = this.state;
     //const requireAuth = (nextState, replace) => {
       if (!auth.loggedIn()) {
@@ -217,6 +228,7 @@ class App extends Component {
                 <EventView
                   activeEvent={this.state.activeEvent}
                   profile={this.state.profile}
+                  users={this.state.users}
                 />
               </div>
             </MuiThemeProvider>
