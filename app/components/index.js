@@ -66,6 +66,7 @@ class App extends Component {
     this.showProfile = this.showProfile.bind(this);
     this.showProfileSetToFalse = this.showProfileSetToFalse.bind(this);
     this.showMap = this.showMap.bind(this);
+    this.joinEvent = this.joinEvent.bind(this);
   }
 
 
@@ -99,14 +100,47 @@ class App extends Component {
   }
 
   handleEventClick(event) {
+    let eventId = event.id;
+    let userId = null;
+    let users = this.state.users;
+    let p = this.state.profile;
+
+    users.forEach(function(user) {
+      if (user.email === p.email) {
+        userId = user.id;
+      }
+    })
+
     if (event !== null) {
       this.state.activeEvent = event;
       this.forceUpdate();
+      this.joinEvent(eventId, userId);
     } else {
       this.setState({
         activeEvent: event
       })
     }
+  }
+
+  joinEvent(eventId, userId) {
+    // let users = this.state.users;
+    // let p = this.state.profile;
+    // let u = null;
+
+    // users.forEach(function(user) {
+    //   if (user.email === p.email) {
+    //     u = user.id;
+    //   }
+    // })
+
+    axios.post('/api/joinevent', {
+      EventId: eventId,
+      UserId: userId
+    }).then(res => {
+      console.log('User has joined the event!', eventId, userId)
+    }).catch(err => {
+      console.log('There was an error:', err);
+    })
   }
 
   // build a helper method that will allow us to setState of events to the results of a search
@@ -146,7 +180,7 @@ class App extends Component {
   }
 
   updateDateState(newDate) {
-    console.log('Updating the date in index: ', this.state.date, 'Arg:', newDate)
+    // console.log('Updating the date in index: ', this.state.date, 'Arg:', newDate)
     this.setState({
       date: newDate
     })
@@ -157,8 +191,8 @@ class App extends Component {
 
 
   render() {
-    console.log('Events: ', this.state.events)
-    console.log('Users', this.state.users)
+    // console.log('Events: ', this.state.events)
+    // console.log('Users id: ', this.state.users)
     const { profile } = this.state;
     //const requireAuth = (nextState, replace) => {
       if (!auth.loggedIn()) {
@@ -203,7 +237,7 @@ class App extends Component {
           );
         //shows an individual event after clicking "would like to go"
         } else if (this.state.activeEvent !== null && this.state.showProfile === false && this.state.showMap === false) {
-          console.log('activeEvent in index.js', this.state.activeEvent)
+          // console.log('activeEvent in index.js', this.state.activeEvent)
             return (
             <MuiThemeProvider>
               <div>
