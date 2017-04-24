@@ -7,13 +7,11 @@ import CommunicationChatBubble from 'material-ui/svg-icons/communication/chat-bu
 
 const ChatUsers = (props) => {
   return (
-  <List >
     <ListItem
       primaryText={props.name}
       leftAvatar={<Avatar src={props.image} />}
       rightIcon={<CommunicationChatBubble />}
     />
-  </List>
 )}
 
 
