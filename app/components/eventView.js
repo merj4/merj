@@ -5,7 +5,6 @@ import { ChatContainer } from './chat-container'
 import { EventDetails } from './eventDetails'
 import io from 'socket.io-client'
 import axios from 'axios'
-import _ from 'underscore'
 
 const server = location.origin
 const socket = io(server)
@@ -16,7 +15,7 @@ class EventView extends Component {
     this.state = {
       messages: [],
       room: this.props.activeEvent.title,
-      users: null
+      users: []
     }
     this.receiveMessage = this.receiveMessage.bind(this);
   }
@@ -37,16 +36,14 @@ class EventView extends Component {
 
 
   receiveMessage(message) {
-    // const chatUsers = this.state.users || [];
-    // _.each(chatUsers, (user, i) => {
-    //   if (chatUsers[i] !== message.username) {
-    //     chatUsers.push(message.username) 
-    //   }
-    // })
-
+    const chatUsers = this.state.users;
+    if (!chatUsers.includes(message.username)) {
+      chatUsers.push(message.username)
+    }
+    
     this.setState({
       messages: [message, ...this.state.messages],
-      // users: chatUsers
+      users: chatUsers
     })
     
     socket.emit('message', message)
@@ -65,7 +62,7 @@ class EventView extends Component {
   'These are your chat users: ', this.state.users,
   'This is your user: ', message.username
 
-  )
+    )
   }
 
 

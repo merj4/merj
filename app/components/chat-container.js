@@ -51,7 +51,7 @@ const ChatContainer = (props) => {
         <ChatMessage message={message.body} key={i} 
         user={message.username}
         image={message.image}
-        time={message.time}/>
+        time={message.timestamp}/>
       )}
       </div>
     </MobileTearSheet>
