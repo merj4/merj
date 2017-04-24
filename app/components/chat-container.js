@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { ChatMessage } from './chat-message'
+import { ChatMessage } from './chat-message';
+import InfiniteScroll from 'react-infinite-scroll-component';
 
 let MobileTearSheet = React.createClass({
 
@@ -41,19 +42,22 @@ let MobileTearSheet = React.createClass({
   }
 
 });
-
+  
 
 const ChatContainer = (props) => {
   return (
     <MobileTearSheet> 
-      <div className="messages">
+      <InfiniteScroll
+      height={775}
+      hasMore={false}
+      loader={<h4>Loading...</h4>}>
       {props.messages.map((message, i) => 
         <ChatMessage message={message.body} key={i} 
         user={message.username}
         image={message.image}
         time={message.timestamp}/>
       )}
-      </div>
+      </InfiniteScroll>
     </MobileTearSheet>
   )
 }

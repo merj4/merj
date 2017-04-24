@@ -1,7 +1,8 @@
 import React from 'react';
 import {List, ListItem} from 'material-ui/List';
 import Subheader from 'material-ui/Subheader';
-import { ChatUsers } from './chat-users'
+import { ChatUsers } from './chat-users';
+import InfiniteScroll from 'react-infinite-scroll-component';
 
 
 let MobileTearSheet = React.createClass({
@@ -50,6 +51,10 @@ const UsersContainer = (props) => {
   return (
     <MobileTearSheet >
       <Subheader>Attendees</Subheader>
+      <InfiniteScroll
+      height={775}
+      hasMore={false}
+      loader={<h4>Loading...</h4>}>
         <List>
         {props.users.map((user, i) => 
           <ChatUsers key={i}
@@ -58,6 +63,7 @@ const UsersContainer = (props) => {
           />
         )}
         </List>
+      </InfiniteScroll>
     </MobileTearSheet>
   )
 }

@@ -27,7 +27,8 @@ class EventView extends Component {
     socket.emit('room enter', {
       roomname: room,
       username: user,
-      image: image
+      image: image,
+      socketId: socket.id
     });
 
     socket.on('room enter', data => {
@@ -44,9 +45,6 @@ class EventView extends Component {
     })
   }
 
-  onRoomEnter() {
-    
-  }
 
   receiveMessage(message) {
     this.setState({
