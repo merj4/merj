@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ChatUsers } from './chat-users'
+import { UsersContainer } from './chat-users-container'
 import { ChatInput } from './chat-input'
 import { ChatContainer } from './chat-container'
 import { EventDetails } from './eventDetails'
@@ -23,10 +23,20 @@ class EventView extends Component {
   componentDidMount() { 
     const room = this.state.room;
     const user = this.props.profile.given_name
+    const image = this.props.profile.picture
     socket.emit('room enter', {
       roomname: room,
-      username: user
+      username: user,
+      image: image
     });
+
+    socket.on('room enter', data => {
+      const chatUsers = this.state.users;
+      chatUsers.push(data)
+      this.setState({
+        users: chatUsers
+      })
+    })
 
     socket.on('message', message => {
     this.setState
@@ -34,16 +44,13 @@ class EventView extends Component {
     })
   }
 
+  onRoomEnter() {
+    
+  }
 
   receiveMessage(message) {
-    const chatUsers = this.state.users;
-    if (!chatUsers.includes(message.username)) {
-      chatUsers.push(message.username)
-    }
-    
     this.setState({
       messages: [message, ...this.state.messages],
-      users: chatUsers
     })
     
     socket.emit('message', message)
@@ -71,8 +78,10 @@ class EventView extends Component {
     return (
       <div id="chat">
        <div id='chatsidebar'>
-          <div><EventDetails activeEvent={this.props.activeEvent}/></div>
-          <div><ChatUsers /></div>
+          <div><EventDetails 
+          activeEvent={this.props.activeEvent}/></div>
+          <div><UsersContainer
+          users={this.state.users}/></div>
         </div>
         <div id='chatroom'>
           <ChatContainer 
