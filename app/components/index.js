@@ -120,7 +120,8 @@ class App extends Component {
     // console.log("showProfile Ran")
     this.setState({
       showProfile: true,
-      activeEvent: null
+      activeEvent: null,
+      showMap: false
     })
 
     // console.log("showProfile: " + this.state.showProfile)
@@ -139,7 +140,8 @@ class App extends Component {
 
   showMap() {
     this.setState({
-      showMap: !this.state.showMap
+      showMap: !this.state.showMap,
+      showProfile: false
     })
   }
 
@@ -292,7 +294,7 @@ class App extends Component {
                   updateEventList={this.updateEventList}
                 />
                 <MapView
-                  events={this.state.displayedEvents}
+                  events={this.state.events}
                   updateEventList={this.updateEventList}
                 />
               </div>
