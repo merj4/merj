@@ -3,6 +3,7 @@ import TextField from 'material-ui/TextField';
 import io from 'socket.io-client';
 import {orange500, blue500} from 'material-ui/styles/colors';
 import moment from 'moment';
+import PhotoIcon from 'material-ui/svg-icons/image/add-a-photo'
 
 const styles = {
   errorStyle: {
@@ -17,7 +18,9 @@ const styles = {
   floatingLabelFocusStyle: {
     color: blue500,
   },
-
+  iconStyle: {
+    marginLeft: 24,
+  }
 };
 
 
@@ -51,9 +54,14 @@ class ChatInput extends Component {
   }
 
   render() {
+    console.log('PhotoIcon =>', PhotoIcon)
     return (
     <div>
-
+    <span>
+    <PhotoIcon className="photo-icon" iconStyle={styles.iconStyle} color={orange500} hoverColor={blue500} >
+    </PhotoIcon>
+    </span>
+    <span>
       <TextField
       className="input-chat"
       floatingLabelText="Start Chatting Here"
@@ -63,7 +71,7 @@ class ChatInput extends Component {
       underlineStyle={styles.underlineStyle}
       onKeyUp={this.handleSubmit}
       />
-
+    </span>
     </div>
     )
   }
@@ -71,3 +79,4 @@ class ChatInput extends Component {
 
 export { ChatInput }
 
+7

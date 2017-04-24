@@ -40,7 +40,7 @@ const ChatMessage = (props) => {
          <span style={{color: 'black', fontSize: 22 + 'px'}}>{props.message}</span>
           </p>
         }
-        secondaryTextLines={2}
+        secondaryTextLines={3}
       />
     </List>
   )
