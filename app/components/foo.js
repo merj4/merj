@@ -1,11 +1,22 @@
+import React, {Component} from 'react';
+import ReactDOM from 'react-dom';
+
+class Foo extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+    }
+  }
 
 
-import React from 'react';
+  componentDidMount() {
+    console.log("mounted")
+  }
 
-export class Foo extends React.Component {
   render() {
     return (
       <div className="foo">
+
 
         <div className="bar">
         </div>
