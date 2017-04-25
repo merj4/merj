@@ -280,10 +280,7 @@ div, span {
 }
 
 /*PhotoIcon*/
-.photo-icon {
-  
-}
-
-.input-chat {
-  width: 50%;
+.imgMessage {
+    max-width: 300px;
+    background-color: powderblue;
 }
