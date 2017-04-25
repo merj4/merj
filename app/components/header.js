@@ -74,7 +74,6 @@ class Header extends Component {
       <Nav inverse className="Container header">
         <button onClick={this.props.showProfileSetToFalse}><span id="topsocial">Social.<span id="toply">ly</span></span></button>
         <Nav pullRight>
-          <div>{this.props.profile.name}</div>
           {/* <img src= {this.props.profile.picture} id="userpic"></img>*/}
           <Button id="formbutton" onClick={() => this.setState({ show: true})}>+</Button>
           <DropdownButton id='profilelogout'>

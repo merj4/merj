@@ -191,7 +191,6 @@ class App extends Component {
 
 
   render() {
-    // console.log('Events: ', this.state.events)
     // console.log('Users id: ', this.state.users)
     const { profile } = this.state;
     //const requireAuth = (nextState, replace) => {
@@ -215,7 +214,7 @@ class App extends Component {
                   showProfileSetToFalse={this.showProfileSetToFalse}
                 />
                 <Search
-                  data={this.state.events}
+                  data={this.state.displayedEvents}
                   updateEventList={this.updateEventList}
                   dateSearch={this.state.date}
                   ref='child'
@@ -223,6 +222,7 @@ class App extends Component {
                 />
                 <Filter
                   events={this.state.events}
+                  eventsdisplayed={this.state.displayedEvents}
                   updateDate={this.updateDateState}
                   handleEventClick={this.handleEventClick.bind(this)}
                   showMap={this.showMap}
@@ -248,7 +248,7 @@ class App extends Component {
                   showProfileSetToFalse={this.showProfileSetToFalse}
                 />
                 <Search
-                  data={this.state.events}
+                  data={this.state.displayedEvents}
                   updateEventList={this.updateEventList}
                   dateSearch={this.state.date}
                   ref='child'
@@ -256,6 +256,7 @@ class App extends Component {
                 />
                 <Filter
                   events={this.state.events}
+                  eventsdisplayed={this.state.displayedEvents}
                   updatedate={this.updateDateState}
                   updateEventList={this.updateEventList}
                   handleEventClick={this.handleEventClick.bind(this)}
@@ -281,7 +282,7 @@ class App extends Component {
                   showProfileSetToFalse={this.showProfileSetToFalse}
                 />
                 <Search
-                  data={this.state.events}
+                  data={this.state.displayedEvents}
                   updateEventList={this.updateEventList}
                   dateSearch={this.state.date}
                   ref='child'
@@ -289,6 +290,7 @@ class App extends Component {
                 />
                 <Filter
                   events={this.state.events}
+                  eventsdisplayed={this.state.displayedEvents}
                   updatedate={this.updateDateState}
                   updateEventList={this.updateEventList}
                   handleEventClick={this.handleEventClick.bind(this)}
@@ -314,7 +316,7 @@ class App extends Component {
                   showProfileSetToFalse={this.showProfileSetToFalse}
                 />
                 <Search
-                  data={this.state.events}
+                  data={this.state.displayedEvents}
                   updateEventList={this.updateEventList}
                   dateSearch={this.state.date}
                   ref='child'
@@ -322,6 +324,7 @@ class App extends Component {
                 />
                 <Filter
                   events={this.state.events}
+                  eventsdisplayed={this.state.displayedEvents}
                   updateDate={this.updateDateState}
                   handleEventClick={this.handleEventClick.bind(this)}
                   showMap={this.showMap}
@@ -329,7 +332,10 @@ class App extends Component {
                 />
                 <MapView
                   events={this.state.events}
+                  eventsdisplayed={this.state.displayedEvents}
                   updateEventList={this.updateEventList}
+                  handleEventClick={this.handleEventClick.bind(this)}
+
                 />
               </div>
             </MuiThemeProvider>
