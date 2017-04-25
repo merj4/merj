@@ -86,7 +86,10 @@ class Gifs extends Component {
       <div style={styles.root}>
         <GridList style={styles.gridList} cols={2.2}>
           {this.state.gifs.map((gif, i) => (
-            <gif img={gif.url} key={i} title={gif.title}/>
+            <gif url={gif.bitly_url} key={i} 
+            handleDropdown={this.handleDropdown}
+            insertURL={this.props.insertURL}
+            />
           ))}
         </GridList>
       </div>

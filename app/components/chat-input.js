@@ -152,7 +152,8 @@ class ChatInput extends Component {
   let close = () => this.setState({ show: false});
     return (
       <div style={{position: "relative"}}>
-        <Gifs ref="child"/>
+        <Gifs ref="child"
+        insertURL={this.insertURL}/>
         <TextField
         className="input-chat"
         floatingLabelText="Start Chatting Here"

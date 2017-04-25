@@ -40,34 +40,17 @@ const styles = {
 // ];
 
 
-class gif extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      gifSelected: false,
-    }
-    this.onSelect = this.onSelect.bind(this)
-  }
-
-  onSelect() {
-    this.state({onSelect: !this.state.gifSelected})
-  }
-
-
-
-  render() {
-    return (
-      <GridTile
-        key={props.img}
-        title={props.title}
-        actionIcon={<IconButton><StarBorder color="rgb(0, 188, 212)" /></IconButton>}
-        titleStyle={styles.titleStyle}
-        titleBackground={styles.titleBackground}
-      >
-        <img src={props.img} />
-      </GridTile>
-    )
-  }
+const gif = (props) => {
+  return (
+    <GridTile
+      key={props.key}
+      actionIcon={<IconButton><StarBorder color="rgb(0, 188, 212)" /></IconButton>}
+      titleStyle={styles.titleStyle}
+      titleBackground={styles.titleBackground}
+    >
+      <img src={props.img} />
+    </GridTile>
+  )
 }
 
 export { gif }
