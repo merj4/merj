@@ -123,7 +123,7 @@ class ChatInput extends Component {
     this.props.receiveMessage(message);
     
     const upload = {
-      body: {this.state.image},
+      body: this.state.image,
       username: this.props.profile.given_name,
       timestamp: moment((new Date).getTime()).format("MMMM Do YYYY, h:mm:ss a"),
       image: this.props.profile.picture
