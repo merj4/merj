@@ -73,6 +73,7 @@ class ChatInput extends Component {
         image: this.props.profile.picture
       }
       this.props.receiveMessage(message);
+      this.props.saveToDatabase(mesage)
       e.target.value = ''      
     }
   }
@@ -113,17 +114,26 @@ class ChatInput extends Component {
   }
 
   onImgUpload() {
-  const message = {
+    const message = {
       body: this.state.image,
       username: this.props.profile.given_name,
       timestamp: moment((new Date).getTime()).format("MMMM Do YYYY, h:mm:ss a"),
       image: this.props.profile.picture
     }
     this.props.receiveMessage(message);
-    this.handleClick();
+    
+    const upload = {
+      body: {this.state.image},
+      username: this.props.profile.given_name,
+      timestamp: moment((new Date).getTime()).format("MMMM Do YYYY, h:mm:ss a"),
+      image: this.props.profile.picture
+    }
+      this.props.saveToDatabase(upload)
+      this.handleClick();
   }
 
   render() {
+    console.log("IMAGE: ", this.state.image)
   let close = () => this.setState({ show: false});
     return (
       <div style={{position: "relative"}}>
