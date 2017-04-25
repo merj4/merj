@@ -69,7 +69,6 @@ class ChatInput extends Component {
   handleSubmit(e) {
     const body = e.target.value;
     if (e.keyCode === 13 && body){
-
       const message = {
         body,
         username: this.props.profile.given_name,
@@ -80,8 +79,7 @@ class ChatInput extends Component {
       e.target.value = ''      
       this.props.receiveMessage(message);
       this.props.saveToDatabase(mesage);
-      this.refs.child.gotData()
-
+            this.refs.child.gotData()
     }
   }
 
@@ -89,10 +87,8 @@ class ChatInput extends Component {
   handleInputChange(e) {
     this.setState({ query: e.target.value })
     if (e.keyCode === 32 && this.state.query === ".gif") {
-      this.refs.child.handleSearch()
-    }
       this.refs.child.handleSearch(this.state.query)
-   
+    }
   }
   handleClick() {
     this.setState({
@@ -129,18 +125,20 @@ class ChatInput extends Component {
   }
 
   onImgUpload() {
-    const message = {
+    const imageData = {
       body: this.state.image,
       username: this.props.profile.given_name,
-      timestamp: moment((new Date).getTime()).format("MMMM Do YYYY, h:mm:ss a"),
+      timestamp: moment((new Date).getTime())
+      .format("MMMM Do YYYY, h:mm:ss a"),
       image: this.props.profile.picture
     }
-    this.props.receiveMessage(message);
+    this.props.receiveMessage(imageData);
     
     const upload = {
       body: this.state.image,
       username: this.props.profile.given_name,
-      timestamp: moment((new Date).getTime()).format("MMMM Do YYYY, h:mm:ss a"),
+      timestamp: moment((new Date).getTime())
+      .format("MMMM Do YYYY, h:mm:ss a"),
       image: this.props.profile.picture
     }
       this.props.saveToDatabase(upload)
