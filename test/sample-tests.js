@@ -24,7 +24,7 @@ describe('<Header />', function() {
   };
 
   it('receives props from its parent component', () => {
-    const wrapper = shallow(<Navigation userPrivs={adminProps}/>);
+    const wrapper = shallow(<Header userPrivs={adminProps}/>);
     expect(wrapper.instance().props.userPrivs.isLoggedIn).to.equal(true);
     expect(wrapper.instance().props.userPrivs.isAdmin).to.equal(true);
   });
