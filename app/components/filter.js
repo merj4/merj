@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { Button, Col, Row } from 'react-bootstrap';
-import {Tabs, Tab } from 'material-ui/Tabs';
+import {Tabs, Tab, DropDownMenu, MenuItem } from 'material-ui/Tabs';
 import {EventItem} from './eventItem';
 import MapView from './mapView';
 import ListOrMapButton from './ListOrMapButton';
@@ -27,7 +27,7 @@ class Filter extends Component {
       isMap: false,
       startDate: moment(), // this property highlights today's date on the calendar
       isOpen: false,
-      show: false
+      openImmediately: false
     }
     // will need to also bind all the other methods to 'this'
     this.listMapHandler = this.listMapHandler.bind(this);
@@ -62,6 +62,12 @@ class Filter extends Component {
   //from here, distance search
   distanceHandleChange (event, index, value) {
     this.setState({value});
+  }
+
+  openImmediatelyHandler(){
+    this.setState({
+      openImmediately: !this.state.openImmediately
+    })
   }
 
   //get user's current location and measuring radius
@@ -115,18 +121,18 @@ class Filter extends Component {
 
   render() {
     let labelForMap = this.state.isMap ? "List": "Map"
-    // console.log("props!!hey!!!", this.props)
+    console.log("openImmediately", this.state.openImmediately);
     return (
       <Tabs>
-        <Tab label="Distance" onClick={() => this.setState({ show: true})}>
+        <Tab label="Distance" onClick={()=> this.openImmediatelyHandler()}>
           <div style={styles.headline}>
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Menu 1<span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li><button onClick={() => this.distanceHandler(3218.69)}>2 miles</button></li>
-              <li><button onClick={() => this.distanceHandler(8046.72)}>5 miles</button></li>
-              <li><button onClick={() => this.distanceHandler(32186.9)}>20 miles</button></li>
-              <li><button onClick={() => this.props.updateEventList(this.props.events)}>20 miles</button></li>
-            </ul>
+
+          <DropDownMenu openImmediately={this.state.openImmediately}>
+          <MenuItem value={2} primaryText="Every Night" />
+          <MenuItem value={3} primaryText="Weeknights" />
+          <MenuItem value={4} primaryText="Weekends" />
+          <MenuItem value={5} primaryText="Weekly" />
+            </DropDownMenu>
           </div>
         </Tab>
 
