@@ -15,6 +15,8 @@ module.exports = function(app, express) {
   // app.get('/api/events', eventsController.getByLocation);
   //get single event page
   app.get('/api/event/:id', eventsController.getEvent);
+  //get single event page
+  app.get('/api/userevents/:UserId', eventsController.getUserEvents);
   //create event
   app.post('/api/event', eventsController.postEvent);
   //get all users' public profile
