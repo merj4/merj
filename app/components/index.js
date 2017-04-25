@@ -16,6 +16,10 @@ import MapView  from './mapView.js';
 
 injectTapEventPlugin();
 
+//Helper method for debugging
+window.log = (label, data) => {
+  console.log('****' + label + ': ' + data)
+}
 
 const auth = new AuthService('pzuivu1BmVpSBZN3oOAxF3MSGIywGW94', 'merjgirls.auth0.com');
 
