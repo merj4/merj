@@ -125,6 +125,7 @@ class Filter extends Component {
   render() {
     let labelForMap = this.state.isMap ? "List": "Map"
     let close = () => this.setState({ show: false});
+    console.log('displayedEvents', this.props.displayedEvents)
 
     return (
       <Tabs>
