@@ -1,11 +1,13 @@
 import React, {Component} from 'react';
 import { Button, Col, Row } from 'react-bootstrap';
-import {Tabs, Tab, DropDownMenu, MenuItem } from 'material-ui/Tabs';
-import {EventItem} from './eventItem';
-import MapView from './mapView';
-import ListOrMapButton from './ListOrMapButton';
+import {Tabs, Tab, DropDownMenu, MenuItem } from 'material-ui';
+import EventItem from './eventItem.js';
+import MapView from './mapView.js';
+import ListOrMapButton from './ListOrMapButton.js';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import App from './index.js';
 
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -27,7 +29,8 @@ class Filter extends Component {
       isMap: false,
       startDate: moment(), // this property highlights today's date on the calendar
       isOpen: false,
-      openImmediately: false
+      openImmediately: false,
+      value: 1
     }
     // will need to also bind all the other methods to 'this'
     this.listMapHandler = this.listMapHandler.bind(this);
@@ -69,6 +72,11 @@ class Filter extends Component {
       openImmediately: !this.state.openImmediately
     })
   }
+
+  handleChange (event, index, value) {
+    this.setState({value});
+  }
+
 
   //get user's current location and measuring radius
   async distanceHandler(option) {
@@ -124,17 +132,12 @@ class Filter extends Component {
     console.log("openImmediately", this.state.openImmediately);
     return (
       <Tabs>
-        <Tab label="Distance" onClick={()=> this.openImmediatelyHandler()}>
-          <div style={styles.headline}>
-
-          <DropDownMenu openImmediately={this.state.openImmediately}>
-          <MenuItem value={2} primaryText="Every Night" />
-          <MenuItem value={3} primaryText="Weeknights" />
-          <MenuItem value={4} primaryText="Weekends" />
-          <MenuItem value={5} primaryText="Weekly" />
-            </DropDownMenu>
-          </div>
-        </Tab>
+        <DropDownMenu style= {styles.headline} value={this.state.value} onChange={this.handleChange} onClick={()=> this.openImmediatelyHandler()}>
+            <MenuItem value = {1} onClick={() => this.distanceHandler(this.props.event)} primaryText="Distance" />
+            <MenuItem value = {2} onClick={() => this.distanceHandler(3218.69)} primaryText="2 miles" />
+            <MenuItem value = {3} onClick={() => this.distanceHandler(8046.72)} primaryText="5 miles" />
+            <MenuItem value {4} onClick={() => this.distanceHandler(32186.9)} primaryText="20 miles" />
+        </DropDownMenu>
 
         <Tab label="Calendar" onClick={this.toggleCalendar} handleEventClick={this.props.handleEventClick}>
           <div style={styles.headline}>
