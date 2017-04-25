@@ -1,11 +1,13 @@
 import React, {Component} from 'react';
-import { Button, Col, Row } from 'react-bootstrap';
-import {Tabs, Tab } from 'material-ui/Tabs';
-import {EventItem} from './eventItem';
-import MapView from './mapView';
-import ListOrMapButton from './ListOrMapButton';
+import { Button, Modal } from 'react-bootstrap';
+import {Tabs, Tab } from 'material-ui';
+import EventItem from './eventItem.js';
+import MapView from './mapView.js';
+import ListOrMapButton from './ListOrMapButton.js';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import App from './index.js';
 
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -27,7 +29,8 @@ class Filter extends Component {
       isMap: false,
       startDate: moment(), // this property highlights today's date on the calendar
       isOpen: false,
-      show: false
+      openImmediately: false,
+      value: 1
     }
     // will need to also bind all the other methods to 'this'
     this.listMapHandler = this.listMapHandler.bind(this);
@@ -64,9 +67,15 @@ class Filter extends Component {
     this.setState({value});
   }
 
+  openImmediatelyHandler(){
+    this.setState({
+      openImmediately: !this.state.openImmediately
+    })
+  }
+
   //get user's current location and measuring radius
   async distanceHandler(option) {
-    const data = this.props.events.slice();
+    const data = this.props.events;
     const geocoder = new google.maps.Geocoder();
 
     const userPosition = await new Promise(resolve =>
@@ -105,6 +114,7 @@ class Filter extends Component {
       ),
       Promise.resolve(),
     )
+
     this.props.updateEventList(distanceResults);
     if (distanceResults.length === 0) {
       alert("no events found :( ");
@@ -114,18 +124,19 @@ class Filter extends Component {
 
   render() {
     let labelForMap = this.state.isMap ? "List": "Map"
-    // console.log("props!!hey!!!", this.props)
+    let close = () => this.setState({ show: false});
+    console.log('displayedEvents', this.props.displayedEvents)
+
     return (
       <Tabs>
-        <Tab label="Distance" onClick={() => this.setState({ show: true})}>
+        <Tab label="Distance" onClick={() => this.setState({ show: true})} >
           <div style={styles.headline}>
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Menu 1<span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li><button onClick={() => this.distanceHandler(3218.69)}>2 miles</button></li>
-              <li><button onClick={() => this.distanceHandler(8046.72)}>5 miles</button></li>
-              <li><button onClick={() => this.distanceHandler(32186.9)}>20 miles</button></li>
-              <li><button onClick={() => this.props.updateEventList(this.props.events)}>20 miles</button></li>
-            </ul>
+            <Modal show={this.state.show} onHide={close}>
+              <Button onClick={() => this.distanceHandler(3218.69)}> 2 miles </Button>
+              <Button onClick={() => this.distanceHandler(8046.72)}> 5 miles </Button>
+              <Button onClick={() => this.distanceHandler(32186.9)}> 20 miles </Button>
+              <Button onClick={() => this.props.updateEventList(this.props.events)}> Reset</Button>
+            </Modal>
           </div>
         </Tab>
 
