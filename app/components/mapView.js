@@ -31,8 +31,16 @@ class MapView extends Component {
       })
     )
 
-    const userPositionOnGoogleMap = new google.maps.LatLng(parseFloat(userPosition.lat), parseFloat(userPosition.lng));    
+
+
+    const userPositionOnGoogleMap = new google.maps.LatLng(parseFloat(userPosition.lat), parseFloat(userPosition.lng)); 
+    var markUser = new google.maps.Marker({
+        position: userPositionOnGoogleMap,
+        map: map,
+        icon: 'http://www.robotwoods.com/dev/misc/bluecircle.png'
+    });
     map.setCenter(userPositionOnGoogleMap);
+
 
     console.log("displayedEvents", this.props.updateEventList())
 
@@ -55,7 +63,7 @@ class MapView extends Component {
            if (status == 'OK') {
             var marker = new google.maps.Marker({
               map: map,
-              position: results[0].geometry.location,
+              position: results[0].geometry.location
             });
 
             var content = '<div id="markerContainer">'+
