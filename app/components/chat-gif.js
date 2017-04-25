@@ -41,6 +41,11 @@ const styles = {
 
 
 const gif = (props) => {
+  const handleClick = (e) => {
+    this.props.insertUrl(undefined, src)
+    this.props.handleDropdown()
+  }
+
   return (
     <GridTile
       key={props.key}
@@ -48,7 +53,7 @@ const gif = (props) => {
       titleStyle={styles.titleStyle}
       titleBackground={styles.titleBackground}
     >
-      <img src={props.img} />
+      <img src={props.img} onClick={this.handleClick}/>
     </GridTile>
   )
 }
