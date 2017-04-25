@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import {orange500, blue500} from 'material-ui/styles/colors';
+import { Gifs } from './chat-giphy';
+import { orange500, blue500 } from 'material-ui/styles/colors';
 import { Button, Modal } from 'react-bootstrap';
 import TextField from 'material-ui/TextField';
 import PhotoIcon from 'material-ui/svg-icons/image/add-a-photo'
@@ -54,8 +55,10 @@ class ChatInput extends Component {
     super(props)
     this.state = {
       show: false,
-      image: ''
+      image: '',
+      query: null,
     }
+    // this.handleInputChange = this.handleInputChange.bind(this)
     this.onImgUpload = this.onImgUpload.bind(this)
     this.onFileSelect = this.onFileSelect.bind(this)
     this.handleClick = this.handleClick.bind(this)
@@ -66,19 +69,29 @@ class ChatInput extends Component {
   handleSubmit(e) {
     const body = e.target.value;
     if (e.keyCode === 13 && body){
-      const message = {
-        body,
-        username: this.props.profile.given_name,
-        timestamp: moment((new Date).getTime()).format("MMMM Do YYYY, h:mm:ss a"),
-        image: this.props.profile.picture
-      }
-      this.props.receiveMessage(message);
-      this.props.saveToDatabase(mesage)
+    const message = {
+      body,
+      username: this.props.profile.given_name,
+      timestamp: moment((new Date).getTime())
+      .format("MMMM Do YYYY, h:mm:ss a"),
+      image: this.props.profile.picture
+    }
       e.target.value = ''      
+      this.props.receiveMessage(message);
+      this.props.saveToDatabase(message);
+      this.refs.child.handleQuery(this.state.query)
+      this.refs.child.handleDropdown()
+      this.refs.child.getGifs()
     }
   }
 
 
+  // handleInputChange(e) {
+  //   console.log('handleInputChange: ', e.target.value)
+  //   this.setState({ query: e.target.value })
+  //   if (e.keyCode === 32 && this.state.query === ".gif") {
+  //   }
+  // }
   handleClick() {
     this.setState({
       show: !this.state.show
@@ -114,18 +127,20 @@ class ChatInput extends Component {
   }
 
   onImgUpload() {
-    const message = {
+    const imageData = {
       body: this.state.image,
       username: this.props.profile.given_name,
-      timestamp: moment((new Date).getTime()).format("MMMM Do YYYY, h:mm:ss a"),
+      timestamp: moment((new Date).getTime())
+      .format("MMMM Do YYYY, h:mm:ss a"),
       image: this.props.profile.picture
     }
-    this.props.receiveMessage(message);
+    this.props.receiveMessage(imageData);
     
     const upload = {
       body: this.state.image,
       username: this.props.profile.given_name,
-      timestamp: moment((new Date).getTime()).format("MMMM Do YYYY, h:mm:ss a"),
+      timestamp: moment((new Date).getTime())
+      .format("MMMM Do YYYY, h:mm:ss a"),
       image: this.props.profile.picture
     }
       this.props.saveToDatabase(upload)
@@ -133,10 +148,12 @@ class ChatInput extends Component {
   }
 
   render() {
-    console.log("IMAGE: ", this.state.image)
+        console.log("QUERY: ", this.state.query)
+
   let close = () => this.setState({ show: false});
     return (
       <div style={{position: "relative"}}>
+        <Gifs ref="child"/>
         <TextField
         className="input-chat"
         floatingLabelText="Start Chatting Here"
@@ -145,6 +162,7 @@ class ChatInput extends Component {
         fullWidth={true}
         underlineStyle={styles.underlineStyle}
         onKeyUp={this.handleSubmit}
+        // onKeyUp={this.handleInputChange}
         />
         <IconButton tooltip="Upload Image" iconStyle={styles.mediumIcon}
           style={styles.medium} onTouchTap={this.handleClick}>
@@ -159,13 +177,19 @@ class ChatInput extends Component {
         <Modal.Body>
           <h2 style={{textAlign: "center"}}>Upload Pictures from the Event!</h2>
           <div className="row" style={{margin: 30}}>
-            <img className="col-xs-6 col-xs-offset-3" src={this.state.image} id="img-preview" />
+            <img className="col-xs-6 col-xs-offset-3" 
+            src={this.state.image} 
+            id="img-preview" />
           </div>
           <div className="row" style={{margin: 20}}>
-            <input className="col-xs-6 col-xs-offset-3" id="upload-input" type="file" onChange={this.onFileSelect.bind(this)}/>
+            <input className="col-xs-6 col-xs-offset-3" 
+            id="upload-input" type="file" 
+            onChange={this.onFileSelect.bind(this)}/>
           </div>
           <div className="row" style={{margin: 20}}>
-            <input className="col-xs-6 col-xs-offset-3" type="text" onChange={this.insertURL.bind(this)} placeholder="or add url" id="url-input" />
+            <input className="col-xs-6 col-xs-offset-3" 
+            type="text" onChange={this.insertURL.bind(this)} 
+            placeholder="or add url" id="url-input" />
           </div>
           <br />
         </Modal.Body>
