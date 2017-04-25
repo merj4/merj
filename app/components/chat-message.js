@@ -46,7 +46,7 @@ const ChatMessage = (props) => {
           primaryText={<span style={{fontSize: 18 + 'px'}}>{props.user}</span>}
           secondaryText={
             <div className="row" style={styles.image}>
-              <img className="col-xs-6 col-xs-offset-1" src={props.message}/>
+              <img className="col-xs-8 col-xs-offset-2" src={props.message}/>
             </div>
           }
         />
