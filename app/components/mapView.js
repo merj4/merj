@@ -64,13 +64,15 @@ class MapView extends Component {
               position: results[0].geometry.location
             });
 
-            var content = '<div id="markerContainer">'+
-                          '<h3 id="firstHeading">'+ eachData['title']+'</h3>'+
-                          '<p><b>Date: </b>' + eachData['date']+'</p>'+
-                          '<p><b>Time: </b>' + eachData['time']+'</p>'+
-                          '<p><b>Descrption: </b>' +eachData['description']+'</p>'+
-                          '<button onClick={() => console.log('hi')}><b>Get Direction</b></button>' +
-                          '</div>'
+            var content = ['<div id="markerContainer">',
+                          '<h3 id="firstHeading">', eachData['title'],'</h3>',
+                          '<p><b>Date: </b>' , eachData['date'],'</p>',
+                          '<p><b>Time: </b>' , eachData['time'],'</p>',
+                          '<p><b>Descrption: </b>' ,eachData['description'],'</p>',
+                          "<b>Get Directions From Current Location</b><br />" ,
+                          "<input type='submit' id='map-go' value='Go' />",
+                          '</div>'].join("");
+
 
             var infowindow = new google.maps.InfoWindow()
 
@@ -80,6 +82,16 @@ class MapView extends Component {
                  infowindow.open(map,marker);
               };
             })(marker,content,infowindow)); 
+
+
+            google.maps.event.addListener(infowindow, 'domready', function() {
+              document.id("map-go").addEvent("submit", function(e) {
+                e.stop();
+                console.log("hi!");
+              });
+            })
+
+            
             } else {
               console.log('location undefined!', status)
             }
