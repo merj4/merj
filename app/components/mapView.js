@@ -11,7 +11,7 @@ class MapView extends Component {
 
   async componentDidMount() {
     let map = new google.maps.Map(this.refs.map, {
-      zoom: 12,
+      zoom: 8,
       mapTypeId: 'roadmap',
     });
 
@@ -25,14 +25,7 @@ class MapView extends Component {
       })
     )
 
-    const userPositionOnGoogleMap = new google.maps.LatLng(parseFloat(userPosition.lat), parseFloat(userPosition.lng));
-
-    var markUser = new google.maps.Marker({
-        position: userPositionOnGoogleMap,
-        map: map,
-        icon: 'http://www.robotwoods.com/dev/misc/bluecircle.png'
-    });
-    
+    const userPositionOnGoogleMap = new google.maps.LatLng(parseFloat(userPosition.lat), parseFloat(userPosition.lng));    
     map.setCenter(userPositionOnGoogleMap);
 
     console.log("displayedEvents", this.props.displayedEvents)
@@ -45,7 +38,11 @@ class MapView extends Component {
   
 
     //make event location to log/lat format and put marker(pin)
-    if (this.props.displayedEvents)
+    if (this.props.displayedEvents === 0) {
+      let data = this.props.events.slice();
+    } else {
+      let data = this.props.displayedEvents;
+    }
         for (var i = 0; i < data.length; ++i) {
           let eachData = data[i]
            geocoder.geocode({'address' : data[i]['location'] }, function (results, status) {
