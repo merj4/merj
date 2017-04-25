@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Gifs } from './chat-api';
+import { Gifs } from './chat-giphy';
 import { orange500, blue500 } from 'material-ui/styles/colors';
 import { Button, Modal } from 'react-bootstrap';
 import TextField from 'material-ui/TextField';
@@ -66,31 +66,27 @@ class ChatInput extends Component {
   }
   
 
-  // handleSubmit(e) {
-  //   const body = e.target.value;
-  //   if (e.keyCode === 13 && body){
-  //   const message = {
-  //     body,
-  //     username: this.props.profile.given_name,
-  //     timestamp: moment((new Date).getTime())
-  //     .format("MMMM Do YYYY, h:mm:ss a"),
-  //     image: this.props.profile.picture
-  //   }
-  //   e.target.value = ''      
-  //   this.props.receiveMessage(message);
-  //   this.props.saveToDatabase(mesage);
-  //         this.refs.child.gotData()
-  //   }
-  // }
 
-
-  handleInputChange(e) {
-    console.log('handleInputChange: ', e.target.value)
-    this.setState({ query: e.target.value })
-    if (e.keyCode === 32 && this.state.query === ".gif") {
-      this.refs.child.handleSearch(this.state.query)
+  handleSubmit(e) {
+    const body = e.target.value;
+    if (e.keyCode === 13 && body){
+    const message = {
+      body,
+      username: this.props.profile.given_name,
+      timestamp: moment((new Date).getTime())
+      .format("MMMM Do YYYY, h:mm:ss a"),
+      image: this.props.profile.picture
+    }
+      e.target.value = ''      
+      this.props.receiveMessage(message);
+      this.props.saveToDatabase(message);
+      this.refs.child.handleQuery(this.state.query)
+      this.refs.child.handleDropdown()
+      this.refs.child.getGifs()
     }
   }
+
+
   handleClick() {
     this.setState({
       show: !this.state.show
@@ -162,6 +158,7 @@ class ChatInput extends Component {
         underlineStyle={styles.underlineStyle}
         // onKeyUp={this.handleSubmit}
         onChange={this.handleInputChange}
+
         />
         <IconButton tooltip="Upload Image" iconStyle={styles.mediumIcon}
           style={styles.medium} onTouchTap={this.handleClick}>
@@ -202,5 +199,3 @@ class ChatInput extends Component {
 }
 
 export { ChatInput }
-
-7
