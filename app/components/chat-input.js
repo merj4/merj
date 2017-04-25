@@ -62,29 +62,30 @@ class ChatInput extends Component {
     this.onImgUpload = this.onImgUpload.bind(this)
     this.onFileSelect = this.onFileSelect.bind(this)
     this.handleClick = this.handleClick.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
+    // this.handleSubmit = this.handleSubmit.bind(this)
   }
   
 
-  handleSubmit(e) {
-    const body = e.target.value;
-    if (e.keyCode === 13 && body){
-      const message = {
-        body,
-        username: this.props.profile.given_name,
-        timestamp: moment((new Date).getTime())
-        .format("MMMM Do YYYY, h:mm:ss a"),
-        image: this.props.profile.picture
-      }
-      e.target.value = ''      
-      this.props.receiveMessage(message);
-      this.props.saveToDatabase(mesage);
-            this.refs.child.gotData()
-    }
-  }
+  // handleSubmit(e) {
+  //   const body = e.target.value;
+  //   if (e.keyCode === 13 && body){
+  //   const message = {
+  //     body,
+  //     username: this.props.profile.given_name,
+  //     timestamp: moment((new Date).getTime())
+  //     .format("MMMM Do YYYY, h:mm:ss a"),
+  //     image: this.props.profile.picture
+  //   }
+  //   e.target.value = ''      
+  //   this.props.receiveMessage(message);
+  //   this.props.saveToDatabase(mesage);
+  //         this.refs.child.gotData()
+  //   }
+  // }
 
 
   handleInputChange(e) {
+    console.log('handleInputChange: ', e.target.value)
     this.setState({ query: e.target.value })
     if (e.keyCode === 32 && this.state.query === ".gif") {
       this.refs.child.handleSearch(this.state.query)
@@ -159,7 +160,7 @@ class ChatInput extends Component {
         floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
         fullWidth={true}
         underlineStyle={styles.underlineStyle}
-        onKeyUp={this.handleSubmit}
+        // onKeyUp={this.handleSubmit}
         onChange={this.handleInputChange}
         />
         <IconButton tooltip="Upload Image" iconStyle={styles.mediumIcon}
