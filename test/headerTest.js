@@ -1,9 +1,10 @@
 'use strict';
 import React from 'react';
 import { expect } from 'chai';
+import sinon from 'sinon';
 import { shallow, mount, render } from 'enzyme';
 //import each component in its own import statement as needed
-import Foo from '../app/components/foo.js';
+import Header from '../app/components/header.js';
 
 //use shallow if stateLESS component
 
@@ -24,17 +25,26 @@ import Foo from '../app/components/foo.js';
 //use mount if stateFUL
 
 
-describe('Component Header', function() {
-  it ('should have a class named foo', function() {
-  const wrapper = shallow(<Foo />);
-  expect(wrapper.is('.foo')).to.equal(true);
-  })
-it('should have two children', function() {
- const wrapper = shallow(<Foo />);
- expect(wrapper.children().length).to.equal(2)
- })
-it('should have children with a class named bar', function() {
- const wrapper = shallow(<Foo />);
- expect(wrapper.children('.bar').length).to.equal(2);
- })
+describe('<Header />', function() {
+
+  const studentProps = {
+    isLoggedIn: true,
+    isAdmin: false
+  };
+
+  const adminProps = {
+    isLoggedIn: true,
+    isAdmin: true
+  };
+
+  const notLoggedIn = {
+    isLoggedIn: false,
+    isAdmin: false
+  };
+
+  it('receives props from its parent component', () => {
+    const wrapper = shallow(<Header userPrivs={adminProps}/>);
+    expect(wrapper.instance().props.userPrivs.isLoggedIn).to.equal(true);
+    expect(wrapper.instance().props.userPrivs.isAdmin).to.equal(true);
+  });
 })
