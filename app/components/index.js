@@ -32,6 +32,7 @@ class App extends Component {
       displayedEvents: [],
       activeEvent: null,
       profile: auth.getProfile(),
+      userId: null,
       showProfile: false,
       date: moment(),
       showMap: false,
@@ -97,23 +98,23 @@ class App extends Component {
     axios.get('/api/users')
     .then(res => {
       const users = res.data;
+      let userId = null;
+      let p = this.state.profile;
+
+      users.forEach(function(user) {
+        if (user.email === p.email) {
+          userId = user.id;
+        }
+      })
       this.setState({
-        users: users
+        userId: userId
       });
     })
   }
 
   handleEventClick(event) {
     let eventId = event.id;
-    let userId = null;
-    let users = this.state.users;
-    let p = this.state.profile;
-
-    users.forEach(function(user) {
-      if (user.email === p.email) {
-        userId = user.id;
-      }
-    })
+    let userId = this.state.userId
 
     if (event !== null) {
       this.state.activeEvent = event;
@@ -127,16 +128,6 @@ class App extends Component {
   }
 
   joinEvent(eventId, userId) {
-    // let users = this.state.users;
-    // let p = this.state.profile;
-    // let u = null;
-
-    // users.forEach(function(user) {
-    //   if (user.email === p.email) {
-    //     u = user.id;
-    //   }
-    // })
-
     axios.post('/api/joinevent', {
       EventId: eventId,
       UserId: userId
@@ -161,7 +152,6 @@ class App extends Component {
       activeEvent: null,
       showMap: false
     })
-
     // console.log("showProfile: " + this.state.showProfile)
     // console.log("activeEvent: " + this.state.activeEvent)
   }
@@ -305,6 +295,7 @@ class App extends Component {
                 <Profile
                   auth={auth}
                   profile={profile}
+                  userId={this.state.userId}
                   handleEventClick={this.handleEventClick.bind(this)}
                 />
               </div>
