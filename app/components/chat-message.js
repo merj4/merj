@@ -29,8 +29,8 @@ const rightIconMenu = (
 const styles = {
   image: {
     maxHeight: 500,
-    height: 350,
-    maxwidth: 350,
+    height: 500,
+    maxwidth: 500,
     marginTop: 4,
     display: "block"
   },
@@ -46,7 +46,7 @@ const ChatMessage = (props) => {
           primaryText={<span style={{fontSize: 18 + 'px'}}>{props.user}</span>}
           secondaryText={
             <div className="row" style={styles.image}>
-              <img className="col-xs-6 col-xs-offset-3" src={props.message}/>
+              <img className="col-xs-6 col-xs-offset-1" src={props.message}/>
             </div>
           }
         />
