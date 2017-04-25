@@ -97,9 +97,10 @@ class ChatInput extends Component {
     })
   }
 
-  insertURL(e) {
+  insertURL(src) {
+    src = src.target.value || src
     this.setState({
-      image: e.target.value
+      image: src
     })
   }
 
