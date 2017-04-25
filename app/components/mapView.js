@@ -28,7 +28,7 @@ class MapView extends Component {
     const userPositionOnGoogleMap = new google.maps.LatLng(parseFloat(userPosition.lat), parseFloat(userPosition.lng));    
     map.setCenter(userPositionOnGoogleMap);
 
-    console.log("displayedEvents", this.props.displayedEvents)
+    console.log("displayedEvents", this.props.updateEventList())
 
   
 
@@ -39,7 +39,7 @@ class MapView extends Component {
 
     //make event location to log/lat format and put marker(pin)
     if (this.props.displayedEvents === 0) {
-      let data = this.props.events.slice();
+      let data = this.props.events;
     } else {
       let data = this.props.displayedEvents;
     }
