@@ -1,11 +1,15 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
+import { Button } from 'react-bootstrap';
+
 import {EventItem} from './eventItem';
 
 class MapView extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      start: "",
+      end: ""
     }
   }
 
@@ -14,6 +18,8 @@ class MapView extends Component {
       zoom: 8,
       mapTypeId: 'roadmap',
     });
+
+    
 
     //get user's current location and added icon (purple dot)
     const userPosition = await new Promise(resolve =>
@@ -74,15 +80,48 @@ class MapView extends Component {
         }    
       }
 
+    getDirection() {
+      let directionsDisplay = new google.maps.DirectionsRenderer;
+      let directionsService = new google.maps.DirectionsService;
+
+      directionsDisplay.setMap(map);
+      directionsDisplay.setPanel(this.refs.rightpanel);
+      map.controls[google.maps.ControlPosition.TOP_CENTER].push(control);
+    }
+
+    onChangeHandler() {
+      calculateAndDisplayRoute(directionsService, directionsDisplay);
+    };
+
+
+    calculateAndDisplayRoute(directionsService, directionsDisplay) {
+        var start = document.getElementById('start').value;
+        var end = document.getElementById('end').value;
+        directionsService.route({
+          origin: start,
+          destination: end,
+          travelMode: 'DRIVING'
+        }, function(response, status) {
+          if (status === 'OK') {
+            directionsDisplay.setDirections(response);
+          } else {
+            window.alert('Directions request failed due to ' + status);
+          }
+        });
+    }
+
   render() {
     var style = {
       width: "770px",
-      height: "770px",
+      height: "300px",
     };
 
     return (
       <div id="mapcontainer" style={style}>
+        <Button>Get Direction</Button>
+
         <div ref="map" style={style} ></div>
+        <div ref="panel"></div>
       </div>
       );
     }
