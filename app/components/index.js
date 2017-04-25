@@ -215,14 +215,14 @@ class App extends Component {
                   showProfileSetToFalse={this.showProfileSetToFalse}
                 />
                 <Search
-                  data={this.state.events}
+                  data={this.state.displayedEvents}
                   updateEventList={this.updateEventList}
                   dateSearch={this.state.date}
                   ref='child'
                   handleEventClick={this.handleEventClick.bind(this)}
                 />
                 <Filter
-                  events={this.state.events}
+                  events={this.state.displayedEvents}
                   updateDate={this.updateDateState}
                   handleEventClick={this.handleEventClick.bind(this)}
                   showMap={this.showMap}
@@ -248,14 +248,14 @@ class App extends Component {
                   showProfileSetToFalse={this.showProfileSetToFalse}
                 />
                 <Search
-                  data={this.state.events}
+                  data={this.state.displayedEvents}
                   updateEventList={this.updateEventList}
                   dateSearch={this.state.date}
                   ref='child'
                   handleEventClick={this.handleEventClick.bind(this)}
                 />
                 <Filter
-                  events={this.state.events}
+                  events={this.state.displayedEvents}
                   updatedate={this.updateDateState}
                   updateEventList={this.updateEventList}
                   handleEventClick={this.handleEventClick.bind(this)}
@@ -281,14 +281,14 @@ class App extends Component {
                   showProfileSetToFalse={this.showProfileSetToFalse}
                 />
                 <Search
-                  data={this.state.events}
+                  data={this.state.displayedEvents}
                   updateEventList={this.updateEventList}
                   dateSearch={this.state.date}
                   ref='child'
                   handleEventClick={this.handleEventClick.bind(this)}
                 />
                 <Filter
-                  events={this.state.events}
+                  events={this.state.displayedEvents}
                   updatedate={this.updateDateState}
                   updateEventList={this.updateEventList}
                   handleEventClick={this.handleEventClick.bind(this)}
@@ -314,22 +314,24 @@ class App extends Component {
                   showProfileSetToFalse={this.showProfileSetToFalse}
                 />
                 <Search
-                  data={this.state.events}
+                  data={this.state.displayedEvents}
                   updateEventList={this.updateEventList}
                   dateSearch={this.state.date}
                   ref='child'
                   handleEventClick={this.handleEventClick.bind(this)}
                 />
                 <Filter
-                  events={this.state.events}
+                  events={this.state.displayedEvents}
                   updateDate={this.updateDateState}
                   handleEventClick={this.handleEventClick.bind(this)}
                   showMap={this.showMap}
                   updateEventList={this.updateEventList}
                 />
                 <MapView
-                  events={this.state.events}
+                  events={this.state.displayedEvents}
                   updateEventList={this.updateEventList}
+                  handleEventClick={this.handleEventClick.bind(this)}
+
                 />
               </div>
             </MuiThemeProvider>

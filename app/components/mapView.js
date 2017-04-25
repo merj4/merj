@@ -20,10 +20,11 @@ class MapView extends Component {
       $.getJSON("http://freegeoip.net/json/", function(data) {
         resolve({
           lat: data.latitude,
-          lng: data.longitude
+          lng: data.longitude,
         })
       })
     )
+
     const userPositionOnGoogleMap = new google.maps.LatLng(parseFloat(userPosition.lat), parseFloat(userPosition.lng));
 
     var markUser = new google.maps.Marker({
@@ -32,7 +33,10 @@ class MapView extends Component {
         icon: 'http://www.robotwoods.com/dev/misc/bluecircle.png'
     });
     
-    map.setCenter(markUser.position);
+    map.setCenter(userPositionOnGoogleMap);
+
+    console.log("displayedEvents", this.props.displayedEvents)
+
   
 
     // Trying to get event location and put them in locations array
@@ -41,6 +45,7 @@ class MapView extends Component {
   
 
     //make event location to log/lat format and put marker(pin)
+    if (this.props.displayedEvents)
         for (var i = 0; i < data.length; ++i) {
           let eachData = data[i]
            geocoder.geocode({'address' : data[i]['location'] }, function (results, status) {
