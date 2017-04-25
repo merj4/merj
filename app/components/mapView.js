@@ -30,9 +30,7 @@ class MapView extends Component {
         })
       })
     )
-
-
-
+    
     const userPositionOnGoogleMap = new google.maps.LatLng(parseFloat(userPosition.lat), parseFloat(userPosition.lng)); 
     var markUser = new google.maps.Marker({
         position: userPositionOnGoogleMap,
@@ -71,6 +69,7 @@ class MapView extends Component {
                           '<p><b>Date: </b>' + eachData['date']+'</p>'+
                           '<p><b>Time: </b>' + eachData['time']+'</p>'+
                           '<p><b>Descrption: </b>' +eachData['description']+'</p>'+
+                          '<button onClick={() => console.log('hi')}><b>Get Direction</b></button>' +
                           '</div>'
 
             var infowindow = new google.maps.InfoWindow()
