@@ -73,11 +73,6 @@ class Filter extends Component {
     })
   }
 
-  handleChange (event, index, value) {
-    this.setState({value});
-  }
-
-
   //get user's current location and measuring radius
   async distanceHandler(option) {
     const data = this.props.events;
@@ -129,15 +124,21 @@ class Filter extends Component {
 
   render() {
     let labelForMap = this.state.isMap ? "List": "Map"
-    console.log("openImmediately", this.state.openImmediately);
     return (
       <Tabs>
-        <DropDownMenu style= {styles.headline} value={this.state.value} onChange={this.handleChange} onClick={()=> this.openImmediatelyHandler()}>
-            <MenuItem value = {1} onClick={() => this.distanceHandler(this.props.event)} primaryText="Distance" />
-            <MenuItem value = {2} onClick={() => this.distanceHandler(3218.69)} primaryText="2 miles" />
-            <MenuItem value = {3} onClick={() => this.distanceHandler(8046.72)} primaryText="5 miles" />
-            <MenuItem value {4} onClick={() => this.distanceHandler(32186.9)} primaryText="20 miles" />
-        </DropDownMenu>
+        <Tab label="Distance" onClick={()=> this.openImmediatelyHandler()} >
+          <div style={styles.headline}>
+          {
+            this.state.openImmediately && (
+            <DropDownMenu value={1} onClick={() => this.props.updateEventList(this.props.events)} primaryText="Distance">
+              <MenuItem value = {2} onClick={() => this.distanceHandler(3218.69)} primaryText="2 miles" />
+              <MenuItem value = {3} onClick={() => this.distanceHandler(8046.72)} primaryText="5 miles" />
+              <MenuItem value={4} onClick={() => this.distanceHandler(32186.9)} primaryText="20 miles" />
+            </DropDownMenu>
+            )
+          }
+          </div>
+        </Tab>
 
         <Tab label="Calendar" onClick={this.toggleCalendar} handleEventClick={this.props.handleEventClick}>
           <div style={styles.headline}>
