@@ -3,6 +3,15 @@ import { GridTile } from 'material-ui/GridList';
 import IconButton from 'material-ui/IconButton';
 import StarBorder from 'material-ui/svg-icons/toggle/star-border';
 
+const styles = {
+  titleBackground: {
+    "linear-gradient(to top, rgba(0,0,0,0.7) 0%,rgba(0,0,0,0.3) 70%,rgba(0,0,0,0) 100%)"
+  },
+  titleStyle: {
+    color: 'rgb(0, 188, 212)',
+  },
+};
+
 const tilesData = [
   {
     img: './images/jason.jpg',
@@ -35,13 +44,13 @@ const tilesData = [
 const gif = (props) => {
   return (
     <GridTile
-      key={tile.img}
-      title={tile.title}
+      key={props.img}
+      title={props.title}
       actionIcon={<IconButton><StarBorder color="rgb(0, 188, 212)" /></IconButton>}
       titleStyle={styles.titleStyle}
-      titleBackground="linear-gradient(to top, rgba(0,0,0,0.7) 0%,rgba(0,0,0,0.3) 70%,rgba(0,0,0,0) 100%)"
+      titleBackground={styles.titleBackground}
     >
-      <img src={tile.img} />
+      <img src={props.img} />
     </GridTile>
   )
 }
