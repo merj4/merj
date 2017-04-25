@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { GridList } from 'material-ui/GridList';
+import { gif } from './chat-gif'
 import StarBorder from 'material-ui/svg-icons/toggle/star-border';
 import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';

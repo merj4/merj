@@ -58,7 +58,7 @@ class ChatInput extends Component {
       image: '',
       query: null,
     }
-    this.handleInputChange = this.handleInputChange.bind(this)
+
     this.onImgUpload = this.onImgUpload.bind(this)
     this.onFileSelect = this.onFileSelect.bind(this)
     this.handleClick = this.handleClick.bind(this)
@@ -156,9 +156,8 @@ class ChatInput extends Component {
         floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
         fullWidth={true}
         underlineStyle={styles.underlineStyle}
-        // onKeyUp={this.handleSubmit}
-        onChange={this.handleInputChange}
-
+        onKeyUp={this.handleSubmit}
+        // onKeyUp={this.handleInputChange}
         />
         <IconButton tooltip="Upload Image" iconStyle={styles.mediumIcon}
           style={styles.medium} onTouchTap={this.handleClick}>
