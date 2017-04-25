@@ -13,3 +13,5 @@ app/dist/index_bundle.js
 app/dist/.DS_Store
 
 app/.DS_Store
+
+/app/dist/index_bundle.js

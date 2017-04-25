@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Gifs } from './chat-giphy';
+import { Gifs } from './chat-giphys';
 import { orange500, blue500 } from 'material-ui/styles/colors';
 import { Button, Modal } from 'react-bootstrap';
 import TextField from 'material-ui/TextField';
@@ -56,7 +56,6 @@ class ChatInput extends Component {
     this.state = {
       show: false,
       image: '',
-      query: null,
     }
 
     this.onImgUpload = this.onImgUpload.bind(this)
@@ -65,11 +64,10 @@ class ChatInput extends Component {
     // this.handleSubmit = this.handleSubmit.bind(this)
   }
   
-
-
+//Upon ENTER do one of two things: sendMessage to db OR display gif search
   handleSubmit(e) {
     const body = e.target.value;
-    if (e.keyCode === 13 && body){
+    if (e.keyCode === 13 && !body.startsWith('.gif')){
     const message = {
       body,
       username: this.props.profile.given_name,
@@ -77,13 +75,19 @@ class ChatInput extends Component {
       .format("MMMM Do YYYY, h:mm:ss a"),
       image: this.props.profile.picture
     }
-      e.target.value = ''      
+  //Render message to chat container 
       this.props.receiveMessage(message);
+  //Save message to database
       this.props.saveToDatabase(message);
+  //Clear input field
+      e.target.value = ''      
+    } 
+  //Set query to body
       this.refs.child.handleQuery(this.state.query)
-      this.refs.child.handleDropdown()
+  //Search for gif s 
       this.refs.child.getGifs()
-    }
+  //Open dropdown with search results
+      this.refs.child.handleDropdown()
   }
 
 
@@ -157,7 +161,6 @@ class ChatInput extends Component {
         fullWidth={true}
         underlineStyle={styles.underlineStyle}
         onKeyUp={this.handleSubmit}
-        // onKeyUp={this.handleInputChange}
         />
         <IconButton tooltip="Upload Image" iconStyle={styles.mediumIcon}
           style={styles.medium} onTouchTap={this.handleClick}>
