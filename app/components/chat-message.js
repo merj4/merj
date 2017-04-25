@@ -26,8 +26,33 @@ const rightIconMenu = (
   </IconMenu>
 );
 
+const styles = {
+  image: {
+    maxHeight: 500,
+    height: 350,
+    maxwidth: 350,
+    marginTop: 4,
+    display: "block"
+  },
+}
 const ChatMessage = (props) => {
-
+  if (props.message.slice(-2).includes("g")) {
+    return (
+      <List>
+        <Subheader>{props.time}</Subheader>
+        <ListItem
+          leftAvatar={<Avatar src={props.image} />}
+          rightIconButton={rightIconMenu}
+          primaryText={<span style={{fontSize: 18 + 'px'}}>{props.user}</span>}
+          secondaryText={
+            <div className="row" style={styles.image}>
+              <img className="col-xs-6 col-xs-offset-3" src={props.message}/>
+            </div>
+          }
+        />
+      </List>
+    )
+  } else { 
   return (
     <List>
       <Subheader>{props.time}</Subheader>
@@ -40,10 +65,10 @@ const ChatMessage = (props) => {
          <span style={{color: 'black', fontSize: 22 + 'px'}}>{props.message}</span>
           </p>
         }
-        secondaryTextLines={3}
+        secondaryTextLines={2}
       />
     </List>
-  )
+  )}
 }
 
 export { ChatMessage }
