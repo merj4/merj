@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import { Button, Col, Row } from 'react-bootstrap';
-import {Tabs, Tab, DropDownMenu, MenuItem } from 'material-ui';
+import { Button, Modal } from 'react-bootstrap';
+import {Tabs, Tab } from 'material-ui';
 import EventItem from './eventItem.js';
 import MapView from './mapView.js';
 import ListOrMapButton from './ListOrMapButton.js';
@@ -124,19 +124,18 @@ class Filter extends Component {
 
   render() {
     let labelForMap = this.state.isMap ? "List": "Map"
+    let close = () => this.setState({ show: false});
+
     return (
       <Tabs>
-        <Tab label="Distance" onClick={()=> this.openImmediatelyHandler()} >
+        <Tab label="Distance" onClick={() => this.setState({ show: true})} >
           <div style={styles.headline}>
-          {
-            this.state.openImmediately && (
-            <DropDownMenu value={1} onClick={() => this.props.updateEventList(this.props.events)} primaryText="Distance">
-              <MenuItem value = {2} onClick={() => this.distanceHandler(3218.69)} primaryText="2 miles" />
-              <MenuItem value = {3} onClick={() => this.distanceHandler(8046.72)} primaryText="5 miles" />
-              <MenuItem value={4} onClick={() => this.distanceHandler(32186.9)} primaryText="20 miles" />
-            </DropDownMenu>
-            )
-          }
+            <Modal show={this.state.show} onHide={close}>
+              <Button onClick={() => this.distanceHandler(3218.69)}> 2 miles </Button>
+              <Button onClick={() => this.distanceHandler(8046.72)}> 5 miles </Button>
+              <Button onClick={() => this.distanceHandler(32186.9)}> 20 miles </Button>
+              <Button onClick={() => this.props.updateEventList(this.props.events)}> Reset</Button>
+            </Modal>
           </div>
         </Tab>
 
