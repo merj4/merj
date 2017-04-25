@@ -50,7 +50,7 @@ const ChatContainer = (props) => {
       <InfiniteScroll
       height={775}
       hasMore={false}
-      loader={<h4>Loading...</h4>}>
+      loader={<h4 >Loading...</h4>}>
       {props.messages.map((message, i) => 
         <ChatMessage message={message.body} key={i} 
         user={message.username}
