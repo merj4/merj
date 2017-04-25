@@ -26,7 +26,6 @@ class MapView extends Component {
     )
     const userPositionOnGoogleMap = new google.maps.LatLng(parseFloat(userPosition.lat), parseFloat(userPosition.lng));
 
-    
     var markUser = new google.maps.Marker({
         position: userPositionOnGoogleMap,
         map: map,
