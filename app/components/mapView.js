@@ -69,11 +69,13 @@ class MapView extends Component {
                           '<p><b>Date: </b>' , eachData['date'],'</p>',
                           '<p><b>Time: </b>' , eachData['time'],'</p>',
                           '<p><b>Descrption: </b>' ,eachData['description'],'</p>',
-                          "<input type='submit' id='map-go' value='Get Direction' />",
+                          '<button onClick="getDirection()"><b>Get Direction to this event</b></button>',
                           '</div>'].join("");
 
 
-            var infowindow = new google.maps.InfoWindow()
+            var infowindow = new google.maps.InfoWindow();
+
+
 
             google.maps.event.addListener(marker,'click', (function(marker,content,infowindow){ 
               return function() {
@@ -98,14 +100,8 @@ class MapView extends Component {
         }    
       }
 
-    getDirection() {
-      let directionsDisplay = new google.maps.DirectionsRenderer;
-      let directionsService = new google.maps.DirectionsService;
 
-      directionsDisplay.setMap(map);
-      directionsDisplay.setPanel(this.refs.rightpanel);
-      map.controls[google.maps.ControlPosition.TOP_CENTER].push(control);
-    }
+ 
 
     onChangeHandler() {
       calculateAndDisplayRoute(directionsService, directionsDisplay);
@@ -139,6 +135,7 @@ class MapView extends Component {
 
         <div ref="map" style={style} ></div>
         <div ref="panel"></div>
+        <MapDirection />
       </div>
       );
     }
