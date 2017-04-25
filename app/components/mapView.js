@@ -69,8 +69,7 @@ class MapView extends Component {
                           '<p><b>Date: </b>' , eachData['date'],'</p>',
                           '<p><b>Time: </b>' , eachData['time'],'</p>',
                           '<p><b>Descrption: </b>' ,eachData['description'],'</p>',
-                          "<b>Get Directions From Current Location</b><br />" ,
-                          "<input type='submit' id='map-go' value='Go' />",
+                          "<input type='submit' id='map-go' value='Get Direction' />",
                           '</div>'].join("");
 
 
@@ -137,7 +136,6 @@ class MapView extends Component {
 
     return (
       <div id="mapcontainer" style={style}>
-        <Button>Get Direction</Button>
 
         <div ref="map" style={style} ></div>
         <div ref="panel"></div>
