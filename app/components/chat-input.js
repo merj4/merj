@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import {orange500, blue500} from 'material-ui/styles/colors';
+import { Gifs } from './chat-giphys';
+import { orange500, blue500 } from 'material-ui/styles/colors';
 import { Button, Modal } from 'react-bootstrap';
 import TextField from 'material-ui/TextField';
 import PhotoIcon from 'material-ui/svg-icons/image/add-a-photo'
@@ -54,30 +55,40 @@ class ChatInput extends Component {
     super(props)
     this.state = {
       show: false,
-      image: ''
+      image: '',
     }
+
     this.onImgUpload = this.onImgUpload.bind(this)
     this.onFileSelect = this.onFileSelect.bind(this)
     this.handleClick = this.handleClick.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
   
-
+//Upon ENTER do one of two things: sendMessage to db OR display gif search
   handleSubmit(e) {
     const body = e.target.value;
-    if (e.keyCode === 13 && body){
-      const message = {
-        body,
-        username: this.props.profile.given_name,
-        timestamp: moment((new Date).getTime()).format("MMMM Do YYYY, h:mm:ss a"),
-        image: this.props.profile.picture
-      }
+    if (e.keyCode === 13) {
+      if (body.startsWith('.gif')) {
+    //Set query to body
+        this.refs.child.handleQuery(body)        
+    } else {
+    const message = {
+      body,
+      username: this.props.profile.given_name,
+      timestamp: moment((new Date).getTime())
+      .format("MMMM Do YYYY, h:mm:ss a"),
+      image: this.props.profile.picture
+    }
+  //Render message to chat container 
       this.props.receiveMessage(message);
-      this.props.saveToDatabase(mesage)
+  //Save message to database
+      this.props.saveToDatabase(message);
+  //Clear input field
       e.target.value = ''      
+
+      }
     }
   }
-
 
   handleClick() {
     this.setState({
@@ -85,9 +96,10 @@ class ChatInput extends Component {
     })
   }
 
-  insertURL(e) {
+  insertURL(src) {
+    src = src.target.value || src
     this.setState({
-      image: e.target.value
+      image: src
     })
   }
 
@@ -114,29 +126,24 @@ class ChatInput extends Component {
   }
 
   onImgUpload() {
-    const message = {
+    const imageData = {
       body: this.state.image,
       username: this.props.profile.given_name,
-      timestamp: moment((new Date).getTime()).format("MMMM Do YYYY, h:mm:ss a"),
+      timestamp: moment((new Date).getTime())
+      .format("MMMM Do YYYY, h:mm:ss a"),
       image: this.props.profile.picture
     }
-    this.props.receiveMessage(message);
-    
-    const upload = {
-      body: this.state.image,
-      username: this.props.profile.given_name,
-      timestamp: moment((new Date).getTime()).format("MMMM Do YYYY, h:mm:ss a"),
-      image: this.props.profile.picture
-    }
-      this.props.saveToDatabase(upload)
-      this.handleClick();
+    this.props.receiveMessage(imageData);
+    this.props.saveToDatabase(upload)
+    this.handleClick();
   }
 
   render() {
-    console.log("IMAGE: ", this.state.image)
   let close = () => this.setState({ show: false});
     return (
       <div style={{position: "relative"}}>
+        <Gifs ref="child"
+        insertURL={this.insertURL}/>
         <TextField
         className="input-chat"
         floatingLabelText="Start Chatting Here"
@@ -159,13 +166,19 @@ class ChatInput extends Component {
         <Modal.Body>
           <h2 style={{textAlign: "center"}}>Upload Pictures from the Event!</h2>
           <div className="row" style={{margin: 30}}>
-            <img className="col-xs-6 col-xs-offset-3" src={this.state.image} id="img-preview" />
+            <img className="col-xs-6 col-xs-offset-3" 
+            src={this.state.image} 
+            id="img-preview" />
           </div>
           <div className="row" style={{margin: 20}}>
-            <input className="col-xs-6 col-xs-offset-3" id="upload-input" type="file" onChange={this.onFileSelect.bind(this)}/>
+            <input className="col-xs-6 col-xs-offset-3" 
+            id="upload-input" type="file" 
+            onChange={this.onFileSelect.bind(this)}/>
           </div>
           <div className="row" style={{margin: 20}}>
-            <input className="col-xs-6 col-xs-offset-3" type="text" onChange={this.insertURL.bind(this)} placeholder="or add url" id="url-input" />
+            <input className="col-xs-6 col-xs-offset-3" 
+            type="text" onChange={this.insertURL.bind(this)} 
+            placeholder="or add url" id="url-input" />
           </div>
           <br />
         </Modal.Body>
@@ -179,5 +192,3 @@ class ChatInput extends Component {
 }
 
 export { ChatInput }
-
-7
