@@ -3,9 +3,11 @@ import { UsersContainer } from './chat-users-container'
 import { ChatInput } from './chat-input'
 import { ChatContainer } from './chat-container'
 import { EventDetails } from './eventDetails'
+import SidePanel from './chat-sidepanel'
 import io from 'socket.io-client'
 import axios from 'axios'
 
+//Socket.io
 const server = location.origin
 const socket = io(server)
 
@@ -30,6 +32,12 @@ class EventView extends Component {
       image: image,
       socketId: socket.id
     });
+    //Weather API
+    // axios.get("http://api.openweathermap.org/data/2.5/forecast?zip=93012,us&APPID=b9c8ef9079c51c6316735dea6bd96e41")
+    // .then(res => {console.log('Weather', res)})
+    // .catch(err => {test('Failed to get weather', err)})
+
+
 
     socket.on('room enter', data => {
       const chatUsers = this.state.users;
@@ -85,6 +93,7 @@ class EventView extends Component {
           saveToDatabase={this.saveToDatabase.bind(this)}
           receiveMessage={this.receiveMessage.bind(this)}
           profile={this.props.profile} />
+        <SidePanel />
       </div>
     );
   }
