@@ -8,13 +8,12 @@ class MapDirection extends Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    return nextProps.userlocation !== this.props.userlocation;
+    return nextProps.userlocation !== '';
   }
 
   componentDidUpdate() {
     const start = this.props.userlocation;
     const end = this.props.clickedEvent['location'];
-    console.log('start', start, 'end', end);
     if (end) {
       this.directionsService.route({
       origin: start,
