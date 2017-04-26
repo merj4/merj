@@ -44,11 +44,6 @@ class MapView extends Component {
     let geocoder = new google.maps.Geocoder();  
 
     //make event location to log/lat format and put marker(pin)
-    if (this.props.displayedEvents === 0) {
-      let data = this.props.events;
-    } else {
-      let data = this.props.displayedEvents;
-    }
     for (var i = 0; i < data.length; ++i) {
       let eachData = data[i]
 
