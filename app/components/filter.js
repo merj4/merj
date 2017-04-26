@@ -29,8 +29,7 @@ class Filter extends Component {
       isMap: false,
       startDate: moment(), // this property highlights today's date on the calendar
       isOpen: false,
-      openImmediately: false,
-      value: 1
+      show: false
     }
     // will need to also bind all the other methods to 'this'
     this.listMapHandler = this.listMapHandler.bind(this);
@@ -59,17 +58,6 @@ class Filter extends Component {
     e && e.preventDefault()
     this.setState({
       isOpen: !this.state.isOpen
-    })
-  }
-
-  //from here, distance search
-  distanceHandleChange (event, index, value) {
-    this.setState({value});
-  }
-
-  openImmediatelyHandler(){
-    this.setState({
-      openImmediately: !this.state.openImmediately
     })
   }
 
