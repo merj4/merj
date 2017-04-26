@@ -90,7 +90,6 @@ class ChatInput extends Component {
     }
   }
 
-
   handleClick() {
     this.setState({
       show: !this.state.show
