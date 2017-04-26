@@ -6,89 +6,20 @@ import IconButton from 'material-ui/IconButton';
 import Subheader from 'material-ui/Subheader';
 import StarBorder from 'material-ui/svg-icons/toggle/star-border';
 
-// const styles = {
-//   root: {
-//     display: 'flex',
-//     flexWrap: 'wrap',
-//     justifyContent: 'space-around',
-//   },
-//   gridList: {
-//     width: 500,
-//     height: 450,
-//     overflowY: 'auto',
-//   },
-// };
+const styles = {
+  root: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'space-around',
+  },
+  gridList: {
+    width: 800,
+    height: 1000,
+    overflowY: 'auto',
+  },
+};
 
-// const tilesData = [
-//   {
-//     img: 'images/grid-list/00-52-29-429_640.jpg',
-//     title: 'Breakfast',
-//     author: 'jill111',
-//   },
-//   {
-//     img: 'images/grid-list/burger-827309_640.jpg',
-//     title: 'Tasty burger',
-//     author: 'pashminu',
-//   },
-//   {
-//     img: 'images/grid-list/camera-813814_640.jpg',
-//     title: 'Camera',
-//     author: 'Danson67',
-//   },
-//   {
-//     img: 'images/grid-list/morning-819362_640.jpg',
-//     title: 'Morning',
-//     author: 'fancycrave1',
-//   },
-//   {
-//     img: 'images/grid-list/hats-829509_640.jpg',
-//     title: 'Hats',
-//     author: 'Hans',
-//   },
-//   {
-//     img: 'images/grid-list/honey-823614_640.jpg',
-//     title: 'Honey',
-//     author: 'fancycravel',
-//   },
-//   {
-//     img: 'images/grid-list/vegetables-790022_640.jpg',
-//     title: 'Vegetables',
-//     author: 'jill111',
-//   },
-//   {
-//     img: 'images/grid-list/water-plant-821293_640.jpg',
-//     title: 'Water plant',
-//     author: 'BkrmadtyaKarki',
-//   },
-// ];
-
-// /**
-//  * A simple example of a scrollable `GridList` containing a [Subheader](/#/components/subheader).
-//  */
-// const GridListExampleSimple = () => (
-//   <div style={styles.root}>
-//     <GridList
-//       cellHeight={180}
-//       style={styles.gridList}
-//     >
-//       <Subheader>December</Subheader>
-//       {tilesData.map((tile) => (
-//         <GridTile
-//           key={tile.img}
-//           title={tile.title}
-//           subtitle={<span>by <b>{tile.author}</b></span>}
-//           actionIcon={<IconButton><StarBorder color="white" /></IconButton>}
-//         >
-//           <img src={tile.img} />
-//         </GridTile>
-//       ))}
-//     </GridList>
-//   </div>
-// );
-
-// export default GridListExampleSimple;
-
-
+let tilesData = [];
 
 class Profile extends Component {
   constructor(props) {
@@ -100,9 +31,18 @@ class Profile extends Component {
     }
     this.getUserEvents = this.getUserEvents.bind(this);
     this.setUserEvents = this.setUserEvents.bind(this);
+    this.updateEventGrid = this.updateEventGrid.bind(this);
   }
-  // set state with UserId
+
   // get all events from EventParticipant where the UserId matches current user
+  componentDidMount() {
+    this.getUserEvents()
+
+    const timeStamp = (new Date).getTime();
+    console.log('Component did mount: ', timeStamp);
+    // const tile = this.state.userEvents.map((tile) => {return tile;})
+    // console.log('Events: ', this.state.userEvents, 'Tiles: ', tile);
+  }
 
   getUserEvents() {
     axios.get('/api/userevents/' + this.state.userId)
@@ -113,7 +53,10 @@ class Profile extends Component {
       eventData.forEach(function(event) {
         eventIds.push(event.id);
       })
-      this.state.events = eventIds;
+      this.setState({
+        events: eventIds
+      })
+      // this.state.events = eventIds;
       this.setUserEvents();
       console.log('Event state: ', this.state.events);
     }).catch(err => {
@@ -121,6 +64,7 @@ class Profile extends Component {
     })
   }
 
+  // this sets event data on the state of the component
   setUserEvents() {
     let eventsArray = [];
 
@@ -131,25 +75,63 @@ class Profile extends Component {
       }).catch(err => {
         console.log(err);
       });
-    });
-    this.state.userEvents = eventsArray;
-    // this.setState({
-    //   userEvents: eventsArray
-    // })
-    console.log('USER EVENT STATE: ', this.state.userEvents);
+    })
+    const timeStamp = (new Date).getTime();
+    console.log('Set User Events: ', timeStamp);
+    this.setState({
+      userEvents: eventsArray
+    })
+  }
+
+  updateEventGrid() {
+    console.log('Updating event grid!')
+    if (tilesData.length > 0) {
+      return (
+        <div id="profile" style={styles.root}>
+          <div id="profilename">{this.props.profile.name}</div>
+          <img id="profilepic" src={this.props.profile.picture}></img>
+          <GridList
+            cellHeight={180}
+            style={styles.gridList}
+            cols={3}
+          >
+            <Subheader>Your Events</Subheader>
+            {tilesData.map((tile) => (
+              <GridTile
+                key={tile.image}
+                title={tile.title}
+                subtitle={<span>time <b>{tile.time}</b></span>}
+                actionIcon={<IconButton><StarBorder color="white" /></IconButton>}
+              >
+                <img src={tile.image} />
+              </GridTile>
+            ))}
+          </GridList>
+        </div>
+      )
+    } else {
+      console.log('Loading...');
+    }
   }
 
   render() {
-    // console.log('Profile events: ', this.state.userId, this.state.events)
-    // {this.getUserEvents()}
-    return (
-    <div id='profile'>
-    <div id="profilename">{this.props.profile.name}</div>
-    <img id="profilepic" src={this.props.profile.picture}></img>
-    {this.getUserEvents()}
-    </div>
+    const timeStamp = (new Date).getTime();
+    console.log('USER EVENT STATE: ', this.state.userEvents);
+    console.log('Render: ', timeStamp);
+    tilesData = this.state.userEvents;
 
-    )
+    if (tilesData.length === 0) {
+      console.log('Tile data: ', tilesData)
+      setTimeout(() => { this.updateEventGrid(); }, 1000)
+      return (
+        <div id='profile'>
+        <div id="profilename">{this.props.profile.name}</div>
+        <img id="profilepic" src={this.props.profile.picture}></img>
+        </div>
+      )
+    } else {
+      {this.updateEventGrid()}
+    }
   }
 }
 
