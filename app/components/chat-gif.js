@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { GridTile } from 'material-ui/GridList';
-import IconButton from 'material-ui/IconButton';
-import StarBorder from 'material-ui/svg-icons/toggle/star-border';
+
 
 const styles = {
   titleBackground:
@@ -10,27 +8,6 @@ const styles = {
     color: 'rgb(0, 188, 212)'
   }
 };
-
-
-const gif = (props) => {
-  const handleClick = (e) => {
-    this.props.openDropdown()
-    this.props.insertUrl(src)
-  }
-
-  return (
-    <GridTile
-      actionIcon={<IconButton><StarBorder color="rgb(0, 188, 212)" /></IconButton>}
-      titleStyle={styles.titleStyle}
-      titleBackground={styles.titleBackground}
-    >
-      <img src={tilesData.img} onClick={this.handleClick}/>
-    </GridTile>
-  )
-}
-
-export { gif }
-
 const tilesData = [
   {
     img: './images/jason.jpg',
@@ -58,3 +35,17 @@ const tilesData = [
     author: 'Hans',
   },
 ];
+
+const Gif = (props) => {
+  // const handleClick = (e) => {
+  //   this.props.openDropdown()
+  //   this.props.insertUrl(src)
+  // }
+
+  return (
+
+  )
+}
+
+export { Gif }
+
