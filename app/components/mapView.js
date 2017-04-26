@@ -13,6 +13,7 @@ class MapView extends Component {
     }
   }
 
+
   async componentDidMount() {
     let map = new google.maps.Map(this.refs.map, {
       zoom: 8,
@@ -46,8 +47,7 @@ class MapView extends Component {
 
     // Trying to get event location and put them in locations array
     let data = this.props.events.slice();
-    let geocoder = new google.maps.Geocoder();
-  
+    let geocoder = new google.maps.Geocoder();  
 
     //make event location to log/lat format and put marker(pin)
     if (this.props.displayedEvents === 0) {
@@ -57,6 +57,10 @@ class MapView extends Component {
     }
         for (var i = 0; i < data.length; ++i) {
           let eachData = data[i]
+          function show () {
+            console.log("hello show!")
+          }
+
            geocoder.geocode({'address' : data[i]['location'] }, function (results, status) {
            if (status == 'OK') {
             var marker = new google.maps.Marker({
@@ -69,7 +73,7 @@ class MapView extends Component {
                           '<p><b>Date: </b>' , eachData['date'],'</p>',
                           '<p><b>Time: </b>' , eachData['time'],'</p>',
                           '<p><b>Descrption: </b>' ,eachData['description'],'</p>',
-                          "<button><b>Get Direction</b></button>",
+                          '<button onClick="show()"><b>Get Direction</b></button>',
                           '</div>'].join("");
 
 
@@ -82,6 +86,13 @@ class MapView extends Component {
               };
             })(marker,content,infowindow)); 
 
+
+            google.maps.event.addDomListener(,'click',(function(marker, i) {
+              return function() {
+                alert('clicked ' + cityList[i][0])
+              }
+            })(marker, i));
+            } 
             
             } else {
               console.log('location undefined!', status)
@@ -96,11 +107,12 @@ class MapView extends Component {
       width: "770px",
       height: "300px",
     };
+    let close = () => this.setState({ show: false});
 
     return (
       <div id="mapcontainer" style={style}>
         <div ref="map" style={style} ></div>
-        <MapDirection />
+        <MapDirection show={this.state.show} onHide={close} />
       </div>
       );
     }
