@@ -11,7 +11,6 @@ class MapView extends Component {
       show: false,
       clickedEvent: null,
       userlocation: '',
-      userlocations: [],
     }
 
     this.handleChange = this.handleChange.bind(this);
@@ -19,12 +18,11 @@ class MapView extends Component {
   }
 
   handleChange(event) {
-    this.setState({userlocation: event.target.value});
+    this.setState({userlocationInput: event.target.value});
   }
 
   handleSubmit(event) {
-    this.setState({userlocation: event.target.value});
-    this.state.userlocations.push(this.state.userlocation)
+    this.setState({userlocation: this.state.userlocationInput});
     event.preventDefault();
   }
 
@@ -106,12 +104,12 @@ class MapView extends Component {
           <form onSubmit={this.handleSubmit}>
           <label>
             Starting Location:
-            <input type="text" value={this.state.userlocation} onChange={this.handleChange} />
+            <input type="text" value={this.state.userlocationInput} onChange={this.handleChange} />
           </label>
           <button type="submit" onClick={this.handleSubmit}>Get Direction</button>
           </form>
           <div>to {this.state.clickedEvent['title']}</div>
-          <MapDirection show={this.state.show} onHide={close} clickedEvent={this.state.clickedEvent} userlocations={this.state.userlocations}/>
+          <MapDirection show={this.state.show} onHide={close} clickedEvent={this.state.clickedEvent} userlocation={this.state.userlocation}/>
         </div>
       );
     } 
