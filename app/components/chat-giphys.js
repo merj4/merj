@@ -1,14 +1,7 @@
 import React, { Component } from 'react'
 import { GridList } from 'material-ui/GridList';
 import { gif } from './chat-gif'
-import StarBorder from 'material-ui/svg-icons/toggle/star-border';
 import IconMenu from 'material-ui/IconMenu';
-import MenuItem from 'material-ui/MenuItem';
-import IconButton from 'material-ui/IconButton';
-import Divider from 'material-ui/Divider';
-import Download from 'material-ui/svg-icons/file/file-download';
-import ArrowDropRight from 'material-ui/svg-icons/navigation-arrow-drop-right';
-import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import axios from 'axios'
 
 //Giphy API
@@ -44,13 +37,35 @@ class Gifs extends Component {
        query: '',
        gifs: [],
     }
-    this.handleDropdown = this.handleDropdown.bind(this)
+    this.closeDropdown = this.closeDropdown.bind(this)
+    this.openDropdown = this.openDropdown.bind(this)
     this.handleQuery = this.handleQuery.bind(this)
   }
+//API call to Giphy
+  componentDidUpdate() {
 
-//Opens and Closes dropdown
-  handleDropdown(){
-    this.setState({dropdown: !this.state.dropdown})
+    let url = api + apiKey + "&q=" + this.state.query;
+    test('URL', url)
+    axios.get(url)
+      .then(res => {
+       console.log('Get request successful', res)
+        this.setState({gifs: res.data.data})
+      })
+      .catch(err => {
+        console.log('GET FAIL', err)
+      })
+    //Open dropdown with search results
+    this.openDropdown()
+  }
+
+//Opens dropdown
+  openDropdown(){
+    this.setState({dropdown: true})
+  }
+
+//Closes dropdown
+  closeDropdown(){
+    this.setState({dropdown: false})
   }
 
 //Takes string after ".gif" trigger and sets it as query
@@ -59,35 +74,26 @@ class Gifs extends Component {
     this.setState({query: query})
   }
 
-//API call to Giphy
-  getGifs() {
-    log('Handle Search was triggered')
-    let url = api + apiKey + "&q=" + this.state.query;
-    axios.get(url)
-    .then(res => {console.log('This is what you get back from API req: ', res)})
-      // this.setState({gifs: })
-    .catch(err => {console.log('GET FAIL', err)})
-  }
 
-//DropDown serves as container and iterator for array of gif results
+//Dropdown serves as container and iterator for array of gif results
   render() {
-    log('Drop', this.state.dropdown) 
-    log('query', this.state.query)
+    test('Drop', this.state.dropdown) 
+    test('query', this.state.query)
+    console.log('GIFS ARRAY', this.state.gifs)
       return (
     <IconMenu
       style={styles.icon}
       open={this.state.dropdown}
       iconButtonElement={<div></div>}
-      anchorOrigin={{horizontal: 'left', vertical: 'bottom'}}
-      targetOrigin={{horizontal: 'left', vertical: 'bottom'}}
-      onClick={()=>this.handleDropdown()}
+      anchorOrigin={{vertical: 'bottom'}}
+      targetOrigin={{vertical: 'bottom'}}
+      onClick={this.closeDropdown}
     >
-      <h5>Enter gif search! Ex: ".gif puppies"</h5>
       <div style={styles.root}>
         <GridList style={styles.gridList} cols={2.2}>
           {this.state.gifs.map((gif, i) => (
             <gif url={gif.bitly_url} key={i} 
-            handleDropdown={this.handleDropdown}
+            handleDropdown={this.openDropdown}
             insertURL={this.props.insertURL}
             />
           ))}
