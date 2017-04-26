@@ -40,7 +40,7 @@ class Profile extends Component {
       <div id="profile">
         <div id="profilename">{this.props.profile.name}</div>
         <img id="profilepic" src={this.props.profile.picture}></img>
-        <div style={styles.root}>
+        <div id="user-events" style={styles.root}>
           <GridList
             cellHeight={180}
             style={styles.gridList}
