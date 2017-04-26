@@ -198,10 +198,12 @@ class App extends Component {
                   showMap={this.showMap}
                   updateEventList={this.updateEventList}
                 />
+              <MuiThemeProvider>
                 <EventList
                   events={this.state.displayedEvents}
                   handleEventClick={this.handleEventClick.bind(this)}
                 />
+               </MuiThemeProvider>
               </div>
             </MuiThemeProvider>
           );
@@ -209,7 +211,7 @@ class App extends Component {
         } else if (this.state.activeEvent !== null && this.state.showProfile === false && this.state.showMap === false) {
           console.log('activeEvent in index.js', this.state.activeEvent)
             return (
-            <MuiThemeProvider>
+            <MuiThemeProvider >
               <div>
                 <Header
                   auth={auth}

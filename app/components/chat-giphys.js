@@ -22,8 +22,10 @@ const styles = {
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'space-around',
-    maxWidth: 70 + 'em',
-    maxHeight: 40 + 'em'
+    width: 30 + '%',
+    // height: 20 + '%',
+    // margin: 'auto',
+    padding: 10,
   },
   gridList: {
     display: 'flex',
@@ -102,16 +104,14 @@ class Gifs extends Component {
 //API call to Giphy
   getGifs() {
     let url = api + apiKey + "&q=" + this.state.query;
-    test('URL', url)
     axios.get(url)
-      .then(res => {
-       console.log('Get request successful', res)
-        this.setState({gifs: res.data.data})
-      })
-      .catch(err => {
-        test('GET FAIL', err)
-      })
-    //Open dropdown with search results
+    .then(res => {
+      this.setState({gifs: res.data.data})
+    })
+    .catch(err => {
+      test('GET FAIL', err)
+    })
+//Open dropdown with search results
     this.openDropdown()
   }
 
