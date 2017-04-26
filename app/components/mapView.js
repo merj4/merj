@@ -11,6 +11,7 @@ class MapView extends Component {
       show: false,
       clickedEvent: null,
       userlocation: '',
+      userlocations: [],
     }
 
     this.handleChange = this.handleChange.bind(this);
@@ -22,7 +23,8 @@ class MapView extends Component {
   }
 
   handleSubmit(event) {
-    alert('A name was submitted: ' + this.state.userlocation);
+    this.setState({userlocation: event.target.value});
+    this.state.userlocations.push(this.state.userlocation)
     event.preventDefault();
   }
 
@@ -97,7 +99,6 @@ class MapView extends Component {
       height: "300px",
     };
     let close = () => this.setState({ show: false});
-    console.log('locationnnn', this.state.userlocation)
     if (this.state.clickedEvent) {
       return (
         <div id="mapcontainer" style={style}>
@@ -107,10 +108,10 @@ class MapView extends Component {
             Starting Location:
             <input type="text" value={this.state.userlocation} onChange={this.handleChange} />
           </label>
-          <button type="submit" value="Get Direction" />
+          <button type="submit" onClick={this.handleSubmit}>Get Direction</button>
           </form>
           <div>to {this.state.clickedEvent['title']}</div>
-          <MapDirection show={this.state.show} onHide={close} clickedEvent={this.state.clickedEvent} />
+          <MapDirection show={this.state.show} onHide={close} clickedEvent={this.state.clickedEvent} userlocations={this.state.userlocations}/>
         </div>
       );
     } 
