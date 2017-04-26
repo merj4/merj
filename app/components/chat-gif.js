@@ -11,51 +11,50 @@ const styles = {
   }
 };
 
-// const tilesData = [
-//   {
-//     img: './images/jason.jpg',
-//     title: 'Breakfast',
-//     author: 'jill111',
-//   },
-//   {
-//     img: './images/jesse.jpg',
-//     title: 'Tasty burger',
-//     author: 'pashminu',
-//   },
-//   {
-//     img: './images/faiz.jpg',
-//     title: 'Camera',
-//     author: 'Danson67',
-//   },
-//   {
-//     img: './images/simon.jpg',
-//     title: 'Morning',
-//     author: 'fancycrave1',
-//   },
-//   {
-//     img: './images/jordan.jpg',
-//     title: 'Hats',
-//     author: 'Hans',
-//   },
-// ];
-
 
 const gif = (props) => {
   const handleClick = (e) => {
-    this.props.insertUrl(undefined, src)
-    this.props.handleDropdown()
+    this.props.openDropdown()
+    this.props.insertUrl(src)
   }
 
   return (
     <GridTile
-      key={props.key}
       actionIcon={<IconButton><StarBorder color="rgb(0, 188, 212)" /></IconButton>}
       titleStyle={styles.titleStyle}
       titleBackground={styles.titleBackground}
     >
-      <img src={props.img} onClick={this.handleClick}/>
+      <img src={tilesData.img} onClick={this.handleClick}/>
     </GridTile>
   )
 }
 
 export { gif }
+
+const tilesData = [
+  {
+    img: './images/jason.jpg',
+    title: 'Breakfast',
+    author: 'jill111',
+  },
+  {
+    img: './images/jesse.jpg',
+    title: 'Tasty burger',
+    author: 'pashminu',
+  },
+  {
+    img: './images/faiz.jpg',
+    title: 'Camera',
+    author: 'Danson67',
+  },
+  {
+    img: './images/simon.jpg',
+    title: 'Morning',
+    author: 'fancycrave1',
+  },
+  {
+    img: './images/jordan.jpg',
+    title: 'Hats',
+    author: 'Hans',
+  },
+];

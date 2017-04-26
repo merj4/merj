@@ -17,7 +17,7 @@ import MapView from './mapView';
 injectTapEventPlugin();
 
 //Helper method for debugging
-window.log = (label, data) => {
+window.test = (label, data) => {
   console.log('****' + label + ': ' + data)
 }
 

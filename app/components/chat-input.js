@@ -61,13 +61,17 @@ class ChatInput extends Component {
     this.onImgUpload = this.onImgUpload.bind(this)
     this.onFileSelect = this.onFileSelect.bind(this)
     this.handleClick = this.handleClick.bind(this)
-    // this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
   
 //Upon ENTER do one of two things: sendMessage to db OR display gif search
   handleSubmit(e) {
     const body = e.target.value;
-    if (e.keyCode === 13 && !body.startsWith('.gif')){
+    if (e.keyCode === 13) {
+      if (body.startsWith('.gif')) {
+    //Set query to body
+        this.refs.child.handleQuery(body)        
+    } else {
     const message = {
       body,
       username: this.props.profile.given_name,
@@ -81,13 +85,9 @@ class ChatInput extends Component {
       this.props.saveToDatabase(message);
   //Clear input field
       e.target.value = ''      
-    } 
-  //Set query to body
-      this.refs.child.handleQuery(this.state.query)
-  //Search for gif s 
-      this.refs.child.getGifs()
-  //Open dropdown with search results
-      this.refs.child.handleDropdown()
+
+      }
+    }
   }
 
   handleClick() {
@@ -134,21 +134,11 @@ class ChatInput extends Component {
       image: this.props.profile.picture
     }
     this.props.receiveMessage(imageData);
-    
-    const upload = {
-      body: this.state.image,
-      username: this.props.profile.given_name,
-      timestamp: moment((new Date).getTime())
-      .format("MMMM Do YYYY, h:mm:ss a"),
-      image: this.props.profile.picture
-    }
-      this.props.saveToDatabase(upload)
-      this.handleClick();
+    this.props.saveToDatabase(upload)
+    this.handleClick();
   }
 
   render() {
-        console.log("QUERY: ", this.state.query)
-
   let close = () => this.setState({ show: false});
     return (
       <div style={{position: "relative"}}>
