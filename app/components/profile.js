@@ -95,31 +95,48 @@ class Profile extends Component {
     super(props);
     this.state = {
       userId: this.props.userId,
-      events: []
+      events: [],
+      userEvents: []
     }
     this.getUserEvents = this.getUserEvents.bind(this);
+    this.setUserEvents = this.setUserEvents.bind(this);
   }
   // set state with UserId
   // get all events from EventParticipant where the UserId matches current user
 
   getUserEvents() {
-
     axios.get('/api/userevents/' + this.state.userId)
-      .then(res => {
-        let eventIds = [];
-        let eventData = res.data;
+    .then(res => {
+      let eventIds = [];
+      let eventData = res.data;
 
-        eventData.forEach(function(event) {
-          eventIds.push(event.id);
-        })
-        this.state.events = eventIds;
-        console.log('Event state: ', this.state.events);
-        // this.setState({
-        //   events: eventIds
-        // });
+      eventData.forEach(function(event) {
+        eventIds.push(event.id);
+      })
+      this.state.events = eventIds;
+      this.setUserEvents();
+      console.log('Event state: ', this.state.events);
     }).catch(err => {
       console.log(err);
     })
+  }
+
+  setUserEvents() {
+    let eventsArray = [];
+
+    this.state.events.forEach(function(event) {
+      axios.get('/api/event/' + event)
+      .then(res => {
+        eventsArray.push(res.data);
+      }).catch(err => {
+        console.log(err);
+      });
+    });
+    this.state.userEvents = eventsArray;
+    // this.setState({
+    //   userEvents: eventsArray
+    // })
+    console.log('USER EVENT STATE: ', this.state.userEvents);
   }
 
   render() {
