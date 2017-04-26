@@ -9,6 +9,7 @@ class MapView extends Component {
     super(props);
     this.state = {
       show: false,
+      clickedEvent: null,
     }
   }
 
