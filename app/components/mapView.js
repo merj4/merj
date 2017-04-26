@@ -1,15 +1,14 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import { Button } from 'react-bootstrap';
-
+import {MapDirection} from './mapDirection'
 import {EventItem} from './eventItem';
 
 class MapView extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      start: "",
-      end: ""
+      show: false,
     }
   }
 
@@ -69,13 +68,11 @@ class MapView extends Component {
                           '<p><b>Date: </b>' , eachData['date'],'</p>',
                           '<p><b>Time: </b>' , eachData['time'],'</p>',
                           '<p><b>Descrption: </b>' ,eachData['description'],'</p>',
-                          '<button onClick="getDirection()"><b>Get Direction to this event</b></button>',
+                          "<button><b>Get Direction</b></button>",
                           '</div>'].join("");
 
 
-            var infowindow = new google.maps.InfoWindow();
-
-
+            var infowindow = new google.maps.InfoWindow()
 
             google.maps.event.addListener(marker,'click', (function(marker,content,infowindow){ 
               return function() {
@@ -83,14 +80,6 @@ class MapView extends Component {
                  infowindow.open(map,marker);
               };
             })(marker,content,infowindow)); 
-
-
-            google.maps.event.addListener(infowindow, 'domready', function() {
-              document.id("map-go").addEvent("submit", function(e) {
-                e.stop();
-                console.log("hi!");
-              });
-            })
 
             
             } else {
@@ -101,29 +90,6 @@ class MapView extends Component {
       }
 
 
- 
-
-    onChangeHandler() {
-      calculateAndDisplayRoute(directionsService, directionsDisplay);
-    };
-
-
-    calculateAndDisplayRoute(directionsService, directionsDisplay) {
-        var start = document.getElementById('start').value;
-        var end = document.getElementById('end').value;
-        directionsService.route({
-          origin: start,
-          destination: end,
-          travelMode: 'DRIVING'
-        }, function(response, status) {
-          if (status === 'OK') {
-            directionsDisplay.setDirections(response);
-          } else {
-            window.alert('Directions request failed due to ' + status);
-          }
-        });
-    }
-
   render() {
     var style = {
       width: "770px",
@@ -132,9 +98,7 @@ class MapView extends Component {
 
     return (
       <div id="mapcontainer" style={style}>
-
         <div ref="map" style={style} ></div>
-        <div ref="panel"></div>
         <MapDirection />
       </div>
       );

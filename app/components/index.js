@@ -12,7 +12,7 @@ import AuthService from '../../config/AuthService.js'
 import Login from './login.js'
 import Profile from './profile.js'
 import moment from 'moment';
-import MapView from './mapView';
+import MapView  from './mapView.js';
 
 injectTapEventPlugin();
 
@@ -335,7 +335,6 @@ class App extends Component {
                   eventsdisplayed={this.state.displayedEvents}
                   updateEventList={this.updateEventList}
                   handleEventClick={this.handleEventClick.bind(this)}
-
                 />
               </div>
             </MuiThemeProvider>
