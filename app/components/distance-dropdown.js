@@ -33,10 +33,10 @@ class Dropdown extends Component {
       className={''}
       onClick={this.isDropdown}
     >
-        <MenuItem value={1} primaryText="<<  5 miles  >>" />
-        <MenuItem value={2} primaryText="<<  10 miles  >>" />
-        <MenuItem value={2} primaryText="<<  15 miles  >>"/>
-        <MenuItem value={4} primaryText="<<  20 miles  >>" />
+        <MenuItem value={1} primaryText=" in 5 miles " onClick={() => this.distanceHandler(3218.69)} />
+        <MenuItem value={2} primaryText=" in 10 miles " />
+        <MenuItem value={2} primaryText=" in 15 miles  "/>
+        <MenuItem value={4} primaryText=" in 20 miles  " />
     </IconMenu>
     );
   }
