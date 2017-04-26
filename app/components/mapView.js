@@ -109,6 +109,12 @@ class MapView extends Component {
           <button type="submit" onClick={this.handleSubmit}>Get Direction</button>
           </form>
           <div>to {this.state.clickedEvent['title']}</div>
+          <select id="routeMode" name="routeMode">
+            <option value="DRIVING">Driving</option>
+            <option value="WALKING">Walking</option>
+            <option value="BICYCLING">Bicycling</option>
+            <option value="TRANSIT">Transit</option>
+          </select>
           <MapDirection show={this.state.show} onHide={close} clickedEvent={this.state.clickedEvent} userlocation={this.state.userlocation}/>
         </div>
       );
