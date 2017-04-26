@@ -5,6 +5,8 @@ class MapDirection extends Component {
     this.directionsService = new google.maps.DirectionsService;
     this.directionsDisplay = new google.maps.DirectionsRenderer;
     this.directionsDisplay.setPanel(this.refs.directions);
+    console.log('valueeeeeee', this.props.option);
+
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -14,11 +16,12 @@ class MapDirection extends Component {
   componentDidUpdate() {
     const start = this.props.userlocation;
     const end = this.props.clickedEvent['location'];
+    const travelmode = this.props.option;
     if (end) {
       this.directionsService.route({
       origin: start,
       destination: end,
-      travelMode: 'DRIVING'
+      travelMode: travelmode,
       }, (response, status) => {
       if (status === 'OK') {
         this.directionsDisplay.setDirections(response);
