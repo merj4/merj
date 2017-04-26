@@ -24,7 +24,7 @@ class Filter extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      filteredEvents: this.props.events,
+      events: this.props.events,
       isMap: false,
       startDate: moment(), // this property highlights today's date on the calendar
       isOpen: false,
@@ -35,6 +35,7 @@ class Filter extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.toggleCalendar = this.toggleCalendar.bind(this);
     // this.handleSelect = this.handleSelect.bind(this);
+    this.distanceHandler = this.distanceHandler.bind(this);
   }
 
 
@@ -119,7 +120,7 @@ class Filter extends Component {
       <Tabs>
         <Tab label="Distance"
         onClick={() => this.refs.Dropdown.isDropdown()}>
-          <Dropdown ref="Dropdown"/>
+          <Dropdown ref="Dropdown" events={this.state.events}  distanceHandler={this.distanceHandler.bind(this)} />
         </Tab>
 
         <Tab label="Calendar" onClick={this.toggleCalendar} handleEventClick={this.props.handleEventClick}>
