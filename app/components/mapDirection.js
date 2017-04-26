@@ -5,8 +5,6 @@ class MapDirection extends Component {
     this.directionsService = new google.maps.DirectionsService;
     this.directionsDisplay = new google.maps.DirectionsRenderer;
     this.directionsDisplay.setPanel(this.refs.directions);
-    console.log('valueeeeeee', this.props.option);
-
   }
 
   shouldComponentUpdate(nextProps, nextState) {

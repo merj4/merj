@@ -34,6 +34,10 @@ class EventItem extends Component {
         <CardActions className="actions">
            <FlatButton className="btn" label="Would Love To Go!" onClick={() => this.props.handleEventClick(this.props.event)}/>
            <FlatButton className="btn" label="I'm Gonna Pass for Now" />
+           <FlatButton className="btn" label="Share" >
+           <iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&layout=button&size=small&mobile_iframe=true&appId=642201689297999&width=59&height=20" width="59" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+           </FlatButton>
+
         </CardActions>
       </Card>
       );
