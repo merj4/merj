@@ -9,29 +9,38 @@ class MapDirection extends Component {
 
   componentDidMount() {
     console.log('hiiii')
-    var directionsDisplay = new google.maps.DirectionsRenderer;
-    var directionsService = new google.maps.DirectionsService;
+    const directionsDisplay = new google.maps.DirectionsRenderer;
+    const directionsService = new google.maps.DirectionsService;
 
     directionsDisplay.setPanel(document.getElementById('right-panel'));
+    const control = document.getElementById('floating-panel');
+
+    function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+      const start = this.props.clickedEvent['location'];
+      const end = this.props.clickedEvent['location'];
+      directionsService.route({
+        origin: start,
+        destination: end,
+        travelMode: 'DRIVING'
+      }, (response, status) => {
+        if (status === 'OK') {
+          directionsDisplay.setDirections(response);
+        } else {
+          window.alert('Directions request failed due to ' + status);
+        }
+      });
+    }
   }
-    
-
-
 
   
+     
   render() {
     console.log("clickedEvent clickedddd", this.props.clickedEvent)
-    if (this.props.clickedEvent) {
-      return (
-        <div>
-          <div><b>Direction to {this.props.clickedEvent['title']}</b></div>
-          <div id="right-panel"></div>
-        </div>
-
-      )
-    }
     return (
-      <div></div>
+      <div>
+        <div id="floating-panel"></div>
+        <div id="right-panel"></div>
+      </div>
     )
   }
 }

@@ -10,9 +10,21 @@ class MapView extends Component {
     this.state = {
       show: false,
       clickedEvent: null,
+      userlocation: '',
     }
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  handleChange(event) {
+    this.setState({userlocation: event.target.value});
+  }
+
+  handleSubmit(event) {
+    alert('A name was submitted: ' + this.state.userlocation);
+    event.preventDefault();
+  }
 
   async componentDidMount() {
     let map = new google.maps.Map(this.refs.map, {
@@ -85,15 +97,30 @@ class MapView extends Component {
       height: "300px",
     };
     let close = () => this.setState({ show: false});
-    console.log("clickedEvent", this.state.clickedEvent)
-
-    return (
-      <div id="mapcontainer" style={style}>
-        <div ref="map" style={style} ></div>
-        <MapDirection show={this.state.show} onHide={close} clickedEvent={this.state.clickedEvent} />
-      </div>
+    console.log('locationnnn', this.state.userlocation)
+    if (this.state.clickedEvent) {
+      return (
+        <div id="mapcontainer" style={style}>
+          <div ref="map" style={style} ></div>
+          <form onSubmit={this.handleSubmit}>
+          <label>
+            Starting Location:
+            <input type="text" value={this.state.userlocation} onChange={this.handleChange} />
+          </label>
+          <button type="submit" value="Get Direction" />
+          </form>
+          <div>to {this.state.clickedEvent['title']}</div>
+          <MapDirection show={this.state.show} onHide={close} clickedEvent={this.state.clickedEvent} />
+        </div>
       );
-    }
+    } 
+    return (
+      <div>
+        <div ref="map" style={style} ></div>
+        <div>Click the event you are interested!</div>
+      </div>
+    )
+  }
 };
 
 export default MapView;
