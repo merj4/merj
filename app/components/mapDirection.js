@@ -1,22 +1,44 @@
 import React, {Component} from 'react';
 
 class MapDirection extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-    };
+  componentDidMount() {
+    this.directionsService = new google.maps.DirectionsService;
+    this.directionsDisplay = new google.maps.DirectionsRenderer;
+    this.directionsDisplay.setPanel(this.refs.directions);
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    return nextProps.userlocation !== '';
+  }
 
-
-
+  componentDidUpdate() {
+    const start = this.props.userlocation;
+    const end = this.props.clickedEvent['location'];
+    if (end) {
+      this.directionsService.route({
+      origin: start,
+      destination: end,
+      travelMode: 'DRIVING'
+      }, (response, status) => {
+      if (status === 'OK') {
+        this.directionsDisplay.setDirections(response);
+        console.log('response', response)
+      } else {
+        window.alert('Directions request failed due to ' + status);
+      }
+      });
+    } else {
+      console.log('not yet!')
+    }
+  }
 
   render() {
     return (
-      <div>hello!</div>
-    );
+      <div>
+        <div ref="directions"></div>
+      </div>
+    )
   }
 }
-
 
 export {MapDirection};
