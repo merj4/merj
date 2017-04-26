@@ -99,11 +99,13 @@ module.exports = {
   // },
 
   getEvent: function(req, res) {
+    console.log('*** GET 1 event: ', req.params);
     db.Event.findOne({
       where: { id: Number(req.params.id) }
     })
     .then(function(event) {
       var eventData = event.dataValues;
+      console.log('*** GOT SOME EVENT: ', eventData);
       res.status(200).json({
         location: eventData.location,
         date: eventData.date,
