@@ -14,10 +14,15 @@ class MapDirection extends Component {
 
 
   render() {
-    return (
-      <div></div>
-
+    console.log("clickedEvent clickedddd", this.props.clickedEvent)
+    if (this.props.clickedEvent) {
+      return (
+        <div><b>Direction to {this.props.clickedEvent['title']}</b></div>
       )
+    }
+    return (
+      <div>helo</div>
+    )
   }
 }
 
