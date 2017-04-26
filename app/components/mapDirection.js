@@ -6,10 +6,15 @@ class MapDirection extends Component {
     this.directionsDisplay = new google.maps.DirectionsRenderer;
     this.directionsDisplay.setPanel(this.refs.directions);
   }
-  componentDidUpdate() {
-    const start = this.props.clickedEvent['location'];
-    const end = this.props.userlocation;
 
+  shouldComponentUpdate(nextProps, nextState) {
+    return nextProps.userlocation !== this.props.userlocation;
+  }
+
+  componentDidUpdate() {
+    const start = this.props.userlocation;
+    const end = this.props.clickedEvent['location'];
+    console.log('start', start, 'end', end);
     if (end) {
       this.directionsService.route({
       origin: start,
