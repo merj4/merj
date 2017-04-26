@@ -6,10 +6,9 @@ import MapView from './mapView.js';
 import ListOrMapButton from './ListOrMapButton.js';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import App from './index.js';
+import {Dropdown} from './distance-dropdown'
+import DatePIcker from 'react-datepicker/dist/react-datepicker.css';
 
-import 'react-datepicker/dist/react-datepicker.css';
 
 const styles = {
     headline: {
@@ -38,6 +37,7 @@ class Filter extends Component {
     this.toggleCalendar = this.toggleCalendar.bind(this);
     // this.handleSelect = this.handleSelect.bind(this);
   }
+
 
   listMapHandler() {
     // console.log('listMapHandler was called!', this.props.events);
@@ -129,15 +129,9 @@ class Filter extends Component {
 
     return (
       <Tabs>
-        <Tab label="Distance" onClick={() => this.setState({ show: true})} >
-          <div style={styles.headline}>
-            <Modal show={this.state.show} onHide={close}>
-              <Button onClick={() => this.distanceHandler(3218.69)}> 2 miles </Button>
-              <Button onClick={() => this.distanceHandler(8046.72)}> 5 miles </Button>
-              <Button onClick={() => this.distanceHandler(32186.9)}> 20 miles </Button>
-              <Button onClick={() => this.props.updateEventList(this.props.events)}> Reset</Button>
-            </Modal>
-          </div>
+        <Tab label="Distance" 
+        onClick={() => this.refs.Dropdown.isDropdown()}>
+          <Dropdown ref="Dropdown"/>
         </Tab>
 
         <Tab label="Calendar" onClick={this.toggleCalendar} handleEventClick={this.props.handleEventClick}>
