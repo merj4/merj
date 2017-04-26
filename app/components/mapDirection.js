@@ -21,7 +21,7 @@ class MapDirection extends Component {
       this.directionsService.route({
       origin: start,
       destination: end,
-      travelMode: travelmode,
+      travelMode: 'DRIVING',
       }, (response, status) => {
       if (status === 'OK') {
         this.directionsDisplay.setDirections(response);
