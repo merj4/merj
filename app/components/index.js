@@ -36,7 +36,9 @@ class App extends Component {
       showProfile: false,
       date: moment(),
       showMap: false,
-      users: []
+      users: [],
+      userEventIds: [],
+      userEvents: []
     }
 
     auth.on('profile_updated', (newProfile) => {
@@ -60,8 +62,6 @@ class App extends Component {
       })
     })
 
-
-
     auth.on('logged_out', (bye) => {
       this.setState({profile: auth.getProfile()})
       //this.render();
@@ -72,6 +72,7 @@ class App extends Component {
     this.showProfileSetToFalse = this.showProfileSetToFalse.bind(this);
     this.showMap = this.showMap.bind(this);
     this.joinEvent = this.joinEvent.bind(this);
+    this.setUserEvents = this.setUserEvents.bind(this);
   }
 
 
@@ -109,7 +110,46 @@ class App extends Component {
       this.setState({
         userId: userId
       });
+
+      console.log('User Id: ', this.state.userId)
+      // get a user's event ids
+      axios.get('/api/userevents/' + this.state.userId)
+      .then(res => {
+        let eventIds = [];
+        let eventData = res.data;
+
+        eventData.forEach(function(event) {
+          eventIds.push(event.id);
+        })
+        this.setState({
+          userEventIds: eventIds
+        })
+        // this.state.events = eventIds;
+        this.setUserEvents();
+        console.log('Event state: ', this.state.userEventIds);
+      }).catch(err => {
+        console.log(err);
+      })
     })
+  }
+
+  // this sets event data on the state of the component
+  setUserEvents() {
+    let eventsArray = [];
+
+    this.state.userEventIds.forEach(function(event) {
+      console.log('EVENT: ', event)
+      axios.get('/api/event/' + event)
+      .then(res => {
+        eventsArray.push(res.data);
+      }).catch(err => {
+        console.log(err);
+      });
+    })
+    this.setState({
+      userEvents: eventsArray
+    })
+    console.log('Users events: ', this.state.userEvents);
   }
 
   handleEventClick(event) {
@@ -297,6 +337,7 @@ class App extends Component {
                   profile={profile}
                   userId={this.state.userId}
                   handleEventClick={this.handleEventClick.bind(this)}
+                  userEvents={this.state.userEvents}
                 />
               </div>
           </MuiThemeProvider>
