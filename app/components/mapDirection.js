@@ -8,7 +8,6 @@ class MapDirection extends Component {
   }
 
   componentDidMount() {
-    console.log('hiiii')
     const directionsDisplay = new google.maps.DirectionsRenderer;
     const directionsService = new google.maps.DirectionsService;
 
@@ -17,7 +16,9 @@ class MapDirection extends Component {
 
     function calculateAndDisplayRoute(directionsService, directionsDisplay) {
       const start = this.props.clickedEvent['location'];
-      const end = this.props.clickedEvent['location'];
+      const index = this.props.userlocations.length -1;
+      const end = this.props.userlocations[index];
+
       directionsService.route({
         origin: start,
         destination: end,
@@ -32,10 +33,9 @@ class MapDirection extends Component {
     }
   }
 
-  
-     
   render() {
-    console.log("clickedEvent clickedddd", this.props.clickedEvent)
+    
+
     return (
       <div>
         <div id="floating-panel"></div>
