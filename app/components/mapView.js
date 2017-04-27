@@ -4,6 +4,7 @@ import { Button } from 'react-bootstrap';
 import {MapDirection} from './mapDirection'
 import {EventItem} from './eventItem';
 import TextField from 'material-ui/TextField';
+import FlatButton from 'material-ui/FlatButton';
 
 class MapView extends Component {
   constructor(props) {
@@ -96,15 +97,20 @@ class MapView extends Component {
       height: "700px",
     };
 
+    const submit = {
+      margin: 15,
+    };
+
+
     let close = () => this.setState({ show: false});
     if (this.state.clickedEvent) {
       return (
         <div id="mapcontainer" >
           <p id="map" ref="map" style={style} ></p>
           <p  id="routes">
-           <TextField hintText="  Choose starting point" value={this.state.userlocationInput}  onChange={this.handleChange}  />
+           <TextField hintText="　　　Choose starting point" value={this.state.userlocationInput}  onChange={this.handleChange}  />
             <div>To <b>{this.state.clickedEvent['title']} </b></div>
-            <div><button id="directionsubmit" type="submit" onClick={this.handleSubmit}> Get Direction</button></div>
+            <div><FlatButton  label="Get Direction"  secondary={true} onClick={this.handleSubmit} style={submit}  fullWidth={true} /></div>
           <MapDirection show={this.state.show} onHide={close} clickedEvent={this.state.clickedEvent} userlocation={this.state.userlocation} />
           </p>
         </div>
@@ -115,9 +121,9 @@ class MapView extends Component {
         <p id= "map" ref="map" style={style} ></p>
         <p id="routes">
         <form onSubmit={this.handleSubmit}>
-        <TextField hintText="Choose starting point" value={this.state.userlocationInput}  onChange={this.handleChange}  />
-        <div>To <b>Where? </b></div>
-        <div><button id="directionsubmit" type="submit">Get Direction</button></div>
+        <TextField hintText="　　　Choose starting point" value={this.state.userlocationInput}  onChange={this.handleChange}  />
+        <div>To Where?   Click event pin </div>
+        <div><FlatButton label="Get Direction" secondary={true}  onClick={this.handleSubmit} style={submit}  fullWidth={true} /></div>
         </form>
         </p>
       </div>
