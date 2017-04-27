@@ -1,57 +1,36 @@
 import React from 'react'
 import moment from 'moment';
+import Paper from 'material-ui/Paper';
 
-
-let EventDetails = React.createClass({
-
-  propTypes: {
-    height: React.PropTypes.number
-  },
-
-  getDefaultProps() {
-    return {
-      height: 400
-    };
-  },
-
-  render() {
-
-    let styles = {
-      root: {
-        float: 'left',
-        marginBottom: 24,
-        marginRight: 24,
-        width: 360
-      },
-
-      container: {
-        border: 'solid 1px #d9d9d9',
-        height: this.props.height,
-        overflow: 'hidden',
-        background: '#f2f2f2',
-        padding: 15 
-      }
-    };
-     
-
-    return (
-      <div id="eventDetails">
-      <div style={styles.root}>
-        <div style={styles.container}>
-          <h3>{this.props.activeEvent.title}</h3>
-          <div>{moment(this.props.activeEvent.date)
-            .format('MMMM DD, YYYY')}</div>
-          <div>{this.props.activeEvent.time}</div>
-          <br />
-          <div>{this.props.activeEvent.location}</div>
-          <br />
-          <div id="descriptioninchat">{this.props.activeEvent.description}</div>
-        </div>
-      </div>
-    </div>
-    );
+let styles = {
+  root: {
+    float: 'left',
+    marginBottom: 24,
+    marginRight: 24,
+    width: 360,
+    border: 'solid 1px #d9d9d9',
+    height: 400,
+    overflow: 'hidden',
+    background: '#f2f2f2',
+    padding: 15,
   }
+};
 
-})
+let EventDetails = (props) => {
+    return (
+      <Paper id="eventDetails" style={styles.root} zDepth={1}>
+        <div style={styles.container}>
+          <h3>{props.activeEvent.title}</h3>
+          <div>{moment(props.activeEvent.date)
+            .format('MMMM DD, YYYY')}</div>
+          <div>{props.activeEvent.time}</div>
+          <br />
+          <div>{props.activeEvent.location}</div>
+          <br />
+          <div id="descriptioninchat">{props.activeEvent.description}</div>
+        </div>
+    </Paper>
+    );
+}
 
 export { EventDetails }
