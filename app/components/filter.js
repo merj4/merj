@@ -8,10 +8,6 @@ import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import {Dropdown} from './distance-dropdown'
 import DatePIcker from 'react-datepicker/dist/react-datepicker.css';
-<<<<<<< HEAD
-
-=======
->>>>>>> d25cce36c863c1b824d7dc629cf182a66a632492
 
 const styles = {
     headline: {
@@ -120,7 +116,7 @@ class Filter extends Component {
 
     return (
       <Tabs>
-        <Tab label="Distance" 
+        <Tab label="Distance"
         onClick={() => this.refs.Dropdown.isDropdown()}>
           <Dropdown ref="Dropdown"/>
         </Tab>
