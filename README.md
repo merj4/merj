@@ -52,7 +52,7 @@ nodemon server.js
 
 Fork and clone the respository to your local machine. Use npm install to install the required dependencies. To start the app you can use: npm run build or npm start which builds then runs the app. Run the local server using node server.js or nodemon server.js.
 
-Point your browser to localhost:8080 and have fun!
+Point your browser to localhost:8080 and have fun!!
 
 We used Auth0 for authentication and Google Maps API, which you will need to obtain your own API Key to use within the app.
 
