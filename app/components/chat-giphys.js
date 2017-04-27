@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { GridList } from 'material-ui/GridList';
-// import { Gif } from './chat-gif'
 import { GridTile } from 'material-ui/GridList';
 import StarBorder from 'material-ui/svg-icons/toggle/star-border';
 import IconMenu from 'material-ui/IconMenu';
@@ -12,6 +11,8 @@ import ArrowDropRight from 'material-ui/svg-icons/navigation-arrow-drop-right';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import axios from 'axios';
 import Emojis from './chat-emojis'
+import moment from 'moment';
+
 
 //Giphy API
 const api = "http://api.giphy.com/v1/gifs/search?";
@@ -50,12 +51,12 @@ class Gifs extends Component {
        dropdown: false,
        query: '',
        prefix: '',
-       media: [],
+       gifs: [],
     }
     this.closeDropdown = this.closeDropdown.bind(this)
     this.openDropdown = this.openDropdown.bind(this)
     this.handleQuery = this.handleQuery.bind(this)
-    this.getGifsOrEmojis = this.getGifsOrEmojis.bind(this)
+    this.getGifs = this.getGifs.bind(this)
     this.sendGif = this.sendGif.bind(this)
   }
 
@@ -73,33 +74,33 @@ class Gifs extends Component {
   handleQuery(query) {
     const keyword = query.slice(4);
     this.setState({query: keyword, prefix: query})
-    this.getGifsOrEmojis()
+    this.getGifs()
   }
 
 //API call to Giphy
-  getGifsOrEmojis() {
-    if (this.state.prefix.startsWith(".gif")) {
+  getGifs() {
       let url = api + apiKey + "&q=" + this.state.query;
       axios.get(url)
       .then(res => {
-        console.log(res.data.data)
-        this.setState({media: res.data.data})
+        this.setState({gifs: res.data.data})
       })
       .catch(err => {
-        test('GET FAIL', err)
       })
-    } else {
-      this.setState({media: Emojis})
-    }
 //Open dropdown with search results
     this.openDropdown()
   }
 
 //Send giphy as message 
   sendGif(e) {
-    test("PROPS", this.props)
-    test("Send GIF", e.target.src)
-    this.props.insertURL(e.target.src)
+    const imageData = {
+      body: e.target.src,
+      username: this.props.profile.given_name,
+      timestamp: moment((new Date).getTime())
+      .format("MMMM Do YYYY, h:mm:ss a"),
+      image: this.props.profile.picture
+    }
+    this.props.receiveMessage(imageData);
+    this.props.saveToDatabase(imageData)
   }
 //Dropdown serves as container and iterator for array of gif results
   render() {
@@ -116,9 +117,9 @@ class Gifs extends Component {
       <div style={styles.root}>
         <GridList style={styles.gridList} 
         >
-        {this.state.media.map((medium, i) => (
+        {this.state.gifs.map((gif, i) => (
           <GridTile key={i}>
-            <img src={medium.images.downsized_large.url} onClick={this.sendGif}/>
+            <img src={gif.images.downsized_large.url} onClick={this.sendGif}/>
           </GridTile>          
           ))}
         </GridList>

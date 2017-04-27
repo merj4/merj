@@ -144,7 +144,10 @@ class ChatInput extends Component {
     return (
       <div style={{position: "relative"}}>
         <Gifs ref="child"
-          insertURL={this.insertURL}/>
+          receiveMessage={this.props.receiveMessage}
+          saveToDatabase={this.props.saveToDatabase}
+          profile={this.props.profile} 
+          />
         <TextField
         className="input-chat"
         floatingLabelText="Start Chatting Here"

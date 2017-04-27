@@ -27,16 +27,15 @@ const rightIconMenu = (
 );
 
 const styles = {
-  image: {
-    maxHeight: 500,
-    height: 500,
-    maxwidth: 500,
-    marginTop: 4,
-    display: "block"
+  root: {
+    display: 'table',
+  },
+  child: {
+    display: 'table-row'
   },
 }
 const ChatMessage = (props) => {
-  if (props.message.slice(-2).includes("g")) {
+  if (props.message.slice(-3).includes("g")) {
     return (
       <List>
         <Subheader>{props.time}</Subheader>
@@ -45,9 +44,11 @@ const ChatMessage = (props) => {
           rightIconButton={rightIconMenu}
           primaryText={<span style={{fontSize: 18 + 'px'}}>{props.user}</span>}
           secondaryText={
-            <div className="row" style={styles.image}>
-              <img className="col-xs-8 col-xs-offset-2" src={props.message}/>
+          <div className="row" style={styles.root}>
+            <div className="col-xs-8 col-xs-offset-2" style={styles.child} >
+              <img  src={props.message}/>
             </div>
+          </div>
           }
         />
       </List>
