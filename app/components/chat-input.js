@@ -57,11 +57,12 @@ class ChatInput extends Component {
       show: false,
       image: '',
     }
-    this.onEmoji = this.onEmoji.bind(this)
     this.onImgUpload = this.onImgUpload.bind(this)
     this.onFileSelect = this.onFileSelect.bind(this)
     this.handleClick = this.handleClick.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+   this.insertURL = this.insertURL.bind(this)
+
   }
   
 //Upon ENTER do one of two things: sendMessage to db OR display gif search
@@ -90,14 +91,6 @@ class ChatInput extends Component {
       }
     }
   }
-  onEmoji(e) {
-
-    if ( e.target.value.startsWith(".emoji") && e.keyCode === 13  ) {
-      console.log("*******Hello*****")
-      this.refs.child.getGifsOrEmojis()
-
-    }
-  }
 
   handleClick() {
     this.setState({
@@ -105,10 +98,9 @@ class ChatInput extends Component {
     })
   }
 
-  insertURL(src) {
-    src = src.target.value || src
+ insertURL(e) {
     this.setState({
-      image: src
+      image: e.target.value
     })
   }
 
@@ -152,7 +144,7 @@ class ChatInput extends Component {
     return (
       <div style={{position: "relative"}}>
         <Gifs ref="child"
-        insertURL={this.insertURL}/>
+          insertURL={this.insertURL}/>
         <TextField
         className="input-chat"
         floatingLabelText="Start Chatting Here"

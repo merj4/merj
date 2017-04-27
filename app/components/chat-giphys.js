@@ -56,6 +56,7 @@ class Gifs extends Component {
     this.openDropdown = this.openDropdown.bind(this)
     this.handleQuery = this.handleQuery.bind(this)
     this.getGifsOrEmojis = this.getGifsOrEmojis.bind(this)
+    this.sendGif = this.sendGif.bind(this)
   }
 
 //Opens dropdown
@@ -81,7 +82,6 @@ class Gifs extends Component {
       let url = api + apiKey + "&q=" + this.state.query;
       axios.get(url)
       .then(res => {
-      console.log(Emojis)
         console.log(res.data.data)
         this.setState({media: res.data.data})
       })
@@ -95,9 +95,14 @@ class Gifs extends Component {
     this.openDropdown()
   }
 
+//Send giphy as message 
+  sendGif(e) {
+    test("PROPS", this.props)
+    test("Send GIF", e.target.src)
+    this.props.insertURL(e.target.src)
+  }
 //Dropdown serves as container and iterator for array of gif results
   render() {
-
   return (
     <IconMenu
       style={styles.icon}
@@ -113,7 +118,7 @@ class Gifs extends Component {
         >
         {this.state.media.map((medium, i) => (
           <GridTile key={i}>
-            <img src={medium.src} />
+            <img src={medium.images.downsized_large.url} onClick={this.sendGif}/>
           </GridTile>          
           ))}
         </GridList>
