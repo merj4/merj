@@ -57,7 +57,7 @@ class ChatInput extends Component {
       show: false,
       image: '',
     }
-
+    this.onEmoji = this.onEmoji.bind(this)
     this.onImgUpload = this.onImgUpload.bind(this)
     this.onFileSelect = this.onFileSelect.bind(this)
     this.handleClick = this.handleClick.bind(this)
@@ -66,6 +66,7 @@ class ChatInput extends Component {
   
 //Upon ENTER do one of two things: sendMessage to db OR display gif search
   handleSubmit(e) {
+    test('HandleSubmit', null)
     const body = e.target.value;
     if (e.keyCode === 13) {
       if (body.startsWith('.gif')) {
@@ -87,6 +88,14 @@ class ChatInput extends Component {
       e.target.value = ''      
 
       }
+    }
+  }
+  onEmoji(e) {
+
+    if ( e.target.value.startsWith(".emoji") && e.keyCode === 13  ) {
+      console.log("*******Hello*****")
+      this.refs.child.getGifsOrEmojis()
+
     }
   }
 
@@ -134,7 +143,7 @@ class ChatInput extends Component {
       image: this.props.profile.picture
     }
     this.props.receiveMessage(imageData);
-    this.props.saveToDatabase(upload)
+    this.props.saveToDatabase(imageData)
     this.handleClick();
   }
 
