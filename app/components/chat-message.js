@@ -31,7 +31,7 @@ const styles = {
     display: 'table',
   },
   child: {
-    display: 'table-row'
+    display: 'table-row',
   },
 }
 const ChatMessage = (props) => {
@@ -45,7 +45,7 @@ const ChatMessage = (props) => {
           primaryText={<span style={{fontSize: 18 + 'px'}}>{props.user}</span>}
           secondaryText={
           <div className="row" style={styles.root}>
-            <div className="col-xs-8 col-xs-offset-2" style={styles.child} >
+            <div style={styles.child} >
               <img  src={props.message}/>
             </div>
           </div>

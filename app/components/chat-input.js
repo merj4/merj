@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Gifs } from './chat-giphys';
+import { Emoji } from './chat-send-emoji'
 import { orange500, blue500 } from 'material-ui/styles/colors';
 import { Button, Modal } from 'react-bootstrap';
 import TextField from 'material-ui/TextField';
@@ -70,9 +71,10 @@ class ChatInput extends Component {
     test('HandleSubmit', null)
     const body = e.target.value;
     if (e.keyCode === 13) {
-      if (body.startsWith('.gif')) {
-    //Set query to body
+      if (body.startsWith('.giphy')) {
         this.refs.child.handleQuery(body)        
+    } else if (body.startsWith('.emoji')) {
+      this.refs.Emoji.openDropdown()
     } else {
     const message = {
       body,
@@ -107,6 +109,7 @@ class ChatInput extends Component {
   onFileSelect(e) {
   const file = e.target.files[0];
   const formData = new FormData();
+  console.log('IMAGE FILE:', formData)
   formData.append('file', file);
   formData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET);
   axios({
@@ -144,6 +147,12 @@ class ChatInput extends Component {
     return (
       <div style={{position: "relative"}}>
         <Gifs ref="child"
+          receiveMessage={this.props.receiveMessage}
+          saveToDatabase={this.props.saveToDatabase}
+          profile={this.props.profile} 
+          />
+        <Emoji 
+          ref="Emoji"
           receiveMessage={this.props.receiveMessage}
           saveToDatabase={this.props.saveToDatabase}
           profile={this.props.profile} 

@@ -5,17 +5,9 @@ import StarBorder from 'material-ui/svg-icons/toggle/star-border';
 import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
 import IconButton from 'material-ui/IconButton';
-import Divider from 'material-ui/Divider';
-import Download from 'material-ui/svg-icons/file/file-download';
-import ArrowDropRight from 'material-ui/svg-icons/navigation-arrow-drop-right';
-import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import axios from 'axios';
+import Emojis from './chat-emojis'
 import moment from 'moment';
-
-
-//Giphy API
-const api = "http://api.giphy.com/v1/gifs/search?";
-const apiKey = "&api_key=dc6zaTOxFJmzC";
 
 //Override styles of GridList root element
 const styles = {
@@ -42,21 +34,19 @@ const styles = {
   }
 };
 
-//Start of Gifs component
-class Gifs extends Component {
+//Start of emojis component
+class Emoji extends Component {
   constructor(props) {
     super(props)
     this.state = {
        dropdown: false,
-       query: '',
-       prefix: '',
-       gifs: [],
+       emojis: Emojis,
+       img: null
     }
     this.closeDropdown = this.closeDropdown.bind(this)
     this.openDropdown = this.openDropdown.bind(this)
-    this.handleQuery = this.handleQuery.bind(this)
-    this.getGifs = this.getGifs.bind(this)
-    this.sendGif = this.sendGif.bind(this)
+    this.sendEmoji = this.sendEmoji.bind(this)
+
   }
 
 //Opens dropdown
@@ -69,28 +59,8 @@ class Gifs extends Component {
     this.setState({dropdown: false})
   }
 
-//Takes string after ".gif" trigger and sets it as query
-  handleQuery(query) {
-    const keyword = query.slice(4);
-    this.setState({query: keyword, prefix: query})
-    this.getGifs()
-  }
-
-//API call to Giphy
-  getGifs() {
-      let url = api + apiKey + "&q=" + this.state.query;
-      axios.get(url)
-      .then(res => {
-        this.setState({gifs: res.data.data})
-      })
-      .catch(err => {
-      })
-//Open dropdown with search results
-    this.openDropdown()
-  }
-
-//Send giphy as message 
-  sendGif(e) {
+//Send emoji as message 
+  sendEmoji(e) {
     const imageData = {
       body: e.target.src,
       username: this.props.profile.given_name,
@@ -116,9 +86,9 @@ class Gifs extends Component {
       <div style={styles.root}>
         <GridList style={styles.gridList} 
         >
-        {this.state.gifs.map((gif, i) => (
+        {this.state.emojis.map((emoji, i) => (
           <GridTile key={i}>
-            <img src={gif.images.downsized_large.url} onClick={this.sendGif}/>
+            <img src={emoji.src} onClick={this.sendEmoji}/>
           </GridTile>          
           ))}
         </GridList>
@@ -128,4 +98,4 @@ class Gifs extends Component {
   }
 }
 
-export { Gifs }
+export { Emoji }
