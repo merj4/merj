@@ -70,7 +70,6 @@ class MapView extends Component {
                       '<h3 id="firstHeading">', eachData['title'],'</h3>',
                       '<p><b>Date: </b>' , eachData['date'],'</p>',
                       '<p><b>Time: </b>' , eachData['time'],'</p>',
-                      '<p><b>Descrption: </b>' ,eachData['description'],'</p>',
                       '</div>'].join("");
 
 
@@ -93,30 +92,35 @@ class MapView extends Component {
 
   render() {
     var style = {
-      width: "770px",
-      height: "300px",
+      height: "500px",
     };
+
     let close = () => this.setState({ show: false});
     if (this.state.clickedEvent) {
       return (
-        <div id="mapcontainer">
-          <div ref="map" style={style} ></div>
+        <div id="mapcontainer" >
+          <p id="map" ref="map" style={style} ></p>
+          <p  id="routes">
           <form onSubmit={this.handleSubmit}>
-          <label>
-            Starting Location:
-            <input type="text" value={this.state.userlocationInput} onChange={this.handleChange} />
-          </label>
-          <button type="submit" onClick={this.handleSubmit}>Get Direction</button>
+            <div>From <input id="directioninput" type="text" value={this.state.userlocationInput} onChange={this.handleChange}  placeholder="  Choose starting point  " /></div>
+            <div>To <b>{this.state.clickedEvent['title']} </b></div>
+            <div><button id="directionsubmit" type="submit" onClick={this.handleSubmit}> Get Direction</button></div>
           </form>
-          <div>to {this.state.clickedEvent['title']}</div>
           <MapDirection show={this.state.show} onHide={close} clickedEvent={this.state.clickedEvent} userlocation={this.state.userlocation}/>
+          </p>
         </div>
       );
     } 
     return (
-      <div>
-        <div ref="map" style={style} ></div>
-        <div>Click the event you are interested!</div>
+      <div id="mapcontainer">
+        <p id= "map" ref="map" style={style} ></p>
+        <p id="routes">
+        <form onSubmit={this.handleSubmit}>
+        <div>From <input id="directioninput" type="text" value={this.state.userlocationInput} onChange={this.handleChange}  placeholder="  Click Event Pin  "/></div>
+        <div>To <b>Where? </b></div>
+        <div><button id="directionsubmit" type="submit">Get Direction</button></div>
+        </form>
+        </p>
       </div>
     )
   }
