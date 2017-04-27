@@ -298,6 +298,7 @@ padding: 1em;
 #directioninput {
   border-radius: 2rem;
   border: 0.1rem solid #00bcd4;
+  width: 80%;
 }
 
 #directionsubmit {

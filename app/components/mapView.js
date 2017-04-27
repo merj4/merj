@@ -92,7 +92,7 @@ class MapView extends Component {
 
   render() {
     var style = {
-      height: "500px",
+      height: "700px",
     };
 
     let close = () => this.setState({ show: false});
@@ -102,7 +102,7 @@ class MapView extends Component {
           <p id="map" ref="map" style={style} ></p>
           <p  id="routes">
           <form onSubmit={this.handleSubmit}>
-            <div>From <input id="directioninput" type="text" value={this.state.userlocationInput} onChange={this.handleChange}  placeholder="  Choose starting point  " /></div>
+            <div>From <input id="directioninput" type="text" value={this.state.userlocationInput} onChange={this.handleChange}  placeholder="  Choose starting point 　" /></div>
             <div>To <b>{this.state.clickedEvent['title']} </b></div>
             <div><button id="directionsubmit" type="submit" onClick={this.handleSubmit}> Get Direction</button></div>
           </form>
