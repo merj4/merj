@@ -19,6 +19,7 @@ class Dropdown extends Component {
 //Closes dropdown
   isDropdown(){
     this.setState({dropdown: !this.state.dropdown})
+    this.props.updateEventList(this.props.events) 
   }
 
   //get user's current location and measuring radius
@@ -73,6 +74,7 @@ class Dropdown extends Component {
 
 //Dropdown serves as container and iterator for array of gif results
   render() {
+    console.log("eventlist all", this.props.events)
   return (
     <IconMenu
       open={this.state.dropdown}
@@ -86,20 +88,10 @@ class Dropdown extends Component {
         <MenuItem value={2} primaryText="10 miles " onClick={() => this.distanceHandler(16093.4)}  />
         <MenuItem value={2} primaryText="15 miles " onClick={() => this.distanceHandler(24140.2)} />
         <MenuItem value={4} primaryText="20 miles " onClick={() => this.distanceHandler(32186.9)} />
+
     </IconMenu>
     );
   }
 }
 
 export { Dropdown }
-
-// onClick={() => this.setState({ show: true})}>
-//           <div style={styles.headline}>
-//           <a class="dropdown-toggle" data-toggle="dropdown" href="#">Menu 1<span class="caret"></span></a>
-//             <ul class="dropdown-menu">
-//               <li><button onClick={() => this.distanceHandler(3218.69)}>2 miles</button></li>
-//               <li><button onClick={() => this.distanceHandler(8046.72)}>5 miles</button></li>
-//               <li><button onClick={() => this.distanceHandler(32186.9)}>20 miles</button></li>
-//               <li><button onClick={() => this.props.updateEventList(this.props.events)}>20 miles</button></li>
-//             </ul>
-//           </div>
