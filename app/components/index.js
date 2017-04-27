@@ -56,9 +56,9 @@ class App extends Component {
         email: p.email,
         image: p.picture
       }).then(res => {
-        console.log('User added to the database!')
+        console.log('User added to the database')
       }).catch(err => {
-        console.log('There was an error:', err);
+        console.log(err);
       })
     })
 
@@ -75,7 +75,6 @@ class App extends Component {
     this.setUserEvents = this.setUserEvents.bind(this);
   }
 
-
   logout(){
     auth.logout()//add props.auth.on('logged-out') event which should be triggered in authservice.js which refreshes page. and same for logged in or authenticated events rather than the use of routes in authservice and here.
     //this.context.router.push('/login');//
@@ -87,6 +86,7 @@ class App extends Component {
   // }
 
   componentDidMount() {
+    console.log('Component mounted!!!')
     axios.get('/api/events/recent')
     .then(res => {
       const events = res.data;

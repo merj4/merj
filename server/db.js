@@ -74,7 +74,7 @@ var EventParticipant = db.define('EventParticipant', {
 });
 
 //sync individual tables listed above and create join tables
-User.sync({})
+User.sync()
 .then(() => User.belongsToMany(Event, {through: EventParticipant}))
 .then(() => Event.belongsToMany(User, {through: EventParticipant }))
 .then(() => Event.hasMany(Message, {foreignkey: {name: 'EventId'}}))
