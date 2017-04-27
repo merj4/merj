@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { Button } from 'react-bootstrap';
 import {MapDirection} from './mapDirection'
 import {EventItem} from './eventItem';
+import TextField from 'material-ui/TextField';
 
 class MapView extends Component {
   constructor(props) {
@@ -101,12 +102,10 @@ class MapView extends Component {
         <div id="mapcontainer" >
           <p id="map" ref="map" style={style} ></p>
           <p  id="routes">
-          <form onSubmit={this.handleSubmit}>
-            <div>From <input id="directioninput" type="text" value={this.state.userlocationInput} onChange={this.handleChange}  placeholder="  Choose starting point 　" /></div>
+           <TextField hintText="  Choose starting point" value={this.state.userlocationInput}  onChange={this.handleChange}  />
             <div>To <b>{this.state.clickedEvent['title']} </b></div>
             <div><button id="directionsubmit" type="submit" onClick={this.handleSubmit}> Get Direction</button></div>
-          </form>
-          <MapDirection show={this.state.show} onHide={close} clickedEvent={this.state.clickedEvent} userlocation={this.state.userlocation}/>
+          <MapDirection show={this.state.show} onHide={close} clickedEvent={this.state.clickedEvent} userlocation={this.state.userlocation} />
           </p>
         </div>
       );
@@ -116,7 +115,7 @@ class MapView extends Component {
         <p id= "map" ref="map" style={style} ></p>
         <p id="routes">
         <form onSubmit={this.handleSubmit}>
-        <div>From <input id="directioninput" type="text" value={this.state.userlocationInput} onChange={this.handleChange}  placeholder="  Click Event Pin  "/></div>
+        <TextField hintText="Choose starting point" value={this.state.userlocationInput}  onChange={this.handleChange}  />
         <div>To <b>Where? </b></div>
         <div><button id="directionsubmit" type="submit">Get Direction</button></div>
         </form>

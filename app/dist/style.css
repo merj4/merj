@@ -295,15 +295,10 @@ padding: 1em;
 /*  border: 0.1rem solid ;
 */}
 
-#directioninput {
-  border-radius: 2rem;
-  border: 0.1rem solid #00bcd4;
-  width: 80%;
-}
 
 #directionsubmit {
   border: 0.1rem solid #ff6699;
-  border-radius: 2rem;
+  border-radius: 0.3rem;
   background-color: #ff6699;
   color: white;
   margin: 2rem;
