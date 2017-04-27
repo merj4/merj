@@ -6,11 +6,19 @@ import moment from 'moment';
 class EventItem extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      openEvent: false
-    };
+    this.state = {openEvent: false};
+    this.onDelete = this.onDelete.bind(this)
   }
 
+  onDelete(e) {
+    let updatedList = this.props.list
+    updatedList.forEach((event, i) => {
+      if (updatedList[i].id === this.props.index) {
+        updatedList.splice(i, 1)
+      }
+    })
+    this.props.deleteEvent(this.props.list, this.props.index)
+  }
   render() {
     return (
       <Card >
@@ -33,7 +41,7 @@ class EventItem extends Component {
         </CardText>
         <CardActions className="actions">
            <FlatButton className="btn" label="Would Love To Go!" onClick={() => this.props.handleEventClick(this.props.event)}/>
-           <FlatButton className="btn" label="I'm Gonna Pass for Now" />
+           <FlatButton className="btn" label="I'm Gonna Pass for Now" onClick={this.onDelete}/>
         </CardActions>
       </Card>
       );

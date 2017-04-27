@@ -21,7 +21,7 @@ let styles = {
 const UsersContainer = (props) => {
   return (
     <Paper zDepth={1} style={styles.paper} > 
-      <Subheader>Attendees</Subheader>
+      <Subheader>Chat List</Subheader>
       <InfiniteScroll
       height={775}
       hasMore={false}
