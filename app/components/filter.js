@@ -65,6 +65,7 @@ class Filter extends Component {
     let labelForMap = this.state.isMap ? "List": "Map"
     let close = () => this.setState({ show: false});
     console.log('displayedEvents', this.props.displayedEvents)
+    let hotevents = this.props.events.slice(1, 3);
 
     return (
       <Tabs>
@@ -89,7 +90,7 @@ class Filter extends Component {
           </div>
         </Tab>
 
-        <Tab label="Hot" >
+        <Tab label="Hot" onClick={() => this.props.updateEventList(hotevents)} >
           <div style={styles.headline}></div>
         </Tab>
 

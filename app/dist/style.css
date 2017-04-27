@@ -120,6 +120,7 @@ button::-moz-focus-inner{
   color: transparent;
   padding-left: 1rem;
 }
+
 /*profile/logout button*/
 #profilelogout {
   background-color: transparent;
@@ -277,6 +278,39 @@ div, span {
 #mapcontainer {
   margin: auto;
 }
+
+#map {
+width: 60%;  
+float: left;
+margin: 0;
+padding: 1em;
+}
+
+#routes {
+  overflow: hidden;
+  text-align: left;
+  padding: 10px;
+  margin: auto #00bcd4;
+  padding-left: 5rem;
+/*  border: 0.1rem solid ;
+*/}
+
+#directioninput {
+  border-radius: 2rem;
+  border: 0.1rem solid #00bcd4;
+}
+
+#directionsubmit {
+  border: 0.1rem solid #ff6699;
+  border-radius: 2rem;
+  background-color: #ff6699;
+  color: white;
+  margin: 2rem;
+  padding: 0.3rem;
+  margin-left: 5rem;
+}
+
+
 
 /*PhotoIcon*/
 .imgMessage {
