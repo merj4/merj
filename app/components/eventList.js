@@ -9,12 +9,10 @@ class EventList extends Component {
   }
  
  deleteEvent(newList) {
-  
   this.setState({ list: newList, updated: true })
  }
 
  render() {
-  console.log('UPDATED STATE: ', this.state.list)
   if (this.state.updated) {
     return (
       <div>

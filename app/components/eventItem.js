@@ -17,8 +17,9 @@ class EventItem extends Component {
         updatedList.splice(i, 1)
       }
     })
-    this.props.deleteEvent(this.props.list, this.props.index)
+  this.props.deleteEvent(this.props.list, this.props.index)
   }
+  
   render() {
     return (
       <Card >
