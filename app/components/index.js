@@ -32,10 +32,13 @@ class App extends Component {
       displayedEvents: [],
       activeEvent: null,
       profile: auth.getProfile(),
+      userId: null,
       showProfile: false,
       date: moment(),
       showMap: false,
-      users: []
+      users: [],
+      userEventIds: [],
+      userEvents: []
     }
 
     auth.on('profile_updated', (newProfile) => {
@@ -59,8 +62,6 @@ class App extends Component {
       })
     })
 
-
-
     auth.on('logged_out', (bye) => {
       this.setState({profile: auth.getProfile()})
       //this.render();
@@ -71,6 +72,7 @@ class App extends Component {
     this.showProfileSetToFalse = this.showProfileSetToFalse.bind(this);
     this.showMap = this.showMap.bind(this);
     this.joinEvent = this.joinEvent.bind(this);
+    this.setUserEvents = this.setUserEvents.bind(this);
   }
 
 
@@ -97,23 +99,62 @@ class App extends Component {
     axios.get('/api/users')
     .then(res => {
       const users = res.data;
+      let userId = null;
+      let p = this.state.profile;
+
+      users.forEach(function(user) {
+        if (user.email === p.email) {
+          userId = user.id;
+        }
+      })
       this.setState({
-        users: users
+        userId: userId
+      });
+
+      console.log('User Id: ', this.state.userId)
+      // get a user's event ids
+      axios.get('/api/userevents/' + this.state.userId)
+      .then(res => {
+        let eventIds = [];
+        let eventData = res.data;
+
+        eventData.forEach(function(event) {
+          eventIds.push(event.id);
+        })
+        this.setState({
+          userEventIds: eventIds
+        })
+        // this.state.events = eventIds;
+        this.setUserEvents();
+        console.log('Event state: ', this.state.userEventIds);
+      }).catch(err => {
+        console.log(err);
+      })
+    })
+  }
+
+  // this sets event data on the state of the component
+  setUserEvents() {
+    let eventsArray = [];
+
+    this.state.userEventIds.forEach(function(event) {
+      console.log('EVENT: ', event)
+      axios.get('/api/event/' + event)
+      .then(res => {
+        eventsArray.push(res.data);
+      }).catch(err => {
+        console.log(err);
       });
     })
+    this.setState({
+      userEvents: eventsArray
+    })
+    console.log('Users events: ', this.state.userEvents);
   }
 
   handleEventClick(event) {
     let eventId = event.id;
-    let userId = null;
-    let users = this.state.users;
-    let p = this.state.profile;
-
-    users.forEach(function(user) {
-      if (user.email === p.email) {
-        userId = user.id;
-      }
-    })
+    let userId = this.state.userId
 
     if (event !== null) {
       this.state.activeEvent = event;
@@ -127,16 +168,6 @@ class App extends Component {
   }
 
   joinEvent(eventId, userId) {
-    // let users = this.state.users;
-    // let p = this.state.profile;
-    // let u = null;
-
-    // users.forEach(function(user) {
-    //   if (user.email === p.email) {
-    //     u = user.id;
-    //   }
-    // })
-
     axios.post('/api/joinevent', {
       EventId: eventId,
       UserId: userId
@@ -161,7 +192,6 @@ class App extends Component {
       activeEvent: null,
       showMap: false
     })
-
     // console.log("showProfile: " + this.state.showProfile)
     // console.log("activeEvent: " + this.state.activeEvent)
   }
@@ -305,7 +335,9 @@ class App extends Component {
                 <Profile
                   auth={auth}
                   profile={profile}
+                  userId={this.state.userId}
                   handleEventClick={this.handleEventClick.bind(this)}
+                  userEvents={this.state.userEvents}
                 />
               </div>
           </MuiThemeProvider>
