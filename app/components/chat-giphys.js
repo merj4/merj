@@ -23,7 +23,7 @@ const styles = {
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'space-around',
-    width: 30 + '%',
+    width: '100%',
     padding: 10,
   },
   gridList: {
@@ -105,7 +105,7 @@ class Gifs extends Component {
   render() {
   return (
     <IconMenu
-      style={styles.icon}
+      style={styles.root}
       open={this.state.dropdown}
       iconButtonElement={<div></div>}
       anchorOrigin={{horizontal: 'left', vertical: 'bottom'}}

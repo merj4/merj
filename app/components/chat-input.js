@@ -35,11 +35,11 @@ const styles = {
   floatingLabelFocusStyle: {
     color: blue500,
     position: "absolute",
-    bottom: 1 + "em",
+    bottom: 0 + "em",
   },
   mediumIcon: {
-    width: 48,
-    height: 48,
+    width: 36,
+    height: 36,
   },
   medium: {
     width: 96,

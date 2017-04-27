@@ -20,7 +20,7 @@ const styles = {
   },
   gridList: {
     display: 'flex',
-    flexWrap: 'nowrap',
+    flexWrap: 'noWrap',
     overflowX: 'auto',
   },
   icon: {

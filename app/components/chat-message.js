@@ -22,7 +22,7 @@ const rightIconMenu = (
   <IconMenu iconButtonElement={iconButtonElement}>
     <MenuItem>Reply</MenuItem>
     <MenuItem>Forward</MenuItem>
-    <MenuItem>Delete</MenuItem>
+    <MenuItem >Delete</MenuItem>
   </IconMenu>
 );
 

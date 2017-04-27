@@ -5,7 +5,6 @@ import RaisedButton from 'material-ui/RaisedButton';
 import axios from 'axios';
 import DatePicker from 'material-ui/DatePicker';
 import Paper from 'material-ui/Paper';
-import ActionAndroid from 'material-ui/svg-icons/action/android';
 import FontIcon from 'material-ui/FontIcon';
 import muiThemeable from 'material-ui/styles/muiThemeable';
 import {
@@ -68,6 +67,7 @@ class SidePanel extends Component {
         <RaisedButton
           label="Open Drawer"
           onTouchTap={this.handleToggle}
+          labelPosition="after"
         />
         <Drawer
           docked={false}
@@ -75,45 +75,44 @@ class SidePanel extends Component {
           open={this.state.open}
           onRequestChange={(open) => this.setState({open})}
         >
-        <DatePicker hintText="Show Calendar" container="inline" mode="landscape" textFieldStyle={{marginLeft: 70}} 
-        dialogContainerStyle={{marginLeft: 70}}/>
-        <Paper style={styles.paper} zDepth={3} 
-        children={
-        <RaisedButton
-        label="Event One"
-        labelPosition="before"
-        style={styles.button}
-        containerElement="label"
-        labelColor={white}
-        backgroundColor={cyan500}
-        >
-
-        </RaisedButton>}
-        />
-        <Paper style={styles.paper} zDepth={3} 
-        children={
-        <RaisedButton
-        label="Event Two"
-        labelPosition="before"
-        style={styles.button}
-        containerElement="label"
-        backgroundColor="#a4c639"
-        labelColor={white}
-        >
-        </RaisedButton>}
-        />
-        <Paper style={styles.paper} zDepth={3} 
-        children={
-        <RaisedButton
-        label="Event Three"
-        labelPosition="before"
-        style={styles.button}
-        containerElement="label"
-        labelColor={white}
-        backgroundColor={pinkA200}
-        >
-        </RaisedButton>}
-        />
+          <DatePicker hintText="Show Calendar" container="inline" mode="landscape" textFieldStyle={{marginLeft: 70}} 
+          dialogContainerStyle={{marginLeft: 70}}/>
+          <Paper style={styles.paper} zDepth={3} 
+          children={
+              <RaisedButton
+                label="Event One"
+                labelPosition="before"
+                style={styles.button}
+                containerElement="label"
+                labelColor={white}
+                backgroundColor={cyan500}
+              >
+              </RaisedButton>}
+          />
+          <Paper style={styles.paper} zDepth={3} 
+          children={
+            <RaisedButton
+              label="Event Two"
+              labelPosition="before"
+              style={styles.button}
+              containerElement="label"
+              backgroundColor="#a4c639"
+              labelColor={white}
+            >
+            </RaisedButton>}
+          />
+          <Paper style={styles.paper} zDepth={3} 
+          children={
+            <RaisedButton
+              label="Event Three"
+              labelPosition="before"
+              style={styles.button}
+              containerElement="label"
+              labelColor={white}
+              backgroundColor={pinkA200}
+            >
+            </RaisedButton>}
+          />
 
 
         </Drawer>

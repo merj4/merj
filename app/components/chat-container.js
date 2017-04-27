@@ -1,52 +1,24 @@
 import React, { Component } from 'react';
 import { ChatMessage } from './chat-message';
 import InfiniteScroll from 'react-infinite-scroll-component';
+import Paper from 'material-ui/Paper';
 
-let MobileTearSheet = React.createClass({
-
-  propTypes: {
-    height: React.PropTypes.number
-  },
-
-  getDefaultProps() {
-    return {
-      height: 775
-    };
-  },
-
-  render() {
-
-    let styles = {
-      root: {
-        float: 'right',
-        marginBottom: 24,
-        marginRight: 24,
-        width: 700
-
-      },
-
-      container: {
-        border: 'solid 1px #d9d9d9',
-        height: this.props.height,
-        overflow: 'hidden'
-      }
-    };
-
-    return (
-      <div style={styles.root}>
-        <div style={styles.container}>
-          {this.props.children}
-        </div>
-      </div>
-    );
+let styles = {
+  paper: {
+    float: 'right',
+    marginBottom: 24,
+    marginRight: 24,
+    width: 675,
+    border: 'solid 1px #d9d9d9',
+    height: 775,
+    overflow: 'hidden'
   }
-
-});
+};
   
 
 const ChatContainer = (props) => {
   return (
-    <MobileTearSheet> 
+    <Paper zDepth={1} style={styles.paper} > 
       <InfiniteScroll
       height={775}
       hasMore={false}
@@ -58,7 +30,7 @@ const ChatContainer = (props) => {
         time={message.timestamp}/>
       )}
       </InfiniteScroll>
-    </MobileTearSheet>
+    </Paper>
   )
 }
 
