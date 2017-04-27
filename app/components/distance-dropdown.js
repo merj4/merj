@@ -21,6 +21,55 @@ class Dropdown extends Component {
     this.setState({dropdown: !this.state.dropdown})
   }
 
+  //get user's current location and measuring radius
+  async distanceHandler(option) {
+    const data = this.props.events;
+    const geocoder = new google.maps.Geocoder();
+
+    const userPosition = await new Promise(resolve =>
+      $.getJSON("http://freegeoip.net/json/", function(data) {
+        resolve({
+          lat: data.latitude,
+          lng: data.longitude
+        })
+      })
+    )
+
+    const userPositionOnGoogleMap = new google.maps.LatLng(parseFloat(userPosition.lat), parseFloat(userPosition.lng));
+    const distanceResults = [];
+    const distanceRemainingResults = [];
+
+    await data.reduce((promise, datum) =>
+      promise.then(() =>
+        new Promise(resolve =>
+          geocoder.geocode({'address' : datum['location'] }, function (results, status) {
+            if (status === 'OK') {
+              const preEventPosition = JSON.stringify(results[0].geometry.location)
+              const eventPosition = JSON.parse(preEventPosition)
+              const eventPositionOnGoogleMap = new google.maps.LatLng(parseFloat(eventPosition.lat), parseFloat(eventPosition.lng));
+              const path = google.maps.geometry.spherical.computeDistanceBetween(userPositionOnGoogleMap, eventPositionOnGoogleMap);
+              if (path <= option) {
+                distanceResults.push(datum);
+              } else {
+                distanceRemainingResults.push(datum);
+              }
+            } else {
+              console.log('err event', datum, status)
+            }
+            setTimeout(resolve, 200);
+          })
+        )
+      ),
+      Promise.resolve(),
+    )
+
+    this.props.updateEventList(distanceResults);
+    if (distanceResults.length === 0) {
+      alert("no events found :( ");
+    }
+    console.log('distanceResults', distanceResults)
+  }
+
 
 //Dropdown serves as container and iterator for array of gif results
   render() {
@@ -33,10 +82,10 @@ class Dropdown extends Component {
       className={''}
       onClick={this.isDropdown}
     >
-        <MenuItem value={1} primaryText=" in 5 miles " onClick={() => this.distanceHandler(3218.69)} />
-        <MenuItem value={2} primaryText=" in 10 miles " />
-        <MenuItem value={2} primaryText=" in 15 miles  "/>
-        <MenuItem value={4} primaryText=" in 20 miles  " />
+        <MenuItem value={1} primaryText="5 miles " onClick={() => this.distanceHandler(8046.72)}  />
+        <MenuItem value={2} primaryText="10 miles " onClick={() => this.distanceHandler(16093.4)}  />
+        <MenuItem value={2} primaryText="15 miles " onClick={() => this.distanceHandler(24140.2)} />
+        <MenuItem value={4} primaryText="20 miles " onClick={() => this.distanceHandler(32186.9)} />
     </IconMenu>
     );
   }
