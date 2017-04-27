@@ -47,8 +47,7 @@ class SidePanel extends Component {
   }
 
   componentDidMount() {
-    console.log('DatePickerDialog', window.DatePickerDialog)
-    console.log('DatePicker', window.DatePicker._refs)
+
     // const url = `api.openweathermap.org
     // /data/2.5/forecast?zip=
     // ${this.state.zipcode},${country code}`
