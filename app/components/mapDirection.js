@@ -8,7 +8,7 @@ class MapDirection extends Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    return nextProps.userlocation !== '';
+    return nextProps.userlocation !== this.props.userlocation;
   }
 
   componentDidUpdate() {
