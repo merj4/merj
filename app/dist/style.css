@@ -52,14 +52,14 @@ button::-moz-focus-inner{
 /*header*/
 
 #topsocial {
-  font-size: 2.2rem;
+  font-size: 3.0rem;
   font-family: 'Raleway', sans-serif;
   color: #ff6699;
   padding-left: 1rem;
 }
 
 #toply {
-  font-size: 2.2rem;
+  font-size: 3.0rem;
   font-family: 'Raleway', sans-serif;
   color: #00bcd4;
 }
@@ -97,14 +97,15 @@ button::-moz-focus-inner{
 #search {
   height: 6rem;
   text-align: left;
-  margin-left: 13rem;
-  margin-top: 0.6rem;
+  margin-left: 35rem;
+  margin-top: 1.0rem;
 }
 
 #searchbar {
   background: transparent;
   color: transparent;
   border-color: transparent;
+  margin-bottom: 1rem;
 }
 
 

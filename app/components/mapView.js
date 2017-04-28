@@ -108,8 +108,8 @@ class MapView extends Component {
         <div id="mapcontainer" >
           <p id="map" ref="map" style={style} ></p>
           <p  id="routes">
+          <div>To <b>{this.state.clickedEvent['title']} </b></div>
            <TextField hintText="　　　Choose starting point" value={this.state.userlocationInput}  onChange={this.handleChange}  />
-            <div>To <b>{this.state.clickedEvent['title']} </b></div>
             <div><FlatButton  label="Get Direction"  secondary={true} onClick={this.handleSubmit} style={submit}  fullWidth={true} /></div>
           <MapDirection show={this.state.show} onHide={close} clickedEvent={this.state.clickedEvent} userlocation={this.state.userlocation} />
           </p>
@@ -121,8 +121,8 @@ class MapView extends Component {
         <p id= "map" ref="map" style={style} ></p>
         <p id="routes">
         <form onSubmit={this.handleSubmit}>
-        <TextField hintText="　　　Choose starting point" value={this.state.userlocationInput}  onChange={this.handleChange}  />
         <div>To Where?   Click event pin </div>
+        <TextField hintText="　　　Choose starting point" value={this.state.userlocationInput}  onChange={this.handleChange}  />
         <div><FlatButton label="Get Direction" secondary={true}  onClick={this.handleSubmit} style={submit}  fullWidth={true} /></div>
         </form>
         </p>
