@@ -21,34 +21,34 @@ var seedData = function() {
   // Insert default events
   .then(() => Event.create({
     location: "Santa Barbara, CA",
-    date: "Aug. 10, 2017",
+    date: "Jul. 11, 2017",
     title: "Sandy Barbie",
     time: "2:00 pm",
     category: "Outdoor",
-    description: "Come out to the beach and enjoy company, food and sand castles",
+    description: "Come out to the beach for some Australian BBQ",
     image: "http://www.unique-canvas.com/media/images/popup/meer-und-traumstraende-fotografie--fotomotiv-beach-party--816406.jpg"
   }))
   .then(() => Event.create({
     location: "Lake Tahoe, CA",
-    date: "Aug. 10, 2017",
+    date: "Apr. 30, 2017",
     title: "A Sunday Hike",
-    time: "2:00 pm",
+    time: "10:00 am",
     category: "Outdoor",
-    description: "Come out to the beach and enjoy company, food and sand castles",
+    description: "Take a hike to the lakeside and enjoy company, food and sand castles",
     image: "https://s-media-cache-ak0.pinimg.com/originals/62/f0/48/62f04865010d469b7f44dac815d916df.jpg"
   }))
   .then(() => Event.create({
     location: "Berkeley, CA",
-    date: "Aug. 10, 2017",
+    date: "May. 6, 2017",
     title: "Berkeley Babes",
-    time: "2:00 pm",
+    time: "4:00 pm",
     category: "Outdoor",
     description: "Get rekt. Hype. Bonfire. Beach. Drinks. Food.",
     image: "http://media.new.mensxp.com/media/content/2015/May/wildestbeachpartydestinationsintheworldforsinglemen0_1431689937_980x457.jpg"
   }))
   .then(() => Event.create({
     location: "Santa Monica, CA",
-    date: "Aug. 10, 2017",
+    date: "May. 5, 2017",
     title: "Arcade Game Night",
     time: "8:00 pm",
     category: "Outdoor",
@@ -57,18 +57,18 @@ var seedData = function() {
   }))
   .then(() => Event.create({
     location: "San Francisco, CA",
-    date: "Aug. 10, 2017",
-    title: "San Fun-cisco Happy Time",
-    time: "2:00 pm",
+    date: "May. 5, 2017",
+    title: "Cinco de San Fun-cisco",
+    time: "5:00 pm",
     category: "Outdoor",
-    description: "Come out to the beach and enjoy company, food and sand castles",
+    description: "Celebrate cerveza, tequila and burritos!",
     image: "http://cdn.sosueme.ie/wp-content/uploads/2016/01/1_best_party_beach_South_Beach_Miami_Florida-e1399908931396.jpg"
   }))
   .then(() => Event.create({
     location: "Malibu, CA",
-    date: "Aug. 10, 2017",
+    date: "June. 10, 2017",
     title: "Be free, be young, be Malibu",
-    time: "2:00 pm",
+    time: "3:00 pm",
     category: "Outdoor",
     description: "Be free, be young, be Malibu.",
     image: "http://www.winterparty.com/sites/www.winterparty.com/files/styles/project_1126_470/public/BeachPartySlider1_0.jpg?itok=5eB_59TL"
@@ -77,23 +77,23 @@ var seedData = function() {
     location: "San Luis Obispo, CA",
     date: "Aug. 10, 2017",
     title: "Sandy in the S.L.O. Cali",
-    time: "2:00 pm",
+    time: "3:00 pm",
     category: "Outdoor",
-    description: "Come out to the beach and enjoy company, food and sand castles",
+    description: "Get sandy with it",
     image: "http://www.loadednightclub.co.uk/wp-content/uploads/sites/2/2015/05/4dadc304234cad1821315e885c04c01d.jpg"
   }))
   .then(() => Event.create({
     location: "Oakland, CA",
     date: "Aug. 10, 2017",
     title: "Oakland First Fridays",
-    time: "2:00 pm",
+    time: "6:00 pm",
     category: "Outdoor",
-    description: "Get rekt. Hype. Bonfire. Beach. Drinks. Food.",
+    description: "TGIF BABES.",
     image: "https://bryanallo.files.wordpress.com/2013/04/9q1a6291_blog.jpg"
   }))
   .then(() => Event.create({
     location: "San Diego, CA",
-    date: "Aug. 10, 2017",
+    date: "May. 15, 2017",
     title: "Spend the day drinking a mai tai",
     time: "2:00 pm",
     category: "Outdoor",
@@ -104,9 +104,9 @@ var seedData = function() {
     location: "Yosemite, CA",
     date: "Aug. 10, 2017",
     title: "Bouldering and Hot Springs",
-    time: "2:00 pm",
+    time: "1:00 pm",
     category: "Outdoor",
-    description: "Be free, be young, be Malibu.",
+    description: "Climb a rock. Don't get recked.",
     image: "https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2014/10/yosemite.jpg"
   }))
   // Insert some users
