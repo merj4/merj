@@ -289,7 +289,7 @@ div, span {
 
 .name {
   text-align: center;
-  padding-left: 2rem;
+  padding-left: 5rem;
   font-family: 'Raleway', sans-serif;
   color: #979797;
 }
@@ -301,7 +301,7 @@ div, span {
 
 #role {
   text-align: right;
-  margin-left: 5rem;
+  margin-left: 9rem;
   font-family: 'Raleway', sans-serif;
   color: #ff6699;
 

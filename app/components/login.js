@@ -39,11 +39,9 @@ export class Login extends React.Component {
             <Modal.Body>
             <div className="team">
               <img id="teampic" src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/0a2/329/026f9ab.jpg" />
-              <span className="name">Ema Rios　</span>
+              <span className="name">Ema Rios　　</span>
               <span id="role">　　Product Owner 
               <a target="_blank" href="https://www.linkedin.com/in/emmavrios/" />
-              <img id="links" src="./images/linkedin.png" />
-              <img id="links" src="./images/github.png" />
               </span>
             </div>
 
@@ -51,8 +49,7 @@ export class Login extends React.Component {
               <img  id="teampic" src="https://avatars2.githubusercontent.com/u/8436387?v=3&s=400" />
               <span className="name">Misaki Matsumoto</span>
               <span id="role">Scrum Master
-              <img id="links" src="./images/linkedin.png" />
-              <img id="links" src="./images/github.png" />
+    
               <a target="_blank" href="https://www.linkedin.com/in/misakimatsumoto/" />
               </span>
             </div>
@@ -61,8 +58,7 @@ export class Login extends React.Component {
               <img id="teampic" src="https://avatars1.githubusercontent.com/u/23320281?v=3&s=400" />
               <span className="name">Rochelle Valdez</span>
               <span id="role">  Senior Fullstack Engineer
-              <img id="links" src="./images/linkedin.png" />
-              <img id="links" src="./images/github.png" />
+    
               <a target="_blank" href="https://www.linkedin.com/in/rochelle-v/" />
               </span>
             </div>
@@ -71,8 +67,7 @@ export class Login extends React.Component {
               <img id="teampic" src="https://avatars1.githubusercontent.com/u/23461229?v=3&s=400" />
             <span className="name">  Joanna Wheeler</span>
               <span id="role">Fullstack Engineer
-              <img id="links" src="./images/linkedin.png" />
-              <img id="links" src="./images/github.png" />
+    
               <a target="_blank" href="https://www.linkedin.com/in/joanna-wheeler/" />
               </span>
             </div>
