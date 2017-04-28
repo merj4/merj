@@ -21,12 +21,13 @@ Social.ly is a social events hub and networking platform that allows people to c
 ## Usage
 
 1) Join Social.ly with your email address, Facebook or Google account.
-![Alt text](https://im.ezgif.com/tmp/ezgif-1-e46972cec9.gif  "Login")
+![Alt text](https://im.ezgif.com/tmp/ezgif-1-e46972cec9.gif)
+
 
 2) Browse a list of events happenning all over the world, view events on a map and easily get directions or create and host your own events.
- 
- ex: Map View
- ![Alt text](https://im.ezgif.com/tmp/ezgif-1-2dc1945e9a.gif  "Mapview")
+
+Ex: Map View
+![Alt text](https://im.ezgif.com/tmp/ezgif-1-2dc1945e9a.gif  "Mapview")
 
 
 
@@ -60,7 +61,7 @@ nodemon server.js
 
 Fork and clone the respository to your local machine. Use npm install to install the required dependencies. To start the app you can use: npm run build or npm start which builds then runs the app. Run the local server using node server.js or nodemon server.js.
 
-Point your browser to localhost:8080 and have fun!!
+Point your browser to localhost:8080 and have fun!
 
 We used Auth0 for authentication and Google Maps API, which you will need to obtain your own API Key to use within the app.
 
