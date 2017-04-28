@@ -281,6 +281,10 @@ div, span {
   padding: 3rem;
 }
 
+#user-event {
+  height: 10%;
+}
+
 /*map*/
 #mapcontainer {
   margin-left: auto;
