@@ -121,7 +121,7 @@ class MapView extends Component {
         <p id= "map" ref="map" style={style} ></p>
         <p id="routes">
         <form onSubmit={this.handleSubmit}>
-        <div>To Where?   Click event pin </div>
+        <div>Click event pin </div>
         <TextField hintText="　　　Choose starting point" value={this.state.userlocationInput}  onChange={this.handleChange}  />
         <div><FlatButton label="Get Direction" secondary={true}  onClick={this.handleSubmit} style={submit}  fullWidth={true} /></div>
         </form>
