@@ -7,7 +7,7 @@ let styles = {
   paper: {
     float: 'right',
     marginBottom: 24,
-    marginRight: 24,
+    marginRight: 0,
     width: 490,
     border: 'solid 1px #d9d9d9',
     height: 400,
