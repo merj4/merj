@@ -263,6 +263,26 @@ div, span {
   color: white;
 }
 
+/*about us*/
+
+.team {
+  text-align: left;
+}
+
+#teampic {
+  border-radius: 50%;
+  width: 100px;
+  height: auto;
+  padding-top: 2rem;
+}
+
+.name {
+  text-align: center;
+  padding-left: 2rem;
+}
+
+
+
 /*profile*/
 #profile {
   text-align: center;
