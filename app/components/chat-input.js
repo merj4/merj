@@ -30,7 +30,7 @@ const styles = {
     color: orange500,
     position: "absolute",
     bottom: 1 + "em",
-    fontSize: 22 + "px"
+    fontSize: 15 + "px"
   },
   floatingLabelFocusStyle: {
     color: blue500,
