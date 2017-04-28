@@ -38,14 +38,14 @@ const styles = {
     bottom: 0 + "em",
   },
   mediumIcon: {
-    width: 36,
-    height: 36,
+    width: 25,
+    height: 25,
   },
   medium: {
     width: 96,
     height: 96,
     position: "absolute",
-    right: 10 + "em"
+    right: 30 + "em"
 
   }
 };
