@@ -103,7 +103,6 @@ button::-moz-focus-inner{
 
 #searchbar {
   background: transparent;
-  background-image: url('images/search.png');
   background-repeat: no-repeat;
   color: transparent;
   border-color: transparent;

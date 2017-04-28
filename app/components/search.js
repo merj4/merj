@@ -117,6 +117,7 @@ class Search extends Component {
             filter={AutoComplete.fuzzyFilter}
             maxSearchResults={5}
             id="searchbar"
+            hintText="🔍"
             handleEventClick={this.props.handleEventClick}
           />
       </div>
