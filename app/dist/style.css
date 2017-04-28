@@ -250,8 +250,12 @@ div, span {
   font-family: 'Raleway', sans-serif;
 }
 
+/*about us*/
+
+
 #aboutuscontainer {
   padding-top: 4rem;
+
 }
 
 #aboutus {
@@ -263,10 +267,15 @@ div, span {
   color: white;
 }
 
-/*about us*/
+#merj {
+  font-family: 'Raleway', sans-serif;
+  color: #00bcd4;
+  font-size: 3rem;
+}
 
 .team {
   text-align: left;
+  font-family: 'Raleway', sans-serif;
 }
 
 #teampic {
@@ -279,6 +288,21 @@ div, span {
 .name {
   text-align: center;
   padding-left: 2rem;
+  font-family: 'Raleway', sans-serif;
+  color: #979797;
+}
+
+#links {
+  text-align: right;
+  margin-left: 3rem;
+}
+
+#role {
+  text-align: right;
+  margin-left: 5rem;
+  font-family: 'Raleway', sans-serif;
+  color: #ff6699;
+
 }
 
 
