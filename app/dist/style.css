@@ -262,9 +262,11 @@ div, span {
   border-color: transparent;
   border-bottom-color: #00bcd4;
   background-color: transparent;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   font-family: 'Raleway', sans-serif;
   color: white;
+  margin-top: 2rem;
+
 }
 
 #merj {
@@ -304,6 +306,7 @@ div, span {
   color: #ff6699;
 
 }
+
 
 
 
