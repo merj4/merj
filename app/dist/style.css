@@ -121,19 +121,19 @@ button::-moz-focus-inner{
 }
 
 #iconbutton:active {
-  border-color: transparent;
+  border-color: white;
   padding: 0;
 }
 
 #iconbutton:focus {
   transform: translateY(4px);
-  border-color: transparent;
+  border-color: white;
   padding: 0;
 }
 
 #iconbutton:hover {
   transform: translateY(4px);
-  border-color: transparent;
+  border-color: white;
   padding: 0;
 }
 
