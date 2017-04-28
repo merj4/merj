@@ -10,13 +10,15 @@ export class Login extends React.Component {
     super(props);
     this.state = {
       show: false,
+      misaki: false,
     }
   }
 
 
   render() {
     const { auth } = this.props
-    let close = () => this.setState({ show: false});
+    let close = () => this.setState({ show: false });
+    let closing= () => this.setState({ showing: false });
 
     return (
       <div className="login">
@@ -27,7 +29,6 @@ export class Login extends React.Component {
           <button id="loginbutton" onClick={auth.login.bind(this)}>Join</button>
           <div id="aboutuscontainer">
           <button id="aboutus" onClick={() => this.setState({ show: true})} >About us</button>
-
            <Modal
             show={this.state.show}
             onHide={close}
@@ -81,9 +82,12 @@ export class Login extends React.Component {
             </Modal.Footer>
           </Modal>
           </div>
-      </div>
-    </div>
 
+            <div id="aboutus">
+              Build with Node, Express, React, PostgreSQL, Socket.IO, Bootstrap, and Material-UI
+            </div>
+    </div>
+    </div>
     )
   }
 }
