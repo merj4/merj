@@ -15,17 +15,18 @@ button {
   cursor      : pointer;
 }
 
-/*removes all styling from a button so can start from scratch when styling a button!*/
-button::-moz-focus-inner{
-  padding : 0;
-  border  : 0;
+button:focus {
+  outline:0;
+  transform: translateY(-4px);
 }
 
-button:focus {outline:0;}
+button:hover {
+  outline:0;
+}
 
 .container  {
   height: 100%;
-  width: 65%;
+  width: 100%;
   margin: 10 auto;
   text-align: left;
 }
@@ -45,9 +46,9 @@ button:focus {outline:0;}
 
 .Container.header.nav {
   height: 2.5rem;
-  padding-top: 1rem;
   padding-right: 1rem;
   padding-left: 0.5rem;
+  width: 70%;
 }
 
 /*header*/
@@ -57,12 +58,16 @@ button:focus {outline:0;}
   font-family: 'Raleway', sans-serif;
   color: #ff6699;
   padding-left: 1rem;
+  padding-bottom: 4px: 
 }
 
 #toply {
   font-size: 2.5rem;
   font-family: 'Raleway', sans-serif;
   color: #00bcd4;
+  padding-bottom: 4px: 
+  text-align: center;
+
 }
 
 .header {
@@ -74,14 +79,13 @@ button:focus {outline:0;}
 /*search*/
 #search {
   height: 6rem;
-  text-align: left;
-  margin-right: auto;
-  margin-left: 16rem;
+  text-align: center;
 }
 
 
 #searchbar {
-
+  margin-left: auto;
+  margin-right: auto: 
 }
 
 /*icons on the top*/
@@ -126,9 +130,16 @@ button:focus {outline:0;}
   text-align: left;
 }
 
+.tabs {
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
 /*eventlist*/
 #eventlist {
-  width: 80%;
+  width: 60%;
   margin-left: auto;
   margin-right: auto;
 }
@@ -136,6 +147,8 @@ button:focus {outline:0;}
 #eachevent {
   padding-top: 5rem;
 }
+
+
 
 
 div, span {
@@ -149,27 +162,26 @@ div, span {
 /*Eventview*/
 #chat {
   margin-bottom: 5rem;
+  margin-right: auto;
+  margin-left: auto;
+  width: 70%
 }
 
 
 #chatroom {
   height: 100%;
-  float: left;
-  width: 60%;
+  float: right;
 }
 
 #chatsidebar {
-  width: 40%;
   height: 100%;
   float: left;
 }
 
 #eventDetails {
-  height: 360;
-  width: 360;
+  height: 300;
   text-align: center;
-  font-size: 16px;
-
+  font-size: 1.5rem;
 }
 
 #descriptioninchat {
@@ -271,7 +283,9 @@ div, span {
 
 /*map*/
 #mapcontainer {
-  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
 }
 
 #map {

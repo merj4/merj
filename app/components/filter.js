@@ -68,6 +68,7 @@ class Filter extends Component {
     let hotevents = this.props.events.slice(1, 3);
 
     return (
+      <div className="tabs">
       <Tabs>
         <Tab label="Distance" 
         onClick={() => this.refs.Dropdown.isDropdown()} >
@@ -98,6 +99,7 @@ class Filter extends Component {
           <div style={styles.headline} />
         </Tab>
       </Tabs>
+    </div>
     );
   }
 };

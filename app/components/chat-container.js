@@ -8,9 +8,9 @@ let styles = {
     float: 'right',
     marginBottom: 24,
     marginRight: 24,
-    width: 675,
+    width: 490,
     border: 'solid 1px #d9d9d9',
-    height: 775,
+    height: 400,
     overflow: 'hidden'
   }
 };

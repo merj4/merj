@@ -78,23 +78,20 @@ class EventView extends Component {
 
     return (
       <div id="chat">
-       <div id='chatsidebar'>
-          <div><EventDetails 
-          activeEvent={this.props.activeEvent}/></div>
-          <div><UsersContainer
-          users={this.state.users}/></div>
-        </div>
-        <div id='chatroom'>
-          <ChatContainer 
+      <ChatContainer 
           messages={this.state.messages}
           socket={socket}/>
-        </div>
+          <EventDetails 
+          activeEvent={this.props.activeEvent} />
+          <div>
+          <UsersContainer
+          users={this.state.users}/></div>
         <ChatInput socket={socket}
           saveToDatabase={this.saveToDatabase.bind(this)}
           receiveMessage={this.receiveMessage.bind(this)}
           profile={this.props.profile} />
         <SidePanel />
-      </div>
+    </div>
     );
   }
 }

@@ -7,9 +7,9 @@ let styles = {
     float: 'left',
     marginBottom: 24,
     marginRight: 24,
-    width: 360,
+    width: 300,
     border: 'solid 1px #d9d9d9',
-    height: 400,
+    height: 150,
     overflow: 'hidden',
     background: '#f2f2f2',
     padding: 15,
@@ -26,8 +26,6 @@ let EventDetails = (props) => {
           <div>{props.activeEvent.time}</div>
           <br />
           <div>{props.activeEvent.location}</div>
-          <br />
-          <div id="descriptioninchat">{props.activeEvent.description}</div>
         </div>
     </Paper>
     );
