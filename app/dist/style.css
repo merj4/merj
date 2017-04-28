@@ -44,10 +44,9 @@ button::-moz-focus-inner{
 
 .Container.header.nav {
   height: 2.5rem;
-/*  background-color: #00bcd4;
-*/padding-top: 1rem;
-  padding-right: 3rem;
-  padding-left: 4rem;
+  padding-top: 1rem;
+  padding-right: 1rem;
+  padding-left: 0.5rem;
 }
 
 /*header*/
@@ -56,6 +55,7 @@ button::-moz-focus-inner{
   font-size: 2.2rem;
   font-family: 'Raleway', sans-serif;
   color: #ff6699;
+  padding-left: 1rem;
 }
 
 #toply {
@@ -92,43 +92,59 @@ button::-moz-focus-inner{
   top: 20px;
 }
 
+/*search*/
 
 #search {
   height: 6rem;
   text-align: left;
-  margin-left: 18rem;
+  margin-left: 13rem;
   margin-top: 0.6rem;
-  border-color: transparent;
 }
 
 #searchbar {
   background: transparent;
-  background-repeat: no-repeat;
   color: transparent;
   border-color: transparent;
-  padding-top: 0.5rem;
 }
 
 
-/*modal form*/
-#formbutton {
-  background-color: transparent;
+/*icons on the top*/
+#icons {
+  text-align: right;
+  float: right;
+}
+
+#iconbutton {
   border-color: transparent;
-  background-repeat: no-repeat;
-  background-image: url('images/plus.png');
-  color: transparent;
+  padding: 0;
   padding-left: 1rem;
 }
 
-/*profile/logout button*/
-#profilelogout {
-  background-color: transparent;
+#iconbutton:active {
   border-color: transparent;
-  background-image: url('images/person.png');
-  background-repeat: no-repeat;
-  color: transparent;
-  padding-left: 1rem;
+  padding: 0;
 }
+
+#iconbutton:focus {
+  transform: translateY(4px);
+  border-color: transparent;
+  padding: 0;
+}
+
+#iconbutton:hover {
+  transform: translateY(4px);
+  border-color: transparent;
+  padding: 0;
+}
+
+.material-icons.pink {
+  color: #ff6699;
+}
+
+.material-icons.blue {
+  color: #00bcd4;
+}
+
 
 .control-label {
   font-size: 1.2rem;
