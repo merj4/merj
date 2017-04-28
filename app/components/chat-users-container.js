@@ -13,7 +13,7 @@ let styles = {
     marginRight: 24,
     width: 300,
     border: 'solid 1px #d9d9d9',
-    height: 200,
+    height: 227,
     overflow: 'hidden'
   },
 };
