@@ -21,12 +21,14 @@ Social.ly is a social events hub and networking platform that allows people to c
 ## Usage
 
 1) Join Social.ly with your email address, Facebook or Google account.
+
 ![Alt text](https://im.ezgif.com/tmp/ezgif-1-e46972cec9.gif)
 
 
 2) Browse a list of events happenning all over the world, view events on a map and easily get directions or create and host your own events.
 
 Ex: Map View
+
 ![Alt text](https://im.ezgif.com/tmp/ezgif-1-2dc1945e9a.gif  "Mapview")
 
 
