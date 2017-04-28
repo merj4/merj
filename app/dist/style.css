@@ -72,7 +72,6 @@ button:focus {outline:0;}
 
 
 /*search*/
-
 #search {
   height: 6rem;
   text-align: left;
@@ -122,18 +121,22 @@ button:focus {outline:0;}
   color: #00bcd4;
 }
 
-
 .control-label {
   font-size: 1.2rem;
   text-align: left;
 }
 
-
-
-
-#tabs {
-  font-family: 'Raleway', sans-serif;
+/*eventlist*/
+#eventlist {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
 }
+
+#eachevent {
+  padding-top: 5rem;
+}
+
 
 div, span {
   font-family: 'Roboto', sans-serif;

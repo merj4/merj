@@ -16,7 +16,7 @@ class EventList extends Component {
   if (this.state.updated) {
     return (
       <div>
-        <div>
+        <div id='eventlist'>
           {this.state.list.map((event, i, list) =>
            <EventItem list={list} event={event} key={i} index={event.id}
                 handleEventClick={this.props.handleEventClick}
@@ -28,7 +28,7 @@ class EventList extends Component {
   } else {
       return (
         <div>
-          <div>
+          <div id='eventlist'>
             {this.props.events.map((event, i, list) =>
              <EventItem list={list} event={event} key={i} index={event.id}
                   handleEventClick={this.props.handleEventClick}

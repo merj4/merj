@@ -22,6 +22,7 @@ class EventItem extends Component {
   
   render() {
     return (
+      <div id='eachevent'>
       <Card >
         <CardHeader
           className="card-top"
@@ -45,6 +46,7 @@ class EventItem extends Component {
            <FlatButton className="btn" label="I'm Gonna Pass for Now" />
         </CardActions>
       </Card>
+      </div>
       );
     }
 }
