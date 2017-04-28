@@ -69,16 +69,15 @@ class Header extends Component {
   render() {
     let close = () => this.setState({ show: false});
     const { auth } = this.props
+    const style = { marginRight: 20 };
 
     return (
       <Nav inverse className="Container header">
         <button onClick={this.props.showProfileSetToFalse}><span id="topsocial">Social.<span id="toply">ly</span></span></button>
-        <Nav pullRight>
-          <Button id="formbutton" onClick={() => this.setState({ show: true})}>+</Button>
-          <DropdownButton id='profilelogout'>
-            <MenuItem id="showProfile" onClick={ this.props.showProfile }><i className="fa fa-user fa-fw"></i>Profile</MenuItem>
-            <MenuItem id="logout" onClick={auth.logout.bind(this)}><i className="fa fa-sign-out fa-fw"></i>Logout</MenuItem>
-          </DropdownButton>
+        <Nav pullRight id="icons">
+          <button id="iconbutton" onClick={() => this.setState({ show: true})}><i className="material-icons pink">add_circle_outline</i></button>
+          <button id="iconbutton" onClick={ this.props.showProfile } ><i className="material-icons pink">perm_identity</i></button>
+          <button id="iconbutton" onClick={auth.logout.bind(this)} ><i className="material-icons blue">input</i></button>
 
           <Modal
             show={this.state.show}
