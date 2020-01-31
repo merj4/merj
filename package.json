@@ -53,7 +53,7 @@
     "socket.io": "^1.7.3"
   },
   "devDependencies": {
-    "auth0-lock": "^10.14.0",
+    "auth0-lock": "^11.21.0",
     "babel-cli": "^6.24.1",
     "babel-core": "^6.24.1",
     "babel-loader": "^6.4.1",
